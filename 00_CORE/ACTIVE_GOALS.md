@@ -14,7 +14,8 @@ summary: Build-phase checklist for the vault itself; the live to-do the /wake co
 - [x] **Phase 2 — Memory machinery** — indexer.py + query.py (stdlib); root spec files in place
 - [x] **Phase 3 — Lesson transfer** — 6 lessons + 3 topic notes + ASUNAMA migrated; go/no-go gate PASSED
 - [x] **Phase 4 — /research, /review, /predict** — review.py (orphan/stale); P1 promoted; sourced research note
-- [ ] **Phase 5 — Dashboard (Dataview, phase A)**
+- [x] **Phase 5A — Dashboard** — DASHBOARD.md (Dataview); render-verify in Obsidian (needs Dataview plugin)
+- [ ] **Phase 5B — Web dashboard** — deferred: only after 2 weeks of real vault use (per GUIDE)
 - [ ] **Phase 6 — Automation (systemd timers, Ubuntu)**
 
 ## Notes
