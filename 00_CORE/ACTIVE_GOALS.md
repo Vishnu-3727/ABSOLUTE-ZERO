@@ -11,11 +11,12 @@ summary: Build-phase checklist for the vault itself; the live to-do the /wake co
 
 ## Vault build phases
 - [x] **Phase 1 — Skeleton** — dirs, IDENTITY, ACTIVE_GOALS, PRINCIPLES, 5 templates, git init
-- [ ] **Phase 2 — Scripts** — indexer.py, and /wake /sleep /recall /research /review /predict flows (stdlib only)
-- [ ] **Phase 3 — Migrate ASUNAMA** into `10_PROJECTS/`
-- [ ] **Phase 4 — Knowledge seeding** (`20_KNOWLEDGE/`)
-- [ ] **Phase 5 — Lessons + PRINCIPLES growth**
-- [ ] **Phase 6 — Prediction / review loop**
+- [x] **Phase 2 — Memory machinery** — indexer.py + query.py (stdlib); root spec files in place
+- [ ] **Phase 3 — Lesson transfer test** — ≥5 real lessons in 30_LESSONS/, ROVER-NAV /recall go/no-go gate
+- [ ] **Phase 4 — /research, /review, /predict**
+- [ ] **Phase 5 — Dashboard (Dataview, phase A)**
+- [ ] **Phase 6 — Automation (systemd timers, Ubuntu)**
 
-## Phase 1 open item
-- [ ] Paste original **CLAUDE.md / FLOW.md / GUIDE.md** into vault root (verbatim spec — not yet in this build).
+## Notes
+- Phases renumbered to match GUIDE.md. ASUNAMA migration folds into Phase 3 lesson seeding.
+- Vault scripts run with `python scripts/indexer.py` / `scripts/query.py` from vault root.
