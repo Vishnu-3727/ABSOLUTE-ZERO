@@ -31,3 +31,4 @@ Pre-flight items remain — see [[asunama-flight-checklist]] / RECENT.
 ## Links
 Decisions: [[DECISIONS]] · Faults: [[FAULTS]] · Topics:
 [[gps-denied-localization]], [[coverage-planning]], [[debugging-silent-failures]].
+Research: [[ardupilot-nongps-vision-params]].

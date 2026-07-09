@@ -13,7 +13,7 @@ summary: Build-phase checklist for the vault itself; the live to-do the /wake co
 - [x] **Phase 1 — Skeleton** — dirs, IDENTITY, ACTIVE_GOALS, PRINCIPLES, 5 templates, git init
 - [x] **Phase 2 — Memory machinery** — indexer.py + query.py (stdlib); root spec files in place
 - [x] **Phase 3 — Lesson transfer** — 6 lessons + 3 topic notes + ASUNAMA migrated; go/no-go gate PASSED
-- [ ] **Phase 4 — /research, /review, /predict**
+- [x] **Phase 4 — /research, /review, /predict** — review.py (orphan/stale); P1 promoted; sourced research note
 - [ ] **Phase 5 — Dashboard (Dataview, phase A)**
 - [ ] **Phase 6 — Automation (systemd timers, Ubuntu)**
 

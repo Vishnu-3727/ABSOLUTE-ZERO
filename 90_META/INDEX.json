@@ -82,7 +82,12 @@
       "status": "active",
       "confidence": "high",
       "date": "2026-07-09",
-      "links": []
+      "links": [
+        "read-stderr-not-app-log",
+        "bounded-loop-over-unbounded-wait",
+        "fail-loud-not-silent-fallback",
+        "debugging-silent-failures"
+      ]
     },
     {
       "path": "20_KNOWLEDGE/coverage-planning.md",
@@ -265,6 +270,26 @@
       ]
     },
     {
+      "path": "40_RESEARCH/ardupilot-nongps-vision-params.md",
+      "type": "research",
+      "project": "ASUNAMA",
+      "tags": [
+        "research",
+        "drone",
+        "navigation",
+        "localization",
+        "ardupilot"
+      ],
+      "title": "ArduPilot non-GPS vision positioning — parameters",
+      "summary": "ArduPilot non-GPS vision-positioning params — EK3_SRC1, VISO_TYPE, VISION_POSITION_ESTIMATE, EKF origin.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-09",
+      "links": [
+        "gps-denied-localization"
+      ]
+    },
+    {
       "path": "10_PROJECTS/ASUNAMA/DECISIONS.md",
       "type": "decision",
       "project": "ASUNAMA",
@@ -336,7 +361,8 @@
         "FAULTS",
         "gps-denied-localization",
         "coverage-planning",
-        "debugging-silent-failures"
+        "debugging-silent-failures",
+        "ardupilot-nongps-vision-params"
       ]
     },
     {
@@ -355,6 +381,64 @@
       "date": "2026-07-09",
       "links": [
         "asunama-flight-checklist"
+      ]
+    },
+    {
+      "path": "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-25.md",
+      "type": "session",
+      "project": "ASUNAMA",
+      "tags": [
+        "session",
+        "drone",
+        "isaac-sim"
+      ],
+      "title": "Session — 2026-06-25",
+      "summary": "Root-caused the Isaac white box (PreviewSurfaceCfg TypeError) and headless deadlock; both fixed.",
+      "status": "done",
+      "confidence": "high",
+      "date": "2026-06-25",
+      "links": [
+        "read-stderr-not-app-log",
+        "bounded-loop-over-unbounded-wait"
+      ]
+    },
+    {
+      "path": "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-26.md",
+      "type": "session",
+      "project": "ASUNAMA",
+      "tags": [
+        "session",
+        "drone",
+        "navigation"
+      ],
+      "title": "Session — 2026-06-26",
+      "summary": "Full mission verified live (100% coverage, PRECLAND OK); fixed feature piling and RTH frame bug.",
+      "status": "done",
+      "confidence": "high",
+      "date": "2026-06-26",
+      "links": [
+        "fail-loud-not-silent-fallback",
+        "coordinate-frame-origin"
+      ]
+    },
+    {
+      "path": "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-27.md",
+      "type": "session",
+      "project": "ASUNAMA",
+      "tags": [
+        "session",
+        "drone",
+        "navigation",
+        "localization"
+      ],
+      "title": "Session — 2026-06-27",
+      "summary": "Added absolute visual fix + base-station rearchitecture; full-mission validation hit the 95% bar.",
+      "status": "done",
+      "confidence": "high",
+      "date": "2026-06-27",
+      "links": [
+        "odometry-drift-absolute-fix",
+        "coverage-footprint-not-cell"
       ]
     }
   ]
