@@ -1,0 +1,88 @@
+{
+  "generated": "2026-07-09",
+  "notes": [
+    {
+      "path": "CLAUDE.md",
+      "type": "doc",
+      "project": "-",
+      "tags": [],
+      "title": "ABSOLUTE ZERO — Master Instructions",
+      "summary": "",
+      "status": "",
+      "confidence": "",
+      "date": "",
+      "links": []
+    },
+    {
+      "path": "FLOW.md",
+      "type": "doc",
+      "project": "-",
+      "tags": [],
+      "title": "ABSOLUTE ZERO — Flow Definitions",
+      "summary": "",
+      "status": "",
+      "confidence": "",
+      "date": "",
+      "links": []
+    },
+    {
+      "path": "GUIDE.md",
+      "type": "doc",
+      "project": "-",
+      "tags": [],
+      "title": "ABSOLUTE ZERO — Build Guide",
+      "summary": "",
+      "status": "",
+      "confidence": "",
+      "date": "",
+      "links": []
+    },
+    {
+      "path": "00_CORE/ACTIVE_GOALS.md",
+      "type": "core",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "goals"
+      ],
+      "title": "ACTIVE GOALS",
+      "summary": "Build-phase checklist for the vault itself; the live to-do the /wake command reads.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-09",
+      "links": []
+    },
+    {
+      "path": "00_CORE/IDENTITY.md",
+      "type": "core",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "identity"
+      ],
+      "title": "IDENTITY",
+      "summary": "Vishnu's hardware, toolchain, and active projects — the fixed facts every session loads first.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-09",
+      "links": [
+        "asunama-isaac-project"
+      ]
+    },
+    {
+      "path": "00_CORE/PRINCIPLES.md",
+      "type": "core",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "principles"
+      ],
+      "title": "PRINCIPLES",
+      "summary": "Hard-won engineering rules; grows one entry at a time via the /review command.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-09",
+      "links": []
+    }
+  ]
+}
