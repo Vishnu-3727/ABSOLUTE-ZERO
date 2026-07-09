@@ -14,6 +14,23 @@
       "links": []
     },
     {
+      "path": "DASHBOARD.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "meta",
+        "dashboard"
+      ],
+      "title": "ABSOLUTE ZERO — Dashboard",
+      "summary": "Obsidian Dataview dashboard — active goals, recent sessions, open faults, newest lessons.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-09",
+      "links": [
+        "90_META/FAULT_LEDGER"
+      ]
+    },
+    {
       "path": "FLOW.md",
       "type": "doc",
       "project": "-",
