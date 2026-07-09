@@ -97,7 +97,9 @@ def parse_faults(path, body, project, tags):
     """Split a FAULTS.md body into per-section ledger lines."""
     out = []
     for sec in re.split(r"\n(?=## )", body):
-        head = sec.splitlines()[0].lstrip("# ").strip() if sec.strip() else ""
+        if not sec.startswith("## "):  # skip the H1 preamble chunk
+            continue
+        head = sec.splitlines()[0][3:].strip()
         if not head or head.startswith("<"):
             continue
         symptom = _field(sec, "Symptom") or head

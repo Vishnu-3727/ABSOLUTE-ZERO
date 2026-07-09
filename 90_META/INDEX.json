@@ -83,6 +83,279 @@
       "confidence": "high",
       "date": "2026-07-09",
       "links": []
+    },
+    {
+      "path": "20_KNOWLEDGE/coverage-planning.md",
+      "type": "knowledge",
+      "project": "-",
+      "tags": [
+        "knowledge",
+        "navigation",
+        "coverage",
+        "mapping"
+      ],
+      "title": "Coverage & area planning",
+      "summary": "Mark the sensor footprint, not one cell; place features by clearance discs, skip on exhaustion.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-06-27",
+      "links": [
+        "coverage-footprint-not-cell",
+        "fail-loud-not-silent-fallback",
+        "coverage-footprint-not-cell"
+      ]
+    },
+    {
+      "path": "20_KNOWLEDGE/debugging-silent-failures.md",
+      "type": "knowledge",
+      "project": "-",
+      "tags": [
+        "knowledge",
+        "debugging",
+        "diagnostics",
+        "reliability"
+      ],
+      "title": "Debugging silent / hidden failures",
+      "summary": "Failures that hide — check stderr, prefer bounded loops, never fall back silently.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-06-25",
+      "links": [
+        "read-stderr-not-app-log",
+        "bounded-loop-over-unbounded-wait",
+        "fail-loud-not-silent-fallback",
+        "read-stderr-not-app-log",
+        "bounded-loop-over-unbounded-wait",
+        "fail-loud-not-silent-fallback"
+      ]
+    },
+    {
+      "path": "20_KNOWLEDGE/gps-denied-localization.md",
+      "type": "knowledge",
+      "project": "-",
+      "tags": [
+        "knowledge",
+        "navigation",
+        "localization",
+        "state-estimation",
+        "drift"
+      ],
+      "title": "GPS-denied localization",
+      "summary": "Dead-reckoning drifts unbounded; correct with periodic absolute fixes in an explicit anchored frame.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-06-27",
+      "links": [
+        "coordinate-frame-origin",
+        "odometry-drift-absolute-fix",
+        "coordinate-frame-origin"
+      ]
+    },
+    {
+      "path": "30_LESSONS/bounded-loop-over-unbounded-wait.md",
+      "type": "lesson",
+      "project": "ASUNAMA",
+      "tags": [
+        "lesson",
+        "robotics",
+        "reliability"
+      ],
+      "title": "Bounded loop beats a wait-for-condition",
+      "summary": "Replicator orchestrator wait-for-frame deadlocked forever; a bounded update loop cannot hang.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-06-25",
+      "links": [
+        "debugging-silent-failures"
+      ]
+    },
+    {
+      "path": "30_LESSONS/coordinate-frame-origin.md",
+      "type": "lesson",
+      "project": "ASUNAMA",
+      "tags": [
+        "lesson",
+        "navigation",
+        "localization",
+        "coordinate-frames"
+      ],
+      "title": "\"Home\" is a named point, not (0,0)",
+      "summary": "RTH checked distance to (0,0) but home was the base station; mission never completed.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-06-27",
+      "links": [
+        "gps-denied-localization"
+      ]
+    },
+    {
+      "path": "30_LESSONS/coverage-footprint-not-cell.md",
+      "type": "lesson",
+      "project": "ASUNAMA",
+      "tags": [
+        "lesson",
+        "navigation",
+        "coverage",
+        "mapping"
+      ],
+      "title": "Mark the sensor footprint, not one grid cell",
+      "summary": "Single-cell coverage marking couldn't reach 95%; mark the camera footprint instead.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-06-27",
+      "links": [
+        "coverage-planning"
+      ]
+    },
+    {
+      "path": "30_LESSONS/fail-loud-not-silent-fallback.md",
+      "type": "lesson",
+      "project": "ASUNAMA",
+      "tags": [
+        "lesson",
+        "software",
+        "reliability"
+      ],
+      "title": "Fail loud — a silent fallback hides the bug",
+      "summary": "A sampler that silently placed features at the last spot on exhaustion caused overlaps; return None and skip.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-06-27",
+      "links": [
+        "debugging-silent-failures",
+        "coverage-planning"
+      ]
+    },
+    {
+      "path": "30_LESSONS/odometry-drift-absolute-fix.md",
+      "type": "lesson",
+      "project": "ASUNAMA",
+      "tags": [
+        "lesson",
+        "navigation",
+        "localization",
+        "state-estimation",
+        "drift"
+      ],
+      "title": "Optical-flow dead reckoning drifts — inject an absolute fix",
+      "summary": "Optical-flow dead reckoning drifted unbounded under wind; fixed with periodic absolute visual fixes.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-06-27",
+      "links": [
+        "gps-denied-localization"
+      ]
+    },
+    {
+      "path": "30_LESSONS/read-stderr-not-app-log.md",
+      "type": "lesson",
+      "project": "ASUNAMA",
+      "tags": [
+        "lesson",
+        "debugging",
+        "diagnostics"
+      ],
+      "title": "Read stderr, not the app's own log",
+      "summary": "The Isaac \"white box\" was a Python TypeError on stderr, not a GPU bug; the app log never showed it.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-06-25",
+      "links": [
+        "debugging-silent-failures"
+      ]
+    },
+    {
+      "path": "10_PROJECTS/ASUNAMA/DECISIONS.md",
+      "type": "decision",
+      "project": "ASUNAMA",
+      "tags": [
+        "project",
+        "decisions",
+        "drone",
+        "navigation"
+      ],
+      "title": "ASUNAMA — Decisions",
+      "summary": "Key locked decisions — Isaac over Gazebo, absolute visual fix, base-station processing, USD-native materials.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-09",
+      "links": [
+        "gps-denied-localization",
+        "FAULTS",
+        "read-stderr-not-app-log"
+      ]
+    },
+    {
+      "path": "10_PROJECTS/ASUNAMA/FAULTS.md",
+      "type": "fault",
+      "project": "ASUNAMA",
+      "tags": [
+        "project",
+        "faults",
+        "drone",
+        "isaac-sim",
+        "navigation"
+      ],
+      "title": "ASUNAMA — Faults",
+      "summary": "Real ASUNAMA faults — white box, headless deadlock, RTH frame bug, feature piling, coverage stall.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-09",
+      "links": [
+        "debugging-silent-failures",
+        "read-stderr-not-app-log",
+        "debugging-silent-failures",
+        "bounded-loop-over-unbounded-wait",
+        "gps-denied-localization",
+        "coordinate-frame-origin",
+        "coverage-planning",
+        "fail-loud-not-silent-fallback",
+        "coverage-planning",
+        "coverage-footprint-not-cell"
+      ]
+    },
+    {
+      "path": "10_PROJECTS/ASUNAMA/OVERVIEW.md",
+      "type": "overview",
+      "project": "ASUNAMA",
+      "tags": [
+        "project",
+        "overview",
+        "drone",
+        "navigation",
+        "isaac-sim"
+      ],
+      "title": "ASUNAMA — Overview",
+      "summary": "IRoC-U 2026 GPS-denied autonomous survey drone; Isaac Sim arena + vision-anchored base-station nav.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-09",
+      "links": [
+        "asunama-flight-checklist",
+        "DECISIONS",
+        "FAULTS",
+        "gps-denied-localization",
+        "coverage-planning",
+        "debugging-silent-failures"
+      ]
+    },
+    {
+      "path": "10_PROJECTS/ASUNAMA/RECENT.md",
+      "type": "recent",
+      "project": "ASUNAMA",
+      "tags": [
+        "project",
+        "recent",
+        "drone"
+      ],
+      "title": "ASUNAMA — Recent",
+      "summary": "Sim mission verified; pre-flight items remain (ORB refs, FC params, Pi-0 relay, bench hover).",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-09",
+      "links": [
+        "asunama-flight-checklist"
+      ]
     }
   ]
 }
