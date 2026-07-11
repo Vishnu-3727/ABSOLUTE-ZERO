@@ -1,0 +1,66 @@
+{
+ "id": "2026-07-11-design-and-implement-a-planning",
+ "request": "design and implement a planning engine that decomposes tasks and generates executable implementation plans",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "feature",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "knowledge",
+  "experience",
+  "skills"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "works end to end",
+  "one runnable check left behind",
+  "docs/notes updated if behavior changed"
+ ],
+ "recall_tags": [],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T15:08:42",
+   "state": "CLASSIFY",
+   "note": "feature/standard"
+  },
+  {
+   "t": "2026-07-11T15:08:43",
+   "state": "RECALL",
+   "note": "pattern established by ORCHESTRATOR/CONTEXT/PLUGINS builds; graphlib.TopologicalSorter is stdlib since 3.9 - use for dependency ordering"
+  },
+  {
+   "t": "2026-07-11T15:08:44",
+   "state": "PLAN",
+   "note": "scripts/planner.py: decompose (conjunction split), per-intent step templates, risks from FAULT_LEDGER, topo order via graphlib, alternatives from plugin fallbacks + intent table, complexity points, git-baseline rollback, architecture validation gates. PLANNER.md spec."
+  },
+  {
+   "t": "2026-07-11T15:11:50",
+   "state": "EXECUTE",
+   "note": "planner.py + PLANNER.md; graphlib topo order; fixed static_order generator lazy-eval bug; wired into /task PLAN + orchestrator plan output"
+  },
+  {
+   "t": "2026-07-11T15:11:51",
+   "state": "VERIFY",
+   "note": "all 4 selftests OK; e2e 2-subtask plan (feature+performance) binds real plugins, validates executable; reindex clean"
+  },
+  {
+   "t": "2026-07-11T15:11:52",
+   "state": "SUMMARIZE",
+   "note": "planning engine live"
+  },
+  {
+   "t": "2026-07-11T15:11:54",
+   "state": "DONE",
+   "note": "planning engine built and verified"
+  }
+ ],
+ "retries": 0,
+ "result": "pass"
+}

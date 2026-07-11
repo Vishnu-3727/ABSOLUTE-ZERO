@@ -1,0 +1,213 @@
+{
+ "id": "2026-07-11-add-a-web-dashboard-for",
+ "request": "add a web dashboard for the fault ledger and fix the slow indexer startup",
+ "project": "ABSOLUTE_ZERO",
+ "subtasks": [
+  "add a web dashboard for the fault ledger",
+  "fix the slow indexer startup"
+ ],
+ "complexity": {
+  "points": 6,
+  "label": "standard",
+  "per_subtask": [
+   "standard",
+   "standard"
+  ]
+ },
+ "risks_known": [],
+ "approaches": [
+  "accept and document ceiling",
+  "algorithmic fix",
+  "cache",
+  "extend an existing script (preferred - ladder rung 2)",
+  "markdown flow only, no code",
+  "new stdlib script"
+ ],
+ "rollback": {
+  "baseline": "4c1458d",
+  "strategy": "git reset --hard <baseline> abandons all; per-step rollbacks are surgical"
+ },
+ "steps": [
+  {
+   "id": "t1.s1",
+   "subtask": "add a web dashboard for the fault ledger",
+   "intent": "feature",
+   "action": "recall",
+   "plugin": "query",
+   "alternatives": [
+    "/recall",
+    "/research"
+   ],
+   "depends_on": [],
+   "risk": "rebuilding what exists",
+   "test": "pack cited",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s2",
+   "subtask": "add a web dashboard for the fault ledger",
+   "intent": "feature",
+   "action": "design",
+   "plugin": null,
+   "alternatives": [],
+   "depends_on": [
+    "t1.s1"
+   ],
+   "risk": "over-engineering",
+   "test": "approach chosen from alternatives, one line why",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s3",
+   "subtask": "add a web dashboard for the fault ledger",
+   "intent": "feature",
+   "action": "implement",
+   "plugin": "code-review",
+   "alternatives": [
+    "code-simplifier",
+    "coderabbit"
+   ],
+   "depends_on": [
+    "t1.s2"
+   ],
+   "risk": "scope creep",
+   "test": "works end to end",
+   "rollback": "git checkout -- <files>"
+  },
+  {
+   "id": "t1.s4",
+   "subtask": "add a web dashboard for the fault ledger",
+   "intent": "feature",
+   "action": "test",
+   "plugin": "review",
+   "alternatives": [
+    "/review",
+    "claude-md-management"
+   ],
+   "depends_on": [
+    "t1.s3"
+   ],
+   "risk": "untested branch",
+   "test": "selftest + e2e pass",
+   "rollback": "git checkout -- <files>"
+  },
+  {
+   "id": "t1.s5",
+   "subtask": "add a web dashboard for the fault ledger",
+   "intent": "feature",
+   "action": "document",
+   "plugin": "indexer",
+   "alternatives": [
+    "/research",
+    "/sleep"
+   ],
+   "depends_on": [
+    "t1.s4"
+   ],
+   "risk": "docs drift",
+   "test": "docs updated + reindexed",
+   "rollback": "git revert <commit>"
+  },
+  {
+   "id": "t2.s1",
+   "subtask": "fix the slow indexer startup",
+   "intent": "performance",
+   "action": "recall",
+   "plugin": "query",
+   "alternatives": [
+    "/recall",
+    "/research"
+   ],
+   "depends_on": [],
+   "risk": "optimizing the wrong hotspot",
+   "test": "pack cited",
+   "rollback": "-"
+  },
+  {
+   "id": "t2.s2",
+   "subtask": "fix the slow indexer startup",
+   "intent": "performance",
+   "action": "baseline",
+   "plugin": null,
+   "alternatives": [],
+   "depends_on": [
+    "t2.s1"
+   ],
+   "risk": "no before-number",
+   "test": "baseline measured",
+   "rollback": "-"
+  },
+  {
+   "id": "t2.s3",
+   "subtask": "fix the slow indexer startup",
+   "intent": "performance",
+   "action": "optimize",
+   "plugin": "code-review",
+   "alternatives": [
+    "code-simplifier",
+    "coderabbit"
+   ],
+   "depends_on": [
+    "t2.s2"
+   ],
+   "risk": "correctness regression",
+   "test": "selftests still pass",
+   "rollback": "git checkout -- <files>"
+  },
+  {
+   "id": "t2.s4",
+   "subtask": "fix the slow indexer startup",
+   "intent": "performance",
+   "action": "measure",
+   "plugin": null,
+   "alternatives": [],
+   "depends_on": [
+    "t2.s3"
+   ],
+   "risk": "placebo optimization",
+   "test": "after-number beats baseline",
+   "rollback": "git revert <commit>"
+  },
+  {
+   "id": "commit",
+   "subtask": "add a web dashboard for the fault ledger and fix the slow indexer startup",
+   "intent": "-",
+   "action": "commit + reindex",
+   "plugin": "indexer",
+   "alternatives": [],
+   "risk": "unindexed notes",
+   "depends_on": [
+    "t1.s5",
+    "t2.s4"
+   ],
+   "test": "git log shows commit; INDEX_SUMMARY fresh",
+   "rollback": "git revert HEAD"
+  }
+ ],
+ "execution_order": [
+  "t1.s1",
+  "t2.s1",
+  "t1.s2",
+  "t2.s2",
+  "t1.s3",
+  "t2.s3",
+  "t1.s4",
+  "t2.s4",
+  "t1.s5",
+  "commit"
+ ],
+ "validation": [
+  [
+   "ok",
+   "dependency graph is acyclic"
+  ],
+  [
+   "ok",
+   "every step has a test and a rollback"
+  ],
+  [
+   "ok",
+   "plan is executable"
+  ]
+ ]
+}

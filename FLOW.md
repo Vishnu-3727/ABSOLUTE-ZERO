@@ -24,6 +24,10 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
    Illegal jumps are rejected loudly — that is the point.
 3. RECALL = python scripts/context.py pack "<request>" (budget-aware
    package, contract in CONTEXT.md). Trivial tasks: ledger scan only.
+3b. PLAN (standard/complex) = python scripts/planner.py plan "<request>" —
+   executable plan: subtasks, dependency-ordered steps, risks from the
+   ledger, tests, rollbacks, validation gates (PLANNER.md). Fix any "fail"
+   gate before EXECUTE; then walk execution_order.
 4. EXECUTE starts with python scripts/plugins.py route "<request>" — follow
    the chain (deterministic local tools before model calls, PLUGINS.md);
    report non-script outcomes via plugins.py report.

@@ -88,6 +88,22 @@
       "links": []
     },
     {
+      "path": "PLANNER.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "planning",
+        "runtime"
+      ],
+      "title": "ABSOLUTE ZERO — Planning Engine",
+      "summary": "Planning Engine spec — decomposes requests into validated, executable, dependency-ordered implementation plans.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-11",
+      "links": []
+    },
+    {
       "path": "PLUGINS.md",
       "type": "doc",
       "project": "ABSOLUTE_ZERO",

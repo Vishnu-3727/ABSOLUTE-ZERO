@@ -40,6 +40,7 @@ user request
      dashboard   = DASHBOARD.md
      context     = scripts/context.py pack (CONTEXT.md; always on)
      plugins     = scripts/plugins.py route/exec (PLUGINS.md; EXECUTE stage)
+     planner     = scripts/planner.py plan (PLANNER.md; PLAN stage)
      |
      v
  orchestrator.py close ──► trace final state DONE / ESCALATED ──► /sleep
