@@ -1,0 +1,66 @@
+{
+ "id": "2026-07-11-design-and-implement-a-plugin",
+ "request": "design and implement a plugin intelligence engine that discovers tools and routes requests to the optimal plugin chain",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "feature",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "knowledge",
+  "experience",
+  "skills"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "works end to end",
+  "one runnable check left behind",
+  "docs/notes updated if behavior changed"
+ ],
+ "recall_tags": [],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T14:59:24",
+   "state": "CLASSIFY",
+   "note": "feature/standard"
+  },
+  {
+   "t": "2026-07-11T14:59:45",
+   "state": "RECALL",
+   "note": "pack run: no plugin faults on ledger; ORCHESTRATOR/CONTEXT docs are the pattern to follow"
+  },
+  {
+   "t": "2026-07-11T14:59:46",
+   "state": "PLAN",
+   "note": "scripts/plugins.py: scan (discover vault scripts + .claude commands + ~/.claude plugins, probe latency, parse deps/perms) -> 90_META/PLUGINS.json; route (intent->caps->score->chain+fallbacks); exec (run, time, retry fallbacks, stats). PLUGINS.md spec."
+  },
+  {
+   "t": "2026-07-11T15:05:52",
+   "state": "EXECUTE",
+   "note": "plugins.py scan/list/route/exec/report + PLUGINS.md; 33 plugins discovered (6 scripts probed, 7 skills, 20 external); fixed: -- arg split, docstring keyword leak, self-routing, marketplace dupes, stats poisoning reset"
+  },
+  {
+   "t": "2026-07-11T15:05:53",
+   "state": "VERIFY",
+   "note": "all 3 selftests OK; e2e: research routes to /research, retrieval routes to query (det local) with codex fallback; exec fallback walk works"
+  },
+  {
+   "t": "2026-07-11T15:05:54",
+   "state": "SUMMARIZE",
+   "note": "plugin intelligence engine live; wired into /task EXECUTE"
+  },
+  {
+   "t": "2026-07-11T15:05:55",
+   "state": "DONE",
+   "note": "plugin engine built and verified"
+  }
+ ],
+ "retries": 0,
+ "result": "pass"
+}

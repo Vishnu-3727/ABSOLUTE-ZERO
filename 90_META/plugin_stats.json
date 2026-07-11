@@ -1,0 +1,12 @@
+{
+ "query": {
+  "runs": 1,
+  "ok": 1,
+  "ms_avg": 114
+ },
+ "indexer": {
+  "runs": 1,
+  "ok": 1,
+  "ms_avg": 173
+ }
+}

@@ -39,6 +39,7 @@ user request
      audit       = scripts/review.py
      dashboard   = DASHBOARD.md
      context     = scripts/context.py pack (CONTEXT.md; always on)
+     plugins     = scripts/plugins.py route/exec (PLUGINS.md; EXECUTE stage)
      |
      v
  orchestrator.py close ──► trace final state DONE / ESCALATED ──► /sleep

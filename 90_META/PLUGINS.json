@@ -1,0 +1,748 @@
+{
+ "plugins": [
+  {
+   "name": "context",
+   "kind": "script",
+   "path": "scripts/context.py",
+   "capabilities": [
+    "context"
+   ],
+   "actions": [
+    "pack"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": 145,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/context.py"
+  },
+  {
+   "name": "indexer",
+   "kind": "script",
+   "path": "scripts/indexer.py",
+   "capabilities": [
+    "indexing"
+   ],
+   "actions": [],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": 116,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/indexer.py"
+  },
+  {
+   "name": "orchestrator",
+   "kind": "script",
+   "path": "scripts/orchestrator.py",
+   "capabilities": [
+    "orchestration",
+    "persistence",
+    "similarity"
+   ],
+   "actions": [
+    "close",
+    "log",
+    "plan",
+    "similarity"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": 130,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/orchestrator.py"
+  },
+  {
+   "name": "plugins",
+   "kind": "script",
+   "path": "scripts/plugins.py",
+   "capabilities": [
+    "tooling"
+   ],
+   "actions": [
+    "exec",
+    "list",
+    "report",
+    "route",
+    "scan"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": 144,
+   "dependencies": [],
+   "permissions": [
+    "exec",
+    "fs-write",
+    "network"
+   ],
+   "invoke": "python scripts/plugins.py"
+  },
+  {
+   "name": "query",
+   "kind": "script",
+   "path": "scripts/query.py",
+   "capabilities": [
+    "retrieval"
+   ],
+   "actions": [],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": 130,
+   "dependencies": [],
+   "permissions": [
+    "fs-read"
+   ],
+   "invoke": "python scripts/query.py"
+  },
+  {
+   "name": "review",
+   "kind": "script",
+   "path": "scripts/review.py",
+   "capabilities": [
+    "audit"
+   ],
+   "actions": [],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": 115,
+   "dependencies": [],
+   "permissions": [
+    "fs-read"
+   ],
+   "invoke": "python scripts/review.py"
+  },
+  {
+   "name": "/predict",
+   "kind": "skill",
+   "path": ".claude/commands/predict.md",
+   "capabilities": [
+    "persistence",
+    "prediction"
+   ],
+   "actions": [
+    "predict"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/predict"
+  },
+  {
+   "name": "/recall",
+   "kind": "skill",
+   "path": ".claude/commands/recall.md",
+   "capabilities": [
+    "retrieval",
+    "similarity"
+   ],
+   "actions": [
+    "recall"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/recall"
+  },
+  {
+   "name": "/research",
+   "kind": "skill",
+   "path": ".claude/commands/research.md",
+   "capabilities": [
+    "context",
+    "indexing",
+    "research",
+    "retrieval",
+    "summarization",
+    "web"
+   ],
+   "actions": [
+    "research"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/research"
+  },
+  {
+   "name": "/review",
+   "kind": "skill",
+   "path": ".claude/commands/review.md",
+   "capabilities": [
+    "audit",
+    "retrieval"
+   ],
+   "actions": [
+    "review"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/review"
+  },
+  {
+   "name": "/sleep",
+   "kind": "skill",
+   "path": ".claude/commands/sleep.md",
+   "capabilities": [
+    "indexing",
+    "persistence"
+   ],
+   "actions": [
+    "sleep"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/sleep"
+  },
+  {
+   "name": "/task",
+   "kind": "skill",
+   "path": ".claude/commands/task.md",
+   "capabilities": [
+    "orchestration",
+    "persistence",
+    "retrieval",
+    "similarity",
+    "summarization",
+    "tooling"
+   ],
+   "actions": [
+    "task"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/task"
+  },
+  {
+   "name": "/wake",
+   "kind": "skill",
+   "path": ".claude/commands/wake.md",
+   "capabilities": [
+    "context",
+    "indexing",
+    "persistence"
+   ],
+   "actions": [
+    "wake"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/wake"
+  },
+  {
+   "name": "caveman",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\caveman\\caveman",
+   "capabilities": [
+    "audit",
+    "codegen",
+    "context",
+    "persistence",
+    "prediction",
+    "web"
+   ],
+   "actions": [
+    "cavecrew",
+    "caveman",
+    "caveman-commit",
+    "caveman-compress",
+    "caveman-help",
+    "caveman-review",
+    "caveman-stats"
+   ],
+   "deterministic": false,
+   "local": false,
+   "token_cost": 2,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm",
+    "network"
+   ],
+   "invoke": "plugin:caveman"
+  },
+  {
+   "name": "clangd-lsp",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\clangd-lsp",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:clangd-lsp"
+  },
+  {
+   "name": "claude-md-management",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\claude-md-management",
+   "capabilities": [
+    "audit"
+   ],
+   "actions": [
+    "claude-md-improver"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:claude-md-management"
+  },
+  {
+   "name": "code-review",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\code-review",
+   "capabilities": [
+    "audit",
+    "codegen"
+   ],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:code-review"
+  },
+  {
+   "name": "code-simplifier",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\code-simplifier",
+   "capabilities": [
+    "codegen"
+   ],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:code-simplifier"
+  },
+  {
+   "name": "coderabbit",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\coderabbit",
+   "capabilities": [
+    "audit",
+    "codegen",
+    "persistence"
+   ],
+   "actions": [
+    "autofix",
+    "code-review"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:coderabbit"
+  },
+  {
+   "name": "context7",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\context7",
+   "capabilities": [
+    "context"
+   ],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:context7"
+  },
+  {
+   "name": "feature-dev",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\feature-dev",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:feature-dev"
+  },
+  {
+   "name": "firecrawl",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\firecrawl",
+   "capabilities": [
+    "codegen",
+    "parsing",
+    "persistence",
+    "research",
+    "retrieval",
+    "tooling",
+    "web"
+   ],
+   "actions": [
+    "firecrawl-agent",
+    "firecrawl-cli",
+    "firecrawl-crawl",
+    "firecrawl-download",
+    "firecrawl-interact",
+    "firecrawl-map",
+    "firecrawl-monitor",
+    "firecrawl-parse",
+    "firecrawl-scrape",
+    "firecrawl-search"
+   ],
+   "deterministic": false,
+   "local": false,
+   "token_cost": 2,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm",
+    "network"
+   ],
+   "invoke": "plugin:firecrawl"
+  },
+  {
+   "name": "frontend-design",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\frontend-design",
+   "capabilities": [],
+   "actions": [
+    "frontend-design"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:frontend-design"
+  },
+  {
+   "name": "github",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\github",
+   "capabilities": [
+    "persistence"
+   ],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:github"
+  },
+  {
+   "name": "jdtls-lsp",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\jdtls-lsp",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:jdtls-lsp"
+  },
+  {
+   "name": "playwright",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\playwright",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:playwright"
+  },
+  {
+   "name": "pyright-lsp",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\pyright-lsp",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:pyright-lsp"
+  },
+  {
+   "name": "security-guidance",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\security-guidance",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:security-guidance"
+  },
+  {
+   "name": "skill-creator",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\skill-creator",
+   "capabilities": [],
+   "actions": [
+    "skill-creator"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:skill-creator"
+  },
+  {
+   "name": "typescript-lsp",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\claude-plugins-official\\typescript-lsp",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:typescript-lsp"
+  },
+  {
+   "name": "andrej-karpathy-skills",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\karpathy-skills\\andrej-karpathy-skills",
+   "capabilities": [
+    "audit",
+    "codegen"
+   ],
+   "actions": [
+    "karpathy-guidelines"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:andrej-karpathy-skills"
+  },
+  {
+   "name": "codex",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\openai-codex\\codex",
+   "capabilities": [
+    "audit",
+    "codegen",
+    "research",
+    "retrieval",
+    "tooling"
+   ],
+   "actions": [
+    "codex-cli-runtime",
+    "codex-result-handling",
+    "gpt-5-4-prompting"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "plugin:codex"
+  },
+  {
+   "name": "ponytail",
+   "kind": "external",
+   "path": "C:\\Users\\vishn\\.claude\\plugins\\cache\\ponytail\\ponytail",
+   "capabilities": [
+    "audit",
+    "codegen",
+    "persistence",
+    "retrieval",
+    "web"
+   ],
+   "actions": [
+    "ponytail",
+    "ponytail-audit",
+    "ponytail-debt",
+    "ponytail-gain",
+    "ponytail-help",
+    "ponytail-review"
+   ],
+   "deterministic": false,
+   "local": false,
+   "token_cost": 2,
+   "latency_ms": null,
+   "dependencies": [
+    "claude-code"
+   ],
+   "permissions": [
+    "llm",
+    "network"
+   ],
+   "invoke": "plugin:ponytail"
+  }
+ ]
+}

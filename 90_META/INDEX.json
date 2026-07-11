@@ -88,6 +88,23 @@
       "links": []
     },
     {
+      "path": "PLUGINS.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "plugins",
+        "tooling",
+        "runtime"
+      ],
+      "title": "ABSOLUTE ZERO — Plugin Intelligence Engine",
+      "summary": "Plugin Intelligence Engine spec — discovers tools, builds a capability database, routes requests to optimal plugin chains.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-11",
+      "links": []
+    },
+    {
       "path": "00_CORE/ACTIVE_GOALS.md",
       "type": "core",
       "project": "ABSOLUTE_ZERO",

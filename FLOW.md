@@ -24,9 +24,12 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
    Illegal jumps are rejected loudly — that is the point.
 3. RECALL = python scripts/context.py pack "<request>" (budget-aware
    package, contract in CONTEXT.md). Trivial tasks: ledger scan only.
-4. VERIFY checks the trace's checklist. Fail -> retry EXECUTE (max 2) or
+4. EXECUTE starts with python scripts/plugins.py route "<request>" — follow
+   the chain (deterministic local tools before model calls, PLUGINS.md);
+   report non-script outcomes via plugins.py report.
+5. VERIFY checks the trace's checklist. Fail -> retry EXECUTE (max 2) or
    close --result fail and escalate.
-5. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.
+6. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.
 
 ## Work phase (main session body)
 1. Before technical work on any tagged topic: scan FAULT_LEDGER.md for matches.
