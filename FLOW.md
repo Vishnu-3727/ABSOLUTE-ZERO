@@ -13,6 +13,20 @@
 3. Shortlist max 3 relevant hits. Read only matching sections via grep/sed.
 4. Report findings with file-path citations. If zero hits: say "not in vault."
 
+## /task <request>  (workflow orchestrator — the default work entry)
+Every user request that produces a work product routes through this; bare
+questions/greetings are exempt. Contract: ORCHESTRATOR.md.
+1. Run: python scripts/orchestrator.py plan "<request>" — creates a trace
+   in 90_META/traces/ with intent, complexity, strategy, engines, pipeline,
+   verify checklist. AMBIGUOUS output -> ask the user first.
+2. Execute the pipeline in order, logging each state:
+   python scripts/orchestrator.py log --trace <file> --state <STATE>
+   Illegal jumps are rejected loudly — that is the point.
+3. RECALL obeys the work-phase rules below (ledger scan, query, max 3 notes).
+4. VERIFY checks the trace's checklist. Fail -> retry EXECUTE (max 2) or
+   close --result fail and escalate.
+5. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.
+
 ## Work phase (main session body)
 1. Before technical work on any tagged topic: scan FAULT_LEDGER.md for matches.
 2. If a past fault matches current work, state it explicitly before proceeding.
@@ -22,6 +36,7 @@
    lessons learned. This list feeds /sleep.
 
 ## /sleep  (session end, mandatory)
+0. Close any open orchestrator trace (an open trace at sleep = failed verify).
 1. Write dated log to 10_PROJECTS/<proj>/SESSIONS/YYYY-MM-DD.md.
 2. Overwrite 10_PROJECTS/<proj>/RECENT.md (max 10 lines: status, next steps).
 3. Append new faults to FAULTS.md (with root cause, fix, topic wikilinks).

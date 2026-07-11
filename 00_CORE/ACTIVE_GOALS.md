@@ -15,6 +15,7 @@ summary: Build-phase checklist for the vault itself; the live to-do the /wake co
 - [x] **Phase 3 — Lesson transfer** — 6 lessons + 3 topic notes + ASUNAMA migrated; go/no-go gate PASSED
 - [x] **Phase 4 — /research, /review, /predict** — review.py (orphan/stale); P1 promoted; sourced research note
 - [x] **Phase 5A — Dashboard** — DASHBOARD.md (Dataview); render-verify in Obsidian (needs Dataview plugin)
+- [x] **Workflow Orchestrator** — /task runtime: orchestrator.py + traces + ORCHESTRATOR.md (2026-07-11)
 - [ ] **Phase 5B — Web dashboard** — deferred: only after 2 weeks of real vault use (per GUIDE)
 - [ ] **Phase 6 — Automation (systemd timers, Ubuntu)**
 

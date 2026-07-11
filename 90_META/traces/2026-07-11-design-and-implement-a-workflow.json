@@ -1,0 +1,78 @@
+{
+ "id": "2026-07-11-design-and-implement-a-workflow",
+ "request": "design and implement a workflow orchestrator as the central runtime of the OS",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "architecture",
+ "complexity": "complex",
+ "strategy": "deep",
+ "engines": [
+  "knowledge",
+  "experience",
+  "similarity"
+ ],
+ "pipeline": [
+  "RECALL",
+  "SIMILARITY",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "REVIEW",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "written plan agreed before edits",
+  "boundaries documented",
+  "review.py clean (no new orphans)"
+ ],
+ "recall_tags": [],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T14:44:48",
+   "state": "CLASSIFY",
+   "note": "architecture/complex"
+  },
+  {
+   "t": "2026-07-11T14:45:05",
+   "state": "RECALL",
+   "note": "read CLAUDE/FLOW/ACTIVE_GOALS/INDEX_SUMMARY; scripts idioms from indexer/query/review"
+  },
+  {
+   "t": "2026-07-11T14:45:06",
+   "state": "SIMILARITY",
+   "note": "no prior orchestrator notes in vault"
+  },
+  {
+   "t": "2026-07-11T14:45:07",
+   "state": "PLAN",
+   "note": "hybrid design: orchestrator.py plumbing + /task flow; plan approved by user"
+  },
+  {
+   "t": "2026-07-11T14:45:08",
+   "state": "EXECUTE",
+   "note": "wrote orchestrator.py, ORCHESTRATOR.md, task.md; wired FLOW/CLAUDE/indexer"
+  },
+  {
+   "t": "2026-07-11T14:45:10",
+   "state": "VERIFY",
+   "note": "selftest OK: 9 intents, illegal transitions rejected, retry loop, close gating"
+  },
+  {
+   "t": "2026-07-11T14:45:11",
+   "state": "REVIEW",
+   "note": "review.py clean, reindex picked up ORCHESTRATOR.md as doc"
+  },
+  {
+   "t": "2026-07-11T14:45:12",
+   "state": "SUMMARIZE",
+   "note": "orchestrator live; /task is the front door"
+  },
+  {
+   "t": "2026-07-11T14:45:13",
+   "state": "DONE",
+   "note": "workflow orchestrator built and verified"
+  }
+ ],
+ "retries": 0,
+ "result": "pass"
+}

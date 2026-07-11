@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-09",
+  "generated": "2026-07-11",
   "notes": [
     {
       "path": "CLAUDE.md",
@@ -52,6 +52,22 @@
       "status": "",
       "confidence": "",
       "date": "",
+      "links": []
+    },
+    {
+      "path": "ORCHESTRATOR.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "orchestrator",
+        "runtime"
+      ],
+      "title": "ABSOLUTE ZERO — Workflow Orchestrator",
+      "summary": "Workflow Orchestrator spec — central runtime routing every request through classify, recall, execute, verify, summarize.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-11",
       "links": []
     },
     {

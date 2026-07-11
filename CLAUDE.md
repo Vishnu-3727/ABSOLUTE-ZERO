@@ -35,7 +35,9 @@ This vault IS your memory. You have no memory outside it.
 - RECENT.md per project: max 10 lines, overwrite not append.
 
 ## Commands
-/wake /sleep /recall /research /review /predict — behavior defined in FLOW.md.
+/wake /sleep /recall /research /review /predict /task — behavior defined in
+FLOW.md. /task is the workflow orchestrator (ORCHESTRATOR.md): every request
+that produces a work product routes through it.
 
 ## Prediction honesty
 /predict outputs are estimates from vault data only. Label them as estimates.
