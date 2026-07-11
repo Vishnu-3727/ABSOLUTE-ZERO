@@ -1,0 +1,56 @@
+{
+ "t": "2026-07-11T15:32:42",
+ "files": [
+  "10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md",
+  "90_META/traces/2026-07-11-fix-verifier-treating-generated-artifact.json",
+  "scripts/verifier.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 85,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "report(): nesting depth 5 (> 4)"
+   }
+  ],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L256: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L258: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L287: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L285: read_text() inside a loop"
+   }
+  ],
+  "formatting": [],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/verifier.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

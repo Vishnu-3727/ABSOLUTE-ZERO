@@ -406,6 +406,24 @@
       ]
     },
     {
+      "path": "10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md",
+      "type": "fault",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "project",
+        "faults",
+        "absolute-zero"
+      ],
+      "title": "ABSOLUTE ZERO — Faults",
+      "summary": "Fault log for the vault/OS itself.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-11",
+      "links": [
+        "debugging-silent-failures"
+      ]
+    },
+    {
       "path": "10_PROJECTS/ASUNAMA/DECISIONS.md",
       "type": "decision",
       "project": "ASUNAMA",

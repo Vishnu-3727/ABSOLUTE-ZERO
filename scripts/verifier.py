@@ -37,6 +37,10 @@ MAX_STMTS, MAX_DEPTH, MAX_LINE, MAX_FILE_LINES = 60, 4, 100, 500
 TOP_DIRS = {"00_CORE", "10_PROJECTS", "20_KNOWLEDGE", "30_LESSONS",
             "40_RESEARCH", "90_META", "scripts", ".claude", ".obsidian",
             ".git"}
+# Generated runtime artifacts, not authored notes - vault-note law
+# (frontmatter, live wikilinks) does not apply. Mirrors indexer SKIP_DIRS.
+ARTIFACT_DIRS = {"90_META/traces", "90_META/plans", "90_META/verify",
+                 "90_META/prompts"}
 SEC_PATTERNS = [
     (r"(?i)(password|passwd|secret|token|api_key)\s*=\s*[\"'][^\"']{4,}",
      "hardcoded credential"),  # verifier:ignore
@@ -295,6 +299,8 @@ class Verifier:
         self.check_architecture(files)
         graph = self.check_dependency_graph()
         for rel in files:
+            if any(rel.startswith(d + "/") for d in ARTIFACT_DIRS):
+                continue  # generated artifacts, not authored files
             if rel.endswith(".py"):
                 self.check_py(rel)
             elif rel.endswith(".md"):

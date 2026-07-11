@@ -1,0 +1,66 @@
+{
+ "id": "2026-07-11-fix-verifier-treating-generated-artifact",
+ "request": "fix verifier treating generated artifact files as authored vault notes",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "security",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "experience",
+  "knowledge",
+  "audit"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "threat named",
+  "fix verified",
+  "no secrets committed"
+ ],
+ "recall_tags": [],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T15:32:20",
+   "state": "CLASSIFY",
+   "note": "security/standard"
+  },
+  {
+   "t": "2026-07-11T15:32:37",
+   "state": "RECALL",
+   "note": "fault recorded in 10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md; root cause = artifact dirs + unchecked gate exit"
+  },
+  {
+   "t": "2026-07-11T15:32:38",
+   "state": "PLAN",
+   "note": "ARTIFACT_DIRS exemption in verifier.run, mirrors indexer SKIP_DIRS"
+  },
+  {
+   "t": "2026-07-11T15:32:39",
+   "state": "EXECUTE",
+   "note": "verifier.py ARTIFACT_DIRS added; FAULTS.md entry for ABSOLUTE_ZERO created"
+  },
+  {
+   "t": "2026-07-11T15:32:56",
+   "state": "VERIFY",
+   "note": "gate read: PASS-WITH-WARNINGS 85/100, exit 0, zero gate failures; selftest OK"
+  },
+  {
+   "t": "2026-07-11T15:32:57",
+   "state": "SUMMARIZE",
+   "note": "artifact exemption in; fault ledgered; process rule: read the gate before logging VERIFY"
+  },
+  {
+   "t": "2026-07-11T15:32:58",
+   "state": "DONE",
+   "note": "verifier artifact-dir fix, fault recorded"
+  }
+ ],
+ "retries": 0,
+ "result": "pass"
+}
