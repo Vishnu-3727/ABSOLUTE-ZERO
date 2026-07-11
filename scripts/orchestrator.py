@@ -174,6 +174,8 @@ def plan(request, project="", traces_dir=TRACES):
     print(f'skills      python scripts/skills.py discover "{request}"')
     if c["complexity"] != "trivial":
         print(f'plan        python scripts/planner.py plan "{request}"')
+    if c["complexity"] == "complex":
+        print(f'agents      python scripts/agents.py run "{request}"')
     print(f"trace       {path.relative_to(VAULT) if path.is_relative_to(VAULT) else path}")
     return path
 

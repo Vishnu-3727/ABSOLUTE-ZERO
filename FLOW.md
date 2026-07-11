@@ -33,6 +33,11 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
 4. EXECUTE starts with python scripts/plugins.py route "<request>" — follow
    the chain (deterministic local tools before model calls, PLUGINS.md);
    report non-script outcomes via plugins.py report.
+4b. Complex or multi-subtask: python scripts/agents.py run "<request>" —
+   multi-agent runtime (AGENTS.md): coordinator composes an agent DAG,
+   parallel dependency-scheduled execution over a shared blackboard,
+   record in 90_META/runs/. Its WORK ORDER lines are the EXECUTE
+   checklist; verifier stays the gate.
 5. VERIFY = python scripts/verifier.py check (11 gated checks, VERIFIER.md)
    first, then the trace's checklist. Verifier FAIL or checklist fail ->
    retry EXECUTE (max 2) or close --result fail and escalate. Never

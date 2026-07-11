@@ -1,0 +1,169 @@
+{
+ "t": "2026-07-11T19:30:41",
+ "files": [
+  "90_META/INDEX.json",
+  "90_META/INDEX_SUMMARY.md",
+  "90_META/plans/2026-07-11-add-a-summary-flag-to.json",
+  "90_META/runs/2026-07-11-add-a-summary-flag-to.json",
+  "90_META/verify/2026-07-11T193010.json",
+  "AGENTS.md",
+  "FLOW.md",
+  "scripts/__pycache__/agents.cpython-312.pyc",
+  "scripts/__pycache__/orchestrator.cpython-312.pyc",
+  "scripts/__pycache__/planner.cpython-312.pyc",
+  "scripts/agents.py",
+  "scripts/indexer.py",
+  "scripts/orchestrator.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 55,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "620 lines (> 500)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "compose(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "execute(): nesting depth 6 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "selftest(): 77 statements (> 60)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/orchestrator.py",
+    "msg": "main(): nesting depth 5 (> 4)"
+   }
+  ],
+  "regression": [
+   {
+    "level": "warn",
+    "file": "scripts/context.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/planner.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/promptc.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   }
+  ],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "L278: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L92: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L126: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "AGENTS.md",
+    "msg": "10 line(s) > 100 chars (first: L20)"
+   },
+   {
+    "level": "warn",
+    "file": "FLOW.md",
+    "msg": "no final newline"
+   }
+  ],
+  "documentation": [
+   {
+    "level": "fail",
+    "file": "90_META/INDEX_SUMMARY.md",
+    "msg": "no frontmatter (vault law: every note has it)"
+   }
+  ],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/agents.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/context.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/experience.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/orchestrator.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/planner.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/plugins.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/promptc.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/skills.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

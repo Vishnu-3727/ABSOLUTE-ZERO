@@ -2,6 +2,18 @@
   "generated": "2026-07-11",
   "notes": [
     {
+      "path": "AGENTS.md",
+      "type": "doc",
+      "project": "-",
+      "tags": [],
+      "title": "AGENTS — Multi-Agent Runtime",
+      "summary": "",
+      "status": "",
+      "confidence": "",
+      "date": "",
+      "links": []
+    },
+    {
       "path": "CLAUDE.md",
       "type": "doc",
       "project": "-",

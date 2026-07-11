@@ -20,10 +20,10 @@
   ]
  },
  "performance": {
-  "runs": 1,
-  "pass": 1,
+  "runs": 2,
+  "pass": 2,
   "retries": 0,
-  "seconds": 217,
+  "seconds": 240,
   "pipeline": [
    "RECALL",
    "PLAN",
@@ -32,7 +32,8 @@
    "SUMMARIZE"
   ],
   "examples": [
-   "2026-07-11-design-and-implement-a-prompt"
+   "2026-07-11-design-and-implement-a-prompt",
+   "2026-07-11-implement-a-multi-agent-runtime-with"
   ]
  },
  "architecture": {
