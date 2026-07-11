@@ -22,7 +22,8 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
 2. Execute the pipeline in order, logging each state:
    python scripts/orchestrator.py log --trace <file> --state <STATE>
    Illegal jumps are rejected loudly — that is the point.
-3. RECALL obeys the work-phase rules below (ledger scan, query, max 3 notes).
+3. RECALL = python scripts/context.py pack "<request>" (budget-aware
+   package, contract in CONTEXT.md). Trivial tasks: ledger scan only.
 4. VERIFY checks the trace's checklist. Fail -> retry EXECUTE (max 2) or
    close --result fail and escalate.
 5. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.

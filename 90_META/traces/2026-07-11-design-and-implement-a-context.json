@@ -1,0 +1,66 @@
+{
+ "id": "2026-07-11-design-and-implement-a-context",
+ "request": "design and implement a context budget manager that packs optimal context per request",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "feature",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "knowledge",
+  "experience",
+  "skills"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "works end to end",
+  "one runnable check left behind",
+  "docs/notes updated if behavior changed"
+ ],
+ "recall_tags": [],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T14:51:59",
+   "state": "CLASSIFY",
+   "note": "feature/standard"
+  },
+  {
+   "t": "2026-07-11T14:52:11",
+   "state": "RECALL",
+   "note": "ledger scan: no context/budget faults; wake-set + pull-not-push rules from CLAUDE.md govern design"
+  },
+  {
+   "t": "2026-07-11T14:52:13",
+   "state": "PLAN",
+   "note": "scripts/context.py (stdlib, reuses orchestrator.classify) + CONTEXT.md spec; tiers full/section/summary/title; pinned spine; one-hop deps; budget=ceiling not quota"
+  },
+  {
+   "t": "2026-07-11T14:55:45",
+   "state": "EXECUTE",
+   "note": "context.py + CONTEXT.md; wired into /task RECALL, indexer ROOT_DOCS, ORCHESTRATOR.md; stopword fix after e2e showed 'the' pinning fault lines"
+  },
+  {
+   "t": "2026-07-11T14:55:46",
+   "state": "VERIFY",
+   "note": "both selftests OK; e2e packs sane on real vault; reindex clean"
+  },
+  {
+   "t": "2026-07-11T14:55:47",
+   "state": "SUMMARIZE",
+   "note": "context budget manager live; budget=ceiling not quota"
+  },
+  {
+   "t": "2026-07-11T14:55:48",
+   "state": "DONE",
+   "note": "context budget manager built and verified"
+  }
+ ],
+ "retries": 0,
+ "result": "pass"
+}

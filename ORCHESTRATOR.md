@@ -38,7 +38,7 @@ user request
      skills      = .claude/commands/*.md
      audit       = scripts/review.py
      dashboard   = DASHBOARD.md
-     context     = CLAUDE.md token budgets (always on)
+     context     = scripts/context.py pack (CONTEXT.md; always on)
      |
      v
  orchestrator.py close ──► trace final state DONE / ESCALATED ──► /sleep

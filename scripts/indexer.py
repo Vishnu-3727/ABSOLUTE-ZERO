@@ -21,7 +21,7 @@ META = VAULT / "90_META"
 SKIP_DIRS = {".git", ".obsidian", ".claude", "templates", "traces"}
 SKIP_NAMES = {"INDEX_SUMMARY.md", "FAULT_LEDGER.md", "INDEX.json"}
 ROOT_DOCS = {"CLAUDE.md", "FLOW.md", "GUIDE.md", "DASHBOARD.md",
-             "ORCHESTRATOR.md"}
+             "ORCHESTRATOR.md", "CONTEXT.md"}
 
 FM_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 LINK_RE = re.compile(r"\[\[([^\]]+)\]\]")

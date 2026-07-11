@@ -14,6 +14,23 @@
       "links": []
     },
     {
+      "path": "CONTEXT.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "context",
+        "budget",
+        "runtime"
+      ],
+      "title": "ABSOLUTE ZERO — Context Budget Manager",
+      "summary": "Context Budget Manager spec — builds the optimal context package per request within a token ceiling.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-11",
+      "links": []
+    },
+    {
       "path": "DASHBOARD.md",
       "type": "doc",
       "project": "ABSOLUTE_ZERO",

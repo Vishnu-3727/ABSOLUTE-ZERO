@@ -167,8 +167,9 @@ def plan(request, project="", traces_dir=TRACES):
     print(f"pipeline    {' -> '.join(trace['pipeline'])}")
     for v in trace["verify"]:
         print(f"verify      - {v}")
-    q = f"python scripts/query.py --tags {','.join(tags)}" if tags \
-        else "no vault tags matched - scan FAULT_LEDGER.md manually"
+    q = f'python scripts/context.py pack "{request}"'
+    if project:
+        q += f" --project {project}"
     print(f"recall      {q}")
     print(f"trace       {path.relative_to(VAULT) if path.is_relative_to(VAULT) else path}")
     return path
