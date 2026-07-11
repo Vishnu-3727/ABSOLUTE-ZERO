@@ -138,6 +138,23 @@
       "links": []
     },
     {
+      "path": "SKILLS.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "skills",
+        "discovery",
+        "runtime"
+      ],
+      "title": "ABSOLUTE ZERO — Skill Discovery Engine",
+      "summary": "Skill Discovery Engine spec — determines which skills load for a request, ordered, deduplicated, conflict-resolved.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-11",
+      "links": []
+    },
+    {
       "path": "VERIFIER.md",
       "type": "doc",
       "project": "ABSOLUTE_ZERO",

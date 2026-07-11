@@ -19,6 +19,8 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
 1. Run: python scripts/orchestrator.py plan "<request>" — creates a trace
    in 90_META/traces/ with intent, complexity, strategy, engines, pipeline,
    verify checklist. AMBIGUOUS output -> ask the user first.
+1b. Load skills: python scripts/skills.py discover "<request>" — invoke
+   the manifest list in order (SKILLS.md). Below threshold: proceed bare.
 2. Execute the pipeline in order, logging each state:
    python scripts/orchestrator.py log --trace <file> --state <STATE>
    Illegal jumps are rejected loudly — that is the point.

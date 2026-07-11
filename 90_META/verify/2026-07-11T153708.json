@@ -1,0 +1,176 @@
+{
+ "t": "2026-07-11T15:37:08",
+ "files": [
+  "90_META/skills/last_discovery.json",
+  "90_META/traces/2026-07-11-implement-a-skill-discovery-engine.json",
+  "FLOW.md",
+  "ORCHESTRATOR.md",
+  "SKILLS.md",
+  "scripts/__pycache__/promptc.cpython-312.pyc",
+  "scripts/indexer.py",
+  "scripts/orchestrator.py",
+  "scripts/skills.py",
+  "scripts/verifier.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 70,
+ "findings": {
+  "architecture": [],
+  "imports": [
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "unused import 'jaccard'"
+   }
+  ],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/orchestrator.py",
+    "msg": "main(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "report(): nesting depth 5 (> 4)"
+   }
+  ],
+  "regression": [
+   {
+    "level": "warn",
+    "file": "scripts/context.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/planner.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/promptc.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   }
+  ],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L91: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L125: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L52: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L53: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L64: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L69: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L256: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L258: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L287: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L285: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "FLOW.md",
+    "msg": "no final newline"
+   },
+   {
+    "level": "warn",
+    "file": "ORCHESTRATOR.md",
+    "msg": "4 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "SKILLS.md",
+    "msg": "8 line(s) > 100 chars (first: L7)"
+   }
+  ],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/context.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/orchestrator.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/planner.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/plugins.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/promptc.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/skills.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/verifier.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

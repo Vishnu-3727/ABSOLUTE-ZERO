@@ -1,0 +1,48 @@
+{
+ "t": "2026-07-11T15:37:33",
+ "files": [
+  "scripts/skills.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 88,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L52: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L53: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L64: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L69: read_text() inside a loop"
+   }
+  ],
+  "formatting": [],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/skills.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

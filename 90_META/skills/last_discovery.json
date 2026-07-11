@@ -1,0 +1,49 @@
+{
+ "request": "fix the odometry drift bug in the asunama sim",
+ "intent": "bug_fix",
+ "skills": [
+  {
+   "invoke": "skill:code-review",
+   "name": "code-review",
+   "confidence": 0.57,
+   "reason": "matched",
+   "origin": "external"
+  },
+  {
+   "invoke": "skill:caveman-review",
+   "name": "caveman-review",
+   "confidence": 0.51,
+   "reason": "matched",
+   "origin": "external"
+  },
+  {
+   "invoke": "/review",
+   "name": "review",
+   "confidence": 0.5,
+   "reason": "matched",
+   "origin": "vault"
+  },
+  {
+   "invoke": "skill:codex-result-handling",
+   "name": "codex-result-handling",
+   "confidence": 0.45,
+   "reason": "matched",
+   "origin": "external"
+  },
+  {
+   "invoke": "skill:gpt-5-4-prompting",
+   "name": "gpt-5-4-prompting",
+   "confidence": 0.45,
+   "reason": "matched",
+   "origin": "external"
+  },
+  {
+   "invoke": "skill:ponytail-audit",
+   "name": "ponytail-audit",
+   "confidence": 0.45,
+   "reason": "matched",
+   "origin": "external"
+  }
+ ],
+ "conflicts": []
+}

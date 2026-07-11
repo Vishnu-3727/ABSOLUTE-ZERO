@@ -1,0 +1,65 @@
+{
+ "id": "2026-07-11-implement-a-skill-discovery-engine",
+ "request": "implement a skill discovery engine that determines which skills to load in order",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "research",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "knowledge",
+  "similarity"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "sources cited with URLs",
+  "note in 40_RESEARCH with frontmatter",
+  "5-line digest reported"
+ ],
+ "recall_tags": [],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T15:34:43",
+   "state": "CLASSIFY",
+   "note": "research/standard"
+  },
+  {
+   "t": "2026-07-11T15:34:44",
+   "state": "RECALL",
+   "note": "ledger fault #6 applies: read gates before VERIFY. plugins.py already discovers skills as plugins; this engine goes deeper on skill text, deps, conflicts, chaining - reuse caps_from_text/INTENT_CAPS, do not duplicate"
+  },
+  {
+   "t": "2026-07-11T15:34:45",
+   "state": "PLAN",
+   "note": "scripts/skills.py discover: keyword jaccard + capability-space semantic match + difflib, history boost, dependency pull from /mentions, conflict pairs + subsumption (task>recall), phase-ordered chain (wake->work->sleep), confidence 0..1, manifest to 90_META/skills/last_discovery.json. SKILLS.md spec."
+  },
+  {
+   "t": "2026-07-11T15:37:50",
+   "state": "EXECUTE",
+   "note": "skills.py + SKILLS.md; wired /task INTAKE (FLOW 1b), orchestrator plan prints skills line; manifest to 90_META/skills/"
+  },
+  {
+   "t": "2026-07-11T15:37:51",
+   "state": "VERIFY",
+   "note": "gate READ: PASS-WITH-WARNINGS exit 0, zero gate fails; regression check auto-ran 4 dependents green; unused import it found removed; e2e: research->/research+firecrawl, bug_fix->review skills"
+  },
+  {
+   "t": "2026-07-11T15:37:52",
+   "state": "SUMMARIZE",
+   "note": "skill discovery live at INTAKE"
+  },
+  {
+   "t": "2026-07-11T15:37:53",
+   "state": "DONE",
+   "note": "skill discovery engine built and verified"
+  }
+ ],
+ "retries": 0,
+ "result": "pass"
+}

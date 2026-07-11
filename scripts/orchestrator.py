@@ -171,6 +171,7 @@ def plan(request, project="", traces_dir=TRACES):
     if project:
         q += f" --project {project}"
     print(f"recall      {q}")
+    print(f'skills      python scripts/skills.py discover "{request}"')
     if c["complexity"] != "trivial":
         print(f'plan        python scripts/planner.py plan "{request}"')
     print(f"trace       {path.relative_to(VAULT) if path.is_relative_to(VAULT) else path}")
