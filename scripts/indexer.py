@@ -25,7 +25,7 @@ SKIP_NAMES = {"INDEX_SUMMARY.md", "FAULT_LEDGER.md", "INDEX.json",
 ROOT_DOCS = {"CLAUDE.md", "FLOW.md", "GUIDE.md", "DASHBOARD.md",
              "ORCHESTRATOR.md", "CONTEXT.md", "PLUGINS.md", "PLANNER.md",
              "VERIFIER.md", "PROMPTC.md", "SKILLS.md", "EXPERIENCE.md",
-             "AGENTS.md", "GRAPH.md"}
+             "AGENTS.md", "GRAPH.md", "BOOTSTRAP.md"}
 
 FM_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 LINK_RE = re.compile(r"\[\[([^\]]+)\]\]")
@@ -54,8 +54,8 @@ def note_type(path, tags):
     """Type used by query.py --type. Folder first, project filename refines."""
     rel = path.relative_to(VAULT)
     top = rel.parts[0]
-    if path.name in ROOT_DOCS:
-        return "doc"
+    if path.name in ROOT_DOCS and len(rel.parts) == 1:
+        return "doc"  # root-only: 10_PROJECTS/X/BOOTSTRAP.md is not a doc
     if top == "20_KNOWLEDGE":
         return "knowledge"
     if top == "30_LESSONS":

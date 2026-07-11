@@ -1,0 +1,434 @@
+{
+ "name": "ASUNAMA",
+ "repo": "C:\\asunama",
+ "date": "2026-07-11",
+ "file_count": 277,
+ "language": {
+  "primary": "python",
+  "counts": {
+   "python": 53
+  },
+  "markers": []
+ },
+ "frameworks": [
+  "MAVLink",
+  "NumPy stack",
+  "OpenCV",
+  "PyTorch",
+  "pytest"
+ ],
+ "deps": {
+  "external": [
+   "PIL",
+   "carb",
+   "cv2",
+   "isaaclab",
+   "numpy",
+   "omni",
+   "pxr",
+   "pymavlink",
+   "pytest",
+   "serial",
+   "torch",
+   "yaml"
+  ],
+  "internal": [
+   [
+    "arena_builder",
+    "simulation"
+   ],
+   [
+    "arena_env",
+    "simulation"
+   ],
+   [
+    "arena_map_generator",
+    "simulation"
+   ],
+   [
+    "base_station_main",
+    "localization"
+   ],
+   [
+    "base_station_main",
+    "mavlink_layer"
+   ],
+   [
+    "base_station_main",
+    "navigation"
+   ],
+   [
+    "base_station_main",
+    "perception"
+   ],
+   [
+    "calibrate_camera",
+    "perception"
+   ],
+   [
+    "data_generator",
+    "simulation"
+   ],
+   [
+    "domain_randomizer",
+    "simulation"
+   ],
+   [
+    "drone_model",
+    "simulation"
+   ],
+   [
+    "eval_coverage",
+    "navigation"
+   ],
+   [
+    "eval_coverage",
+    "simulation"
+   ],
+   [
+    "eval_mission",
+    "localization"
+   ],
+   [
+    "eval_mission",
+    "navigation"
+   ],
+   [
+    "eval_mission",
+    "simulation"
+   ],
+   [
+    "ground_control",
+    "localization"
+   ],
+   [
+    "ground_control",
+    "mavlink_layer"
+   ],
+   [
+    "ground_control",
+    "navigation"
+   ],
+   [
+    "ground_control",
+    "perception"
+   ],
+   [
+    "launch_arena_gui",
+    "simulation"
+   ],
+   [
+    "mission_sim",
+    "simulation"
+   ],
+   [
+    "position_estimator",
+    "localization"
+   ],
+   [
+    "rpi5_main",
+    "localization"
+   ],
+   [
+    "rpi5_main",
+    "mavlink_layer"
+   ],
+   [
+    "rpi5_main",
+    "navigation"
+   ],
+   [
+    "rpi5_main",
+    "perception"
+   ],
+   [
+    "state_machine",
+    "navigation"
+   ],
+   [
+    "telemetry_reader",
+    "mavlink_layer"
+   ],
+   [
+    "test_drift_correction",
+    "localization"
+   ],
+   [
+    "test_drift_correction",
+    "simulation"
+   ],
+   [
+    "test_mavlink_layer",
+    "mavlink_layer"
+   ],
+   [
+    "test_mission_coverage",
+    "training"
+   ],
+   [
+    "test_orb_pipeline",
+    "perception"
+   ],
+   [
+    "test_rth_gate",
+    "navigation"
+   ],
+   [
+    "test_state_machine",
+    "navigation"
+   ],
+   [
+    "train_boundary_reflex",
+    "navigation"
+   ],
+   [
+    "train_boundary_reflex",
+    "training"
+   ],
+   [
+    "train_nav_reflex",
+    "navigation"
+   ],
+   [
+    "train_nav_reflex",
+    "training"
+   ],
+   [
+    "train_rth_gate",
+    "localization"
+   ],
+   [
+    "train_rth_gate",
+    "navigation"
+   ],
+   [
+    "train_rth_gate",
+    "simulation"
+   ],
+   [
+    "train_rth_gate",
+    "training"
+   ],
+   [
+    "waypoint_planner",
+    "navigation"
+   ]
+  ]
+ },
+ "architecture": {
+  "layout": [
+   {
+    "dir": "data",
+    "files": 185,
+    "role": "-"
+   },
+   {
+    "dir": ".",
+    "files": 23,
+    "role": "-"
+   },
+   {
+    "dir": "training",
+    "files": 14,
+    "role": "-"
+   },
+   {
+    "dir": "simulation",
+    "files": 13,
+    "role": "-"
+   },
+   {
+    "dir": "deployment",
+    "files": 10,
+    "role": "-"
+   },
+   {
+    "dir": "tests",
+    "files": 8,
+    "role": "tests"
+   },
+   {
+    "dir": "perception",
+    "files": 6,
+    "role": "-"
+   },
+   {
+    "dir": "navigation",
+    "files": 6,
+    "role": "-"
+   },
+   {
+    "dir": "mavlink_layer",
+    "files": 4,
+    "role": "-"
+   },
+   {
+    "dir": "localization",
+    "files": 4,
+    "role": "-"
+   },
+   {
+    "dir": "config",
+    "files": 4,
+    "role": "config"
+   }
+  ],
+  "entrypoints": [
+   "deployment/base_station_main.py",
+   "deployment/fc_setup.py",
+   "deployment/ground_control.py",
+   "deployment/rpi5_main.py",
+   "localization/visual_localizer.py",
+   "perception/calibration/calibrate_camera.py",
+   "perception/camera_abstraction.py",
+   "perception/orb_detector.py"
+  ],
+  "largest": [
+   {
+    "file": "simulation/arena_builder.py",
+    "kb": 44
+   },
+   {
+    "file": "deployment/ground_control.py",
+    "kb": 37
+   },
+   {
+    "file": "simulation/ascend_core.py",
+    "kb": 33
+   },
+   {
+    "file": "training/train_nav_reflex.py",
+    "kb": 20
+   },
+   {
+    "file": "training/train_boundary_reflex.py",
+    "kb": 20
+   }
+  ]
+ },
+ "risks": [
+  [
+   "low",
+   "no LICENSE",
+   "reuse status undefined"
+  ],
+  [
+   "med",
+   "no CI config",
+   "nothing runs tests on push"
+  ],
+  [
+   "med",
+   "2 file(s) over 800 lines",
+   "monoliths resist review and reuse"
+  ],
+  [
+   "ledger",
+   "[ASUNAMA][project,faults,drone] empty white Kit viewport, \"not responding\", every colored spawn. -> bind materials USD-natively (`_bind_material` via `UsdShade`); drop ([[debugging-silent-failures]])",
+   "this fault class already cost a session"
+  ],
+  [
+   "ledger",
+   "[ASUNAMA][project,faults,drone] `data_generator` stuck forever; kit log stops after \"Replicator Step\". -> drop the orchestrator; tick `simulation_app.update()` a bounded ([[debugging-silent-failures]])",
+   "this fault class already cost a session"
+  ],
+  [
+   "ledger",
+   "[ASUNAMA][project,faults,drone] drone explores but Return-To-Home never registers arrival. -> measure distance to base_station in the absolute frame. ([[gps-denied-localization]])",
+   "this fault class already cost a session"
+  ],
+  [
+   "ledger",
+   "[ASUNAMA][project,faults,drone] rocks stacked on streaks/soil; markers buried in renders. -> return `None` on exhaustion; every caller skips; largest-footprint-first. ([[coverage-planning]])",
+   "this fault class already cost a session"
+  ],
+  [
+   "ledger",
+   "[ASUNAMA][project,faults,drone] exploration plateaus under acceptance threshold. -> `mark_explored_footprint(x,y,radius)` gated on pose confidence. ([[coverage-planning]])",
+   "this fault class already cost a session"
+  ]
+ ],
+ "conventions": [
+  "indent: 4 spaces",
+  "quotes: prefer \"",
+  "line length: p95 = 83",
+  "naming: snake_case",
+  "docstring coverage: 31% of 329 defs",
+  "type hints: 41% of args"
+ ],
+ "skills": [
+  {
+   "name": "task",
+   "confidence": 0.38
+  },
+  {
+   "name": "caveman-review",
+   "confidence": 0.45
+  },
+  {
+   "name": "code-review",
+   "confidence": 0.45
+  },
+  {
+   "name": "codex-result-handling",
+   "confidence": 0.45
+  },
+  {
+   "name": "gpt-5-4-prompting",
+   "confidence": 0.45
+  },
+  {
+   "name": "ponytail-audit",
+   "confidence": 0.45
+  },
+  {
+   "name": "sleep",
+   "confidence": 0.3
+  }
+ ],
+ "summary": [
+  "ASUNAMA: python / MAVLink, NumPy stack, OpenCV, PyTorch, pytest",
+  "277 files; entrypoints: deployment/base_station_main.py, deployment/fc_setup.py, deployment/ground_control.py",
+  "deps: 12 external, 45 internal edges",
+  "risks: 8 (0 high)",
+  "conventions: indent: 4 spaces",
+  "skills: /task, /caveman-review, /code-review"
+ ],
+ "context": {
+  "budget": 2500,
+  "used": 1154,
+  "sections": [
+   {
+    "section": "identity+summary",
+    "tokens": 75,
+    "priority": 1
+   },
+   {
+    "section": "risks",
+    "tokens": 262,
+    "priority": 2
+   },
+   {
+    "section": "architecture",
+    "tokens": 273,
+    "priority": 3
+   },
+   {
+    "section": "conventions",
+    "tokens": 33,
+    "priority": 4
+   },
+   {
+    "section": "dependency-graph",
+    "tokens": 431,
+    "priority": 5
+   },
+   {
+    "section": "skills",
+    "tokens": 80,
+    "priority": 6
+   }
+  ],
+  "omitted": []
+ }
+}

@@ -2,6 +2,10 @@
 
 ## /wake  (session start, budget ~800 tokens)
 1. Read CLAUDE.md, 00_CORE/ACTIVE_GOALS.md, 90_META/INDEX_SUMMARY.md. Nothing else.
+1b. Session inside a git repo that is not the vault and has no
+   10_PROJECTS/<NAME>/ yet: python scripts/bootstrap.py open <path> —
+   automatic language/framework/architecture/deps/risks/conventions/
+   docs/summary/skills/context-package onboarding (BOOTSTRAP.md).
 2. Ask: "What are we working on?" (or accept task given in same message).
 3. Output briefing: what vault knows about this task (from INDEX_SUMMARY only),
    what it does not know, 2-4 clarifying questions if goals are ambiguous.

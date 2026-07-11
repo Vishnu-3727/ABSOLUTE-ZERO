@@ -1,0 +1,69 @@
+{
+ "id": "2026-07-11-implement-autonomous-project-bootstrapping-engine",
+ "request": "implement autonomous project bootstrapping engine",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "feature",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "knowledge",
+  "experience",
+  "skills"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "works end to end",
+  "one runnable check left behind",
+  "docs/notes updated if behavior changed"
+ ],
+ "recall_tags": [
+  "project"
+ ],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T20:14:18",
+   "state": "CLASSIFY",
+   "note": "feature/standard"
+  },
+  {
+   "t": "2026-07-11T20:14:19",
+   "state": "RECALL",
+   "note": "skills.discover API read; graph/indexer wiring points known"
+  },
+  {
+   "t": "2026-07-11T20:14:20",
+   "state": "PLAN",
+   "note": "bootstrap.py: 10 automatic steps, vault-only writes, caps 400/200/40"
+  },
+  {
+   "t": "2026-07-11T20:14:21",
+   "state": "EXECUTE",
+   "note": "built bootstrap.py; fixed ledger-mining text (frameworks+deps); indexer ROOT_DOCS root-only fix; FLOW /wake 1b"
+  },
+  {
+   "t": "2026-07-11T20:14:22",
+   "state": "VERIFY",
+   "note": "selftest OK; live ASUNAMA bootstrap correct (MAVLink/OpenCV/PyTorch, 45 internal edges); verifier PASS-WITH-WARNINGS 70"
+  },
+  {
+   "t": "2026-07-11T20:14:23",
+   "state": "SUMMARIZE",
+   "note": "bootstrap engine done, auto reindex+regraph integration"
+  },
+  {
+   "t": "2026-07-11T20:14:24",
+   "state": "DONE",
+   "note": "bootstrap.py engine #14 shipped"
+  }
+ ],
+ "retries": 0,
+ "result": "pass",
+ "harvested": true
+}

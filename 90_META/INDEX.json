@@ -14,6 +14,18 @@
       "links": []
     },
     {
+      "path": "BOOTSTRAP.md",
+      "type": "doc",
+      "project": "-",
+      "tags": [],
+      "title": "BOOTSTRAP — Autonomous Project Bootstrapping",
+      "summary": "",
+      "status": "",
+      "confidence": "",
+      "date": "",
+      "links": []
+    },
+    {
       "path": "CLAUDE.md",
       "type": "doc",
       "project": "-",
@@ -493,6 +505,27 @@
       "date": "2026-07-11",
       "links": [
         "debugging-silent-failures"
+      ]
+    },
+    {
+      "path": "10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+      "type": "project",
+      "project": "ASUNAMA",
+      "tags": [
+        "bootstrap",
+        "python"
+      ],
+      "title": "ASUNAMA — Bootstrap",
+      "summary": "auto-bootstrap of ASUNAMA - python/MAVLink, NumPy stack, OpenCV, PyTorch, pytest, 277 files, 8 risks",
+      "status": "active",
+      "confidence": "estimate",
+      "date": "2026-07-11",
+      "links": [
+        "debugging-silent-failures",
+        "debugging-silent-failures",
+        "gps-denied-localization",
+        "coverage-planning",
+        "coverage-planning"
       ]
     },
     {

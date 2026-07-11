@@ -1,0 +1,114 @@
+{
+ "t": "2026-07-11T20:13:59",
+ "files": [
+  "10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+  "10_PROJECTS/ASUNAMA/bootstrap.json",
+  "90_META/GRAPH.json",
+  "90_META/INDEX.json",
+  "90_META/INDEX_SUMMARY.md",
+  "BOOTSTRAP.md",
+  "FLOW.md",
+  "scripts/bootstrap.py",
+  "scripts/indexer.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 70,
+ "findings": {
+  "architecture": [],
+  "imports": [
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "unused import 'words_of'"
+   }
+  ],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "578 lines (> 500)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "scan_files(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "conventions(): nesting depth 5 (> 4)"
+   }
+  ],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L146: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L182: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L209: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L247: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L307: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L464: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L106: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L93: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L127: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+    "msg": "8 line(s) > 100 chars (first: L7)"
+   }
+  ],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/bootstrap.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

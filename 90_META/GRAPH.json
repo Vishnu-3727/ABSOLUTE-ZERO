@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-11T20:05:36",
+ "generated": "2026-07-11T20:13:57",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -321,6 +321,150 @@
     "file": "scripts/agents.py"
    }
   },
+  "file:scripts/bootstrap.py": {
+   "type": "file",
+   "name": "scripts/bootstrap.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO project bootstrap engine. Stdlib only."
+   }
+  },
+  "file:BOOTSTRAP.md": {
+   "type": "file",
+   "name": "BOOTSTRAP.md",
+   "meta": {
+    "path": "BOOTSTRAP.md",
+    "note_type": "doc"
+   }
+  },
+  "library:ast": {
+   "type": "library",
+   "name": "ast",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "file:scripts/skills.py": {
+   "type": "file",
+   "name": "scripts/skills.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO skill discovery engine. Stdlib only."
+   }
+  },
+  "function:bootstrap.scan_files": {
+   "type": "function",
+   "name": "bootstrap.scan_files",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.detect_language": {
+   "type": "function",
+   "name": "bootstrap.detect_language",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.declared_deps": {
+   "type": "function",
+   "name": "bootstrap.declared_deps",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.python_imports": {
+   "type": "function",
+   "name": "bootstrap.python_imports",
+   "meta": {
+    "file": "scripts/bootstrap.py",
+    "doc": "rel-stem -> imported top-level names, ast-parsed, capped."
+   }
+  },
+  "function:bootstrap.detect_framework": {
+   "type": "function",
+   "name": "bootstrap.detect_framework",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.dep_graph": {
+   "type": "function",
+   "name": "bootstrap.dep_graph",
+   "meta": {
+    "file": "scripts/bootstrap.py",
+    "doc": "Internal edges (module imports module in this repo) + externals."
+   }
+  },
+  "function:bootstrap.risk_analysis": {
+   "type": "function",
+   "name": "bootstrap.risk_analysis",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.conventions": {
+   "type": "function",
+   "name": "bootstrap.conventions",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.architecture": {
+   "type": "function",
+   "name": "bootstrap.architecture",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.recommend_skills": {
+   "type": "function",
+   "name": "bootstrap.recommend_skills",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.context_package": {
+   "type": "function",
+   "name": "bootstrap.context_package",
+   "meta": {
+    "file": "scripts/bootstrap.py",
+    "doc": "Priority-ordered sections, ~4 chars/token, drop lowest first."
+   }
+  },
+  "function:bootstrap.render_doc": {
+   "type": "function",
+   "name": "bootstrap.render_doc",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.bootstrap": {
+   "type": "function",
+   "name": "bootstrap.bootstrap",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.show": {
+   "type": "function",
+   "name": "bootstrap.show",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.selftest": {
+   "type": "function",
+   "name": "bootstrap.selftest",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
+  "function:bootstrap.main": {
+   "type": "function",
+   "name": "bootstrap.main",
+   "meta": {
+    "file": "scripts/bootstrap.py"
+   }
+  },
   "file:scripts/context.py": {
    "type": "file",
    "name": "scripts/context.py",
@@ -448,13 +592,6 @@
     "note_type": "doc",
     "summary": "Experience Learning Engine spec \u2014 extracts lessons, failures, workflows, reusable code and patterns after every completed task.",
     "tags": "core experience learning runtime"
-   }
-  },
-  "library:ast": {
-   "type": "library",
-   "name": "ast",
-   "meta": {
-    "stdlib": true
    }
   },
   "file:scripts/promptc.py": {
@@ -1353,13 +1490,6 @@
     "file": "scripts/review.py"
    }
   },
-  "file:scripts/skills.py": {
-   "type": "file",
-   "name": "scripts/skills.py",
-   "meta": {
-    "doc": "ABSOLUTE ZERO skill discovery engine. Stdlib only."
-   }
-  },
   "file:SKILLS.md": {
    "type": "file",
    "name": "SKILLS.md",
@@ -1796,6 +1926,16 @@
     "note_type": "fault",
     "summary": "Real ASUNAMA faults \u2014 white box, headless deadlock, RTH frame bug, feature piling, coverage stall.",
     "tags": "project faults drone isaac-sim navigation"
+   }
+  },
+  "file:10_PROJECTS/ASUNAMA/BOOTSTRAP.md": {
+   "type": "file",
+   "name": "ASUNAMA \u2014 Bootstrap",
+   "meta": {
+    "path": "10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+    "note_type": "project",
+    "summary": "auto-bootstrap of ASUNAMA - python/MAVLink, NumPy stack, OpenCV, PyTorch, pytest, 277 files, 8 risks",
+    "tags": "bootstrap python"
    }
   },
   "file:10_PROJECTS/ASUNAMA/DECISIONS.md": {
@@ -2283,6 +2423,26 @@
    "related_to"
   ],
   [
+   "file:10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+   "file:20_KNOWLEDGE/coverage-planning.md",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+   "file:20_KNOWLEDGE/gps-denied-localization.md",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
    "file:10_PROJECTS/ASUNAMA/DECISIONS.md",
    "experience:FAULTS",
    "related_to"
@@ -2619,6 +2779,171 @@
   ],
   [
    "file:scripts/agents.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "file:BOOTSTRAP.md",
+   "implements"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "file:scripts/orchestrator.py",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "file:scripts/planner.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "file:scripts/planner.py",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "file:scripts/skills.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "file:scripts/skills.py",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.architecture",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.bootstrap",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.context_package",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.conventions",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.declared_deps",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.dep_graph",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.detect_framework",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.detect_language",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.python_imports",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.recommend_skills",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.render_doc",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.risk_analysis",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.scan_files",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "function:bootstrap.show",
+   "related_to"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "library:ast",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "library:subprocess",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/bootstrap.py",
    "project:ABSOLUTEZERO",
    "related_to"
   ],
@@ -4073,6 +4398,96 @@
    "calls"
   ],
   [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.architecture",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.context_package",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.conventions",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.declared_deps",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.dep_graph",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.detect_framework",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.detect_language",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.python_imports",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.recommend_skills",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.render_doc",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.risk_analysis",
+   "calls"
+  ],
+  [
+   "function:bootstrap.bootstrap",
+   "function:bootstrap.scan_files",
+   "calls"
+  ],
+  [
+   "function:bootstrap.main",
+   "function:bootstrap.bootstrap",
+   "calls"
+  ],
+  [
+   "function:bootstrap.main",
+   "function:bootstrap.selftest",
+   "calls"
+  ],
+  [
+   "function:bootstrap.main",
+   "function:bootstrap.show",
+   "calls"
+  ],
+  [
+   "function:bootstrap.recommend_skills",
+   "function:skills.discover",
+   "calls"
+  ],
+  [
+   "function:bootstrap.risk_analysis",
+   "function:planner.mine_risks",
+   "calls"
+  ],
+  [
+   "function:bootstrap.selftest",
+   "function:bootstrap.bootstrap",
+   "calls"
+  ],
+  [
    "function:context.build",
    "function:context.compress",
    "calls"
@@ -5089,6 +5504,11 @@
   ],
   [
    "library:argparse",
+   "file:scripts/bootstrap.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
    "file:scripts/context.py",
    "used_by"
   ],
@@ -5149,6 +5569,11 @@
   ],
   [
    "library:ast",
+   "file:scripts/bootstrap.py",
+   "used_by"
+  ],
+  [
+   "library:ast",
    "file:scripts/experience.py",
    "used_by"
   ],
@@ -5175,6 +5600,11 @@
   [
    "library:datetime",
    "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/bootstrap.py",
    "used_by"
   ],
   [
@@ -5265,6 +5695,11 @@
   [
    "library:json",
    "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/bootstrap.py",
    "used_by"
   ],
   [
@@ -5330,6 +5765,11 @@
   [
    "library:pathlib",
    "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/bootstrap.py",
    "used_by"
   ],
   [
@@ -5404,6 +5844,11 @@
   ],
   [
    "library:re",
+   "file:scripts/bootstrap.py",
+   "used_by"
+  ],
+  [
+   "library:re",
    "file:scripts/context.py",
    "used_by"
   ],
@@ -5459,6 +5904,11 @@
   ],
   [
    "library:subprocess",
+   "file:scripts/bootstrap.py",
+   "used_by"
+  ],
+  [
+   "library:subprocess",
    "file:scripts/planner.py",
    "used_by"
   ],
@@ -5475,6 +5925,11 @@
   [
    "library:sys",
    "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/bootstrap.py",
    "used_by"
   ],
   [
@@ -5520,6 +5975,11 @@
   [
    "library:tempfile",
    "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/bootstrap.py",
    "used_by"
   ],
   [
