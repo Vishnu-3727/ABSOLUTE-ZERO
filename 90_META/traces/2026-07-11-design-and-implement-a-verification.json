@@ -1,0 +1,66 @@
+{
+ "id": "2026-07-11-design-and-implement-a-verification",
+ "request": "design and implement a verification engine that checks every modification before completion",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "feature",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "knowledge",
+  "experience",
+  "skills"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "works end to end",
+  "one runnable check left behind",
+  "docs/notes updated if behavior changed"
+ ],
+ "recall_tags": [],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T15:20:54",
+   "state": "CLASSIFY",
+   "note": "feature/standard"
+  },
+  {
+   "t": "2026-07-11T15:20:55",
+   "state": "RECALL",
+   "note": "P1 make-failure-loud governs; ast module for imports/naming/complexity; pattern from 4 prior engine builds"
+  },
+  {
+   "t": "2026-07-11T15:20:56",
+   "state": "PLAN",
+   "note": "scripts/verifier.py: 11 checks over git-changed files (ast-based py analysis, md frontmatter/wikilink checks, selftest execution for changed+dependent scripts), confidence score, gated verdict, report to 90_META/verify/. VERIFIER.md spec."
+  },
+  {
+   "t": "2026-07-11T15:26:04",
+   "state": "EXECUTE",
+   "note": "verifier.py (ast-based, 11 checks) + VERIFIER.md; wired /task VERIFY; fixed dunder naming, self-matching patterns (verifier:ignore), code-block wikilinks, warn cap; added missing selftests to query.py+review.py (real violations it caught)"
+  },
+  {
+   "t": "2026-07-11T15:26:05",
+   "state": "VERIFY",
+   "note": "verifier check on own changeset: PASS-WITH-WARNINGS 88/100, all gates ok, all selftests executed green; --all sweep 70/100 no gate failures"
+  },
+  {
+   "t": "2026-07-11T15:26:06",
+   "state": "SUMMARIZE",
+   "note": "verification engine live; VERIFY stage now machine-gated"
+  },
+  {
+   "t": "2026-07-11T15:26:07",
+   "state": "DONE",
+   "note": "verification engine built, verified itself"
+  }
+ ],
+ "retries": 0,
+ "result": "pass"
+}

@@ -31,8 +31,10 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
 4. EXECUTE starts with python scripts/plugins.py route "<request>" — follow
    the chain (deterministic local tools before model calls, PLUGINS.md);
    report non-script outcomes via plugins.py report.
-5. VERIFY checks the trace's checklist. Fail -> retry EXECUTE (max 2) or
-   close --result fail and escalate.
+5. VERIFY = python scripts/verifier.py check (11 gated checks, VERIFIER.md)
+   first, then the trace's checklist. Verifier FAIL or checklist fail ->
+   retry EXECUTE (max 2) or close --result fail and escalate. Never
+   SUMMARIZE over a failing verifier.
 6. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.
 
 ## Work phase (main session body)

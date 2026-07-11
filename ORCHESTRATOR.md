@@ -41,6 +41,7 @@ user request
      context     = scripts/context.py pack (CONTEXT.md; always on)
      plugins     = scripts/plugins.py route/exec (PLUGINS.md; EXECUTE stage)
      planner     = scripts/planner.py plan (PLANNER.md; PLAN stage)
+     verifier    = scripts/verifier.py check (VERIFIER.md; VERIFY stage)
      |
      v
  orchestrator.py close ──► trace final state DONE / ESCALATED ──► /sleep

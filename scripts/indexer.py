@@ -18,10 +18,12 @@ VAULT = Path(__file__).resolve().parent.parent
 META = VAULT / "90_META"
 
 # Dirs/files that are input to the brain but not indexable notes.
-SKIP_DIRS = {".git", ".obsidian", ".claude", "templates", "traces", "plans"}
+SKIP_DIRS = {".git", ".obsidian", ".claude", "templates", "traces", "plans",
+             "verify"}
 SKIP_NAMES = {"INDEX_SUMMARY.md", "FAULT_LEDGER.md", "INDEX.json"}
 ROOT_DOCS = {"CLAUDE.md", "FLOW.md", "GUIDE.md", "DASHBOARD.md",
-             "ORCHESTRATOR.md", "CONTEXT.md", "PLUGINS.md", "PLANNER.md"}
+             "ORCHESTRATOR.md", "CONTEXT.md", "PLUGINS.md", "PLANNER.md",
+             "VERIFIER.md"}
 
 FM_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 LINK_RE = re.compile(r"\[\[([^\]]+)\]\]")

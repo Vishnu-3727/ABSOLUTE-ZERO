@@ -59,10 +59,29 @@ def stale(notes, days):
     return out
 
 
+def selftest():
+    notes = [
+        {"type": "lesson", "path": "30_LESSONS/a.md", "links": ["b"],
+         "date": "2020-01-01"},
+        {"type": "knowledge", "path": "20_KNOWLEDGE/b.md", "links": [],
+         "date": str(date.today())},
+        {"type": "doc", "path": "CLAUDE.md", "links": [], "date": ""},
+    ]
+    orph = {stem(n["path"]) for n in orphans(notes)}
+    assert orph == {"a"}, orph  # b is linked, doc types never orphan
+    st = stale(notes, 180)
+    assert [stem(n["path"]) for _, n in st] == ["a"]  # bad date skipped
+    print("selftest OK")
+
+
 def main():
     ap = argparse.ArgumentParser(description="Flag orphan and stale notes.")
     ap.add_argument("--days", type=int, default=180, help="stale threshold")
+    ap.add_argument("--selftest", action="store_true")
     args = ap.parse_args()
+    if args.selftest:
+        selftest()
+        return
     notes = load()
 
     orph = orphans(notes)

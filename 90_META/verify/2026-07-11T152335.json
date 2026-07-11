@@ -1,0 +1,242 @@
+{
+ "t": "2026-07-11T15:23:35",
+ "files": [
+  "CLAUDE.md",
+  "CONTEXT.md",
+  "DASHBOARD.md",
+  "FLOW.md",
+  "GUIDE.md",
+  "ORCHESTRATOR.md",
+  "PLANNER.md",
+  "PLUGINS.md",
+  "scripts/context.py",
+  "scripts/indexer.py",
+  "scripts/orchestrator.py",
+  "scripts/planner.py",
+  "scripts/plugins.py",
+  "scripts/query.py",
+  "scripts/review.py",
+  "scripts/verifier.py"
+ ],
+ "verdict": "FAIL",
+ "confidence": 0,
+ "findings": {
+  "architecture": [],
+  "imports": [
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "unused import 'words_of'"
+   }
+  ],
+  "dependencies": [
+   {
+    "level": "fail",
+    "file": "PLANNER.md",
+    "msg": "dead wikilink [[\"ok\", \"dependency graph is acyclic\"]]"
+   }
+  ],
+  "naming": [],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/context.py",
+    "msg": "build(): 74 statements (> 60)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/orchestrator.py",
+    "msg": "main(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "main(): nesting depth 6 (> 4)"
+   }
+  ],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L89: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L123: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/planner.py",
+    "msg": "L159: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L86: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L87: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L95: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L111: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L112: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L139: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L141: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L142: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L164: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L288: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L141: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L142: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L251: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L253: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L282: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L280: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "CLAUDE.md",
+    "msg": "1 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "CLAUDE.md",
+    "msg": "no final newline"
+   },
+   {
+    "level": "warn",
+    "file": "CONTEXT.md",
+    "msg": "1 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "FLOW.md",
+    "msg": "no final newline"
+   },
+   {
+    "level": "warn",
+    "file": "GUIDE.md",
+    "msg": "no final newline"
+   },
+   {
+    "level": "warn",
+    "file": "ORCHESTRATOR.md",
+    "msg": "4 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "PLANNER.md",
+    "msg": "9 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "PLUGINS.md",
+    "msg": "4 line(s) > 100 chars (first: L7)"
+   }
+  ],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "fail",
+    "file": "scripts/query.py",
+    "msg": "vault script without --selftest (OS law)"
+   },
+   {
+    "level": "fail",
+    "file": "scripts/review.py",
+    "msg": "vault script without --selftest (OS law)"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/context.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/orchestrator.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/planner.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/plugins.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/verifier.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

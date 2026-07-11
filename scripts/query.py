@@ -36,8 +36,20 @@ def matches(note, tags, ntype, project, since):
     return True
 
 
+def selftest():
+    n = {"type": "lesson", "project": "ASUNAMA", "date": "2026-07-01",
+         "tags": ["Navigation", "drift"], "title": "t", "summary": "s"}
+    assert matches(n, ["navigation"], "", "", "")
+    assert matches(n, ["navigation", "drift"], "lesson", "asunama", "2026-06-01")
+    assert not matches(n, ["ros2"], "", "", "")
+    assert not matches(n, [], "fault", "", "")
+    assert not matches(n, [], "", "", "2026-07-02")
+    print("selftest OK")
+
+
 def main():
     ap = argparse.ArgumentParser(description="Query the vault index.")
+    ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--tags", default="", help="comma-separated, all must match")
     ap.add_argument("--type", dest="ntype", default="",
                     help="lesson|fault|knowledge|decision|session|...")
@@ -45,6 +57,9 @@ def main():
     ap.add_argument("--since", default="", help="YYYY-MM-DD, inclusive")
     ap.add_argument("--limit", type=int, default=10)
     args = ap.parse_args()
+    if args.selftest:
+        selftest()
+        return
 
     tags = [t.strip() for t in args.tags.split(",") if t.strip()]
     hits = [n for n in load()
