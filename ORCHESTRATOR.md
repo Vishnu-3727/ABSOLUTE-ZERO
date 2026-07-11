@@ -42,6 +42,7 @@ user request
      plugins     = scripts/plugins.py route/exec (PLUGINS.md; EXECUTE stage)
      planner     = scripts/planner.py plan (PLANNER.md; PLAN stage)
      verifier    = scripts/verifier.py check (VERIFIER.md; VERIFY stage)
+     promptc     = scripts/promptc.py compile (PROMPTC.md; agent briefing)
      |
      v
  orchestrator.py close ──► trace final state DONE / ESCALATED ──► /sleep

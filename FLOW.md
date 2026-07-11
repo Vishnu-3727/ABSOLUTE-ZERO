@@ -36,6 +36,8 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
    retry EXECUTE (max 2) or close --result fail and escalate. Never
    SUMMARIZE over a failing verifier.
 6. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.
+7. Dispatching work to a fresh agent/session? Compile its briefing:
+   python scripts/promptc.py compile "<request>" --project X (PROMPTC.md).
 
 ## Work phase (main session body)
 1. Before technical work on any tagged topic: scan FAULT_LEDGER.md for matches.

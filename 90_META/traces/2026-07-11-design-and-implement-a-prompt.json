@@ -1,0 +1,65 @@
+{
+ "id": "2026-07-11-design-and-implement-a-prompt",
+ "request": "design and implement a prompt compiler that constructs optimized prompts dynamically",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "performance",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "experience",
+  "knowledge"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "baseline measured before",
+  "improvement measured after",
+  "no correctness regression"
+ ],
+ "recall_tags": [],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T15:27:43",
+   "state": "CLASSIFY",
+   "note": "performance/standard"
+  },
+  {
+   "t": "2026-07-11T15:27:44",
+   "state": "RECALL",
+   "note": "composes existing engines: classify (intent), context.build (injection+budget), plugins.route (tools), VERIFY checklists; lessons are the few-shot corpus"
+  },
+  {
+   "t": "2026-07-11T15:27:45",
+   "state": "PLAN",
+   "note": "scripts/promptc.py compile: section pipeline LAW>TASK>INSTRUCTIONS(merged+deduped)>TOOLS>CONTEXT(via context.build)>FEW-SHOT(lessons)>VERIFY, priority-ordered drop under budget, jaccard line dedup, validation gates. Artifacts to 90_META/prompts/. PROMPTC.md spec."
+  },
+  {
+   "t": "2026-07-11T15:31:17",
+   "state": "EXECUTE",
+   "note": "promptc.py + PROMPTC.md; fixed: dedup needed stemming+0.5 threshold, cp1252 console needed utf-8 stdout"
+  },
+  {
+   "t": "2026-07-11T15:31:18",
+   "state": "VERIFY",
+   "note": "verifier gate on changeset: no gate failures, all 9 selftests executed green; e2e compile 1970/2500 tokens, validation all ok, 1 dup merged"
+  },
+  {
+   "t": "2026-07-11T15:31:19",
+   "state": "SUMMARIZE",
+   "note": "prompt compiler live; briefing artifact for agent dispatch"
+  },
+  {
+   "t": "2026-07-11T15:31:20",
+   "state": "DONE",
+   "note": "prompt compiler built and verified"
+  }
+ ],
+ "retries": 0,
+ "result": "pass"
+}

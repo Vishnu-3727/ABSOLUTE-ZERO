@@ -1,0 +1,144 @@
+{
+ "t": "2026-07-11T15:31:14",
+ "files": [
+  "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-2.md",
+  "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-3.md",
+  "90_META/prompts/2026-07-11-fix-the-odometry-drift-during.md",
+  "90_META/traces/2026-07-11-design-and-implement-a-prompt.json",
+  "FLOW.md",
+  "ORCHESTRATOR.md",
+  "PROMPTC.md",
+  "scripts/indexer.py",
+  "scripts/promptc.py"
+ ],
+ "verdict": "FAIL",
+ "confidence": 0,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [
+   {
+    "level": "fail",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-2.md",
+    "msg": "dead wikilink [[asunama-flight-checklist]]"
+   },
+   {
+    "level": "fail",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-2.md",
+    "msg": "dead wikilink [[asunama-flight-checklist]]"
+   },
+   {
+    "level": "fail",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-3.md",
+    "msg": "dead wikilink [[asunama-flight-checklist]]"
+   },
+   {
+    "level": "fail",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-3.md",
+    "msg": "dead wikilink [[asunama-flight-checklist]]"
+   },
+   {
+    "level": "fail",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during.md",
+    "msg": "dead wikilink [[asunama-flight-checklist]]"
+   },
+   {
+    "level": "fail",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during.md",
+    "msg": "dead wikilink [[asunama-flight-checklist]]"
+   }
+  ],
+  "naming": [],
+  "complexity": [],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L91: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L125: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-2.md",
+    "msg": "5 line(s) > 100 chars (first: L2)"
+   },
+   {
+    "level": "warn",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-2.md",
+    "msg": "trailing whitespace"
+   },
+   {
+    "level": "warn",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-3.md",
+    "msg": "5 line(s) > 100 chars (first: L2)"
+   },
+   {
+    "level": "warn",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-3.md",
+    "msg": "trailing whitespace"
+   },
+   {
+    "level": "warn",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during.md",
+    "msg": "5 line(s) > 100 chars (first: L2)"
+   },
+   {
+    "level": "warn",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during.md",
+    "msg": "trailing whitespace"
+   },
+   {
+    "level": "warn",
+    "file": "FLOW.md",
+    "msg": "no final newline"
+   },
+   {
+    "level": "warn",
+    "file": "ORCHESTRATOR.md",
+    "msg": "4 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "PROMPTC.md",
+    "msg": "2 line(s) > 100 chars (first: L7)"
+   }
+  ],
+  "documentation": [
+   {
+    "level": "fail",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-2.md",
+    "msg": "no frontmatter (vault law: every note has it)"
+   },
+   {
+    "level": "fail",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during-3.md",
+    "msg": "no frontmatter (vault law: every note has it)"
+   },
+   {
+    "level": "fail",
+    "file": "90_META/prompts/2026-07-11-fix-the-odometry-drift-during.md",
+    "msg": "no frontmatter (vault law: every note has it)"
+   }
+  ],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/promptc.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

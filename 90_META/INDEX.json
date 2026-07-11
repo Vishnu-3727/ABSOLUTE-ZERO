@@ -121,6 +121,23 @@
       "links": []
     },
     {
+      "path": "PROMPTC.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "prompts",
+        "compiler",
+        "runtime"
+      ],
+      "title": "ABSOLUTE ZERO — Prompt Compiler",
+      "summary": "Prompt Compiler spec — dynamically constructs optimized, validated prompts from intent, context, experience, tools and budget.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-11",
+      "links": []
+    },
+    {
       "path": "VERIFIER.md",
       "type": "doc",
       "project": "ABSOLUTE_ZERO",
