@@ -1,0 +1,69 @@
+{
+ "id": "2026-07-11-implement-a-knowledge-graph-with",
+ "request": "implement a knowledge graph with typed nodes and edges, storage, traversal and semantic search",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "feature",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "knowledge",
+  "experience",
+  "skills"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "works end to end",
+  "one runnable check left behind",
+  "docs/notes updated if behavior changed"
+ ],
+ "recall_tags": [
+  "knowledge"
+ ],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T20:05:32",
+   "state": "CLASSIFY",
+   "note": "feature/standard"
+  },
+  {
+   "t": "2026-07-11T20:06:06",
+   "state": "RECALL",
+   "note": "INDEX.json schema read (links field present); AGENTS/plugins conventions reused"
+  },
+  {
+   "t": "2026-07-11T20:06:07",
+   "state": "PLAN",
+   "note": "graph.py: Graph class (storage+traversal+search) + 4 extractors (ast scripts, notes, skills, identity); GRAPH.json artifact"
+  },
+  {
+   "t": "2026-07-11T20:06:08",
+   "state": "EXECUTE",
+   "note": "built graph.py 577 lines; 8 node types 7 edge types; fixed search fuzzy-noise (coverage-first) and from-import call resolution (+42 edges)"
+  },
+  {
+   "t": "2026-07-11T20:06:09",
+   "state": "VERIFY",
+   "note": "selftest OK; live 255 nodes 758 edges; smoke: search/neighbors/path correct; verifier PASS-WITH-WARNINGS 70"
+  },
+  {
+   "t": "2026-07-11T20:06:10",
+   "state": "SUMMARIZE",
+   "note": "knowledge graph engine done: storage, traversal, semantic search, query CLI, wired into /recall and /sleep"
+  },
+  {
+   "t": "2026-07-11T20:06:11",
+   "state": "DONE",
+   "note": "graph.py engine #13 shipped"
+  }
+ ],
+ "retries": 0,
+ "result": "pass",
+ "harvested": true
+}

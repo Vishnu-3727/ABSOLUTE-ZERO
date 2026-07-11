@@ -1,0 +1,5701 @@
+{
+ "generated": "2026-07-11T20:05:36",
+ "nodes": {
+  "project:ABSOLUTEZERO": {
+   "type": "project",
+   "name": "ABSOLUTEZERO",
+   "meta": {
+    "path": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero"
+   }
+  },
+  "file:scripts/agents.py": {
+   "type": "file",
+   "name": "scripts/agents.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO multi-agent runtime. Stdlib only."
+   }
+  },
+  "file:AGENTS.md": {
+   "type": "file",
+   "name": "AGENTS.md",
+   "meta": {
+    "path": "AGENTS.md",
+    "note_type": "doc"
+   }
+  },
+  "library:argparse": {
+   "type": "library",
+   "name": "argparse",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:json": {
+   "type": "library",
+   "name": "json",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:queue": {
+   "type": "library",
+   "name": "queue",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:subprocess": {
+   "type": "library",
+   "name": "subprocess",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:sys": {
+   "type": "library",
+   "name": "sys",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:threading": {
+   "type": "library",
+   "name": "threading",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:time": {
+   "type": "library",
+   "name": "time",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:concurrent": {
+   "type": "library",
+   "name": "concurrent",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:datetime": {
+   "type": "library",
+   "name": "datetime",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:graphlib": {
+   "type": "library",
+   "name": "graphlib",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:pathlib": {
+   "type": "library",
+   "name": "pathlib",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "file:scripts/orchestrator.py": {
+   "type": "file",
+   "name": "scripts/orchestrator.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO workflow orchestrator. Stdlib only."
+   }
+  },
+  "file:scripts/planner.py": {
+   "type": "file",
+   "name": "scripts/planner.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO planning engine. Stdlib only."
+   }
+  },
+  "library:re": {
+   "type": "library",
+   "name": "re",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:tempfile": {
+   "type": "library",
+   "name": "tempfile",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "file:scripts/plugins.py": {
+   "type": "file",
+   "name": "scripts/plugins.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO plugin intelligence engine. Stdlib only."
+   }
+  },
+  "function:agents.now": {
+   "type": "function",
+   "name": "agents.now",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "class:agents.Blackboard": {
+   "type": "class",
+   "name": "agents.Blackboard",
+   "meta": {
+    "file": "scripts/agents.py",
+    "doc": "Shared memory: versioned keys, compare-and-swap writes, priority"
+   }
+  },
+  "function:agents.Blackboard.__init__": {
+   "type": "function",
+   "name": "agents.Blackboard.__init__",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.Blackboard.read": {
+   "type": "function",
+   "name": "agents.Blackboard.read",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.Blackboard.write": {
+   "type": "function",
+   "name": "agents.Blackboard.write",
+   "meta": {
+    "file": "scripts/agents.py",
+    "doc": "Returns True if the value landed. expected = version the writer"
+   }
+  },
+  "function:agents.Blackboard.snapshot": {
+   "type": "function",
+   "name": "agents.Blackboard.snapshot",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "class:agents.Bus": {
+   "type": "class",
+   "name": "agents.Bus",
+   "meta": {
+    "file": "scripts/agents.py",
+    "doc": "Agent communication: per-agent inbox queues + full message log."
+   }
+  },
+  "function:agents.Bus.__init__": {
+   "type": "function",
+   "name": "agents.Bus.__init__",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.Bus._inbox": {
+   "type": "function",
+   "name": "agents.Bus._inbox",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.Bus.send": {
+   "type": "function",
+   "name": "agents.Bus.send",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.Bus.broadcast": {
+   "type": "function",
+   "name": "agents.Bus.broadcast",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.Bus.drain": {
+   "type": "function",
+   "name": "agents.Bus.drain",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.planner_agent": {
+   "type": "function",
+   "name": "agents.planner_agent",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.researcher_agent": {
+   "type": "function",
+   "name": "agents.researcher_agent",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.architect_agent": {
+   "type": "function",
+   "name": "agents.architect_agent",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.implementer_agent": {
+   "type": "function",
+   "name": "agents.implementer_agent",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.reviewer_agent": {
+   "type": "function",
+   "name": "agents.reviewer_agent",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.tester_agent": {
+   "type": "function",
+   "name": "agents.tester_agent",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.optimizer_agent": {
+   "type": "function",
+   "name": "agents.optimizer_agent",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.coordinator_agent": {
+   "type": "function",
+   "name": "agents.coordinator_agent",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.compose": {
+   "type": "function",
+   "name": "agents.compose",
+   "meta": {
+    "file": "scripts/agents.py",
+    "doc": "Coordinator's planning act: intent template per subtask, pruned for"
+   }
+  },
+  "function:agents.execute": {
+   "type": "function",
+   "name": "agents.execute",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.show": {
+   "type": "function",
+   "name": "agents.show",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.show_workflow": {
+   "type": "function",
+   "name": "agents.show_workflow",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.selftest": {
+   "type": "function",
+   "name": "agents.selftest",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "function:agents.main": {
+   "type": "function",
+   "name": "agents.main",
+   "meta": {
+    "file": "scripts/agents.py"
+   }
+  },
+  "file:scripts/context.py": {
+   "type": "file",
+   "name": "scripts/context.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO context budget manager. Stdlib only."
+   }
+  },
+  "file:CONTEXT.md": {
+   "type": "file",
+   "name": "CONTEXT.md",
+   "meta": {
+    "path": "CONTEXT.md",
+    "note_type": "doc",
+    "summary": "Context Budget Manager spec \u2014 builds the optimal context package per request within a token ceiling.",
+    "tags": "core context budget runtime"
+   }
+  },
+  "library:difflib": {
+   "type": "library",
+   "name": "difflib",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "function:context.est_tokens": {
+   "type": "function",
+   "name": "context.est_tokens",
+   "meta": {
+    "file": "scripts/context.py"
+   }
+  },
+  "function:context.jaccard": {
+   "type": "function",
+   "name": "context.jaccard",
+   "meta": {
+    "file": "scripts/context.py"
+   }
+  },
+  "function:context.recency": {
+   "type": "function",
+   "name": "context.recency",
+   "meta": {
+    "file": "scripts/context.py"
+   }
+  },
+  "function:context.score": {
+   "type": "function",
+   "name": "context.score",
+   "meta": {
+    "file": "scripts/context.py",
+    "doc": "2.0*tag_hits + 1.5*similarity + type_prior + 0.5*project + recency."
+   }
+  },
+  "function:context.read_body": {
+   "type": "function",
+   "name": "context.read_body",
+   "meta": {
+    "file": "scripts/context.py"
+   }
+  },
+  "function:context.compress": {
+   "type": "function",
+   "name": "context.compress",
+   "meta": {
+    "file": "scripts/context.py",
+    "doc": "Fidelity ladder: full body if it fits, else only request-matching"
+   }
+  },
+  "function:context.dedup": {
+   "type": "function",
+   "name": "context.dedup",
+   "meta": {
+    "file": "scripts/context.py",
+    "doc": "Near-duplicate summaries: keep the higher-scored note."
+   }
+  },
+  "function:context.compress_history": {
+   "type": "function",
+   "name": "context.compress_history",
+   "meta": {
+    "file": "scripts/context.py",
+    "doc": "Extractive: lines matching the request + the last 10 lines, newest"
+   }
+  },
+  "function:context.build": {
+   "type": "function",
+   "name": "context.build",
+   "meta": {
+    "file": "scripts/context.py"
+   }
+  },
+  "function:context.show": {
+   "type": "function",
+   "name": "context.show",
+   "meta": {
+    "file": "scripts/context.py"
+   }
+  },
+  "function:context.selftest": {
+   "type": "function",
+   "name": "context.selftest",
+   "meta": {
+    "file": "scripts/context.py"
+   }
+  },
+  "function:context.main": {
+   "type": "function",
+   "name": "context.main",
+   "meta": {
+    "file": "scripts/context.py"
+   }
+  },
+  "file:scripts/experience.py": {
+   "type": "file",
+   "name": "scripts/experience.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO experience learning engine. Stdlib only."
+   }
+  },
+  "file:EXPERIENCE.md": {
+   "type": "file",
+   "name": "EXPERIENCE.md",
+   "meta": {
+    "path": "EXPERIENCE.md",
+    "note_type": "doc",
+    "summary": "Experience Learning Engine spec \u2014 extracts lessons, failures, workflows, reusable code and patterns after every completed task.",
+    "tags": "core experience learning runtime"
+   }
+  },
+  "library:ast": {
+   "type": "library",
+   "name": "ast",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "file:scripts/promptc.py": {
+   "type": "file",
+   "name": "scripts/promptc.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO prompt compiler. Stdlib only."
+   }
+  },
+  "function:experience.nwords": {
+   "type": "function",
+   "name": "experience.nwords",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.sim": {
+   "type": "function",
+   "name": "experience.sim",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.load_json": {
+   "type": "function",
+   "name": "experience.load_json",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.dump_json": {
+   "type": "function",
+   "name": "experience.dump_json",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.secs": {
+   "type": "function",
+   "name": "experience.secs",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.lesson_pairs": {
+   "type": "function",
+   "name": "experience.lesson_pairs",
+   "meta": {
+    "file": "scripts/experience.py",
+    "doc": "VERIFY-fail note followed by a retry EXECUTE note = symptom -> fix."
+   }
+  },
+  "function:experience.existing_lessons": {
+   "type": "function",
+   "name": "experience.existing_lessons",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.draft_lesson": {
+   "type": "function",
+   "name": "experience.draft_lesson",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.record_failure": {
+   "type": "function",
+   "name": "experience.record_failure",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.update_workflows": {
+   "type": "function",
+   "name": "experience.update_workflows",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.reusable_code": {
+   "type": "function",
+   "name": "experience.reusable_code",
+   "meta": {
+    "file": "scripts/experience.py",
+    "doc": "Near-duplicate functions across scripts: extract-to-shared candidates."
+   }
+  },
+  "function:experience.architectural_patterns": {
+   "type": "function",
+   "name": "experience.architectural_patterns",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.harvest": {
+   "type": "function",
+   "name": "experience.harvest",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.recall": {
+   "type": "function",
+   "name": "experience.recall",
+   "meta": {
+    "file": "scripts/experience.py",
+    "doc": "Semantic retrieval over everything harvested."
+   }
+  },
+  "function:experience.selftest": {
+   "type": "function",
+   "name": "experience.selftest",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "function:experience.main": {
+   "type": "function",
+   "name": "experience.main",
+   "meta": {
+    "file": "scripts/experience.py"
+   }
+  },
+  "file:scripts/graph.py": {
+   "type": "file",
+   "name": "scripts/graph.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO knowledge graph. Stdlib only."
+   }
+  },
+  "file:GRAPH.md": {
+   "type": "file",
+   "name": "GRAPH.md",
+   "meta": {
+    "path": "GRAPH.md",
+    "note_type": "doc"
+   }
+  },
+  "library:collections": {
+   "type": "library",
+   "name": "collections",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "class:graph.Graph": {
+   "type": "class",
+   "name": "graph.Graph",
+   "meta": {
+    "file": "scripts/graph.py",
+    "doc": "Storage + traversal. Nodes: id -> {type, name, meta}."
+   }
+  },
+  "function:graph.Graph.__init__": {
+   "type": "function",
+   "name": "graph.Graph.__init__",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.Graph.add_node": {
+   "type": "function",
+   "name": "graph.Graph.add_node",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.Graph.add_edge": {
+   "type": "function",
+   "name": "graph.Graph.add_edge",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.Graph._adj": {
+   "type": "function",
+   "name": "graph.Graph._adj",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.Graph.neighbors": {
+   "type": "function",
+   "name": "graph.Graph.neighbors",
+   "meta": {
+    "file": "scripts/graph.py",
+    "doc": "BFS out to `depth` hops. Returns [{id, dist, via}] sorted by"
+   }
+  },
+  "function:graph.Graph.path": {
+   "type": "function",
+   "name": "graph.Graph.path",
+   "meta": {
+    "file": "scripts/graph.py",
+    "doc": "Shortest path, directed first, undirected fallback."
+   }
+  },
+  "function:graph.Graph._bfs_path": {
+   "type": "function",
+   "name": "graph.Graph._bfs_path",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.Graph.search": {
+   "type": "function",
+   "name": "graph.Graph.search",
+   "meta": {
+    "file": "scripts/graph.py",
+    "doc": "Query-coverage first (how much of the query the node holds),"
+   }
+  },
+  "function:graph.Graph.save": {
+   "type": "function",
+   "name": "graph.Graph.save",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.Graph.load": {
+   "type": "function",
+   "name": "graph.Graph.load",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph._first_line": {
+   "type": "function",
+   "name": "graph._first_line",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.extract_scripts": {
+   "type": "function",
+   "name": "graph.extract_scripts",
+   "meta": {
+    "file": "scripts/graph.py",
+    "doc": "ast pass over scripts/*.py: files, classes, functions, libraries,"
+   }
+  },
+  "function:graph._import_edge": {
+   "type": "function",
+   "name": "graph._import_edge",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph._foreign_class": {
+   "type": "function",
+   "name": "graph._foreign_class",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.load_notes": {
+   "type": "function",
+   "name": "graph.load_notes",
+   "meta": {
+    "file": "scripts/graph.py",
+    "doc": "INDEX.json when present; else a minimal frontmatter scan so fresh"
+   }
+  },
+  "function:graph.extract_notes": {
+   "type": "function",
+   "name": "graph.extract_notes",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.extract_skills": {
+   "type": "function",
+   "name": "graph.extract_skills",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.extract_user": {
+   "type": "function",
+   "name": "graph.extract_user",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.build": {
+   "type": "function",
+   "name": "graph.build",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.show_stats": {
+   "type": "function",
+   "name": "graph.show_stats",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.show_node": {
+   "type": "function",
+   "name": "graph.show_node",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.selftest": {
+   "type": "function",
+   "name": "graph.selftest",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "function:graph.main": {
+   "type": "function",
+   "name": "graph.main",
+   "meta": {
+    "file": "scripts/graph.py"
+   }
+  },
+  "file:scripts/indexer.py": {
+   "type": "file",
+   "name": "scripts/indexer.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO indexer. Stdlib only."
+   }
+  },
+  "function:indexer.parse_frontmatter": {
+   "type": "function",
+   "name": "indexer.parse_frontmatter",
+   "meta": {
+    "file": "scripts/indexer.py",
+    "doc": "Minimal YAML: scalars and inline lists `[a, b]`. No deps."
+   }
+  },
+  "function:indexer.note_type": {
+   "type": "function",
+   "name": "indexer.note_type",
+   "meta": {
+    "file": "scripts/indexer.py",
+    "doc": "Type used by query.py --type. Folder first, project filename refines."
+   }
+  },
+  "function:indexer.project_of": {
+   "type": "function",
+   "name": "indexer.project_of",
+   "meta": {
+    "file": "scripts/indexer.py"
+   }
+  },
+  "function:indexer.iter_notes": {
+   "type": "function",
+   "name": "indexer.iter_notes",
+   "meta": {
+    "file": "scripts/indexer.py"
+   }
+  },
+  "function:indexer.parse_faults": {
+   "type": "function",
+   "name": "indexer.parse_faults",
+   "meta": {
+    "file": "scripts/indexer.py",
+    "doc": "Split a FAULTS.md body into per-section ledger lines."
+   }
+  },
+  "function:indexer._field": {
+   "type": "function",
+   "name": "indexer._field",
+   "meta": {
+    "file": "scripts/indexer.py"
+   }
+  },
+  "function:indexer.build": {
+   "type": "function",
+   "name": "indexer.build",
+   "meta": {
+    "file": "scripts/indexer.py"
+   }
+  },
+  "function:indexer._title": {
+   "type": "function",
+   "name": "indexer._title",
+   "meta": {
+    "file": "scripts/indexer.py"
+   }
+  },
+  "function:indexer.write_outputs": {
+   "type": "function",
+   "name": "indexer.write_outputs",
+   "meta": {
+    "file": "scripts/indexer.py"
+   }
+  },
+  "function:indexer._selftest": {
+   "type": "function",
+   "name": "indexer._selftest",
+   "meta": {
+    "file": "scripts/indexer.py"
+   }
+  },
+  "function:indexer.main": {
+   "type": "function",
+   "name": "indexer.main",
+   "meta": {
+    "file": "scripts/indexer.py"
+   }
+  },
+  "file:ORCHESTRATOR.md": {
+   "type": "file",
+   "name": "ORCHESTRATOR.md",
+   "meta": {
+    "path": "ORCHESTRATOR.md",
+    "note_type": "doc",
+    "summary": "Workflow Orchestrator spec \u2014 central runtime routing every request through classify, recall, execute, verify, summarize.",
+    "tags": "core orchestrator runtime"
+   }
+  },
+  "function:orchestrator.words_of": {
+   "type": "function",
+   "name": "orchestrator.words_of",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.classify": {
+   "type": "function",
+   "name": "orchestrator.classify",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.known_tags": {
+   "type": "function",
+   "name": "orchestrator.known_tags",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.now": {
+   "type": "function",
+   "name": "orchestrator.now",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.load_trace": {
+   "type": "function",
+   "name": "orchestrator.load_trace",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.save_trace": {
+   "type": "function",
+   "name": "orchestrator.save_trace",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.plan": {
+   "type": "function",
+   "name": "orchestrator.plan",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.allowed_states": {
+   "type": "function",
+   "name": "orchestrator.allowed_states",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.log": {
+   "type": "function",
+   "name": "orchestrator.log",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.close": {
+   "type": "function",
+   "name": "orchestrator.close",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.similarity": {
+   "type": "function",
+   "name": "orchestrator.similarity",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.selftest": {
+   "type": "function",
+   "name": "orchestrator.selftest",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "function:orchestrator.main": {
+   "type": "function",
+   "name": "orchestrator.main",
+   "meta": {
+    "file": "scripts/orchestrator.py"
+   }
+  },
+  "file:PLANNER.md": {
+   "type": "file",
+   "name": "PLANNER.md",
+   "meta": {
+    "path": "PLANNER.md",
+    "note_type": "doc",
+    "summary": "Planning Engine spec \u2014 decomposes requests into validated, executable, dependency-ordered implementation plans.",
+    "tags": "core planning runtime"
+   }
+  },
+  "function:planner.decompose": {
+   "type": "function",
+   "name": "planner.decompose",
+   "meta": {
+    "file": "scripts/planner.py"
+   }
+  },
+  "function:planner.mine_risks": {
+   "type": "function",
+   "name": "planner.mine_risks",
+   "meta": {
+    "file": "scripts/planner.py",
+    "doc": "Experience-engine pass: fault-ledger lines sharing words with the task."
+   }
+  },
+  "function:planner.bind_plugins": {
+   "type": "function",
+   "name": "planner.bind_plugins",
+   "meta": {
+    "file": "scripts/planner.py",
+    "doc": "Best plugin + fallbacks for a step's capabilities, from the registry."
+   }
+  },
+  "function:planner.git_baseline": {
+   "type": "function",
+   "name": "planner.git_baseline",
+   "meta": {
+    "file": "scripts/planner.py"
+   }
+  },
+  "function:planner.validate": {
+   "type": "function",
+   "name": "planner.validate",
+   "meta": {
+    "file": "scripts/planner.py",
+    "doc": "Architecture validation gates. ok / warn / fail (fail = not executable)."
+   }
+  },
+  "function:planner.build": {
+   "type": "function",
+   "name": "planner.build",
+   "meta": {
+    "file": "scripts/planner.py"
+   }
+  },
+  "function:planner.show": {
+   "type": "function",
+   "name": "planner.show",
+   "meta": {
+    "file": "scripts/planner.py"
+   }
+  },
+  "function:planner.selftest": {
+   "type": "function",
+   "name": "planner.selftest",
+   "meta": {
+    "file": "scripts/planner.py"
+   }
+  },
+  "function:planner.main": {
+   "type": "function",
+   "name": "planner.main",
+   "meta": {
+    "file": "scripts/planner.py"
+   }
+  },
+  "file:PLUGINS.md": {
+   "type": "file",
+   "name": "PLUGINS.md",
+   "meta": {
+    "path": "PLUGINS.md",
+    "note_type": "doc",
+    "summary": "Plugin Intelligence Engine spec \u2014 discovers tools, builds a capability database, routes requests to optimal plugin chains.",
+    "tags": "core plugins tooling runtime"
+   }
+  },
+  "function:plugins.caps_from_text": {
+   "type": "function",
+   "name": "plugins.caps_from_text",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.scan_scripts": {
+   "type": "function",
+   "name": "plugins.scan_scripts",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.scan_commands": {
+   "type": "function",
+   "name": "plugins.scan_commands",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.scan_external": {
+   "type": "function",
+   "name": "plugins.scan_external",
+   "meta": {
+    "file": "scripts/plugins.py",
+    "doc": "~/.claude/plugins/cache/<marketplace>/<plugin>/<version>/."
+   }
+  },
+  "function:plugins.probe": {
+   "type": "function",
+   "name": "plugins.probe",
+   "meta": {
+    "file": "scripts/plugins.py",
+    "doc": "Measure real latency of deterministic scripts (timed --help)."
+   }
+  },
+  "function:plugins.scan": {
+   "type": "function",
+   "name": "plugins.scan",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.load_registry": {
+   "type": "function",
+   "name": "plugins.load_registry",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.load_stats": {
+   "type": "function",
+   "name": "plugins.load_stats",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.record": {
+   "type": "function",
+   "name": "plugins.record",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.reliability": {
+   "type": "function",
+   "name": "plugins.reliability",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.latency_class": {
+   "type": "function",
+   "name": "plugins.latency_class",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.score": {
+   "type": "function",
+   "name": "plugins.score",
+   "meta": {
+    "file": "scripts/plugins.py",
+    "doc": "Optimization goals as weights: coverage first, then deterministic >"
+   }
+  },
+  "function:plugins.route": {
+   "type": "function",
+   "name": "plugins.route",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.execute": {
+   "type": "function",
+   "name": "plugins.execute",
+   "meta": {
+    "file": "scripts/plugins.py",
+    "doc": "Run a script plugin, time it, record stats; walk fallbacks on"
+   }
+  },
+  "function:plugins.show_list": {
+   "type": "function",
+   "name": "plugins.show_list",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.selftest": {
+   "type": "function",
+   "name": "plugins.selftest",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "function:plugins.main": {
+   "type": "function",
+   "name": "plugins.main",
+   "meta": {
+    "file": "scripts/plugins.py"
+   }
+  },
+  "file:PROMPTC.md": {
+   "type": "file",
+   "name": "PROMPTC.md",
+   "meta": {
+    "path": "PROMPTC.md",
+    "note_type": "doc",
+    "summary": "Prompt Compiler spec \u2014 dynamically constructs optimized, validated prompts from intent, context, experience, tools and budget.",
+    "tags": "core prompts compiler runtime"
+   }
+  },
+  "function:promptc.stem": {
+   "type": "function",
+   "name": "promptc.stem",
+   "meta": {
+    "file": "scripts/promptc.py"
+   }
+  },
+  "function:promptc.dedup_lines": {
+   "type": "function",
+   "name": "promptc.dedup_lines",
+   "meta": {
+    "file": "scripts/promptc.py",
+    "doc": "Merge instructions from all sources; near-duplicates removed."
+   }
+  },
+  "function:promptc.few_shot": {
+   "type": "function",
+   "name": "promptc.few_shot",
+   "meta": {
+    "file": "scripts/promptc.py",
+    "doc": "Retrieve the closest lessons as worked examples: situation -> lesson."
+   }
+  },
+  "function:promptc.tool_lines": {
+   "type": "function",
+   "name": "promptc.tool_lines",
+   "meta": {
+    "file": "scripts/promptc.py"
+   }
+  },
+  "function:promptc.render_context": {
+   "type": "function",
+   "name": "promptc.render_context",
+   "meta": {
+    "file": "scripts/promptc.py"
+   }
+  },
+  "function:promptc.validate": {
+   "type": "function",
+   "name": "promptc.validate",
+   "meta": {
+    "file": "scripts/promptc.py"
+   }
+  },
+  "function:promptc.compile_prompt": {
+   "type": "function",
+   "name": "promptc.compile_prompt",
+   "meta": {
+    "file": "scripts/promptc.py"
+   }
+  },
+  "function:promptc._index_notes": {
+   "type": "function",
+   "name": "promptc._index_notes",
+   "meta": {
+    "file": "scripts/promptc.py"
+   }
+  },
+  "function:promptc.save": {
+   "type": "function",
+   "name": "promptc.save",
+   "meta": {
+    "file": "scripts/promptc.py"
+   }
+  },
+  "function:promptc.selftest": {
+   "type": "function",
+   "name": "promptc.selftest",
+   "meta": {
+    "file": "scripts/promptc.py"
+   }
+  },
+  "function:promptc.main": {
+   "type": "function",
+   "name": "promptc.main",
+   "meta": {
+    "file": "scripts/promptc.py"
+   }
+  },
+  "file:scripts/query.py": {
+   "type": "file",
+   "name": "scripts/query.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO query. Stdlib only."
+   }
+  },
+  "function:query.load": {
+   "type": "function",
+   "name": "query.load",
+   "meta": {
+    "file": "scripts/query.py"
+   }
+  },
+  "function:query.matches": {
+   "type": "function",
+   "name": "query.matches",
+   "meta": {
+    "file": "scripts/query.py"
+   }
+  },
+  "function:query.selftest": {
+   "type": "function",
+   "name": "query.selftest",
+   "meta": {
+    "file": "scripts/query.py"
+   }
+  },
+  "function:query.main": {
+   "type": "function",
+   "name": "query.main",
+   "meta": {
+    "file": "scripts/query.py"
+   }
+  },
+  "file:scripts/review.py": {
+   "type": "file",
+   "name": "scripts/review.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO review helper. Stdlib only."
+   }
+  },
+  "file:FLOW.md": {
+   "type": "file",
+   "name": "FLOW.md",
+   "meta": {
+    "path": "FLOW.md",
+    "note_type": "doc"
+   }
+  },
+  "function:review.load": {
+   "type": "function",
+   "name": "review.load",
+   "meta": {
+    "file": "scripts/review.py"
+   }
+  },
+  "function:review.stem": {
+   "type": "function",
+   "name": "review.stem",
+   "meta": {
+    "file": "scripts/review.py"
+   }
+  },
+  "function:review.orphans": {
+   "type": "function",
+   "name": "review.orphans",
+   "meta": {
+    "file": "scripts/review.py"
+   }
+  },
+  "function:review.stale": {
+   "type": "function",
+   "name": "review.stale",
+   "meta": {
+    "file": "scripts/review.py"
+   }
+  },
+  "function:review.selftest": {
+   "type": "function",
+   "name": "review.selftest",
+   "meta": {
+    "file": "scripts/review.py"
+   }
+  },
+  "function:review.main": {
+   "type": "function",
+   "name": "review.main",
+   "meta": {
+    "file": "scripts/review.py"
+   }
+  },
+  "file:scripts/skills.py": {
+   "type": "file",
+   "name": "scripts/skills.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO skill discovery engine. Stdlib only."
+   }
+  },
+  "file:SKILLS.md": {
+   "type": "file",
+   "name": "SKILLS.md",
+   "meta": {
+    "path": "SKILLS.md",
+    "note_type": "doc",
+    "summary": "Skill Discovery Engine spec \u2014 determines which skills load for a request, ordered, deduplicated, conflict-resolved.",
+    "tags": "core skills discovery runtime"
+   }
+  },
+  "function:skills.norm": {
+   "type": "function",
+   "name": "skills.norm",
+   "meta": {
+    "file": "scripts/skills.py"
+   }
+  },
+  "function:skills.scan_skills": {
+   "type": "function",
+   "name": "skills.scan_skills",
+   "meta": {
+    "file": "scripts/skills.py",
+    "doc": "Vault commands + external plugin skills, with their text."
+   }
+  },
+  "function:skills.score_skill": {
+   "type": "function",
+   "name": "skills.score_skill",
+   "meta": {
+    "file": "scripts/skills.py"
+   }
+  },
+  "function:skills.discover": {
+   "type": "function",
+   "name": "skills.discover",
+   "meta": {
+    "file": "scripts/skills.py"
+   }
+  },
+  "function:skills.selftest": {
+   "type": "function",
+   "name": "skills.selftest",
+   "meta": {
+    "file": "scripts/skills.py"
+   }
+  },
+  "function:skills.main": {
+   "type": "function",
+   "name": "skills.main",
+   "meta": {
+    "file": "scripts/skills.py"
+   }
+  },
+  "file:scripts/verifier.py": {
+   "type": "file",
+   "name": "scripts/verifier.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO verification engine. Stdlib only."
+   }
+  },
+  "file:VERIFIER.md": {
+   "type": "file",
+   "name": "VERIFIER.md",
+   "meta": {
+    "path": "VERIFIER.md",
+    "note_type": "doc",
+    "summary": "Verification Engine spec \u2014 eleven checks over every modification, confidence score, gated verdict before completion.",
+    "tags": "core verification runtime"
+   }
+  },
+  "function:verifier.sh": {
+   "type": "function",
+   "name": "verifier.sh",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.changed_files": {
+   "type": "function",
+   "name": "verifier.changed_files",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.local_imports": {
+   "type": "function",
+   "name": "verifier.local_imports",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.max_depth": {
+   "type": "function",
+   "name": "verifier.max_depth",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "class:verifier.Verifier": {
+   "type": "class",
+   "name": "verifier.Verifier",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.__init__": {
+   "type": "function",
+   "name": "verifier.Verifier.__init__",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.add": {
+   "type": "function",
+   "name": "verifier.Verifier.add",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.check_py": {
+   "type": "function",
+   "name": "verifier.Verifier.check_py",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier._imports": {
+   "type": "function",
+   "name": "verifier.Verifier._imports",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier._naming": {
+   "type": "function",
+   "name": "verifier.Verifier._naming",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier._complexity": {
+   "type": "function",
+   "name": "verifier.Verifier._complexity",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier._security": {
+   "type": "function",
+   "name": "verifier.Verifier._security",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier._performance": {
+   "type": "function",
+   "name": "verifier.Verifier._performance",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier._formatting": {
+   "type": "function",
+   "name": "verifier.Verifier._formatting",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier._documentation_py": {
+   "type": "function",
+   "name": "verifier.Verifier._documentation_py",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.check_md": {
+   "type": "function",
+   "name": "verifier.Verifier.check_md",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.check_architecture": {
+   "type": "function",
+   "name": "verifier.Verifier.check_architecture",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.check_dependency_graph": {
+   "type": "function",
+   "name": "verifier.Verifier.check_dependency_graph",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.check_regression": {
+   "type": "function",
+   "name": "verifier.Verifier.check_regression",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.check_tests": {
+   "type": "function",
+   "name": "verifier.Verifier.check_tests",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.run": {
+   "type": "function",
+   "name": "verifier.Verifier.run",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.Verifier.report": {
+   "type": "function",
+   "name": "verifier.Verifier.report",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.show": {
+   "type": "function",
+   "name": "verifier.show",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.save": {
+   "type": "function",
+   "name": "verifier.save",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.selftest": {
+   "type": "function",
+   "name": "verifier.selftest",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "function:verifier.main": {
+   "type": "function",
+   "name": "verifier.main",
+   "meta": {
+    "file": "scripts/verifier.py"
+   }
+  },
+  "file:CLAUDE.md": {
+   "type": "file",
+   "name": "ABSOLUTE ZERO \u2014 Master Instructions",
+   "meta": {
+    "path": "CLAUDE.md",
+    "note_type": "doc"
+   }
+  },
+  "project:ABSOLUTE_ZERO": {
+   "type": "project",
+   "name": "ABSOLUTE_ZERO",
+   "meta": {}
+  },
+  "file:DASHBOARD.md": {
+   "type": "file",
+   "name": "ABSOLUTE ZERO \u2014 Dashboard",
+   "meta": {
+    "path": "DASHBOARD.md",
+    "note_type": "doc",
+    "summary": "Obsidian Dataview dashboard \u2014 active goals, recent sessions, open faults, newest lessons.",
+    "tags": "meta dashboard"
+   }
+  },
+  "file:GUIDE.md": {
+   "type": "file",
+   "name": "ABSOLUTE ZERO \u2014 Build Guide",
+   "meta": {
+    "path": "GUIDE.md",
+    "note_type": "doc"
+   }
+  },
+  "file:00_CORE/ACTIVE_GOALS.md": {
+   "type": "file",
+   "name": "ACTIVE GOALS",
+   "meta": {
+    "path": "00_CORE/ACTIVE_GOALS.md",
+    "note_type": "core",
+    "summary": "Build-phase checklist for the vault itself; the live to-do the /wake command reads.",
+    "tags": "core goals"
+   }
+  },
+  "file:00_CORE/IDENTITY.md": {
+   "type": "file",
+   "name": "IDENTITY",
+   "meta": {
+    "path": "00_CORE/IDENTITY.md",
+    "note_type": "core",
+    "summary": "Vishnu's hardware, toolchain, and active projects \u2014 the fixed facts every session loads first.",
+    "tags": "core identity"
+   }
+  },
+  "file:00_CORE/PRINCIPLES.md": {
+   "type": "file",
+   "name": "PRINCIPLES",
+   "meta": {
+    "path": "00_CORE/PRINCIPLES.md",
+    "note_type": "core",
+    "summary": "Hard-won engineering rules; grows one entry at a time via the /review command.",
+    "tags": "core principles"
+   }
+  },
+  "file:20_KNOWLEDGE/coverage-planning.md": {
+   "type": "file",
+   "name": "Coverage & area planning",
+   "meta": {
+    "path": "20_KNOWLEDGE/coverage-planning.md",
+    "note_type": "knowledge",
+    "summary": "Mark the sensor footprint, not one cell; place features by clearance discs, skip on exhaustion.",
+    "tags": "knowledge navigation coverage mapping"
+   }
+  },
+  "file:20_KNOWLEDGE/debugging-silent-failures.md": {
+   "type": "file",
+   "name": "Debugging silent / hidden failures",
+   "meta": {
+    "path": "20_KNOWLEDGE/debugging-silent-failures.md",
+    "note_type": "knowledge",
+    "summary": "Failures that hide \u2014 check stderr, prefer bounded loops, never fall back silently.",
+    "tags": "knowledge debugging diagnostics reliability"
+   }
+  },
+  "file:20_KNOWLEDGE/gps-denied-localization.md": {
+   "type": "file",
+   "name": "GPS-denied localization",
+   "meta": {
+    "path": "20_KNOWLEDGE/gps-denied-localization.md",
+    "note_type": "knowledge",
+    "summary": "Dead-reckoning drifts unbounded; correct with periodic absolute fixes in an explicit anchored frame.",
+    "tags": "knowledge navigation localization state-estimation drift"
+   }
+  },
+  "experience:bounded-loop-over-unbounded-wait": {
+   "type": "experience",
+   "name": "Bounded loop beats a wait-for-condition",
+   "meta": {
+    "path": "30_LESSONS/bounded-loop-over-unbounded-wait.md",
+    "note_type": "lesson",
+    "summary": "Replicator orchestrator wait-for-frame deadlocked forever; a bounded update loop cannot hang.",
+    "tags": "lesson robotics reliability"
+   }
+  },
+  "project:ASUNAMA": {
+   "type": "project",
+   "name": "ASUNAMA",
+   "meta": {}
+  },
+  "experience:coordinate-frame-origin": {
+   "type": "experience",
+   "name": "\"Home\" is a named point, not (0,0)",
+   "meta": {
+    "path": "30_LESSONS/coordinate-frame-origin.md",
+    "note_type": "lesson",
+    "summary": "RTH checked distance to (0,0) but home was the base station; mission never completed.",
+    "tags": "lesson navigation localization coordinate-frames"
+   }
+  },
+  "experience:coverage-footprint-not-cell": {
+   "type": "experience",
+   "name": "Mark the sensor footprint, not one grid cell",
+   "meta": {
+    "path": "30_LESSONS/coverage-footprint-not-cell.md",
+    "note_type": "lesson",
+    "summary": "Single-cell coverage marking couldn't reach 95%; mark the camera footprint instead.",
+    "tags": "lesson navigation coverage mapping"
+   }
+  },
+  "experience:fail-loud-not-silent-fallback": {
+   "type": "experience",
+   "name": "Fail loud \u2014 a silent fallback hides the bug",
+   "meta": {
+    "path": "30_LESSONS/fail-loud-not-silent-fallback.md",
+    "note_type": "lesson",
+    "summary": "A sampler that silently placed features at the last spot on exhaustion caused overlaps; return None and skip.",
+    "tags": "lesson software reliability"
+   }
+  },
+  "experience:odometry-drift-absolute-fix": {
+   "type": "experience",
+   "name": "Optical-flow dead reckoning drifts \u2014 inject an absolute fix",
+   "meta": {
+    "path": "30_LESSONS/odometry-drift-absolute-fix.md",
+    "note_type": "lesson",
+    "summary": "Optical-flow dead reckoning drifted unbounded under wind; fixed with periodic absolute visual fixes.",
+    "tags": "lesson navigation localization state-estimation drift"
+   }
+  },
+  "experience:read-stderr-not-app-log": {
+   "type": "experience",
+   "name": "Read stderr, not the app's own log",
+   "meta": {
+    "path": "30_LESSONS/read-stderr-not-app-log.md",
+    "note_type": "lesson",
+    "summary": "The Isaac \"white box\" was a Python TypeError on stderr, not a GPU bug; the app log never showed it.",
+    "tags": "lesson debugging diagnostics"
+   }
+  },
+  "experience:retry-prefix-matching-in": {
+   "type": "experience",
+   "name": "retry: prefix matching in classify()",
+   "meta": {
+    "path": "30_LESSONS/retry-prefix-matching-in.md",
+    "note_type": "lesson",
+    "summary": "FAIL: selftest still red -> retry: prefix matching in classify()",
+    "tags": "quick-fix"
+   }
+  },
+  "file:40_RESEARCH/ardupilot-nongps-vision-params.md": {
+   "type": "file",
+   "name": "ArduPilot non-GPS vision positioning \u2014 parameters",
+   "meta": {
+    "path": "40_RESEARCH/ardupilot-nongps-vision-params.md",
+    "note_type": "research",
+    "summary": "ArduPilot non-GPS vision-positioning params \u2014 EK3_SRC1, VISO_TYPE, VISION_POSITION_ESTIMATE, EKF origin.",
+    "tags": "research drone navigation localization ardupilot"
+   }
+  },
+  "experience:FAULTS": {
+   "type": "experience",
+   "name": "ABSOLUTE ZERO \u2014 Faults",
+   "meta": {
+    "path": "10_PROJECTS/ASUNAMA/FAULTS.md",
+    "note_type": "fault",
+    "summary": "Real ASUNAMA faults \u2014 white box, headless deadlock, RTH frame bug, feature piling, coverage stall.",
+    "tags": "project faults drone isaac-sim navigation"
+   }
+  },
+  "file:10_PROJECTS/ASUNAMA/DECISIONS.md": {
+   "type": "file",
+   "name": "ASUNAMA \u2014 Decisions",
+   "meta": {
+    "path": "10_PROJECTS/ASUNAMA/DECISIONS.md",
+    "note_type": "decision",
+    "summary": "Key locked decisions \u2014 Isaac over Gazebo, absolute visual fix, base-station processing, USD-native materials.",
+    "tags": "project decisions drone navigation"
+   }
+  },
+  "file:10_PROJECTS/ASUNAMA/OVERVIEW.md": {
+   "type": "file",
+   "name": "ASUNAMA \u2014 Overview",
+   "meta": {
+    "path": "10_PROJECTS/ASUNAMA/OVERVIEW.md",
+    "note_type": "overview",
+    "summary": "IRoC-U 2026 GPS-denied autonomous survey drone; Isaac Sim arena + vision-anchored base-station nav.",
+    "tags": "project overview drone navigation isaac-sim"
+   }
+  },
+  "file:10_PROJECTS/ASUNAMA/RECENT.md": {
+   "type": "file",
+   "name": "ASUNAMA \u2014 Recent",
+   "meta": {
+    "path": "10_PROJECTS/ASUNAMA/RECENT.md",
+    "note_type": "recent",
+    "summary": "Sim mission verified; pre-flight items remain (ORB refs, FC params, Pi-0 relay, bench hover).",
+    "tags": "project recent drone"
+   }
+  },
+  "experience:2026-06-25": {
+   "type": "experience",
+   "name": "Session \u2014 2026-06-25",
+   "meta": {
+    "path": "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-25.md",
+    "note_type": "session",
+    "summary": "Root-caused the Isaac white box (PreviewSurfaceCfg TypeError) and headless deadlock; both fixed.",
+    "tags": "session drone isaac-sim"
+   }
+  },
+  "experience:2026-06-26": {
+   "type": "experience",
+   "name": "Session \u2014 2026-06-26",
+   "meta": {
+    "path": "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-26.md",
+    "note_type": "session",
+    "summary": "Full mission verified live (100% coverage, PRECLAND OK); fixed feature piling and RTH frame bug.",
+    "tags": "session drone navigation"
+   }
+  },
+  "experience:2026-06-27": {
+   "type": "experience",
+   "name": "Session \u2014 2026-06-27",
+   "meta": {
+    "path": "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-27.md",
+    "note_type": "session",
+    "summary": "Added absolute visual fix + base-station rearchitecture; full-mission validation hit the 95% bar.",
+    "tags": "session drone navigation localization"
+   }
+  },
+  "skill:predict": {
+   "type": "skill",
+   "name": "predict",
+   "meta": {}
+  },
+  "skill:recall": {
+   "type": "skill",
+   "name": "recall",
+   "meta": {}
+  },
+  "skill:research": {
+   "type": "skill",
+   "name": "research",
+   "meta": {}
+  },
+  "skill:review": {
+   "type": "skill",
+   "name": "review",
+   "meta": {}
+  },
+  "skill:sleep": {
+   "type": "skill",
+   "name": "sleep",
+   "meta": {}
+  },
+  "skill:task": {
+   "type": "skill",
+   "name": "task",
+   "meta": {}
+  },
+  "skill:wake": {
+   "type": "skill",
+   "name": "wake",
+   "meta": {}
+  },
+  "user:owner": {
+   "type": "user",
+   "name": "IDENTITY",
+   "meta": {
+    "path": "00_CORE/IDENTITY.md"
+   }
+  }
+ },
+ "edges": [
+  [
+   "class:agents.Blackboard",
+   "function:agents.Blackboard.__init__",
+   "related_to"
+  ],
+  [
+   "class:agents.Blackboard",
+   "function:agents.Blackboard.read",
+   "related_to"
+  ],
+  [
+   "class:agents.Blackboard",
+   "function:agents.Blackboard.snapshot",
+   "related_to"
+  ],
+  [
+   "class:agents.Blackboard",
+   "function:agents.Blackboard.write",
+   "related_to"
+  ],
+  [
+   "class:agents.Bus",
+   "function:agents.Bus.__init__",
+   "related_to"
+  ],
+  [
+   "class:agents.Bus",
+   "function:agents.Bus._inbox",
+   "related_to"
+  ],
+  [
+   "class:agents.Bus",
+   "function:agents.Bus.broadcast",
+   "related_to"
+  ],
+  [
+   "class:agents.Bus",
+   "function:agents.Bus.drain",
+   "related_to"
+  ],
+  [
+   "class:agents.Bus",
+   "function:agents.Bus.send",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph.__init__",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph._adj",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph._bfs_path",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph.add_edge",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph.add_node",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph.load",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph.neighbors",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph.path",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph.save",
+   "related_to"
+  ],
+  [
+   "class:graph.Graph",
+   "function:graph.Graph.search",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.__init__",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier._complexity",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier._documentation_py",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier._formatting",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier._imports",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier._naming",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier._performance",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier._security",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.add",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.check_architecture",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.check_dependency_graph",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.check_md",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.check_py",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.check_regression",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.check_tests",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.report",
+   "related_to"
+  ],
+  [
+   "class:verifier.Verifier",
+   "function:verifier.Verifier.run",
+   "related_to"
+  ],
+  [
+   "experience:2026-06-25",
+   "experience:bounded-loop-over-unbounded-wait",
+   "related_to"
+  ],
+  [
+   "experience:2026-06-25",
+   "experience:read-stderr-not-app-log",
+   "related_to"
+  ],
+  [
+   "experience:2026-06-25",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:2026-06-26",
+   "experience:coordinate-frame-origin",
+   "related_to"
+  ],
+  [
+   "experience:2026-06-26",
+   "experience:fail-loud-not-silent-fallback",
+   "related_to"
+  ],
+  [
+   "experience:2026-06-26",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:2026-06-27",
+   "experience:coverage-footprint-not-cell",
+   "related_to"
+  ],
+  [
+   "experience:2026-06-27",
+   "experience:odometry-drift-absolute-fix",
+   "related_to"
+  ],
+  [
+   "experience:2026-06-27",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "experience:bounded-loop-over-unbounded-wait",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "experience:coordinate-frame-origin",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "experience:coverage-footprint-not-cell",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "experience:fail-loud-not-silent-fallback",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "experience:read-stderr-not-app-log",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "file:20_KNOWLEDGE/coverage-planning.md",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "file:20_KNOWLEDGE/gps-denied-localization.md",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "experience:FAULTS",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:bounded-loop-over-unbounded-wait",
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "related_to"
+  ],
+  [
+   "experience:bounded-loop-over-unbounded-wait",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:coordinate-frame-origin",
+   "file:20_KNOWLEDGE/gps-denied-localization.md",
+   "related_to"
+  ],
+  [
+   "experience:coordinate-frame-origin",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:coverage-footprint-not-cell",
+   "file:20_KNOWLEDGE/coverage-planning.md",
+   "related_to"
+  ],
+  [
+   "experience:coverage-footprint-not-cell",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:fail-loud-not-silent-fallback",
+   "file:20_KNOWLEDGE/coverage-planning.md",
+   "related_to"
+  ],
+  [
+   "experience:fail-loud-not-silent-fallback",
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "related_to"
+  ],
+  [
+   "experience:fail-loud-not-silent-fallback",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:odometry-drift-absolute-fix",
+   "file:20_KNOWLEDGE/gps-denied-localization.md",
+   "related_to"
+  ],
+  [
+   "experience:odometry-drift-absolute-fix",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:read-stderr-not-app-log",
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "related_to"
+  ],
+  [
+   "experience:read-stderr-not-app-log",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:retry-prefix-matching-in",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:00_CORE/ACTIVE_GOALS.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:00_CORE/IDENTITY.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:00_CORE/PRINCIPLES.md",
+   "experience:bounded-loop-over-unbounded-wait",
+   "related_to"
+  ],
+  [
+   "file:00_CORE/PRINCIPLES.md",
+   "experience:fail-loud-not-silent-fallback",
+   "related_to"
+  ],
+  [
+   "file:00_CORE/PRINCIPLES.md",
+   "experience:read-stderr-not-app-log",
+   "related_to"
+  ],
+  [
+   "file:00_CORE/PRINCIPLES.md",
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "related_to"
+  ],
+  [
+   "file:00_CORE/PRINCIPLES.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/DECISIONS.md",
+   "experience:FAULTS",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/DECISIONS.md",
+   "experience:read-stderr-not-app-log",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/DECISIONS.md",
+   "file:20_KNOWLEDGE/gps-denied-localization.md",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/DECISIONS.md",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/OVERVIEW.md",
+   "experience:FAULTS",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/OVERVIEW.md",
+   "file:10_PROJECTS/ASUNAMA/DECISIONS.md",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/OVERVIEW.md",
+   "file:20_KNOWLEDGE/coverage-planning.md",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/OVERVIEW.md",
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/OVERVIEW.md",
+   "file:20_KNOWLEDGE/gps-denied-localization.md",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/OVERVIEW.md",
+   "file:40_RESEARCH/ardupilot-nongps-vision-params.md",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/OVERVIEW.md",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/RECENT.md",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "file:20_KNOWLEDGE/coverage-planning.md",
+   "experience:coverage-footprint-not-cell",
+   "related_to"
+  ],
+  [
+   "file:20_KNOWLEDGE/coverage-planning.md",
+   "experience:fail-loud-not-silent-fallback",
+   "related_to"
+  ],
+  [
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "experience:bounded-loop-over-unbounded-wait",
+   "related_to"
+  ],
+  [
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "experience:fail-loud-not-silent-fallback",
+   "related_to"
+  ],
+  [
+   "file:20_KNOWLEDGE/debugging-silent-failures.md",
+   "experience:read-stderr-not-app-log",
+   "related_to"
+  ],
+  [
+   "file:20_KNOWLEDGE/gps-denied-localization.md",
+   "experience:coordinate-frame-origin",
+   "related_to"
+  ],
+  [
+   "file:20_KNOWLEDGE/gps-denied-localization.md",
+   "experience:odometry-drift-absolute-fix",
+   "related_to"
+  ],
+  [
+   "file:40_RESEARCH/ardupilot-nongps-vision-params.md",
+   "file:20_KNOWLEDGE/gps-denied-localization.md",
+   "related_to"
+  ],
+  [
+   "file:40_RESEARCH/ardupilot-nongps-vision-params.md",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "file:CONTEXT.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:DASHBOARD.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:EXPERIENCE.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:ORCHESTRATOR.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:PLANNER.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:PLUGINS.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:PROMPTC.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:SKILLS.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:VERIFIER.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "class:agents.Blackboard",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "class:agents.Bus",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "file:AGENTS.md",
+   "implements"
+  ],
+  [
+   "file:scripts/agents.py",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/agents.py",
+   "file:scripts/orchestrator.py",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "file:scripts/planner.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/agents.py",
+   "file:scripts/planner.py",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "file:scripts/plugins.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/agents.py",
+   "file:scripts/plugins.py",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.architect_agent",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.compose",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.coordinator_agent",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.execute",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.implementer_agent",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.now",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.optimizer_agent",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.planner_agent",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.researcher_agent",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.reviewer_agent",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.show",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.show_workflow",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "function:agents.tester_agent",
+   "related_to"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:concurrent",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:graphlib",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:queue",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:subprocess",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:threading",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "library:time",
+   "imports"
+  ],
+  [
+   "file:scripts/agents.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "file:CONTEXT.md",
+   "implements"
+  ],
+  [
+   "file:scripts/context.py",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/context.py",
+   "file:scripts/orchestrator.py",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.build",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.compress",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.compress_history",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.dedup",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.est_tokens",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.jaccard",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.read_body",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.recency",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.score",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "function:context.show",
+   "related_to"
+  ],
+  [
+   "file:scripts/context.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
+   "library:difflib",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "file:EXPERIENCE.md",
+   "implements"
+  ],
+  [
+   "file:scripts/experience.py",
+   "file:scripts/context.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/experience.py",
+   "file:scripts/context.py",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/experience.py",
+   "file:scripts/orchestrator.py",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "file:scripts/promptc.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/experience.py",
+   "file:scripts/promptc.py",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.architectural_patterns",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.draft_lesson",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.dump_json",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.existing_lessons",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.harvest",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.lesson_pairs",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.load_json",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.nwords",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.recall",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.record_failure",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.reusable_code",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.secs",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.sim",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "function:experience.update_workflows",
+   "related_to"
+  ],
+  [
+   "file:scripts/experience.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "library:ast",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "library:difflib",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/experience.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "class:graph.Graph",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "file:GRAPH.md",
+   "implements"
+  ],
+  [
+   "file:scripts/graph.py",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/graph.py",
+   "file:scripts/orchestrator.py",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph._first_line",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph._foreign_class",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph._import_edge",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.build",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.extract_notes",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.extract_scripts",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.extract_skills",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.extract_user",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.load_notes",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.show_node",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "function:graph.show_stats",
+   "related_to"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:ast",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:collections",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:difflib",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/graph.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer._field",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer._selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer._title",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer.build",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer.iter_notes",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer.note_type",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer.parse_faults",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer.parse_frontmatter",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer.project_of",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "function:indexer.write_outputs",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/indexer.py",
+   "skill:sleep",
+   "used_by"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:ORCHESTRATOR.md",
+   "implements"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.allowed_states",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.classify",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.close",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.known_tags",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.load_trace",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.log",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.now",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.plan",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.save_trace",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.similarity",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.words_of",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "library:difflib",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "skill:task",
+   "used_by"
+  ],
+  [
+   "file:scripts/planner.py",
+   "file:PLANNER.md",
+   "implements"
+  ],
+  [
+   "file:scripts/planner.py",
+   "file:scripts/context.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/planner.py",
+   "file:scripts/context.py",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/planner.py",
+   "file:scripts/orchestrator.py",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "file:scripts/plugins.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/planner.py",
+   "file:scripts/plugins.py",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "function:planner.bind_plugins",
+   "related_to"
+  ],
+  [
+   "file:scripts/planner.py",
+   "function:planner.build",
+   "related_to"
+  ],
+  [
+   "file:scripts/planner.py",
+   "function:planner.decompose",
+   "related_to"
+  ],
+  [
+   "file:scripts/planner.py",
+   "function:planner.git_baseline",
+   "related_to"
+  ],
+  [
+   "file:scripts/planner.py",
+   "function:planner.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/planner.py",
+   "function:planner.mine_risks",
+   "related_to"
+  ],
+  [
+   "file:scripts/planner.py",
+   "function:planner.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/planner.py",
+   "function:planner.show",
+   "related_to"
+  ],
+  [
+   "file:scripts/planner.py",
+   "function:planner.validate",
+   "related_to"
+  ],
+  [
+   "file:scripts/planner.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "library:graphlib",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "library:subprocess",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/planner.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "file:PLUGINS.md",
+   "implements"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "file:scripts/orchestrator.py",
+   "imports"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.caps_from_text",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.execute",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.latency_class",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.load_registry",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.load_stats",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.probe",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.record",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.reliability",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.route",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.scan",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.scan_commands",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.scan_external",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.scan_scripts",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.score",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "function:plugins.show_list",
+   "related_to"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "library:subprocess",
+   "imports"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "library:time",
+   "imports"
+  ],
+  [
+   "file:scripts/plugins.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "file:PROMPTC.md",
+   "implements"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "file:scripts/context.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "file:scripts/context.py",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "file:scripts/orchestrator.py",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "file:scripts/plugins.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "file:scripts/plugins.py",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc._index_notes",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.compile_prompt",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.dedup_lines",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.few_shot",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.render_context",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.save",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.stem",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.tool_lines",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "function:promptc.validate",
+   "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/query.py",
+   "function:query.load",
+   "related_to"
+  ],
+  [
+   "file:scripts/query.py",
+   "function:query.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/query.py",
+   "function:query.matches",
+   "related_to"
+  ],
+  [
+   "file:scripts/query.py",
+   "function:query.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/query.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/query.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/query.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/query.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/query.py",
+   "skill:recall",
+   "used_by"
+  ],
+  [
+   "file:scripts/review.py",
+   "file:FLOW.md",
+   "implements"
+  ],
+  [
+   "file:scripts/review.py",
+   "function:review.load",
+   "related_to"
+  ],
+  [
+   "file:scripts/review.py",
+   "function:review.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/review.py",
+   "function:review.orphans",
+   "related_to"
+  ],
+  [
+   "file:scripts/review.py",
+   "function:review.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/review.py",
+   "function:review.stale",
+   "related_to"
+  ],
+  [
+   "file:scripts/review.py",
+   "function:review.stem",
+   "related_to"
+  ],
+  [
+   "file:scripts/review.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/review.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/review.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/review.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/review.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/review.py",
+   "skill:review",
+   "used_by"
+  ],
+  [
+   "file:scripts/skills.py",
+   "file:SKILLS.md",
+   "implements"
+  ],
+  [
+   "file:scripts/skills.py",
+   "file:scripts/context.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/skills.py",
+   "file:scripts/context.py",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/skills.py",
+   "file:scripts/orchestrator.py",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "file:scripts/plugins.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/skills.py",
+   "file:scripts/plugins.py",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "file:scripts/promptc.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/skills.py",
+   "file:scripts/promptc.py",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "function:skills.discover",
+   "related_to"
+  ],
+  [
+   "file:scripts/skills.py",
+   "function:skills.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/skills.py",
+   "function:skills.norm",
+   "related_to"
+  ],
+  [
+   "file:scripts/skills.py",
+   "function:skills.scan_skills",
+   "related_to"
+  ],
+  [
+   "file:scripts/skills.py",
+   "function:skills.score_skill",
+   "related_to"
+  ],
+  [
+   "file:scripts/skills.py",
+   "function:skills.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/skills.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "library:difflib",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/skills.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "class:verifier.Verifier",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "file:VERIFIER.md",
+   "implements"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "function:verifier.changed_files",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "function:verifier.local_imports",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "function:verifier.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "function:verifier.max_depth",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "function:verifier.save",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "function:verifier.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "function:verifier.sh",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "function:verifier.show",
+   "related_to"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:ast",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:graphlib",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:subprocess",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/verifier.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "function:agents.Blackboard.write",
+   "function:agents.now",
+   "calls"
+  ],
+  [
+   "function:agents.Bus.send",
+   "function:agents.now",
+   "calls"
+  ],
+  [
+   "function:agents.compose",
+   "function:orchestrator.classify",
+   "calls"
+  ],
+  [
+   "function:agents.compose",
+   "function:planner.decompose",
+   "calls"
+  ],
+  [
+   "function:agents.execute",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:agents.implementer_agent",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:agents.implementer_agent",
+   "function:plugins.route",
+   "calls"
+  ],
+  [
+   "function:agents.main",
+   "function:agents.compose",
+   "calls"
+  ],
+  [
+   "function:agents.main",
+   "function:agents.execute",
+   "calls"
+  ],
+  [
+   "function:agents.main",
+   "function:agents.selftest",
+   "calls"
+  ],
+  [
+   "function:agents.main",
+   "function:agents.show",
+   "calls"
+  ],
+  [
+   "function:agents.main",
+   "function:agents.show_workflow",
+   "calls"
+  ],
+  [
+   "function:agents.planner_agent",
+   "function:planner.build",
+   "calls"
+  ],
+  [
+   "function:agents.researcher_agent",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:agents.researcher_agent",
+   "function:planner.mine_risks",
+   "calls"
+  ],
+  [
+   "function:agents.selftest",
+   "function:agents.compose",
+   "calls"
+  ],
+  [
+   "function:agents.selftest",
+   "function:agents.execute",
+   "calls"
+  ],
+  [
+   "function:context.build",
+   "function:context.compress",
+   "calls"
+  ],
+  [
+   "function:context.build",
+   "function:context.compress_history",
+   "calls"
+  ],
+  [
+   "function:context.build",
+   "function:context.dedup",
+   "calls"
+  ],
+  [
+   "function:context.build",
+   "function:context.est_tokens",
+   "calls"
+  ],
+  [
+   "function:context.build",
+   "function:context.read_body",
+   "calls"
+  ],
+  [
+   "function:context.build",
+   "function:context.score",
+   "calls"
+  ],
+  [
+   "function:context.build",
+   "function:orchestrator.classify",
+   "calls"
+  ],
+  [
+   "function:context.build",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:context.compress",
+   "function:context.est_tokens",
+   "calls"
+  ],
+  [
+   "function:context.compress",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:context.compress_history",
+   "function:context.est_tokens",
+   "calls"
+  ],
+  [
+   "function:context.compress_history",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:context.dedup",
+   "function:context.jaccard",
+   "calls"
+  ],
+  [
+   "function:context.dedup",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:context.main",
+   "function:context.build",
+   "calls"
+  ],
+  [
+   "function:context.main",
+   "function:context.selftest",
+   "calls"
+  ],
+  [
+   "function:context.main",
+   "function:context.show",
+   "calls"
+  ],
+  [
+   "function:context.score",
+   "function:context.jaccard",
+   "calls"
+  ],
+  [
+   "function:context.score",
+   "function:context.recency",
+   "calls"
+  ],
+  [
+   "function:context.score",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:context.selftest",
+   "function:context.build",
+   "calls"
+  ],
+  [
+   "function:experience.draft_lesson",
+   "function:experience.existing_lessons",
+   "calls"
+  ],
+  [
+   "function:experience.draft_lesson",
+   "function:experience.sim",
+   "calls"
+  ],
+  [
+   "function:experience.draft_lesson",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:experience.harvest",
+   "function:experience.architectural_patterns",
+   "calls"
+  ],
+  [
+   "function:experience.harvest",
+   "function:experience.draft_lesson",
+   "calls"
+  ],
+  [
+   "function:experience.harvest",
+   "function:experience.dump_json",
+   "calls"
+  ],
+  [
+   "function:experience.harvest",
+   "function:experience.lesson_pairs",
+   "calls"
+  ],
+  [
+   "function:experience.harvest",
+   "function:experience.load_json",
+   "calls"
+  ],
+  [
+   "function:experience.harvest",
+   "function:experience.record_failure",
+   "calls"
+  ],
+  [
+   "function:experience.harvest",
+   "function:experience.reusable_code",
+   "calls"
+  ],
+  [
+   "function:experience.harvest",
+   "function:experience.update_workflows",
+   "calls"
+  ],
+  [
+   "function:experience.main",
+   "function:experience.harvest",
+   "calls"
+  ],
+  [
+   "function:experience.main",
+   "function:experience.recall",
+   "calls"
+  ],
+  [
+   "function:experience.main",
+   "function:experience.selftest",
+   "calls"
+  ],
+  [
+   "function:experience.nwords",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:experience.nwords",
+   "function:promptc.stem",
+   "calls"
+  ],
+  [
+   "function:experience.recall",
+   "function:experience.load_json",
+   "calls"
+  ],
+  [
+   "function:experience.recall",
+   "function:experience.sim",
+   "calls"
+  ],
+  [
+   "function:experience.selftest",
+   "function:experience.dump_json",
+   "calls"
+  ],
+  [
+   "function:experience.selftest",
+   "function:experience.harvest",
+   "calls"
+  ],
+  [
+   "function:experience.selftest",
+   "function:experience.load_json",
+   "calls"
+  ],
+  [
+   "function:experience.selftest",
+   "function:experience.recall",
+   "calls"
+  ],
+  [
+   "function:experience.sim",
+   "function:context.jaccard",
+   "calls"
+  ],
+  [
+   "function:experience.sim",
+   "function:experience.nwords",
+   "calls"
+  ],
+  [
+   "function:experience.update_workflows",
+   "function:experience.secs",
+   "calls"
+  ],
+  [
+   "function:graph.Graph.search",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:graph.build",
+   "function:graph.extract_notes",
+   "calls"
+  ],
+  [
+   "function:graph.build",
+   "function:graph.extract_scripts",
+   "calls"
+  ],
+  [
+   "function:graph.build",
+   "function:graph.extract_skills",
+   "calls"
+  ],
+  [
+   "function:graph.build",
+   "function:graph.extract_user",
+   "calls"
+  ],
+  [
+   "function:graph.extract_notes",
+   "function:graph.load_notes",
+   "calls"
+  ],
+  [
+   "function:graph.extract_scripts",
+   "function:graph._first_line",
+   "calls"
+  ],
+  [
+   "function:graph.extract_scripts",
+   "function:graph._foreign_class",
+   "calls"
+  ],
+  [
+   "function:graph.extract_scripts",
+   "function:graph._import_edge",
+   "calls"
+  ],
+  [
+   "function:graph.main",
+   "function:graph.build",
+   "calls"
+  ],
+  [
+   "function:graph.main",
+   "function:graph.selftest",
+   "calls"
+  ],
+  [
+   "function:graph.main",
+   "function:graph.show_node",
+   "calls"
+  ],
+  [
+   "function:graph.main",
+   "function:graph.show_stats",
+   "calls"
+  ],
+  [
+   "function:graph.selftest",
+   "function:graph.build",
+   "calls"
+  ],
+  [
+   "function:indexer._selftest",
+   "function:indexer._field",
+   "calls"
+  ],
+  [
+   "function:indexer._selftest",
+   "function:indexer.parse_frontmatter",
+   "calls"
+  ],
+  [
+   "function:indexer.build",
+   "function:indexer._title",
+   "calls"
+  ],
+  [
+   "function:indexer.build",
+   "function:indexer.iter_notes",
+   "calls"
+  ],
+  [
+   "function:indexer.build",
+   "function:indexer.note_type",
+   "calls"
+  ],
+  [
+   "function:indexer.build",
+   "function:indexer.parse_faults",
+   "calls"
+  ],
+  [
+   "function:indexer.build",
+   "function:indexer.parse_frontmatter",
+   "calls"
+  ],
+  [
+   "function:indexer.build",
+   "function:indexer.project_of",
+   "calls"
+  ],
+  [
+   "function:indexer.main",
+   "function:indexer._selftest",
+   "calls"
+  ],
+  [
+   "function:indexer.main",
+   "function:indexer.build",
+   "calls"
+  ],
+  [
+   "function:indexer.main",
+   "function:indexer.write_outputs",
+   "calls"
+  ],
+  [
+   "function:indexer.parse_faults",
+   "function:indexer._field",
+   "calls"
+  ],
+  [
+   "function:orchestrator.classify",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:orchestrator.close",
+   "function:orchestrator.load_trace",
+   "calls"
+  ],
+  [
+   "function:orchestrator.close",
+   "function:orchestrator.now",
+   "calls"
+  ],
+  [
+   "function:orchestrator.close",
+   "function:orchestrator.save_trace",
+   "calls"
+  ],
+  [
+   "function:orchestrator.log",
+   "function:orchestrator.allowed_states",
+   "calls"
+  ],
+  [
+   "function:orchestrator.log",
+   "function:orchestrator.load_trace",
+   "calls"
+  ],
+  [
+   "function:orchestrator.log",
+   "function:orchestrator.now",
+   "calls"
+  ],
+  [
+   "function:orchestrator.log",
+   "function:orchestrator.save_trace",
+   "calls"
+  ],
+  [
+   "function:orchestrator.main",
+   "function:orchestrator.close",
+   "calls"
+  ],
+  [
+   "function:orchestrator.main",
+   "function:orchestrator.log",
+   "calls"
+  ],
+  [
+   "function:orchestrator.main",
+   "function:orchestrator.plan",
+   "calls"
+  ],
+  [
+   "function:orchestrator.main",
+   "function:orchestrator.selftest",
+   "calls"
+  ],
+  [
+   "function:orchestrator.main",
+   "function:orchestrator.similarity",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
+   "function:orchestrator.classify",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
+   "function:orchestrator.known_tags",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
+   "function:orchestrator.now",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
+   "function:orchestrator.save_trace",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:orchestrator.selftest",
+   "function:orchestrator.classify",
+   "calls"
+  ],
+  [
+   "function:orchestrator.selftest",
+   "function:orchestrator.close",
+   "calls"
+  ],
+  [
+   "function:orchestrator.selftest",
+   "function:orchestrator.load_trace",
+   "calls"
+  ],
+  [
+   "function:orchestrator.selftest",
+   "function:orchestrator.log",
+   "calls"
+  ],
+  [
+   "function:orchestrator.selftest",
+   "function:orchestrator.plan",
+   "calls"
+  ],
+  [
+   "function:orchestrator.similarity",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:planner.bind_plugins",
+   "function:plugins.load_registry",
+   "calls"
+  ],
+  [
+   "function:planner.bind_plugins",
+   "function:plugins.load_stats",
+   "calls"
+  ],
+  [
+   "function:planner.bind_plugins",
+   "function:plugins.score",
+   "calls"
+  ],
+  [
+   "function:planner.build",
+   "function:orchestrator.classify",
+   "calls"
+  ],
+  [
+   "function:planner.build",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:planner.build",
+   "function:planner.bind_plugins",
+   "calls"
+  ],
+  [
+   "function:planner.build",
+   "function:planner.decompose",
+   "calls"
+  ],
+  [
+   "function:planner.build",
+   "function:planner.git_baseline",
+   "calls"
+  ],
+  [
+   "function:planner.build",
+   "function:planner.mine_risks",
+   "calls"
+  ],
+  [
+   "function:planner.build",
+   "function:planner.validate",
+   "calls"
+  ],
+  [
+   "function:planner.decompose",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:planner.main",
+   "function:planner.build",
+   "calls"
+  ],
+  [
+   "function:planner.main",
+   "function:planner.selftest",
+   "calls"
+  ],
+  [
+   "function:planner.main",
+   "function:planner.show",
+   "calls"
+  ],
+  [
+   "function:planner.main",
+   "function:planner.validate",
+   "calls"
+  ],
+  [
+   "function:planner.mine_risks",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:planner.selftest",
+   "function:planner.build",
+   "calls"
+  ],
+  [
+   "function:planner.selftest",
+   "function:planner.decompose",
+   "calls"
+  ],
+  [
+   "function:planner.selftest",
+   "function:planner.validate",
+   "calls"
+  ],
+  [
+   "function:plugins.execute",
+   "function:plugins.load_registry",
+   "calls"
+  ],
+  [
+   "function:plugins.execute",
+   "function:plugins.record",
+   "calls"
+  ],
+  [
+   "function:plugins.main",
+   "function:plugins.execute",
+   "calls"
+  ],
+  [
+   "function:plugins.main",
+   "function:plugins.record",
+   "calls"
+  ],
+  [
+   "function:plugins.main",
+   "function:plugins.route",
+   "calls"
+  ],
+  [
+   "function:plugins.main",
+   "function:plugins.scan",
+   "calls"
+  ],
+  [
+   "function:plugins.main",
+   "function:plugins.selftest",
+   "calls"
+  ],
+  [
+   "function:plugins.main",
+   "function:plugins.show_list",
+   "calls"
+  ],
+  [
+   "function:plugins.record",
+   "function:plugins.load_stats",
+   "calls"
+  ],
+  [
+   "function:plugins.route",
+   "function:orchestrator.classify",
+   "calls"
+  ],
+  [
+   "function:plugins.route",
+   "function:plugins.caps_from_text",
+   "calls"
+  ],
+  [
+   "function:plugins.route",
+   "function:plugins.load_registry",
+   "calls"
+  ],
+  [
+   "function:plugins.route",
+   "function:plugins.load_stats",
+   "calls"
+  ],
+  [
+   "function:plugins.route",
+   "function:plugins.score",
+   "calls"
+  ],
+  [
+   "function:plugins.scan",
+   "function:plugins.probe",
+   "calls"
+  ],
+  [
+   "function:plugins.scan",
+   "function:plugins.scan_commands",
+   "calls"
+  ],
+  [
+   "function:plugins.scan",
+   "function:plugins.scan_external",
+   "calls"
+  ],
+  [
+   "function:plugins.scan",
+   "function:plugins.scan_scripts",
+   "calls"
+  ],
+  [
+   "function:plugins.scan_commands",
+   "function:plugins.caps_from_text",
+   "calls"
+  ],
+  [
+   "function:plugins.scan_external",
+   "function:plugins.caps_from_text",
+   "calls"
+  ],
+  [
+   "function:plugins.scan_scripts",
+   "function:plugins.caps_from_text",
+   "calls"
+  ],
+  [
+   "function:plugins.score",
+   "function:plugins.latency_class",
+   "calls"
+  ],
+  [
+   "function:plugins.score",
+   "function:plugins.reliability",
+   "calls"
+  ],
+  [
+   "function:plugins.selftest",
+   "function:plugins.execute",
+   "calls"
+  ],
+  [
+   "function:plugins.selftest",
+   "function:plugins.load_stats",
+   "calls"
+  ],
+  [
+   "function:plugins.selftest",
+   "function:plugins.record",
+   "calls"
+  ],
+  [
+   "function:plugins.selftest",
+   "function:plugins.reliability",
+   "calls"
+  ],
+  [
+   "function:plugins.selftest",
+   "function:plugins.route",
+   "calls"
+  ],
+  [
+   "function:plugins.selftest",
+   "function:plugins.scan",
+   "calls"
+  ],
+  [
+   "function:plugins.selftest",
+   "function:plugins.score",
+   "calls"
+  ],
+  [
+   "function:plugins.show_list",
+   "function:plugins.load_registry",
+   "calls"
+  ],
+  [
+   "function:plugins.show_list",
+   "function:plugins.load_stats",
+   "calls"
+  ],
+  [
+   "function:plugins.show_list",
+   "function:plugins.reliability",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:context.build",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:context.est_tokens",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:orchestrator.classify",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:promptc._index_notes",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:promptc.dedup_lines",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:promptc.few_shot",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:promptc.render_context",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:promptc.tool_lines",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:promptc.validate",
+   "calls"
+  ],
+  [
+   "function:promptc.dedup_lines",
+   "function:context.jaccard",
+   "calls"
+  ],
+  [
+   "function:promptc.dedup_lines",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:promptc.dedup_lines",
+   "function:promptc.stem",
+   "calls"
+  ],
+  [
+   "function:promptc.few_shot",
+   "function:context.jaccard",
+   "calls"
+  ],
+  [
+   "function:promptc.few_shot",
+   "function:context.read_body",
+   "calls"
+  ],
+  [
+   "function:promptc.few_shot",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:promptc.main",
+   "function:promptc.compile_prompt",
+   "calls"
+  ],
+  [
+   "function:promptc.main",
+   "function:promptc.save",
+   "calls"
+  ],
+  [
+   "function:promptc.main",
+   "function:promptc.selftest",
+   "calls"
+  ],
+  [
+   "function:promptc.selftest",
+   "function:promptc.compile_prompt",
+   "calls"
+  ],
+  [
+   "function:promptc.selftest",
+   "function:promptc.dedup_lines",
+   "calls"
+  ],
+  [
+   "function:promptc.selftest",
+   "function:promptc.validate",
+   "calls"
+  ],
+  [
+   "function:promptc.tool_lines",
+   "function:plugins.route",
+   "calls"
+  ],
+  [
+   "function:promptc.validate",
+   "function:context.est_tokens",
+   "calls"
+  ],
+  [
+   "function:query.main",
+   "function:query.load",
+   "calls"
+  ],
+  [
+   "function:query.main",
+   "function:query.matches",
+   "calls"
+  ],
+  [
+   "function:query.main",
+   "function:query.selftest",
+   "calls"
+  ],
+  [
+   "function:query.selftest",
+   "function:query.matches",
+   "calls"
+  ],
+  [
+   "function:review.main",
+   "function:review.load",
+   "calls"
+  ],
+  [
+   "function:review.main",
+   "function:review.orphans",
+   "calls"
+  ],
+  [
+   "function:review.main",
+   "function:review.selftest",
+   "calls"
+  ],
+  [
+   "function:review.main",
+   "function:review.stale",
+   "calls"
+  ],
+  [
+   "function:review.orphans",
+   "function:review.stem",
+   "calls"
+  ],
+  [
+   "function:review.selftest",
+   "function:review.orphans",
+   "calls"
+  ],
+  [
+   "function:review.selftest",
+   "function:review.stale",
+   "calls"
+  ],
+  [
+   "function:review.selftest",
+   "function:review.stem",
+   "calls"
+  ],
+  [
+   "function:skills.discover",
+   "function:orchestrator.classify",
+   "calls"
+  ],
+  [
+   "function:skills.discover",
+   "function:skills.norm",
+   "calls"
+  ],
+  [
+   "function:skills.discover",
+   "function:skills.scan_skills",
+   "calls"
+  ],
+  [
+   "function:skills.discover",
+   "function:skills.score_skill",
+   "calls"
+  ],
+  [
+   "function:skills.main",
+   "function:skills.discover",
+   "calls"
+  ],
+  [
+   "function:skills.main",
+   "function:skills.selftest",
+   "calls"
+  ],
+  [
+   "function:skills.norm",
+   "function:orchestrator.words_of",
+   "calls"
+  ],
+  [
+   "function:skills.norm",
+   "function:promptc.stem",
+   "calls"
+  ],
+  [
+   "function:skills.score_skill",
+   "function:plugins.caps_from_text",
+   "calls"
+  ],
+  [
+   "function:skills.score_skill",
+   "function:skills.norm",
+   "calls"
+  ],
+  [
+   "function:skills.selftest",
+   "function:skills.discover",
+   "calls"
+  ],
+  [
+   "function:verifier.Verifier._complexity",
+   "function:verifier.max_depth",
+   "calls"
+  ],
+  [
+   "function:verifier.Verifier.check_dependency_graph",
+   "function:verifier.local_imports",
+   "calls"
+  ],
+  [
+   "function:verifier.changed_files",
+   "function:verifier.sh",
+   "calls"
+  ],
+  [
+   "function:verifier.main",
+   "function:verifier.changed_files",
+   "calls"
+  ],
+  [
+   "function:verifier.main",
+   "function:verifier.save",
+   "calls"
+  ],
+  [
+   "function:verifier.main",
+   "function:verifier.selftest",
+   "calls"
+  ],
+  [
+   "function:verifier.main",
+   "function:verifier.show",
+   "calls"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/experience.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/indexer.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/orchestrator.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/planner.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/promptc.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/query.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/review.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/skills.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:ast",
+   "file:scripts/experience.py",
+   "used_by"
+  ],
+  [
+   "library:ast",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:ast",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:collections",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:concurrent",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/experience.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/indexer.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/orchestrator.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/planner.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/promptc.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/review.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:difflib",
+   "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:difflib",
+   "file:scripts/experience.py",
+   "used_by"
+  ],
+  [
+   "library:difflib",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:difflib",
+   "file:scripts/orchestrator.py",
+   "used_by"
+  ],
+  [
+   "library:difflib",
+   "file:scripts/skills.py",
+   "used_by"
+  ],
+  [
+   "library:graphlib",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:graphlib",
+   "file:scripts/planner.py",
+   "used_by"
+  ],
+  [
+   "library:graphlib",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/experience.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/indexer.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/orchestrator.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/planner.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/promptc.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/query.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/review.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/skills.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/experience.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/indexer.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/orchestrator.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/planner.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/promptc.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/query.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/review.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/skills.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:queue",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/experience.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/indexer.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/orchestrator.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/planner.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/promptc.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/skills.py",
+   "used_by"
+  ],
+  [
+   "library:re",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:subprocess",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:subprocess",
+   "file:scripts/planner.py",
+   "used_by"
+  ],
+  [
+   "library:subprocess",
+   "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:subprocess",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/experience.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/planner.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/promptc.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/skills.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/experience.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/orchestrator.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/planner.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/promptc.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/skills.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:threading",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:time",
+   "file:scripts/agents.py",
+   "used_by"
+  ],
+  [
+   "library:time",
+   "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:argparse",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:ast",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:collections",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:concurrent",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:datetime",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:difflib",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:graphlib",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:json",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:pathlib",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:queue",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:re",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:subprocess",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:sys",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:tempfile",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:threading",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:time",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "user:owner",
+   "used_by"
+  ],
+  [
+   "project:ABSOLUTE_ZERO",
+   "user:owner",
+   "used_by"
+  ],
+  [
+   "project:ASUNAMA",
+   "user:owner",
+   "used_by"
+  ],
+  [
+   "skill:recall",
+   "file:scripts/query.py",
+   "depends_on"
+  ],
+  [
+   "skill:review",
+   "file:scripts/review.py",
+   "depends_on"
+  ],
+  [
+   "skill:sleep",
+   "file:scripts/indexer.py",
+   "depends_on"
+  ],
+  [
+   "skill:task",
+   "file:scripts/orchestrator.py",
+   "depends_on"
+  ]
+ ]
+}

@@ -1,0 +1,147 @@
+{
+ "t": "2026-07-11T20:05:45",
+ "files": [
+  "90_META/GRAPH.json",
+  "90_META/INDEX.json",
+  "90_META/INDEX_SUMMARY.md",
+  "90_META/traces/2026-07-11-implement-a-knowledge-graph-with.json",
+  "FLOW.md",
+  "GRAPH.md",
+  "scripts/graph.py",
+  "scripts/indexer.py",
+  "scripts/verifier.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 70,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "577 lines (> 500)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "extract_scripts(): 77 statements (> 60)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "extract_scripts(): nesting depth 6 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "main(): 62 statements (> 60)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "main(): nesting depth 6 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "report(): nesting depth 5 (> 4)"
+   }
+  ],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L193: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L317: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L315: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L361: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L363: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L317: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L315: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L363: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L93: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L127: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L260: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L262: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L291: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L289: read_text() inside a loop"
+   }
+  ],
+  "formatting": [],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/graph.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/verifier.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

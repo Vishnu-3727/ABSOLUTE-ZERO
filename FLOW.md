@@ -12,6 +12,8 @@
 2. Script returns titles + summaries + paths only.
 3. Shortlist max 3 relevant hits. Read only matching sections via grep/sed.
 4. Report findings with file-path citations. If zero hits: say "not in vault."
+5. Structural questions (what calls X, what depends on Y, path between
+   two things): python scripts/graph.py search|neighbors|path (GRAPH.md).
 
 ## /task <request>  (workflow orchestrator — the default work entry)
 Every user request that produces a work product routes through this; bare
@@ -65,7 +67,8 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
 5. Update ACTIVE_GOALS.md if goals changed.
 6. Run scripts/experience.py harvest (extract lessons/workflows/patterns
    from the session's closed traces), then scripts/indexer.py
-   (rebuilds INDEX.json, INDEX_SUMMARY.md, FAULT_LEDGER.md).
+   (rebuilds INDEX.json, INDEX_SUMMARY.md, FAULT_LEDGER.md), then
+   scripts/graph.py build (knowledge graph feeds on INDEX.json).
 7. git add -A && git commit -m "sleep: <proj> <date>"
 
 ## /research <topic>

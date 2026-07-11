@@ -1,9 +1,9 @@
 {
  "feature": {
-  "runs": 5,
-  "pass": 5,
+  "runs": 6,
+  "pass": 6,
   "retries": 0,
-  "seconds": 1385,
+  "seconds": 1424,
   "pipeline": [
    "RECALL",
    "PLAN",
@@ -12,11 +12,11 @@
    "SUMMARIZE"
   ],
   "examples": [
-   "2026-07-11-design-and-implement-a-context",
    "2026-07-11-design-and-implement-a-planning",
    "2026-07-11-design-and-implement-a-plugin",
    "2026-07-11-design-and-implement-a-verification",
-   "2026-07-11-implement-an-experience-learning-engine"
+   "2026-07-11-implement-an-experience-learning-engine",
+   "2026-07-11-implement-a-knowledge-graph-with"
   ]
  },
  "performance": {

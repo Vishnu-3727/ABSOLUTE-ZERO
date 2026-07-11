@@ -89,6 +89,18 @@
       "links": []
     },
     {
+      "path": "GRAPH.md",
+      "type": "doc",
+      "project": "-",
+      "tags": [],
+      "title": "GRAPH — Knowledge Graph",
+      "summary": "",
+      "status": "",
+      "confidence": "",
+      "date": "",
+      "links": []
+    },
+    {
       "path": "GUIDE.md",
       "type": "doc",
       "project": "-",

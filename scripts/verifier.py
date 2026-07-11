@@ -44,7 +44,7 @@ ARTIFACT_DIRS = {"90_META/traces", "90_META/plans", "90_META/verify",
                  "90_META/runs"}
 # Generated files living directly in 90_META (indexer output).
 ARTIFACT_FILES = {"90_META/INDEX_SUMMARY.md", "90_META/FAULT_LEDGER.md",
-                  "90_META/INDEX.json"}
+                  "90_META/INDEX.json", "90_META/GRAPH.json"}
 SEC_PATTERNS = [
     (r"(?i)(password|passwd|secret|token|api_key)\s*=\s*[\"'][^\"']{4,}",
      "hardcoded credential"),  # verifier:ignore
