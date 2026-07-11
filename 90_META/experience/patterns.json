@@ -1,0 +1,110 @@
+{
+ "selftest-guard": {
+  "description": "every script carries a runnable self-check",
+  "scripts": [
+   "context.py",
+   "experience.py",
+   "indexer.py",
+   "orchestrator.py",
+   "planner.py",
+   "plugins.py",
+   "promptc.py",
+   "query.py",
+   "review.py",
+   "skills.py",
+   "verifier.py"
+  ],
+  "count": 11
+ },
+ "docstring-contract": {
+  "description": "shebang + docstring states the contract and usage up top",
+  "scripts": [
+   "context.py",
+   "experience.py",
+   "indexer.py",
+   "orchestrator.py",
+   "planner.py",
+   "plugins.py",
+   "promptc.py",
+   "query.py",
+   "review.py",
+   "skills.py",
+   "verifier.py"
+  ],
+  "count": 11
+ },
+ "data-table-config": {
+  "description": "behavior encoded in module-level data tables, not branches",
+  "scripts": [
+   "context.py",
+   "experience.py",
+   "indexer.py",
+   "orchestrator.py",
+   "planner.py",
+   "plugins.py",
+   "promptc.py",
+   "review.py",
+   "skills.py",
+   "verifier.py"
+  ],
+  "count": 10
+ },
+ "artifact-dir": {
+  "description": "runtime artifacts live under 90_META, committed, never indexed",
+  "scripts": [
+   "context.py",
+   "experience.py",
+   "indexer.py",
+   "orchestrator.py",
+   "planner.py",
+   "plugins.py",
+   "promptc.py",
+   "query.py",
+   "review.py",
+   "skills.py",
+   "verifier.py"
+  ],
+  "count": 11
+ },
+ "argparse-subcommands": {
+  "description": "CLI verbs via argparse subcommands",
+  "scripts": [
+   "context.py",
+   "experience.py",
+   "orchestrator.py",
+   "planner.py",
+   "plugins.py",
+   "promptc.py",
+   "skills.py",
+   "verifier.py"
+  ],
+  "count": 8
+ },
+ "fail-loud": {
+  "description": "errors raise loudly instead of returning silently (P1)",
+  "scripts": [
+   "context.py",
+   "experience.py",
+   "orchestrator.py",
+   "planner.py",
+   "plugins.py",
+   "promptc.py",
+   "query.py",
+   "review.py",
+   "verifier.py"
+  ],
+  "count": 9
+ },
+ "shared-kernel": {
+  "description": "engines import each other's primitives instead of duplicating",
+  "scripts": [
+   "context.py",
+   "experience.py",
+   "planner.py",
+   "plugins.py",
+   "promptc.py",
+   "skills.py"
+  ],
+  "count": 6
+ }
+}

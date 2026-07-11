@@ -1,0 +1,103 @@
+{
+ "feature": {
+  "runs": 5,
+  "pass": 5,
+  "retries": 0,
+  "seconds": 1385,
+  "pipeline": [
+   "RECALL",
+   "PLAN",
+   "EXECUTE",
+   "VERIFY",
+   "SUMMARIZE"
+  ],
+  "examples": [
+   "2026-07-11-design-and-implement-a-context",
+   "2026-07-11-design-and-implement-a-planning",
+   "2026-07-11-design-and-implement-a-plugin",
+   "2026-07-11-design-and-implement-a-verification",
+   "2026-07-11-implement-an-experience-learning-engine"
+  ]
+ },
+ "performance": {
+  "runs": 1,
+  "pass": 1,
+  "retries": 0,
+  "seconds": 217,
+  "pipeline": [
+   "RECALL",
+   "PLAN",
+   "EXECUTE",
+   "VERIFY",
+   "SUMMARIZE"
+  ],
+  "examples": [
+   "2026-07-11-design-and-implement-a-prompt"
+  ]
+ },
+ "architecture": {
+  "runs": 1,
+  "pass": 1,
+  "retries": 0,
+  "seconds": 25,
+  "pipeline": [
+   "RECALL",
+   "SIMILARITY",
+   "PLAN",
+   "EXECUTE",
+   "VERIFY",
+   "REVIEW",
+   "SUMMARIZE"
+  ],
+  "examples": [
+   "2026-07-11-design-and-implement-a-workflow"
+  ]
+ },
+ "quick_fix": {
+  "runs": 1,
+  "pass": 1,
+  "retries": 1,
+  "seconds": 19,
+  "pipeline": [
+   "RECALL",
+   "EXECUTE",
+   "VERIFY",
+   "SUMMARIZE"
+  ],
+  "examples": [
+   "2026-07-11-fix-the-intent-tie-break"
+  ]
+ },
+ "security": {
+  "runs": 1,
+  "pass": 1,
+  "retries": 0,
+  "seconds": 38,
+  "pipeline": [
+   "RECALL",
+   "PLAN",
+   "EXECUTE",
+   "VERIFY",
+   "SUMMARIZE"
+  ],
+  "examples": [
+   "2026-07-11-fix-verifier-treating-generated-artifact"
+  ]
+ },
+ "research": {
+  "runs": 1,
+  "pass": 1,
+  "retries": 0,
+  "seconds": 190,
+  "pipeline": [
+   "RECALL",
+   "PLAN",
+   "EXECUTE",
+   "VERIFY",
+   "SUMMARIZE"
+  ],
+  "examples": [
+   "2026-07-11-implement-a-skill-discovery-engine"
+  ]
+ }
+}

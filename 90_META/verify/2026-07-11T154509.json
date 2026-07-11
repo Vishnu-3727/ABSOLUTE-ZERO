@@ -1,0 +1,154 @@
+{
+ "t": "2026-07-11T15:45:09",
+ "files": [
+  "30_LESSONS/retry-prefix-matching-in.md",
+  "90_META/experience/patterns.json",
+  "90_META/experience/workflows.json",
+  "90_META/traces/2026-07-11-design-and-implement-a-context.json",
+  "90_META/traces/2026-07-11-design-and-implement-a-planning.json",
+  "90_META/traces/2026-07-11-design-and-implement-a-plugin.json",
+  "90_META/traces/2026-07-11-design-and-implement-a-prompt.json",
+  "90_META/traces/2026-07-11-design-and-implement-a-verification.json",
+  "90_META/traces/2026-07-11-design-and-implement-a-workflow.json",
+  "90_META/traces/2026-07-11-fix-the-intent-tie-break.json",
+  "90_META/traces/2026-07-11-fix-verifier-treating-generated-artifact.json",
+  "90_META/traces/2026-07-11-implement-a-skill-discovery-engine.json",
+  "90_META/traces/2026-07-11-implement-an-experience-learning-engine.json",
+  "EXPERIENCE.md",
+  "FLOW.md",
+  "ORCHESTRATOR.md",
+  "scripts/__pycache__/experience.cpython-312.pyc",
+  "scripts/experience.py",
+  "scripts/indexer.py",
+  "scripts/verifier.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 70,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "report(): nesting depth 5 (> 4)"
+   }
+  ],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L158: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L159: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L189: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L190: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L100: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L102: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L237: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L238: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L91: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L125: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L256: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L258: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L287: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L285: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "30_LESSONS/retry-prefix-matching-in.md",
+    "msg": "1 line(s) > 100 chars (first: L14)"
+   },
+   {
+    "level": "warn",
+    "file": "EXPERIENCE.md",
+    "msg": "6 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "FLOW.md",
+    "msg": "no final newline"
+   },
+   {
+    "level": "warn",
+    "file": "ORCHESTRATOR.md",
+    "msg": "4 line(s) > 100 chars (first: L7)"
+   }
+  ],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/experience.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/verifier.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

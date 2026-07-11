@@ -38,6 +38,8 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
    retry EXECUTE (max 2) or close --result fail and escalate. Never
    SUMMARIZE over a failing verifier.
 6. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.
+   Then harvest what the task taught:
+   python scripts/experience.py harvest --trace <file> (EXPERIENCE.md).
 7. Dispatching work to a fresh agent/session? Compile its briefing:
    python scripts/promptc.py compile "<request>" --project X (PROMPTC.md).
 
@@ -56,7 +58,9 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
 3. Append new faults to FAULTS.md (with root cause, fix, topic wikilinks).
 4. If a fault/insight is transferable: create note in 30_LESSONS/.
 5. Update ACTIVE_GOALS.md if goals changed.
-6. Run scripts/indexer.py (rebuilds INDEX.json, INDEX_SUMMARY.md, FAULT_LEDGER.md).
+6. Run scripts/experience.py harvest (extract lessons/workflows/patterns
+   from the session's closed traces), then scripts/indexer.py
+   (rebuilds INDEX.json, INDEX_SUMMARY.md, FAULT_LEDGER.md).
 7. git add -A && git commit -m "sleep: <proj> <date>"
 
 ## /research <topic>

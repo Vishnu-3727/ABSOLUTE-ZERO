@@ -48,6 +48,23 @@
       ]
     },
     {
+      "path": "EXPERIENCE.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "experience",
+        "learning",
+        "runtime"
+      ],
+      "title": "ABSOLUTE ZERO — Experience Learning Engine",
+      "summary": "Experience Learning Engine spec — extracts lessons, failures, workflows, reusable code and patterns after every completed task.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-11",
+      "links": []
+    },
+    {
       "path": "FLOW.md",
       "type": "doc",
       "project": "-",
@@ -401,6 +418,20 @@
       "links": [
         "debugging-silent-failures"
       ]
+    },
+    {
+      "path": "30_LESSONS/retry-prefix-matching-in.md",
+      "type": "lesson",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "quick-fix"
+      ],
+      "title": "retry: prefix matching in classify()",
+      "summary": "FAIL: selftest still red -> retry: prefix matching in classify()",
+      "status": "draft",
+      "confidence": "low",
+      "date": "2026-07-11",
+      "links": []
     },
     {
       "path": "40_RESEARCH/ardupilot-nongps-vision-params.md",

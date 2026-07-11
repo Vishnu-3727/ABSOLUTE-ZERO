@@ -1,0 +1,67 @@
+{
+ "id": "2026-07-11-implement-an-experience-learning-engine",
+ "request": "implement an experience learning engine that extracts lessons workflows and patterns after every completed task",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "feature",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "knowledge",
+  "experience",
+  "skills"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "works end to end",
+  "one runnable check left behind",
+  "docs/notes updated if behavior changed"
+ ],
+ "recall_tags": [],
+ "ambiguous": false,
+ "transitions": [
+  {
+   "t": "2026-07-11T15:41:10",
+   "state": "CLASSIFY",
+   "note": "feature/standard"
+  },
+  {
+   "t": "2026-07-11T15:41:11",
+   "state": "RECALL",
+   "note": "raw material already exists: closed traces (retries carry symptom->fix pairs, timestamps carry durations), FAULTS.md, scripts/ corpus; /sleep is the natural harvest hook"
+  },
+  {
+   "t": "2026-07-11T15:41:13",
+   "state": "PLAN",
+   "note": "scripts/experience.py: harvest (draft lessons from retry traces w/ dedup, faults from fails, workflow stats per intent, reusable-code dup detection via ast+difflib, architectural motif counts) -> 90_META/experience/ + 30_LESSONS drafts; recall = unified semantic retrieval; idempotent via harvested flag on traces. EXPERIENCE.md spec."
+  },
+  {
+   "t": "2026-07-11T15:45:27",
+   "state": "EXECUTE",
+   "note": "experience.py + EXPERIENCE.md; wired /sleep 6 + /task 6; fixed: recall scans 30_LESSONS directly (drafts pre-index), code-dup noise (main/selftest are convention, body-sim required)"
+  },
+  {
+   "t": "2026-07-11T15:45:28",
+   "state": "VERIFY",
+   "note": "gate READ: exit 0 zero fails, 20 files incl auto-drafted lesson (law-compliant); real harvest: 9 traces, 1 lesson, 7 patterns, 2 genuine dup functions found"
+  },
+  {
+   "t": "2026-07-11T15:45:29",
+   "state": "SUMMARIZE",
+   "note": "OS now learns from every completed task"
+  },
+  {
+   "t": "2026-07-11T15:45:30",
+   "state": "DONE",
+   "note": "experience learning engine built and verified"
+  }
+ ],
+ "retries": 0,
+ "result": "pass",
+ "harvested": true
+}

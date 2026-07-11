@@ -44,6 +44,7 @@ user request
      verifier    = scripts/verifier.py check (VERIFIER.md; VERIFY stage)
      promptc     = scripts/promptc.py compile (PROMPTC.md; agent briefing)
      skills      = scripts/skills.py discover (SKILLS.md; INTAKE stage)
+     experience  = scripts/experience.py harvest/recall (EXPERIENCE.md; post-close)
      |
      v
  orchestrator.py close ──► trace final state DONE / ESCALATED ──► /sleep

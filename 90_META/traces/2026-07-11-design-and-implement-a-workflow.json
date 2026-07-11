@@ -74,5 +74,6 @@
   }
  ],
  "retries": 0,
- "result": "pass"
+ "result": "pass",
+ "harvested": true
 }

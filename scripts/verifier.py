@@ -40,7 +40,7 @@ TOP_DIRS = {"00_CORE", "10_PROJECTS", "20_KNOWLEDGE", "30_LESSONS",
 # Generated runtime artifacts, not authored notes - vault-note law
 # (frontmatter, live wikilinks) does not apply. Mirrors indexer SKIP_DIRS.
 ARTIFACT_DIRS = {"90_META/traces", "90_META/plans", "90_META/verify",
-                 "90_META/prompts", "90_META/skills"}
+                 "90_META/prompts", "90_META/skills", "90_META/experience"}
 SEC_PATTERNS = [
     (r"(?i)(password|passwd|secret|token|api_key)\s*=\s*[\"'][^\"']{4,}",
      "hardcoded credential"),  # verifier:ignore

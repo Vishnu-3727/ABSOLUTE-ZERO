@@ -63,5 +63,6 @@
   }
  ],
  "retries": 1,
- "result": "pass"
+ "result": "pass",
+ "harvested": true
 }
