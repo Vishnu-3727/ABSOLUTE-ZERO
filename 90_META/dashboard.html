@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ABSOLUTE ZERO — ICE dashboard</title>
+<style>
+:root {
+  --bg: #0a1220; --panel: #101c30; --panel2: #16263f;
+  --ink: #e8f4fd; --ink2: #9db8d2; --muted: #5f7a96;
+  --ice: #7dd3fc; --ice2: #38bdf8; --ice3: #0ea5e9; --frost: #a5f3fc;
+  --line: #1e3350; --warn: #fbbf24; --fail: #f87171; --ok: #34d399;
+}
+* { box-sizing: border-box; margin: 0; }
+body { background: var(--bg); color: var(--ink); padding: 28px;
+  font: 15px/1.5 "Segoe UI", system-ui, sans-serif; }
+a { color: var(--ice); text-decoration: none; }
+header { display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 6px; }
+h1 { font-size: 26px; letter-spacing: 4px; font-weight: 700;
+  background: linear-gradient(90deg, var(--frost), var(--ice3));
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sub { color: var(--muted); font-size: 13px; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--ice); margin-bottom: 12px; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit,
+  minmax(150px, 1fr)); gap: 12px; margin: 22px 0; }
+.tile { background: linear-gradient(180deg, var(--panel2), var(--panel));
+  border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.tile .n { font-size: 30px; font-weight: 700; color: var(--frost);
+  font-variant-numeric: tabular-nums; }
+.tile .l { color: var(--ink2); font-size: 12px; text-transform: uppercase;
+  letter-spacing: 1px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit,
+  minmax(340px, 1fr)); gap: 14px; }
+section { background: var(--panel); border: 1px solid var(--line);
+  border-radius: 10px; padding: 18px; overflow-x: auto; }
+.bar-row { display: grid; grid-template-columns: 130px 1fr 40px;
+  gap: 10px; align-items: center; margin: 7px 0; font-size: 13px; }
+.bar-row .name { color: var(--ink2); overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; }
+.bar { height: 10px; border-radius: 0 4px 4px 0;
+  background: linear-gradient(90deg, var(--ice3), var(--ice)); }
+.bar-row .v { color: var(--ink); font-variant-numeric: tabular-nums; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600;
+  padding: 4px 10px 8px 0; border-bottom: 1px solid var(--line); }
+td { padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line);
+  color: var(--ink2); vertical-align: top; }
+td.k, td b { color: var(--ink); }
+ul { list-style: none; }
+li { padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13px;
+  color: var(--ink2); }
+.tag { display: inline-block; background: var(--panel2);
+  border: 1px solid var(--line); color: var(--ice); border-radius: 5px;
+  padding: 0 7px; font-size: 11px; margin-right: 6px; }
+.ok { color: var(--ok); } .warn { color: var(--warn); }
+.fail { color: var(--fail); }
+footer { color: var(--muted); font-size: 12px; margin-top: 20px; }
+</style></head><body>
+<header><h1>ABSOLUTE ZERO</h1>
+<span class="sub">agentic OS · ICE dashboard · generated 2026-07-12
+</span></header>
+<div class="tiles"><div class="tile"><div class="n">40</div><div class="l">notes</div></div>
+<div class="tile"><div class="n">6</div><div class="l">faults</div></div>
+<div class="tile"><div class="n">7</div><div class="l">lessons</div></div>
+<div class="tile"><div class="n">15</div><div class="l">engines</div></div>
+<div class="tile"><div class="n">287</div><div class="l">graph nodes</div></div>
+<div class="tile"><div class="n">856</div><div class="l">graph edges</div></div></div>
+<div class="grid">
+<section><h2>Notes by project</h2><div class="bar-row"><span class="name" title="ASUNAMA">ASUNAMA</span><div><div class="bar" style="width:100%"></div></div><span class="v">15</span></div>
+<div class="bar-row"><span class="name" title="ABSOLUTE_ZERO">ABSOLUTE_ZERO</span><div><div class="bar" style="width:93%"></div></div><span class="v">14</span></div>
+<div class="bar-row"><span class="name" title="-">-</span><div><div class="bar" style="width:73%"></div></div><span class="v">11</span></div></section>
+<section><h2>Notes by type</h2><div class="bar-row"><span class="name" title="doc">doc</span><div><div class="bar" style="width:100%"></div></div><span class="v">17</span></div>
+<div class="bar-row"><span class="name" title="lesson">lesson</span><div><div class="bar" style="width:41%"></div></div><span class="v">7</span></div>
+<div class="bar-row"><span class="name" title="core">core</span><div><div class="bar" style="width:18%"></div></div><span class="v">3</span></div>
+<div class="bar-row"><span class="name" title="knowledge">knowledge</span><div><div class="bar" style="width:18%"></div></div><span class="v">3</span></div>
+<div class="bar-row"><span class="name" title="session">session</span><div><div class="bar" style="width:18%"></div></div><span class="v">3</span></div>
+<div class="bar-row"><span class="name" title="fault">fault</span><div><div class="bar" style="width:12%"></div></div><span class="v">2</span></div>
+<div class="bar-row"><span class="name" title="research">research</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div>
+<div class="bar-row"><span class="name" title="project">project</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div>
+<div class="bar-row"><span class="name" title="decision">decision</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div>
+<div class="bar-row"><span class="name" title="overview">overview</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div>
+<div class="bar-row"><span class="name" title="recent">recent</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div></section>
+<section><h2>Fault ledger</h2><ul><li>[ABSOLUTE_ZERO][project,faults,absolute-zero] prompt-compiler changeset committed while `verifier.py check` -&gt; verifier now exempts `ARTIFACT_DIRS` (mirrors indexer ([[debugging-silent-failures]])</li>
+<li>[ASUNAMA][project,faults,drone] empty white Kit viewport, &quot;not responding&quot;, every colored spawn. -&gt; bind materials USD-natively (`_bind_material` via `UsdShade`); drop ([[debugging-silent-failures]])</li>
+<li>[ASUNAMA][project,faults,drone] `data_generator` stuck forever; kit log stops after &quot;Replicator Step&quot;. -&gt; drop the orchestrator; tick `simulation_app.update()` a bounded ([[debugging-silent-failures]])</li>
+<li>[ASUNAMA][project,faults,drone] drone explores but Return-To-Home never registers arrival. -&gt; measure distance to base_station in the absolute frame. ([[gps-denied-localization]])</li>
+<li>[ASUNAMA][project,faults,drone] rocks stacked on streaks/soil; markers buried in renders. -&gt; return `None` on exhaustion; every caller skips; largest-footprint-first. ([[coverage-planning]])</li>
+<li>[ASUNAMA][project,faults,drone] exploration plateaus under acceptance threshold. -&gt; `mark_explored_footprint(x,y,radius)` gated on pose confidence. ([[coverage-planning]])</li></ul></section>
+<section><h2>Workflow stats (experience engine)</h2>
+<table><tr><th>intent</th><th>pass</th><th>retries</th><th>avg</th></tr>
+<tr><td class="k">architecture</td><td><span class="ok">1/1</span></td><td>0</td><td>25s</td></tr>
+<tr><td class="k">feature</td><td><span class="ok">7/7</span></td><td>0</td><td>204s</td></tr>
+<tr><td class="k">performance</td><td><span class="ok">2/2</span></td><td>0</td><td>120s</td></tr>
+<tr><td class="k">quick_fix</td><td><span class="ok">1/1</span></td><td>1</td><td>19s</td></tr>
+<tr><td class="k">research</td><td><span class="ok">1/1</span></td><td>0</td><td>190s</td></tr>
+<tr><td class="k">security</td><td><span class="ok">1/1</span></td><td>0</td><td>38s</td></tr></table></section>
+<section style="grid-column:1/-1"><h2>Recent notes</h2>
+<ul><li><span class="tag">doc</span><b>ABSOLUTE ZERO — Context Budget Manager</b> <span class="sub">2026-07-11 · CONTEXT.md</span></li>
+<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Experience Learning Engine</b> <span class="sub">2026-07-11 · EXPERIENCE.md</span></li>
+<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Workflow Orchestrator</b> <span class="sub">2026-07-11 · ORCHESTRATOR.md</span></li>
+<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Planning Engine</b> <span class="sub">2026-07-11 · PLANNER.md</span></li>
+<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Plugin Intelligence Engine</b> <span class="sub">2026-07-11 · PLUGINS.md</span></li>
+<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Prompt Compiler</b> <span class="sub">2026-07-11 · PROMPTC.md</span></li>
+<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Skill Discovery Engine</b> <span class="sub">2026-07-11 · SKILLS.md</span></li>
+<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Verification Engine</b> <span class="sub">2026-07-11 · VERIFIER.md</span></li>
+<li><span class="tag">lesson</span><b>retry: prefix matching in classify()</b> <span class="sub">2026-07-11 · 30_LESSONS/retry-prefix-matching-in.md</span></li>
+<li><span class="tag">fault</span><b>ABSOLUTE ZERO — Faults</b> <span class="sub">2026-07-11 · 10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md</span></li>
+<li><span class="tag">project</span><b>ASUNAMA — Bootstrap</b> <span class="sub">2026-07-11 · 10_PROJECTS/ASUNAMA/BOOTSTRAP.md</span></li>
+<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Dashboard</b> <span class="sub">2026-07-09 · DASHBOARD.md</span></li></ul></section>
+</div>
+<footer>stdlib only · zero dependencies · regenerate with
+<b>python scripts/dashboard.py</b></footer>
+</body></html>

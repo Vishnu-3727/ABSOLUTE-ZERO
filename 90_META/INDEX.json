@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-11",
+  "generated": "2026-07-12",
   "notes": [
     {
       "path": "AGENTS.md",
@@ -7,6 +7,18 @@
       "project": "-",
       "tags": [],
       "title": "AGENTS — Multi-Agent Runtime",
+      "summary": "",
+      "status": "",
+      "confidence": "",
+      "date": "",
+      "links": []
+    },
+    {
+      "path": "AUDIT.md",
+      "type": "doc",
+      "project": "-",
+      "tags": [],
+      "title": "ABSOLUTE ZERO — Principal Systems Audit",
       "summary": "",
       "status": "",
       "confidence": "",
@@ -188,6 +200,18 @@
       "status": "active",
       "confidence": "high",
       "date": "2026-07-11",
+      "links": []
+    },
+    {
+      "path": "README.md",
+      "type": "doc",
+      "project": "-",
+      "tags": [],
+      "title": "❄️ ABSOLUTE ZERO",
+      "summary": "",
+      "status": "",
+      "confidence": "",
+      "date": "",
       "links": []
     },
     {

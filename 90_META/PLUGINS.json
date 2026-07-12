@@ -1,6 +1,46 @@
 {
  "plugins": [
   {
+   "name": "agents",
+   "kind": "script",
+   "path": "scripts/agents.py",
+   "capabilities": [],
+   "actions": [
+    "compose",
+    "run"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "exec",
+    "fs-write"
+   ],
+   "invoke": "python scripts/agents.py"
+  },
+  {
+   "name": "bootstrap",
+   "kind": "script",
+   "path": "scripts/bootstrap.py",
+   "capabilities": [],
+   "actions": [
+    "open"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "exec",
+    "fs-write",
+    "network"
+   ],
+   "invoke": "python scripts/bootstrap.py"
+  },
+  {
    "name": "context",
    "kind": "script",
    "path": "scripts/context.py",
@@ -13,12 +53,74 @@
    "deterministic": true,
    "local": true,
    "token_cost": 0,
-   "latency_ms": 145,
+   "latency_ms": null,
    "dependencies": [],
    "permissions": [
     "fs-write"
    ],
    "invoke": "python scripts/context.py"
+  },
+  {
+   "name": "dashboard",
+   "kind": "script",
+   "path": "scripts/dashboard.py",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/dashboard.py"
+  },
+  {
+   "name": "experience",
+   "kind": "script",
+   "path": "scripts/experience.py",
+   "capabilities": [
+    "retrieval"
+   ],
+   "actions": [
+    "harvest",
+    "recall"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/experience.py"
+  },
+  {
+   "name": "graph",
+   "kind": "script",
+   "path": "scripts/graph.py",
+   "capabilities": [
+    "retrieval"
+   ],
+   "actions": [
+    "build",
+    "neighbors",
+    "path",
+    "query",
+    "search",
+    "stats"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/graph.py"
   },
   {
    "name": "indexer",
@@ -31,7 +133,7 @@
    "deterministic": true,
    "local": true,
    "token_cost": 0,
-   "latency_ms": 116,
+   "latency_ms": null,
    "dependencies": [],
    "permissions": [
     "fs-write"
@@ -56,12 +158,32 @@
    "deterministic": true,
    "local": true,
    "token_cost": 0,
-   "latency_ms": 130,
+   "latency_ms": null,
    "dependencies": [],
    "permissions": [
     "fs-write"
    ],
    "invoke": "python scripts/orchestrator.py"
+  },
+  {
+   "name": "planner",
+   "kind": "script",
+   "path": "scripts/planner.py",
+   "capabilities": [],
+   "actions": [
+    "plan",
+    "validate"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "exec",
+    "fs-write"
+   ],
+   "invoke": "python scripts/planner.py"
   },
   {
    "name": "plugins",
@@ -80,7 +202,7 @@
    "deterministic": true,
    "local": true,
    "token_cost": 0,
-   "latency_ms": 144,
+   "latency_ms": null,
    "dependencies": [],
    "permissions": [
     "exec",
@@ -88,6 +210,24 @@
     "network"
    ],
    "invoke": "python scripts/plugins.py"
+  },
+  {
+   "name": "promptc",
+   "kind": "script",
+   "path": "scripts/promptc.py",
+   "capabilities": [],
+   "actions": [
+    "compile"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/promptc.py"
   },
   {
    "name": "query",
@@ -100,7 +240,7 @@
    "deterministic": true,
    "local": true,
    "token_cost": 0,
-   "latency_ms": 130,
+   "latency_ms": null,
    "dependencies": [],
    "permissions": [
     "fs-read"
@@ -118,12 +258,52 @@
    "deterministic": true,
    "local": true,
    "token_cost": 0,
-   "latency_ms": 115,
+   "latency_ms": null,
    "dependencies": [],
    "permissions": [
     "fs-read"
    ],
    "invoke": "python scripts/review.py"
+  },
+  {
+   "name": "skills",
+   "kind": "script",
+   "path": "scripts/skills.py",
+   "capabilities": [
+    "tooling"
+   ],
+   "actions": [
+    "discover"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/skills.py"
+  },
+  {
+   "name": "verifier",
+   "kind": "script",
+   "path": "scripts/verifier.py",
+   "capabilities": [],
+   "actions": [
+    "check"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "exec",
+    "fs-write",
+    "network"
+   ],
+   "invoke": "python scripts/verifier.py"
   },
   {
    "name": "/predict",

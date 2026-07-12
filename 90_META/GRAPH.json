@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-11T20:13:57",
+ "generated": "2026-07-12T06:08:35",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -575,6 +575,77 @@
    "name": "context.main",
    "meta": {
     "file": "scripts/context.py"
+   }
+  },
+  "file:scripts/dashboard.py": {
+   "type": "file",
+   "name": "scripts/dashboard.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO dashboard renderer. Stdlib only."
+   }
+  },
+  "library:html": {
+   "type": "library",
+   "name": "html",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "function:dashboard.load": {
+   "type": "function",
+   "name": "dashboard.load",
+   "meta": {
+    "file": "scripts/dashboard.py"
+   }
+  },
+  "function:dashboard.esc": {
+   "type": "function",
+   "name": "dashboard.esc",
+   "meta": {
+    "file": "scripts/dashboard.py"
+   }
+  },
+  "function:dashboard.bar_rows": {
+   "type": "function",
+   "name": "dashboard.bar_rows",
+   "meta": {
+    "file": "scripts/dashboard.py",
+    "doc": "Single-hue bars: name, bar scaled to max, value."
+   }
+  },
+  "function:dashboard.gather": {
+   "type": "function",
+   "name": "dashboard.gather",
+   "meta": {
+    "file": "scripts/dashboard.py"
+   }
+  },
+  "function:dashboard.render": {
+   "type": "function",
+   "name": "dashboard.render",
+   "meta": {
+    "file": "scripts/dashboard.py"
+   }
+  },
+  "function:dashboard.build": {
+   "type": "function",
+   "name": "dashboard.build",
+   "meta": {
+    "file": "scripts/dashboard.py"
+   }
+  },
+  "function:dashboard.selftest": {
+   "type": "function",
+   "name": "dashboard.selftest",
+   "meta": {
+    "file": "scripts/dashboard.py"
+   }
+  },
+  "function:dashboard.main": {
+   "type": "function",
+   "name": "dashboard.main",
+   "meta": {
+    "file": "scripts/dashboard.py"
    }
   },
   "file:scripts/experience.py": {
@@ -1742,6 +1813,14 @@
     "file": "scripts/verifier.py"
    }
   },
+  "file:AUDIT.md": {
+   "type": "file",
+   "name": "ABSOLUTE ZERO \u2014 Principal Systems Audit",
+   "meta": {
+    "path": "AUDIT.md",
+    "note_type": "doc"
+   }
+  },
   "file:CLAUDE.md": {
    "type": "file",
    "name": "ABSOLUTE ZERO \u2014 Master Instructions",
@@ -1770,6 +1849,14 @@
    "name": "ABSOLUTE ZERO \u2014 Build Guide",
    "meta": {
     "path": "GUIDE.md",
+    "note_type": "doc"
+   }
+  },
+  "file:README.md": {
+   "type": "file",
+   "name": "\u2744\ufe0f ABSOLUTE ZERO",
+   "meta": {
+    "path": "README.md",
     "note_type": "doc"
    }
   },
@@ -3064,6 +3151,86 @@
   ],
   [
    "file:scripts/context.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "function:dashboard.bar_rows",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "function:dashboard.build",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "function:dashboard.esc",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "function:dashboard.gather",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "function:dashboard.load",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "function:dashboard.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "function:dashboard.render",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "function:dashboard.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "library:html",
+   "imports"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/dashboard.py",
    "project:ABSOLUTEZERO",
    "related_to"
   ],
@@ -4593,6 +4760,51 @@
    "calls"
   ],
   [
+   "function:dashboard.bar_rows",
+   "function:dashboard.esc",
+   "calls"
+  ],
+  [
+   "function:dashboard.build",
+   "function:dashboard.gather",
+   "calls"
+  ],
+  [
+   "function:dashboard.build",
+   "function:dashboard.render",
+   "calls"
+  ],
+  [
+   "function:dashboard.gather",
+   "function:dashboard.load",
+   "calls"
+  ],
+  [
+   "function:dashboard.main",
+   "function:dashboard.build",
+   "calls"
+  ],
+  [
+   "function:dashboard.main",
+   "function:dashboard.selftest",
+   "calls"
+  ],
+  [
+   "function:dashboard.render",
+   "function:dashboard.bar_rows",
+   "calls"
+  ],
+  [
+   "function:dashboard.render",
+   "function:dashboard.esc",
+   "calls"
+  ],
+  [
+   "function:dashboard.selftest",
+   "function:dashboard.build",
+   "calls"
+  ],
+  [
    "function:experience.draft_lesson",
    "function:experience.existing_lessons",
    "calls"
@@ -5514,6 +5726,11 @@
   ],
   [
    "library:argparse",
+   "file:scripts/dashboard.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
    "file:scripts/experience.py",
    "used_by"
   ],
@@ -5614,6 +5831,11 @@
   ],
   [
    "library:datetime",
+   "file:scripts/dashboard.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
    "file:scripts/experience.py",
    "used_by"
   ],
@@ -5693,6 +5915,11 @@
    "used_by"
   ],
   [
+   "library:html",
+   "file:scripts/dashboard.py",
+   "used_by"
+  ],
+  [
    "library:json",
    "file:scripts/agents.py",
    "used_by"
@@ -5705,6 +5932,11 @@
   [
    "library:json",
    "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:json",
+   "file:scripts/dashboard.py",
    "used_by"
   ],
   [
@@ -5775,6 +6007,11 @@
   [
    "library:pathlib",
    "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/dashboard.py",
    "used_by"
   ],
   [
@@ -5854,6 +6091,11 @@
   ],
   [
    "library:re",
+   "file:scripts/dashboard.py",
+   "used_by"
+  ],
+  [
+   "library:re",
    "file:scripts/experience.py",
    "used_by"
   ],
@@ -5985,6 +6227,11 @@
   [
    "library:tempfile",
    "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/dashboard.py",
    "used_by"
   ],
   [
@@ -6075,6 +6322,11 @@
   [
    "project:ABSOLUTEZERO",
    "library:graphlib",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:html",
    "depends_on"
   ],
   [

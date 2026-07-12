@@ -1,0 +1,62 @@
+{
+ "t": "2026-07-12T06:10:36",
+ "files": [
+  "90_META/GRAPH.json",
+  "90_META/INDEX.json",
+  "90_META/INDEX_SUMMARY.md",
+  "90_META/PLUGINS.json",
+  "90_META/dashboard.html",
+  "AUDIT.md",
+  "README.md",
+  "scripts/dashboard.py",
+  "scripts/indexer.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 88,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L94: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L128: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "AUDIT.md",
+    "msg": "1 line(s) > 100 chars (first: L335)"
+   },
+   {
+    "level": "warn",
+    "file": "README.md",
+    "msg": "11 line(s) > 100 chars (first: L33)"
+   }
+  ],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/dashboard.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}
