@@ -1,113 +1,349 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ABSOLUTE ZERO — ICE dashboard</title>
+<title>ABSOLUTE ZERO — vault terminal</title>
 <style>
 :root {
-  --bg: #0a1220; --panel: #101c30; --panel2: #16263f;
-  --ink: #e8f4fd; --ink2: #9db8d2; --muted: #5f7a96;
-  --ice: #7dd3fc; --ice2: #38bdf8; --ice3: #0ea5e9; --frost: #a5f3fc;
-  --line: #1e3350; --warn: #fbbf24; --fail: #f87171; --ok: #34d399;
+  --bg: #060d18; --panel: #0a1626; --panel2: #0e1e33;
+  --ink: #e8f4fd; --ink2: #9db8d2; --muted: #567394;
+  --ice: #7dd3fc; --frost: #a5f3fc; --line: #14293f;
+  --warn: #c98500; --fail: #e66767; --ok: #0ea371;
 }
 * { box-sizing: border-box; margin: 0; }
-body { background: var(--bg); color: var(--ink); padding: 28px;
-  font: 15px/1.5 "Segoe UI", system-ui, sans-serif; }
-a { color: var(--ice); text-decoration: none; }
-header { display: flex; align-items: baseline; gap: 14px;
-  margin-bottom: 6px; }
-h1 { font-size: 26px; letter-spacing: 4px; font-weight: 700;
-  background: linear-gradient(90deg, var(--frost), var(--ice3));
-  -webkit-background-clip: text; background-clip: text; color: transparent; }
-.sub { color: var(--muted); font-size: 13px; }
-h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px;
-  color: var(--ice); margin-bottom: 12px; }
-.tiles { display: grid; grid-template-columns: repeat(auto-fit,
-  minmax(150px, 1fr)); gap: 12px; margin: 22px 0; }
-.tile { background: linear-gradient(180deg, var(--panel2), var(--panel));
-  border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
-.tile .n { font-size: 30px; font-weight: 700; color: var(--frost);
+html, body { height: 100%; overflow: hidden; }
+body { background: var(--bg); color: var(--ink);
+  font: 12px/1.5 "Cascadia Code", Consolas, monospace; }
+#app { display: grid; height: 100vh;
+  grid-template-rows: 46px 1fr;
+  grid-template-columns: 300px 1fr 300px; }
+/* top bar */
+#top { grid-column: 1 / -1; display: flex; align-items: center;
+  gap: 18px; padding: 0 16px; border-bottom: 1px solid var(--line);
+  background: var(--panel); }
+#top h1 { font-size: 15px; letter-spacing: 5px; font-weight: 700;
+  color: var(--frost); white-space: nowrap; }
+#top .sub { color: var(--muted); font-size: 10px; letter-spacing: 1px; }
+#top .dots { display: flex; gap: 16px; margin-left: auto;
+  font-size: 10px; letter-spacing: 1px; color: var(--ink2); }
+.dot::before { content: "\25CF "; }
+.dot.on { color: var(--ok); } .dot.ice { color: var(--ice); }
+#clock { font-size: 20px; color: var(--frost); font-weight: 700;
+  font-variant-numeric: tabular-nums; letter-spacing: 2px; }
+/* rails */
+.rail { display: flex; flex-direction: column; overflow-y: auto;
+  background: var(--panel); border-right: 1px solid var(--line);
+  padding: 12px; gap: 12px; }
+#right { border-right: 0; border-left: 1px solid var(--line); }
+.box { border: 1px solid var(--line); background: var(--panel2);
+  padding: 10px 12px; }
+h2 { font-size: 10px; letter-spacing: 2px; color: var(--ice);
+  text-transform: uppercase; margin-bottom: 8px; display: flex; }
+h2 .r { margin-left: auto; color: var(--muted); }
+.vitals { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.vt .n { font-size: 24px; font-weight: 700; color: var(--frost);
   font-variant-numeric: tabular-nums; }
-.tile .l { color: var(--ink2); font-size: 12px; text-transform: uppercase;
-  letter-spacing: 1px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit,
-  minmax(340px, 1fr)); gap: 14px; }
-section { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 10px; padding: 18px; overflow-x: auto; }
-.bar-row { display: grid; grid-template-columns: 130px 1fr 40px;
-  gap: 10px; align-items: center; margin: 7px 0; font-size: 13px; }
-.bar-row .name { color: var(--ink2); overflow: hidden;
-  text-overflow: ellipsis; white-space: nowrap; }
-.bar { height: 10px; border-radius: 0 4px 4px 0;
-  background: linear-gradient(90deg, var(--ice3), var(--ice)); }
-.bar-row .v { color: var(--ink); font-variant-numeric: tabular-nums; }
-table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.vt .l { font-size: 9px; letter-spacing: 1px; color: var(--muted);
+  text-transform: uppercase; }
+.ledger { max-height: 230px; overflow-y: auto; }
+.ledger li { list-style: none; padding: 6px 0; color: var(--ink2);
+  font-size: 10px; border-bottom: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; font-size: 10px; }
 th { text-align: left; color: var(--muted); font-weight: 600;
-  padding: 4px 10px 8px 0; border-bottom: 1px solid var(--line); }
-td { padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line);
-  color: var(--ink2); vertical-align: top; }
-td.k, td b { color: var(--ink); }
-ul { list-style: none; }
-li { padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13px;
+  padding: 2px 6px 5px 0; border-bottom: 1px solid var(--line); }
+td { padding: 4px 6px 4px 0; border-bottom: 1px solid var(--line);
   color: var(--ink2); }
-.tag { display: inline-block; background: var(--panel2);
-  border: 1px solid var(--line); color: var(--ice); border-radius: 5px;
-  padding: 0 7px; font-size: 11px; margin-right: 6px; }
+td.k { color: var(--ink); }
 .ok { color: var(--ok); } .warn { color: var(--warn); }
 .fail { color: var(--fail); }
-footer { color: var(--muted); font-size: 12px; margin-top: 20px; }
+/* graph stage */
+#stage { position: relative; overflow: hidden; }
+#graph { position: absolute; inset: 0; width: 100%; height: 100%;
+  cursor: grab; }
+#legend { position: absolute; top: 10px; left: 12px; display: flex;
+  flex-wrap: wrap; gap: 6px; max-width: 70%; }
+.chip { display: flex; align-items: center; gap: 5px; font-size: 9px;
+  letter-spacing: 1px; color: var(--ink2); text-transform: uppercase;
+  border: 1px solid var(--line); background: rgba(10,22,38,.8);
+  padding: 3px 8px; cursor: pointer; user-select: none; }
+.chip.off { opacity: .3; }
+.chip i { width: 8px; height: 8px; border-radius: 50%; }
+#hero { position: absolute; bottom: 14px; left: 0; right: 0;
+  text-align: center; pointer-events: none; }
+#hero .n { font-size: 44px; font-weight: 700; color: var(--frost);
+  letter-spacing: 6px; text-shadow: 0 0 24px rgba(125,211,252,.35);
+  font-variant-numeric: tabular-nums; }
+#hero .l { font-size: 10px; letter-spacing: 4px; color: var(--muted);
+  text-transform: uppercase; }
+#hint { position: absolute; bottom: 8px; right: 12px;
+  color: var(--muted); font-size: 9px; letter-spacing: 1px; }
+/* command deck */
+.deck { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.deck button { font: inherit; font-size: 10px; letter-spacing: 1px;
+  color: var(--ice); background: var(--panel2);
+  border: 1px solid var(--line); padding: 8px 4px; cursor: pointer;
+  text-transform: uppercase; }
+.deck button:hover { background: var(--line); color: var(--frost); }
+#out { flex: 1; min-height: 120px; overflow-y: auto; white-space:
+  pre-wrap; word-break: break-word; color: var(--ink2); font-size: 10px;
+  line-height: 1.6; }
+#out .p { color: var(--ok); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: var(--line); }
 </style></head><body>
-<header><h1>ABSOLUTE ZERO</h1>
-<span class="sub">agentic OS · ICE dashboard · generated 2026-07-12
-</span></header>
-<div class="tiles"><div class="tile"><div class="n">40</div><div class="l">notes</div></div>
-<div class="tile"><div class="n">6</div><div class="l">faults</div></div>
-<div class="tile"><div class="n">7</div><div class="l">lessons</div></div>
-<div class="tile"><div class="n">15</div><div class="l">engines</div></div>
-<div class="tile"><div class="n">287</div><div class="l">graph nodes</div></div>
-<div class="tile"><div class="n">856</div><div class="l">graph edges</div></div></div>
-<div class="grid">
-<section><h2>Notes by project</h2><div class="bar-row"><span class="name" title="ASUNAMA">ASUNAMA</span><div><div class="bar" style="width:100%"></div></div><span class="v">15</span></div>
-<div class="bar-row"><span class="name" title="ABSOLUTE_ZERO">ABSOLUTE_ZERO</span><div><div class="bar" style="width:93%"></div></div><span class="v">14</span></div>
-<div class="bar-row"><span class="name" title="-">-</span><div><div class="bar" style="width:73%"></div></div><span class="v">11</span></div></section>
-<section><h2>Notes by type</h2><div class="bar-row"><span class="name" title="doc">doc</span><div><div class="bar" style="width:100%"></div></div><span class="v">17</span></div>
-<div class="bar-row"><span class="name" title="lesson">lesson</span><div><div class="bar" style="width:41%"></div></div><span class="v">7</span></div>
-<div class="bar-row"><span class="name" title="core">core</span><div><div class="bar" style="width:18%"></div></div><span class="v">3</span></div>
-<div class="bar-row"><span class="name" title="knowledge">knowledge</span><div><div class="bar" style="width:18%"></div></div><span class="v">3</span></div>
-<div class="bar-row"><span class="name" title="session">session</span><div><div class="bar" style="width:18%"></div></div><span class="v">3</span></div>
-<div class="bar-row"><span class="name" title="fault">fault</span><div><div class="bar" style="width:12%"></div></div><span class="v">2</span></div>
-<div class="bar-row"><span class="name" title="research">research</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div>
-<div class="bar-row"><span class="name" title="project">project</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div>
-<div class="bar-row"><span class="name" title="decision">decision</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div>
-<div class="bar-row"><span class="name" title="overview">overview</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div>
-<div class="bar-row"><span class="name" title="recent">recent</span><div><div class="bar" style="width:6%"></div></div><span class="v">1</span></div></section>
-<section><h2>Fault ledger</h2><ul><li>[ABSOLUTE_ZERO][project,faults,absolute-zero] prompt-compiler changeset committed while `verifier.py check` -&gt; verifier now exempts `ARTIFACT_DIRS` (mirrors indexer ([[debugging-silent-failures]])</li>
+<div id="app">
+<div id="top"><h1>&#10052; ABSOLUTE ZERO</h1>
+<span class="sub">VAULT TERMINAL &middot; 2026-07-12</span>
+<div class="dots"><span class="dot on">CORE ONLINE</span>
+<span class="dot ice">GRAPH 301 / 931</span>
+<span class="dot ice">ENGINES 17</span></div>
+<div id="clock">--:--:--</div></div>
+
+<div class="rail" id="left">
+<div class="box"><h2>system vitals</h2>
+<div class="vitals"><div class="vt"><div class="n">41</div><div class="l">notes</div></div>
+<div class="vt"><div class="n">6</div><div class="l">faults</div></div>
+<div class="vt"><div class="n">7</div><div class="l">lessons</div></div>
+<div class="vt"><div class="n">17</div><div class="l">engines</div></div></div></div>
+<div class="box"><h2>fault ledger
+<span class="r">6</span></h2>
+<ul class="ledger"><li>[ABSOLUTE_ZERO][project,faults,absolute-zero] prompt-compiler changeset committed while `verifier.py check` -&gt; verifier now exempts `ARTIFACT_DIRS` (mirrors indexer ([[debugging-silent-failures]])</li>
 <li>[ASUNAMA][project,faults,drone] empty white Kit viewport, &quot;not responding&quot;, every colored spawn. -&gt; bind materials USD-natively (`_bind_material` via `UsdShade`); drop ([[debugging-silent-failures]])</li>
 <li>[ASUNAMA][project,faults,drone] `data_generator` stuck forever; kit log stops after &quot;Replicator Step&quot;. -&gt; drop the orchestrator; tick `simulation_app.update()` a bounded ([[debugging-silent-failures]])</li>
 <li>[ASUNAMA][project,faults,drone] drone explores but Return-To-Home never registers arrival. -&gt; measure distance to base_station in the absolute frame. ([[gps-denied-localization]])</li>
 <li>[ASUNAMA][project,faults,drone] rocks stacked on streaks/soil; markers buried in renders. -&gt; return `None` on exhaustion; every caller skips; largest-footprint-first. ([[coverage-planning]])</li>
-<li>[ASUNAMA][project,faults,drone] exploration plateaus under acceptance threshold. -&gt; `mark_explored_footprint(x,y,radius)` gated on pose confidence. ([[coverage-planning]])</li></ul></section>
-<section><h2>Workflow stats (experience engine)</h2>
-<table><tr><th>intent</th><th>pass</th><th>retries</th><th>avg</th></tr>
+<li>[ASUNAMA][project,faults,drone] exploration plateaus under acceptance threshold. -&gt; `mark_explored_footprint(x,y,radius)` gated on pose confidence. ([[coverage-planning]])</li></ul></div>
+<div class="box"><h2>workflow stats</h2>
+<table><tr><th>intent</th><th>pass</th><th>retry</th><th>avg</th></tr>
 <tr><td class="k">architecture</td><td><span class="ok">1/1</span></td><td>0</td><td>25s</td></tr>
 <tr><td class="k">feature</td><td><span class="ok">7/7</span></td><td>0</td><td>204s</td></tr>
 <tr><td class="k">performance</td><td><span class="ok">2/2</span></td><td>0</td><td>120s</td></tr>
 <tr><td class="k">quick_fix</td><td><span class="ok">1/1</span></td><td>1</td><td>19s</td></tr>
 <tr><td class="k">research</td><td><span class="ok">1/1</span></td><td>0</td><td>190s</td></tr>
-<tr><td class="k">security</td><td><span class="ok">1/1</span></td><td>0</td><td>38s</td></tr></table></section>
-<section style="grid-column:1/-1"><h2>Recent notes</h2>
-<ul><li><span class="tag">doc</span><b>ABSOLUTE ZERO — Context Budget Manager</b> <span class="sub">2026-07-11 · CONTEXT.md</span></li>
-<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Experience Learning Engine</b> <span class="sub">2026-07-11 · EXPERIENCE.md</span></li>
-<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Workflow Orchestrator</b> <span class="sub">2026-07-11 · ORCHESTRATOR.md</span></li>
-<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Planning Engine</b> <span class="sub">2026-07-11 · PLANNER.md</span></li>
-<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Plugin Intelligence Engine</b> <span class="sub">2026-07-11 · PLUGINS.md</span></li>
-<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Prompt Compiler</b> <span class="sub">2026-07-11 · PROMPTC.md</span></li>
-<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Skill Discovery Engine</b> <span class="sub">2026-07-11 · SKILLS.md</span></li>
-<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Verification Engine</b> <span class="sub">2026-07-11 · VERIFIER.md</span></li>
-<li><span class="tag">lesson</span><b>retry: prefix matching in classify()</b> <span class="sub">2026-07-11 · 30_LESSONS/retry-prefix-matching-in.md</span></li>
-<li><span class="tag">fault</span><b>ABSOLUTE ZERO — Faults</b> <span class="sub">2026-07-11 · 10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md</span></li>
-<li><span class="tag">project</span><b>ASUNAMA — Bootstrap</b> <span class="sub">2026-07-11 · 10_PROJECTS/ASUNAMA/BOOTSTRAP.md</span></li>
-<li><span class="tag">doc</span><b>ABSOLUTE ZERO — Dashboard</b> <span class="sub">2026-07-09 · DASHBOARD.md</span></li></ul></section>
+<tr><td class="k">security</td><td><span class="ok">1/1</span></td><td>0</td><td>38s</td></tr></table></div>
 </div>
-<footer>stdlib only · zero dependencies · regenerate with
-<b>python scripts/dashboard.py</b></footer>
+
+<div id="stage">
+<canvas id="graph"></canvas>
+<div id="legend"><span class="chip" data-t="function"><i style="background:#4d87c7"></i>function 211</span>
+<span class="chip" data-t="file"><i style="background:#0d94d2"></i>file 46</span>
+<span class="chip" data-t="library"><i style="background:#9085e9"></i>library 18</span>
+<span class="chip" data-t="experience"><i style="background:#0ea371"></i>experience 11</span>
+<span class="chip" data-t="skill"><i style="background:#d55181"></i>skill 7</span>
+<span class="chip" data-t="class"><i style="background:#0d94d2"></i>class 4</span>
+<span class="chip" data-t="project"><i style="background:#c98500"></i>project 3</span>
+<span class="chip" data-t="user"><i style="background:#e8f4ff"></i>user 1</span></div>
+<div id="hint">drag node &middot; drag space to pan &middot; wheel zoom
+&middot; chip filters type</div>
+<div id="hero"><div class="n">41</div>
+<div class="l">notes indexed</div></div>
+</div>
+
+<div class="rail" id="right">
+<div class="box"><h2>command deck</h2>
+<div class="deck"><button data-cmd="python scripts/orchestrator.py similarity &quot;today&quot;">wake</button>
+<button data-cmd="python scripts/orchestrator.py plan &quot;&lt;request&gt;&quot;">task</button>
+<button data-cmd="python scripts/context.py pack &quot;&lt;request&gt;&quot;">recall</button>
+<button data-cmd="python scripts/indexer.py">index</button>
+<button data-cmd="python scripts/graph.py build">graph</button>
+<button data-cmd="python scripts/verifier.py check">verify</button>
+<button data-cmd="python scripts/profiler.py report">profile</button>
+<button data-cmd="python scripts/experience.py harvest">sleep</button></div></div>
+<div class="box" style="flex:1;display:flex;flex-direction:column">
+<h2>run output</h2>
+<div id="out">READY
+click a node for details; a command to copy it
+
+RECENT NOTES
+[doc] ABSOLUTE ZERO V3 — Token Intelligence (2026-07-12)
+[doc] ABSOLUTE ZERO — Context Budget Manager (2026-07-11)
+[doc] ABSOLUTE ZERO — Experience Learning Engine (2026-07-11)
+[doc] ABSOLUTE ZERO — Workflow Orchestrator (2026-07-11)
+[doc] ABSOLUTE ZERO — Planning Engine (2026-07-11)
+[doc] ABSOLUTE ZERO — Plugin Intelligence Engine (2026-07-11)
+[doc] ABSOLUTE ZERO — Prompt Compiler (2026-07-11)
+[doc] ABSOLUTE ZERO — Skill Discovery Engine (2026-07-11)
+[doc] ABSOLUTE ZERO — Verification Engine (2026-07-11)
+[lesson] retry: prefix matching in classify() (2026-07-11)
+[fault] ABSOLUTE ZERO — Faults (2026-07-11)
+[project] ASUNAMA — Bootstrap (2026-07-11)</div></div>
+</div>
+</div>
+<script>window.VAULT_DATA = {"nodes":[{"n":"ABSOLUTEZERO","t":"project","m":"C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero"},{"n":"scripts/agents.py","t":"file","m":""},{"n":"AGENTS.md","t":"file","m":"AGENTS.md"},{"n":"argparse","t":"library","m":""},{"n":"json","t":"library","m":""},{"n":"queue","t":"library","m":""},{"n":"subprocess","t":"library","m":""},{"n":"sys","t":"library","m":""},{"n":"threading","t":"library","m":""},{"n":"time","t":"library","m":""},{"n":"concurrent","t":"library","m":""},{"n":"datetime","t":"library","m":""},{"n":"graphlib","t":"library","m":""},{"n":"pathlib","t":"library","m":""},{"n":"scripts/core.py","t":"file","m":""},{"n":"scripts/orchestrator.py","t":"file","m":""},{"n":"scripts/planner.py","t":"file","m":""},{"n":"re","t":"library","m":""},{"n":"tempfile","t":"library","m":""},{"n":"scripts/plugins.py","t":"file","m":""},{"n":"agents.now","t":"function","m":""},{"n":"agents.Blackboard","t":"class","m":""},{"n":"agents.Blackboard.__init__","t":"function","m":""},{"n":"agents.Blackboard.read","t":"function","m":""},{"n":"agents.Blackboard.write","t":"function","m":""},{"n":"agents.Blackboard.snapshot","t":"function","m":""},{"n":"agents.Bus","t":"class","m":""},{"n":"agents.Bus.__init__","t":"function","m":""},{"n":"agents.Bus._inbox","t":"function","m":""},{"n":"agents.Bus.send","t":"function","m":""},{"n":"agents.Bus.broadcast","t":"function","m":""},{"n":"agents.Bus.drain","t":"function","m":""},{"n":"agents.planner_agent","t":"function","m":""},{"n":"agents.researcher_agent","t":"function","m":""},{"n":"agents.architect_agent","t":"function","m":""},{"n":"agents.implementer_agent","t":"function","m":""},{"n":"agents.reviewer_agent","t":"function","m":""},{"n":"agents.tester_agent","t":"function","m":""},{"n":"agents.optimizer_agent","t":"function","m":""},{"n":"agents.coordinator_agent","t":"function","m":""},{"n":"agents.compose","t":"function","m":""},{"n":"agents.execute","t":"function","m":""},{"n":"agents.show","t":"function","m":""},{"n":"agents.show_workflow","t":"function","m":""},{"n":"agents.selftest","t":"function","m":""},{"n":"agents.main","t":"function","m":""},{"n":"scripts/bootstrap.py","t":"file","m":""},{"n":"BOOTSTRAP.md","t":"file","m":"BOOTSTRAP.md"},{"n":"ast","t":"library","m":""},{"n":"scripts/skills.py","t":"file","m":""},{"n":"bootstrap.scan_files","t":"function","m":""},{"n":"bootstrap.detect_language","t":"function","m":""},{"n":"bootstrap.declared_deps","t":"function","m":""},{"n":"bootstrap.python_imports","t":"function","m":""},{"n":"bootstrap.detect_framework","t":"function","m":""},{"n":"bootstrap.dep_graph","t":"function","m":""},{"n":"bootstrap.risk_analysis","t":"function","m":""},{"n":"bootstrap.conventions","t":"function","m":""},{"n":"bootstrap.architecture","t":"function","m":""},{"n":"bootstrap.recommend_skills","t":"function","m":""},{"n":"bootstrap.context_package","t":"function","m":""},{"n":"bootstrap.render_doc","t":"function","m":""},{"n":"bootstrap.bootstrap","t":"function","m":""},{"n":"bootstrap.show","t":"function","m":""},{"n":"bootstrap.selftest","t":"function","m":""},{"n":"bootstrap.main","t":"function","m":""},{"n":"scripts/context.py","t":"file","m":""},{"n":"CONTEXT.md","t":"file","m":"CONTEXT.md"},{"n":"difflib","t":"library","m":""},{"n":"context.recency","t":"function","m":""},{"n":"context.score","t":"function","m":""},{"n":"context.read_body","t":"function","m":""},{"n":"context.compress","t":"function","m":""},{"n":"context.dedup","t":"function","m":""},{"n":"context.compress_history","t":"function","m":""},{"n":"context.build","t":"function","m":""},{"n":"context.show","t":"function","m":""},{"n":"context.selftest","t":"function","m":""},{"n":"context.main","t":"function","m":""},{"n":"os","t":"library","m":""},{"n":"core.words_of","t":"function","m":""},{"n":"core.stem","t":"function","m":""},{"n":"core.nwords","t":"function","m":""},{"n":"core.jaccard","t":"function","m":""},{"n":"core.est_tokens","t":"function","m":""},{"n":"core.sim","t":"function","m":""},{"n":"core.classify","t":"function","m":""},{"n":"core.retrieve","t":"function","m":""},{"n":"core.stale","t":"function","m":""},{"n":"core.load_json","t":"function","m":""},{"n":"core.dump_json","t":"function","m":""},{"n":"core.load_index","t":"function","m":""},{"n":"core.selftest","t":"function","m":""},{"n":"scripts/dashboard.py","t":"file","m":""},{"n":"html","t":"library","m":""},{"n":"dashboard.esc","t":"function","m":""},{"n":"dashboard.bar_rows","t":"function","m":""},{"n":"dashboard.gather","t":"function","m":""},{"n":"dashboard.render","t":"function","m":""},{"n":"dashboard.build","t":"function","m":""},{"n":"dashboard.selftest","t":"function","m":""},{"n":"dashboard.main","t":"function","m":""},{"n":"scripts/experience.py","t":"file","m":""},{"n":"EXPERIENCE.md","t":"file","m":"EXPERIENCE.md"},{"n":"experience.secs","t":"function","m":""},{"n":"experience.lesson_pairs","t":"function","m":""},{"n":"experience.existing_lessons","t":"function","m":""},{"n":"experience.draft_lesson","t":"function","m":""},{"n":"experience.record_failure","t":"function","m":""},{"n":"experience.update_workflows","t":"function","m":""},{"n":"experience.reusable_code","t":"function","m":""},{"n":"experience.architectural_patterns","t":"function","m":""},{"n":"experience.harvest","t":"function","m":""},{"n":"experience.recall","t":"function","m":""},{"n":"experience.selftest","t":"function","m":""},{"n":"experience.main","t":"function","m":""},{"n":"scripts/graph.py","t":"file","m":""},{"n":"GRAPH.md","t":"file","m":"GRAPH.md"},{"n":"collections","t":"library","m":""},{"n":"graph.Graph","t":"class","m":""},{"n":"graph.Graph.__init__","t":"function","m":""},{"n":"graph.Graph.add_node","t":"function","m":""},{"n":"graph.Graph.add_edge","t":"function","m":""},{"n":"graph.Graph._adj","t":"function","m":""},{"n":"graph.Graph.neighbors","t":"function","m":""},{"n":"graph.Graph.path","t":"function","m":""},{"n":"graph.Graph._bfs_path","t":"function","m":""},{"n":"graph.Graph.search","t":"function","m":""},{"n":"graph.Graph.save","t":"function","m":""},{"n":"graph.Graph.load","t":"function","m":""},{"n":"graph._first_line","t":"function","m":""},{"n":"graph.extract_scripts","t":"function","m":""},{"n":"graph._import_edge","t":"function","m":""},{"n":"graph._foreign_class","t":"function","m":""},{"n":"graph.load_notes","t":"function","m":""},{"n":"graph.extract_notes","t":"function","m":""},{"n":"graph.extract_skills","t":"function","m":""},{"n":"graph.extract_user","t":"function","m":""},{"n":"graph.build","t":"function","m":""},{"n":"graph.show_stats","t":"function","m":""},{"n":"graph.show_node","t":"function","m":""},{"n":"graph.selftest","t":"function","m":""},{"n":"graph.main","t":"function","m":""},{"n":"scripts/indexer.py","t":"file","m":""},{"n":"indexer.parse_frontmatter","t":"function","m":""},{"n":"indexer.note_type","t":"function","m":""},{"n":"indexer.project_of","t":"function","m":""},{"n":"indexer.iter_notes","t":"function","m":""},{"n":"indexer.parse_faults","t":"function","m":""},{"n":"indexer._field","t":"function","m":""},{"n":"indexer.build","t":"function","m":""},{"n":"indexer._title","t":"function","m":""},{"n":"indexer.write_outputs","t":"function","m":""},{"n":"indexer._selftest","t":"function","m":""},{"n":"indexer.main","t":"function","m":""},{"n":"ORCHESTRATOR.md","t":"file","m":"ORCHESTRATOR.md"},{"n":"orchestrator.budget_for","t":"function","m":""},{"n":"orchestrator.vault_hits","t":"function","m":""},{"n":"orchestrator.gate","t":"function","m":""},{"n":"orchestrator.freshness","t":"function","m":""},{"n":"orchestrator.known_tags","t":"function","m":""},{"n":"orchestrator.now","t":"function","m":""},{"n":"orchestrator.load_trace","t":"function","m":""},{"n":"orchestrator.save_trace","t":"function","m":""},{"n":"orchestrator.plan","t":"function","m":""},{"n":"orchestrator.allowed_states","t":"function","m":""},{"n":"orchestrator.log","t":"function","m":""},{"n":"orchestrator.close","t":"function","m":""},{"n":"orchestrator.similarity","t":"function","m":""},{"n":"orchestrator.selftest","t":"function","m":""},{"n":"orchestrator.main","t":"function","m":""},{"n":"PLANNER.md","t":"file","m":"PLANNER.md"},{"n":"planner.decompose","t":"function","m":""},{"n":"planner.mine_risks","t":"function","m":""},{"n":"planner.bind_plugins","t":"function","m":""},{"n":"planner.git_baseline","t":"function","m":""},{"n":"planner.validate","t":"function","m":""},{"n":"planner.build","t":"function","m":""},{"n":"planner.show","t":"function","m":""},{"n":"planner.selftest","t":"function","m":""},{"n":"planner.main","t":"function","m":""},{"n":"PLUGINS.md","t":"file","m":"PLUGINS.md"},{"n":"plugins.caps_from_text","t":"function","m":""},{"n":"plugins.scan_scripts","t":"function","m":""},{"n":"plugins.scan_commands","t":"function","m":""},{"n":"plugins.scan_external","t":"function","m":""},{"n":"plugins.probe","t":"function","m":""},{"n":"plugins.scan","t":"function","m":""},{"n":"plugins.load_registry","t":"function","m":""},{"n":"plugins.load_stats","t":"function","m":""},{"n":"plugins.record","t":"function","m":""},{"n":"plugins.reliability","t":"function","m":""},{"n":"plugins.latency_class","t":"function","m":""},{"n":"plugins.score","t":"function","m":""},{"n":"plugins.route","t":"function","m":""},{"n":"plugins.execute","t":"function","m":""},{"n":"plugins.show_list","t":"function","m":""},{"n":"plugins.selftest","t":"function","m":""},{"n":"plugins.main","t":"function","m":""},{"n":"scripts/profiler.py","t":"file","m":""},{"n":"profiler.parse_sections","t":"function","m":""},{"n":"profiler.plugin_savings","t":"function","m":""},{"n":"profiler.suggest","t":"function","m":""},{"n":"profiler.latest_prompt","t":"function","m":""},{"n":"profiler.report","t":"function","m":""},{"n":"profiler.selftest","t":"function","m":""},{"n":"profiler.main","t":"function","m":""},{"n":"scripts/promptc.py","t":"file","m":""},{"n":"PROMPTC.md","t":"file","m":"PROMPTC.md"},{"n":"promptc.dedup_lines","t":"function","m":""},{"n":"promptc.few_shot","t":"function","m":""},{"n":"promptc.tool_lines","t":"function","m":""},{"n":"promptc.render_context","t":"function","m":""},{"n":"promptc.validate","t":"function","m":""},{"n":"promptc.compile_prompt","t":"function","m":""},{"n":"promptc.save","t":"function","m":""},{"n":"promptc.selftest","t":"function","m":""},{"n":"promptc.main","t":"function","m":""},{"n":"scripts/query.py","t":"file","m":""},{"n":"query.matches","t":"function","m":""},{"n":"query.selftest","t":"function","m":""},{"n":"query.main","t":"function","m":""},{"n":"scripts/review.py","t":"file","m":""},{"n":"FLOW.md","t":"file","m":"FLOW.md"},{"n":"review.stem","t":"function","m":""},{"n":"review.orphans","t":"function","m":""},{"n":"review.stale","t":"function","m":""},{"n":"review.selftest","t":"function","m":""},{"n":"review.main","t":"function","m":""},{"n":"SKILLS.md","t":"file","m":"SKILLS.md"},{"n":"skills.scan_skills","t":"function","m":""},{"n":"skills.score_skill","t":"function","m":""},{"n":"skills.discover","t":"function","m":""},{"n":"skills.selftest","t":"function","m":""},{"n":"skills.main","t":"function","m":""},{"n":"scripts/verifier.py","t":"file","m":""},{"n":"VERIFIER.md","t":"file","m":"VERIFIER.md"},{"n":"verifier.sh","t":"function","m":""},{"n":"verifier.changed_files","t":"function","m":""},{"n":"verifier.local_imports","t":"function","m":""},{"n":"verifier.max_depth","t":"function","m":""},{"n":"verifier.Verifier","t":"class","m":""},{"n":"verifier.Verifier.__init__","t":"function","m":""},{"n":"verifier.Verifier.add","t":"function","m":""},{"n":"verifier.Verifier.check_py","t":"function","m":""},{"n":"verifier.Verifier._imports","t":"function","m":""},{"n":"verifier.Verifier._naming","t":"function","m":""},{"n":"verifier.Verifier._complexity","t":"function","m":""},{"n":"verifier.Verifier._security","t":"function","m":""},{"n":"verifier.Verifier._performance","t":"function","m":""},{"n":"verifier.Verifier._formatting","t":"function","m":""},{"n":"verifier.Verifier._documentation_py","t":"function","m":""},{"n":"verifier.Verifier.check_md","t":"function","m":""},{"n":"verifier.Verifier.check_architecture","t":"function","m":""},{"n":"verifier.Verifier.check_dependency_graph","t":"function","m":""},{"n":"verifier.Verifier.check_regression","t":"function","m":""},{"n":"verifier.Verifier.check_tests","t":"function","m":""},{"n":"verifier.Verifier.run","t":"function","m":""},{"n":"verifier.Verifier.report","t":"function","m":""},{"n":"verifier.show","t":"function","m":""},{"n":"verifier.save","t":"function","m":""},{"n":"verifier.selftest","t":"function","m":""},{"n":"verifier.main","t":"function","m":""},{"n":"ABSOLUTE ZERO \u2014 Principal Systems Audit","t":"file","m":"AUDIT.md"},{"n":"ABSOLUTE ZERO \u2014 Master Instructions","t":"file","m":"CLAUDE.md"},{"n":"ABSOLUTE_ZERO","t":"project","m":""},{"n":"ABSOLUTE ZERO \u2014 Dashboard","t":"file","m":"DASHBOARD.md"},{"n":"ABSOLUTE ZERO \u2014 Build Guide","t":"file","m":"GUIDE.md"},{"n":"\u2744\ufe0f ABSOLUTE ZERO","t":"file","m":"README.md"},{"n":"ABSOLUTE ZERO V3 \u2014 Token Intelligence","t":"file","m":"TOKEN.md"},{"n":"ACTIVE GOALS","t":"file","m":"00_CORE/ACTIVE_GOALS.md"},{"n":"IDENTITY","t":"file","m":"00_CORE/IDENTITY.md"},{"n":"PRINCIPLES","t":"file","m":"00_CORE/PRINCIPLES.md"},{"n":"Coverage & area planning","t":"file","m":"20_KNOWLEDGE/coverage-planning.md"},{"n":"Debugging silent / hidden failures","t":"file","m":"20_KNOWLEDGE/debugging-silent-failures.md"},{"n":"GPS-denied localization","t":"file","m":"20_KNOWLEDGE/gps-denied-localization.md"},{"n":"Bounded loop beats a wait-for-condition","t":"experience","m":"30_LESSONS/bounded-loop-over-unbounded-wait.md"},{"n":"ASUNAMA","t":"project","m":""},{"n":"\"Home\" is a named point, not (0,0)","t":"experience","m":"30_LESSONS/coordinate-frame-origin.md"},{"n":"Mark the sensor footprint, not one grid cell","t":"experience","m":"30_LESSONS/coverage-footprint-not-cell.md"},{"n":"Fail loud \u2014 a silent fallback hides the bug","t":"experience","m":"30_LESSONS/fail-loud-not-silent-fallback.md"},{"n":"Optical-flow dead reckoning drifts \u2014 inject an absolute fix","t":"experience","m":"30_LESSONS/odometry-drift-absolute-fix.md"},{"n":"Read stderr, not the app's own log","t":"experience","m":"30_LESSONS/read-stderr-not-app-log.md"},{"n":"retry: prefix matching in classify()","t":"experience","m":"30_LESSONS/retry-prefix-matching-in.md"},{"n":"ArduPilot non-GPS vision positioning \u2014 parameters","t":"file","m":"40_RESEARCH/ardupilot-nongps-vision-params.md"},{"n":"ABSOLUTE ZERO \u2014 Faults","t":"experience","m":"10_PROJECTS/ASUNAMA/FAULTS.md"},{"n":"ASUNAMA \u2014 Bootstrap","t":"file","m":"10_PROJECTS/ASUNAMA/BOOTSTRAP.md"},{"n":"ASUNAMA \u2014 Decisions","t":"file","m":"10_PROJECTS/ASUNAMA/DECISIONS.md"},{"n":"ASUNAMA \u2014 Overview","t":"file","m":"10_PROJECTS/ASUNAMA/OVERVIEW.md"},{"n":"ASUNAMA \u2014 Recent","t":"file","m":"10_PROJECTS/ASUNAMA/RECENT.md"},{"n":"Session \u2014 2026-06-25","t":"experience","m":"10_PROJECTS/ASUNAMA/SESSIONS/2026-06-25.md"},{"n":"Session \u2014 2026-06-26","t":"experience","m":"10_PROJECTS/ASUNAMA/SESSIONS/2026-06-26.md"},{"n":"Session \u2014 2026-06-27","t":"experience","m":"10_PROJECTS/ASUNAMA/SESSIONS/2026-06-27.md"},{"n":"predict","t":"skill","m":""},{"n":"recall","t":"skill","m":""},{"n":"research","t":"skill","m":""},{"n":"review","t":"skill","m":""},{"n":"sleep","t":"skill","m":""},{"n":"task","t":"skill","m":""},{"n":"wake","t":"skill","m":""},{"n":"IDENTITY","t":"user","m":"00_CORE/IDENTITY.md"}],"edges":[[21,22],[21,23],[21,25],[21,24],[26,27],[26,28],[26,30],[26,31],[26,29],[119,120],[119,123],[119,126],[119,122],[119,121],[119,129],[119,124],[119,125],[119,128],[119,127],[241,242],[241,247],[241,251],[241,250],[241,245],[241,246],[241,249],[241,248],[241,243],[241,253],[241,254],[241,252],[241,244],[241,255],[241,256],[241,258],[241,257],[290,276],[290,282],[290,277],[291,278],[291,280],[291,277],[292,279],[292,281],[292,277],[285,276],[285,278],[285,279],[285,280],[285,282],[285,273],[285,274],[285,275],[285,265],[285,277],[276,274],[276,277],[278,275],[278,277],[279,273],[279,277],[280,273],[280,274],[280,277],[281,275],[281,277],[282,274],[282,277],[283,265],[270,265],[271,265],[272,276],[272,280],[272,282],[272,274],[272,265],[286,273],[286,274],[286,275],[286,277],[287,285],[287,282],[287,275],[287,277],[288,285],[288,287],[288,273],[288,274],[288,275],[288,284],[288,277],[289,277],[273,279],[273,280],[274,276],[274,280],[274,282],[275,278],[275,281],[284,275],[284,277],[67,265],[266,265],[103,265],[155,265],[171,265],[181,265],[208,265],[229,265],[269,265],[236,265],[1,21],[1,26],[1,2],[1,14],[1,14],[1,15],[1,15],[1,16],[1,16],[1,19],[1,19],[1,34],[1,40],[1,39],[1,41],[1,35],[1,45],[1,20],[1,38],[1,32],[1,33],[1,36],[1,44],[1,42],[1,43],[1,37],[1,3],[1,10],[1,11],[1,12],[1,4],[1,13],[1,5],[1,17],[1,6],[1,7],[1,18],[1,8],[1,9],[1,0],[46,47],[46,16],[46,16],[46,49],[46,49],[46,58],[46,62],[46,60],[46,57],[46,52],[46,55],[46,54],[46,51],[46,65],[46,53],[46,59],[46,61],[46,56],[46,50],[46,64],[46,63],[46,3],[46,48],[46,11],[46,4],[46,13],[46,17],[46,6],[46,7],[46,18],[46,0],[66,67],[66,14],[66,14],[66,15],[66,15],[66,75],[66,72],[66,74],[66,73],[66,78],[66,71],[66,69],[66,70],[66,77],[66,76],[66,3],[66,11],[66,68],[66,4],[66,13],[66,17],[66,7],[66,18],[66,0],[14,86],[14,90],[14,84],[14,83],[14,91],[14,89],[14,82],[14,87],[14,92],[14,85],[14,88],[14,81],[14,80],[14,68],[14,4],[14,79],[14,13],[14,17],[14,7],[14,18],[14,0],[93,14],[93,14],[93,96],[93,99],[93,95],[93,97],[93,101],[93,98],[93,100],[93,3],[93,11],[93,94],[93,4],[93,13],[93,17],[93,7],[93,18],[93,0],[102,103],[102,14],[102,14],[102,111],[102,107],[102,106],[102,112],[102,105],[102,115],[102,113],[102,108],[102,110],[102,104],[102,114],[102,109],[102,3],[102,48],[102,11],[102,68],[102,13],[102,17],[102,7],[102,18],[102,0],[116,119],[116,117],[116,14],[116,14],[116,130],[116,133],[116,132],[116,138],[116,135],[116,131],[116,136],[116,137],[116,134],[116,142],[116,141],[116,140],[116,139],[116,3],[116,48],[116,118],[116,11],[116,68],[116,4],[116,13],[116,17],[116,7],[116,18],[116,0],[143,149],[143,153],[143,151],[143,150],[143,147],[143,154],[143,145],[143,148],[143,144],[143,146],[143,152],[143,3],[143,11],[143,4],[143,13],[143,17],[143,0],[143,297],[15,155],[15,14],[15,14],[15,19],[15,19],[15,165],[15,156],[15,167],[15,159],[15,158],[15,160],[15,162],[15,166],[15,170],[15,161],[15,164],[15,163],[15,169],[15,168],[15,157],[15,3],[15,11],[15,4],[15,13],[15,7],[15,18],[15,0],[15,298],[16,171],[16,14],[16,14],[16,15],[16,15],[16,19],[16,19],[16,174],[16,177],[16,172],[16,175],[16,180],[16,173],[16,179],[16,178],[16,176],[16,3],[16,11],[16,12],[16,4],[16,13],[16,17],[16,6],[16,7],[16,18],[16,0],[19,181],[19,14],[19,14],[19,182],[19,195],[19,192],[19,188],[19,189],[19,198],[19,186],[19,190],[19,191],[19,194],[19,187],[19,184],[19,185],[19,183],[19,193],[19,197],[19,196],[19,3],[19,4],[19,13],[19,17],[19,6],[19,7],[19,18],[19,9],[19,0],[199,14],[199,14],[199,203],[199,206],[199,200],[199,201],[199,204],[199,205],[199,202],[199,3],[199,11],[199,13],[199,7],[199,18],[199,0],[207,208],[207,66],[207,66],[207,14],[207,14],[207,15],[207,15],[207,19],[207,19],[207,214],[207,209],[207,210],[207,217],[207,212],[207,215],[207,216],[207,211],[207,213],[207,3],[207,11],[207,4],[207,13],[207,17],[207,7],[207,18],[207,0],[218,14],[218,14],[218,221],[218,219],[218,220],[218,3],[218,13],[218,7],[218,0],[218,294],[222,223],[222,14],[222,14],[222,228],[222,225],[222,227],[222,226],[222,224],[222,3],[222,11],[222,13],[222,7],[222,0],[222,296],[49,229],[49,14],[49,14],[49,15],[49,15],[49,19],[49,19],[49,232],[49,234],[49,230],[49,231],[49,233],[49,3],[49,68],[49,4],[49,13],[49,17],[49,7],[49,18],[49,0],[235,241],[235,236],[235,238],[235,239],[235,262],[235,240],[235,260],[235,261],[235,237],[235,259],[235,3],[235,48],[235,11],[235,12],[235,4],[235,13],[235,17],[235,6],[235,7],[235,18],[235,0],[24,20],[29,20],[40,172],[41,80],[35,80],[35,194],[45,40],[45,41],[45,44],[45,42],[45,43],[32,177],[33,80],[33,173],[44,40],[44,41],[62,58],[62,60],[62,57],[62,52],[62,55],[62,54],[62,51],[62,53],[62,59],[62,61],[62,56],[62,50],[65,62],[65,64],[65,63],[59,232],[56,173],[64,62],[75,72],[75,74],[75,73],[75,71],[75,70],[75,84],[75,80],[72,84],[72,80],[74,84],[74,80],[73,83],[73,80],[78,75],[78,77],[78,76],[70,69],[70,83],[70,80],[77,75],[86,80],[82,81],[82,80],[87,85],[92,86],[92,90],[92,84],[92,83],[92,91],[92,89],[92,82],[92,87],[92,85],[92,88],[92,81],[92,80],[85,83],[85,82],[96,95],[99,97],[99,98],[97,89],[101,99],[101,100],[98,96],[98,95],[100,99],[107,85],[107,80],[107,106],[112,90],[112,89],[112,111],[112,107],[112,105],[112,108],[112,110],[112,109],[115,112],[115,113],[115,114],[113,89],[113,85],[114,90],[114,89],[114,112],[114,113],[109,104],[127,80],[138,135],[138,131],[138,136],[138,137],[135,134],[131,130],[131,133],[131,132],[142,138],[142,141],[142,140],[142,139],[141,138],[153,149],[153,144],[150,151],[150,147],[150,145],[150,148],[150,144],[150,146],[154,153],[154,150],[154,152],[148,149],[167,162],[167,161],[167,163],[159,88],[158,157],[158,194],[166,165],[166,162],[166,161],[166,163],[170,167],[170,166],[170,164],[170,169],[170,168],[164,86],[164,80],[164,156],[164,159],[164,158],[164,160],[164,161],[164,163],[169,86],[169,156],[169,167],[169,158],[169,162],[169,166],[169,164],[168,157],[157,87],[174,188],[174,189],[174,193],[177,80],[177,174],[177,172],[177,175],[177,173],[177,176],[172,80],[180,177],[180,179],[180,178],[180,176],[173,80],[179,177],[179,172],[179,176],[195,188],[195,190],[198,195],[198,190],[198,194],[198,187],[198,197],[198,196],[190,189],[194,86],[194,182],[194,188],[194,189],[194,193],[187,186],[187,184],[187,185],[187,183],[184,182],[185,182],[183,182],[193,192],[193,191],[197,195],[197,189],[197,190],[197,191],[197,194],[197,187],[197,193],[196,188],[196,189],[196,191],[206,204],[206,205],[200,84],[201,89],[204,90],[204,84],[204,203],[204,200],[204,201],[204,202],[205,90],[205,200],[205,204],[205,202],[214,75],[214,84],[214,91],[214,80],[214,209],[214,210],[214,212],[214,211],[214,213],[209,83],[209,81],[209,80],[210,71],[210,83],[210,80],[217,214],[217,215],[217,216],[216,214],[216,209],[216,213],[211,194],[213,84],[221,91],[221,219],[221,220],[220,219],[228,91],[228,225],[228,227],[228,226],[225,224],[227,225],[227,226],[227,224],[232,82],[232,230],[232,231],[234,232],[234,233],[231,82],[231,182],[233,232],[247,240],[254,239],[238,237],[262,238],[262,260],[262,261],[262,259],[3,1],[3,46],[3,66],[3,93],[3,102],[3,116],[3,143],[3,15],[3,16],[3,19],[3,199],[3,207],[3,218],[3,222],[3,49],[3,235],[48,46],[48,102],[48,116],[48,235],[118,116],[10,1],[11,1],[11,46],[11,66],[11,93],[11,102],[11,116],[11,143],[11,15],[11,16],[11,199],[11,207],[11,222],[11,235],[68,66],[68,14],[68,102],[68,116],[68,49],[12,1],[12,16],[12,235],[94,93],[4,1],[4,46],[4,66],[4,14],[4,93],[4,116],[4,143],[4,15],[4,16],[4,19],[4,207],[4,49],[4,235],[79,14],[13,1],[13,46],[13,66],[13,14],[13,93],[13,102],[13,116],[13,143],[13,15],[13,16],[13,19],[13,199],[13,207],[13,218],[13,222],[13,49],[13,235],[5,1],[17,1],[17,46],[17,66],[17,14],[17,93],[17,102],[17,116],[17,143],[17,16],[17,19],[17,207],[17,49],[17,235],[6,1],[6,46],[6,16],[6,19],[6,235],[7,1],[7,46],[7,66],[7,14],[7,93],[7,102],[7,116],[7,15],[7,16],[7,19],[7,199],[7,207],[7,218],[7,222],[7,49],[7,235],[18,1],[18,46],[18,66],[18,14],[18,93],[18,102],[18,116],[18,15],[18,16],[18,19],[18,199],[18,207],[18,49],[18,235],[8,1],[9,1],[9,19],[0,3],[0,48],[0,118],[0,10],[0,11],[0,68],[0,12],[0,94],[0,4],[0,79],[0,13],[0,5],[0,17],[0,6],[0,7],[0,18],[0,8],[0,9],[0,300],[265,300],[277,300],[294,218],[296,222],[297,143],[298,15]],"colors":{"function":"#4d87c7","file":"#0d94d2","class":"#0d94d2","library":"#9085e9","experience":"#0ea371","skill":"#d55181","project":"#c98500","user":"#e8f4ff"}};
+</script>
+<script>
+const D = window.VAULT_DATA;
+/* clock */
+const clock = document.getElementById('clock');
+setInterval(() => {
+  clock.textContent = new Date().toTimeString().slice(0, 8);
+}, 250);
+/* command deck + output */
+const out = document.getElementById('out');
+function log(msg, cls) {
+  const el = document.createElement('div');
+  if (cls) el.className = cls;
+  el.textContent = msg;
+  out.prepend(el);
+}
+document.querySelectorAll('.deck button').forEach(b => {
+  b.onclick = () => {
+    navigator.clipboard && navigator.clipboard.writeText(b.dataset.cmd);
+    log('> ' + b.dataset.cmd, 'p');
+    log('copied - paste in a terminal at the vault root');
+  };
+});
+/* ---- force graph (ponytail: naive O(n^2) repulsion; quadtree if the
+   vault ever grows past ~1500 nodes) ---- */
+const canvas = document.getElementById('graph');
+const ctx = canvas.getContext('2d');
+const N = D.nodes, E = D.edges, COL = D.colors;
+const hidden = new Set();
+let W, H, dpr = window.devicePixelRatio || 1;
+function resize() {
+  const r = canvas.parentElement.getBoundingClientRect();
+  W = r.width; H = r.height;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+resize(); window.addEventListener('resize', resize);
+/* init positions: golden-angle spiral, degree-heavy nodes inward */
+const deg = new Array(N.length).fill(0);
+E.forEach(([a, b]) => { deg[a]++; deg[b]++; });
+const order = N.map((_, i) => i).sort((a, b) => deg[b] - deg[a]);
+order.forEach((idx, rank) => {
+  const a = rank * 2.39996, r = 14 * Math.sqrt(rank + 1);
+  N[idx].x = r * Math.cos(a); N[idx].y = r * Math.sin(a);
+  N[idx].vx = 0; N[idx].vy = 0;
+});
+const adj = N.map(() => []);
+E.forEach(([a, b]) => { adj[a].push(b); adj[b].push(a); });
+let alpha = 1, cam = { x: 0, y: 0, z: 0.72 }, hover = -1, dragN = -1;
+function vis(i) { return !hidden.has(N[i].t); }
+function radius(i) { return Math.min(13, 2.2 + Math.sqrt(deg[i]) * 1.15); }
+function step() {
+  if (alpha < 0.003) return;
+  const k = 900 * alpha;
+  for (let i = 0; i < N.length; i++) {
+    if (!vis(i)) continue;
+    const a = N[i];
+    for (let j = i + 1; j < N.length; j++) {
+      if (!vis(j)) continue;
+      const b = N[j];
+      let dx = a.x - b.x, dy = a.y - b.y;
+      let d2 = dx * dx + dy * dy + 0.01;
+      if (d2 > 90000) continue;
+      const f = k / d2;
+      dx *= f; dy *= f;
+      a.vx += dx; a.vy += dy; b.vx -= dx; b.vy -= dy;
+    }
+    a.vx -= a.x * 0.012 * alpha; a.vy -= a.y * 0.012 * alpha;
+  }
+  E.forEach(([ai, bi]) => {
+    if (!vis(ai) || !vis(bi)) return;
+    const a = N[ai], b = N[bi];
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const d = Math.sqrt(dx * dx + dy * dy) + 0.01;
+    const f = (d - 46) * 0.02 * alpha / d;
+    a.vx += dx * f; a.vy += dy * f; b.vx -= dx * f; b.vy -= dy * f;
+  });
+  N.forEach((n, i) => {
+    if (i === dragN) { n.vx = 0; n.vy = 0; return; }
+    n.vx *= 0.85; n.vy *= 0.85; n.x += n.vx; n.y += n.vy;
+  });
+  alpha *= 0.996;
+}
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  const g = ctx.createRadialGradient(W / 2, H / 2, 60, W / 2, H / 2,
+                                     Math.max(W, H) * 0.7);
+  g.addColorStop(0, 'rgba(14,40,70,.55)');
+  g.addColorStop(1, 'rgba(6,13,24,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.save();
+  ctx.translate(W / 2 + cam.x, H / 2 + cam.y); ctx.scale(cam.z, cam.z);
+  const hi = hover >= 0 ? new Set([hover, ...adj[hover]]) : null;
+  ctx.lineWidth = 1 / cam.z;
+  E.forEach(([a, b]) => {
+    if (!vis(a) || !vis(b)) return;
+    const lit = hi && (a === hover || b === hover);
+    ctx.strokeStyle = lit ? 'rgba(165,243,252,.7)'
+                          : 'rgba(125,211,252,.10)';
+    ctx.beginPath(); ctx.moveTo(N[a].x, N[a].y);
+    ctx.lineTo(N[b].x, N[b].y); ctx.stroke();
+  });
+  N.forEach((n, i) => {
+    if (!vis(i)) return;
+    const r = radius(i), dim = hi && !hi.has(i);
+    ctx.globalAlpha = dim ? 0.15 : 1;
+    ctx.fillStyle = 'rgba(125,211,252,.16)';
+    ctx.beginPath(); ctx.arc(n.x, n.y, r * 2.1, 0, 7); ctx.fill();
+    ctx.fillStyle = COL[n.t] || '#7dd3fc';
+    ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, 7); ctx.fill();
+    ctx.globalAlpha = 1;
+  });
+  ctx.fillStyle = '#e8f4fd';
+  ctx.font = `${11 / cam.z}px Consolas, monospace`;
+  ctx.textAlign = 'center';
+  N.forEach((n, i) => {
+    if (!vis(i)) return;
+    const always = n.t === 'project' || n.t === 'user' || deg[i] >= 22;
+    if (i === hover || (always && (!hi || hi.has(i))))
+      ctx.fillText(n.n, n.x, n.y - radius(i) - 5 / cam.z);
+  });
+  ctx.restore();
+}
+(function loop() { step(); draw(); requestAnimationFrame(loop); })();
+/* interaction */
+function pick(mx, my) {
+  const x = (mx - W / 2 - cam.x) / cam.z, y = (my - H / 2 - cam.y) / cam.z;
+  for (let i = N.length - 1; i >= 0; i--) {
+    if (!vis(i)) continue;
+    const dx = N[i].x - x, dy = N[i].y - y, r = radius(i) + 4;
+    if (dx * dx + dy * dy < r * r) return i;
+  }
+  return -1;
+}
+let panning = false, px = 0, py = 0;
+canvas.onmousedown = e => {
+  const i = pick(e.offsetX, e.offsetY);
+  if (i >= 0) { dragN = i; alpha = Math.max(alpha, 0.25); }
+  else { panning = true; }
+  px = e.offsetX; py = e.offsetY;
+};
+canvas.onmousemove = e => {
+  if (dragN >= 0) {
+    N[dragN].x += (e.offsetX - px) / cam.z;
+    N[dragN].y += (e.offsetY - py) / cam.z;
+    alpha = Math.max(alpha, 0.12);
+  } else if (panning) {
+    cam.x += e.offsetX - px; cam.y += e.offsetY - py;
+  } else {
+    hover = pick(e.offsetX, e.offsetY);
+    canvas.style.cursor = hover >= 0 ? 'pointer' : 'grab';
+  }
+  px = e.offsetX; py = e.offsetY;
+};
+window.onmouseup = () => {
+  if (dragN >= 0 && Math.abs(N[dragN].vx) < 99) {
+    const n = N[dragN];
+    log(`[${n.t}] ${n.n}` + (n.m ? `\n${n.m}` : '') +
+        `\nlinks: ${deg[N.indexOf(n)]}`);
+  }
+  dragN = -1; panning = false;
+};
+canvas.onwheel = e => {
+  e.preventDefault();
+  const f = e.deltaY < 0 ? 1.12 : 0.89;
+  cam.z = Math.min(6, Math.max(0.25, cam.z * f));
+};
+/* legend type filter */
+document.querySelectorAll('.chip').forEach(c => {
+  c.onclick = () => {
+    const t = c.dataset.t;
+    hidden.has(t) ? hidden.delete(t) : hidden.add(t);
+    c.classList.toggle('off');
+    alpha = Math.max(alpha, 0.3);
+  };
+});
+</script>
 </body></html>
