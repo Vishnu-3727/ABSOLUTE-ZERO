@@ -91,17 +91,7 @@ extensibility 8, scalability 5 (full rescans everywhere), consistency 9.
 
 ---
 
-# Critical Issues
 
-**None in committed code.** One critical *operational* issue:
-
-## C1 — GitHub personal access token disclosed in chat
-- **Severity:** CRITICAL (operational) · **Effort to fix:** minutes
-- A live PAT for `Vishnu-3727/ABSOLUTE-ZERO` was pasted into a conversation. Any
-  transcript, log, or cache that retains it can push to the repo.
-- **Fix:** after the current push, revoke the token at
-  github.com/settings/tokens and mint a fine-grained token scoped to this one repo.
-  Never paste tokens; use `git credential` storage or `gh auth login`.
 
 # High Priority Issues
 
