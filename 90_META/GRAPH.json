@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-12T06:08:35",
+ "generated": "2026-07-12T09:31:25",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -98,6 +98,13 @@
    "name": "pathlib",
    "meta": {
     "stdlib": true
+   }
+  },
+  "file:scripts/core.py": {
+   "type": "file",
+   "name": "scripts/core.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO shared kernel. Stdlib only."
    }
   },
   "file:scripts/orchestrator.py": {
@@ -489,20 +496,6 @@
     "stdlib": true
    }
   },
-  "function:context.est_tokens": {
-   "type": "function",
-   "name": "context.est_tokens",
-   "meta": {
-    "file": "scripts/context.py"
-   }
-  },
-  "function:context.jaccard": {
-   "type": "function",
-   "name": "context.jaccard",
-   "meta": {
-    "file": "scripts/context.py"
-   }
-  },
   "function:context.recency": {
    "type": "function",
    "name": "context.recency",
@@ -577,6 +570,110 @@
     "file": "scripts/context.py"
    }
   },
+  "library:os": {
+   "type": "library",
+   "name": "os",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "function:core.words_of": {
+   "type": "function",
+   "name": "core.words_of",
+   "meta": {
+    "file": "scripts/core.py"
+   }
+  },
+  "function:core.stem": {
+   "type": "function",
+   "name": "core.stem",
+   "meta": {
+    "file": "scripts/core.py"
+   }
+  },
+  "function:core.nwords": {
+   "type": "function",
+   "name": "core.nwords",
+   "meta": {
+    "file": "scripts/core.py",
+    "doc": "Stemmed, stopword-free word set: the normalized similarity space."
+   }
+  },
+  "function:core.jaccard": {
+   "type": "function",
+   "name": "core.jaccard",
+   "meta": {
+    "file": "scripts/core.py"
+   }
+  },
+  "function:core.est_tokens": {
+   "type": "function",
+   "name": "core.est_tokens",
+   "meta": {
+    "file": "scripts/core.py"
+   }
+  },
+  "function:core.sim": {
+   "type": "function",
+   "name": "core.sim",
+   "meta": {
+    "file": "scripts/core.py",
+    "doc": "Canonical text similarity: stemmed jaccard or fuzzy prefix ratio,"
+   }
+  },
+  "function:core.classify": {
+   "type": "function",
+   "name": "core.classify",
+   "meta": {
+    "file": "scripts/core.py"
+   }
+  },
+  "function:core.retrieve": {
+   "type": "function",
+   "name": "core.retrieve",
+   "meta": {
+    "file": "scripts/core.py",
+    "doc": "The one retrieval scorer (V3 rule: one layer feeds all engines)."
+   }
+  },
+  "function:core.stale": {
+   "type": "function",
+   "name": "core.stale",
+   "meta": {
+    "file": "scripts/core.py",
+    "doc": "True if a cached artifact is missing or older than any source file."
+   }
+  },
+  "function:core.load_json": {
+   "type": "function",
+   "name": "core.load_json",
+   "meta": {
+    "file": "scripts/core.py"
+   }
+  },
+  "function:core.dump_json": {
+   "type": "function",
+   "name": "core.dump_json",
+   "meta": {
+    "file": "scripts/core.py",
+    "doc": "Atomic write (audit H5): tmp file + os.replace, so a crash mid-write"
+   }
+  },
+  "function:core.load_index": {
+   "type": "function",
+   "name": "core.load_index",
+   "meta": {
+    "file": "scripts/core.py",
+    "doc": "The vault's note index, or fail loud (P1)."
+   }
+  },
+  "function:core.selftest": {
+   "type": "function",
+   "name": "core.selftest",
+   "meta": {
+    "file": "scripts/core.py"
+   }
+  },
   "file:scripts/dashboard.py": {
    "type": "file",
    "name": "scripts/dashboard.py",
@@ -589,13 +686,6 @@
    "name": "html",
    "meta": {
     "stdlib": true
-   }
-  },
-  "function:dashboard.load": {
-   "type": "function",
-   "name": "dashboard.load",
-   "meta": {
-    "file": "scripts/dashboard.py"
    }
   },
   "function:dashboard.esc": {
@@ -663,41 +753,6 @@
     "note_type": "doc",
     "summary": "Experience Learning Engine spec \u2014 extracts lessons, failures, workflows, reusable code and patterns after every completed task.",
     "tags": "core experience learning runtime"
-   }
-  },
-  "file:scripts/promptc.py": {
-   "type": "file",
-   "name": "scripts/promptc.py",
-   "meta": {
-    "doc": "ABSOLUTE ZERO prompt compiler. Stdlib only."
-   }
-  },
-  "function:experience.nwords": {
-   "type": "function",
-   "name": "experience.nwords",
-   "meta": {
-    "file": "scripts/experience.py"
-   }
-  },
-  "function:experience.sim": {
-   "type": "function",
-   "name": "experience.sim",
-   "meta": {
-    "file": "scripts/experience.py"
-   }
-  },
-  "function:experience.load_json": {
-   "type": "function",
-   "name": "experience.load_json",
-   "meta": {
-    "file": "scripts/experience.py"
-   }
-  },
-  "function:experience.dump_json": {
-   "type": "function",
-   "name": "experience.dump_json",
-   "meta": {
-    "file": "scripts/experience.py"
    }
   },
   "function:experience.secs": {
@@ -1080,18 +1135,35 @@
     "tags": "core orchestrator runtime"
    }
   },
-  "function:orchestrator.words_of": {
+  "function:orchestrator.budget_for": {
    "type": "function",
-   "name": "orchestrator.words_of",
+   "name": "orchestrator.budget_for",
    "meta": {
     "file": "scripts/orchestrator.py"
    }
   },
-  "function:orchestrator.classify": {
+  "function:orchestrator.vault_hits": {
    "type": "function",
-   "name": "orchestrator.classify",
+   "name": "orchestrator.vault_hits",
    "meta": {
-    "file": "scripts/orchestrator.py"
+    "file": "scripts/orchestrator.py",
+    "doc": "Shared vault retrieval (core.retrieve over the index)."
+   }
+  },
+  "function:orchestrator.gate": {
+   "type": "function",
+   "name": "orchestrator.gate",
+   "meta": {
+    "file": "scripts/orchestrator.py",
+    "doc": "V3 capability gate: is the LLM needed at all?"
+   }
+  },
+  "function:orchestrator.freshness": {
+   "type": "function",
+   "name": "orchestrator.freshness",
+   "meta": {
+    "file": "scripts/orchestrator.py",
+    "doc": "V3 context cache: warn when a cached artifact is older than its"
    }
   },
   "function:orchestrator.known_tags": {
@@ -1380,6 +1452,70 @@
     "file": "scripts/plugins.py"
    }
   },
+  "file:scripts/profiler.py": {
+   "type": "file",
+   "name": "scripts/profiler.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO token profiler. Stdlib only."
+   }
+  },
+  "function:profiler.parse_sections": {
+   "type": "function",
+   "name": "profiler.parse_sections",
+   "meta": {
+    "file": "scripts/profiler.py",
+    "doc": "Split a compiled prompt on '## SECTION' headers -> {name: tokens}."
+   }
+  },
+  "function:profiler.plugin_savings": {
+   "type": "function",
+   "name": "profiler.plugin_savings",
+   "meta": {
+    "file": "scripts/profiler.py"
+   }
+  },
+  "function:profiler.suggest": {
+   "type": "function",
+   "name": "profiler.suggest",
+   "meta": {
+    "file": "scripts/profiler.py"
+   }
+  },
+  "function:profiler.latest_prompt": {
+   "type": "function",
+   "name": "profiler.latest_prompt",
+   "meta": {
+    "file": "scripts/profiler.py"
+   }
+  },
+  "function:profiler.report": {
+   "type": "function",
+   "name": "profiler.report",
+   "meta": {
+    "file": "scripts/profiler.py"
+   }
+  },
+  "function:profiler.selftest": {
+   "type": "function",
+   "name": "profiler.selftest",
+   "meta": {
+    "file": "scripts/profiler.py"
+   }
+  },
+  "function:profiler.main": {
+   "type": "function",
+   "name": "profiler.main",
+   "meta": {
+    "file": "scripts/profiler.py"
+   }
+  },
+  "file:scripts/promptc.py": {
+   "type": "file",
+   "name": "scripts/promptc.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO prompt compiler. Stdlib only."
+   }
+  },
   "file:PROMPTC.md": {
    "type": "file",
    "name": "PROMPTC.md",
@@ -1388,13 +1524,6 @@
     "note_type": "doc",
     "summary": "Prompt Compiler spec \u2014 dynamically constructs optimized, validated prompts from intent, context, experience, tools and budget.",
     "tags": "core prompts compiler runtime"
-   }
-  },
-  "function:promptc.stem": {
-   "type": "function",
-   "name": "promptc.stem",
-   "meta": {
-    "file": "scripts/promptc.py"
    }
   },
   "function:promptc.dedup_lines": {
@@ -1441,13 +1570,6 @@
     "file": "scripts/promptc.py"
    }
   },
-  "function:promptc._index_notes": {
-   "type": "function",
-   "name": "promptc._index_notes",
-   "meta": {
-    "file": "scripts/promptc.py"
-   }
-  },
   "function:promptc.save": {
    "type": "function",
    "name": "promptc.save",
@@ -1474,13 +1596,6 @@
    "name": "scripts/query.py",
    "meta": {
     "doc": "ABSOLUTE ZERO query. Stdlib only."
-   }
-  },
-  "function:query.load": {
-   "type": "function",
-   "name": "query.load",
-   "meta": {
-    "file": "scripts/query.py"
    }
   },
   "function:query.matches": {
@@ -1517,13 +1632,6 @@
    "meta": {
     "path": "FLOW.md",
     "note_type": "doc"
-   }
-  },
-  "function:review.load": {
-   "type": "function",
-   "name": "review.load",
-   "meta": {
-    "file": "scripts/review.py"
    }
   },
   "function:review.stem": {
@@ -1569,13 +1677,6 @@
     "note_type": "doc",
     "summary": "Skill Discovery Engine spec \u2014 determines which skills load for a request, ordered, deduplicated, conflict-resolved.",
     "tags": "core skills discovery runtime"
-   }
-  },
-  "function:skills.norm": {
-   "type": "function",
-   "name": "skills.norm",
-   "meta": {
-    "file": "scripts/skills.py"
    }
   },
   "function:skills.scan_skills": {
@@ -1858,6 +1959,16 @@
    "meta": {
     "path": "README.md",
     "note_type": "doc"
+   }
+  },
+  "file:TOKEN.md": {
+   "type": "file",
+   "name": "ABSOLUTE ZERO V3 \u2014 Token Intelligence",
+   "meta": {
+    "path": "TOKEN.md",
+    "note_type": "doc",
+    "summary": "V3 Token Intelligence \u2014 budgets, no-LLM gate, adaptive pipeline, one retrieval layer, profiler.",
+    "tags": "core token budget runtime v3"
    }
   },
   "file:00_CORE/ACTIVE_GOALS.md": {
@@ -2675,6 +2786,11 @@
    "related_to"
   ],
   [
+   "file:TOKEN.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
    "file:VERIFIER.md",
    "project:ABSOLUTE_ZERO",
    "related_to"
@@ -2693,6 +2809,16 @@
    "file:scripts/agents.py",
    "file:AGENTS.md",
    "implements"
+  ],
+  [
+   "file:scripts/agents.py",
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/agents.py",
+   "file:scripts/core.py",
+   "imports"
   ],
   [
    "file:scripts/agents.py",
@@ -2876,16 +3002,6 @@
   ],
   [
    "file:scripts/bootstrap.py",
-   "file:scripts/orchestrator.py",
-   "depends_on"
-  ],
-  [
-   "file:scripts/bootstrap.py",
-   "file:scripts/orchestrator.py",
-   "imports"
-  ],
-  [
-   "file:scripts/bootstrap.py",
    "file:scripts/planner.py",
    "depends_on"
   ],
@@ -3041,6 +3157,16 @@
   ],
   [
    "file:scripts/context.py",
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/context.py",
+   "file:scripts/core.py",
+   "imports"
+  ],
+  [
+   "file:scripts/context.py",
    "file:scripts/orchestrator.py",
    "depends_on"
   ],
@@ -3067,16 +3193,6 @@
   [
    "file:scripts/context.py",
    "function:context.dedup",
-   "related_to"
-  ],
-  [
-   "file:scripts/context.py",
-   "function:context.est_tokens",
-   "related_to"
-  ],
-  [
-   "file:scripts/context.py",
-   "function:context.jaccard",
    "related_to"
   ],
   [
@@ -3155,6 +3271,121 @@
    "related_to"
   ],
   [
+   "file:scripts/core.py",
+   "function:core.classify",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.dump_json",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.est_tokens",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.jaccard",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.load_index",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.load_json",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.nwords",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.retrieve",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.sim",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.stale",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.stem",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "function:core.words_of",
+   "related_to"
+  ],
+  [
+   "file:scripts/core.py",
+   "library:difflib",
+   "imports"
+  ],
+  [
+   "file:scripts/core.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/core.py",
+   "library:os",
+   "imports"
+  ],
+  [
+   "file:scripts/core.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/core.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/core.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/core.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/core.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "file:scripts/core.py",
+   "imports"
+  ],
+  [
    "file:scripts/dashboard.py",
    "function:dashboard.bar_rows",
    "related_to"
@@ -3172,11 +3403,6 @@
   [
    "file:scripts/dashboard.py",
    "function:dashboard.gather",
-   "related_to"
-  ],
-  [
-   "file:scripts/dashboard.py",
-   "function:dashboard.load",
    "related_to"
   ],
   [
@@ -3226,6 +3452,11 @@
   ],
   [
    "file:scripts/dashboard.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/dashboard.py",
    "library:tempfile",
    "imports"
   ],
@@ -3241,32 +3472,12 @@
   ],
   [
    "file:scripts/experience.py",
-   "file:scripts/context.py",
+   "file:scripts/core.py",
    "depends_on"
   ],
   [
    "file:scripts/experience.py",
-   "file:scripts/context.py",
-   "imports"
-  ],
-  [
-   "file:scripts/experience.py",
-   "file:scripts/orchestrator.py",
-   "depends_on"
-  ],
-  [
-   "file:scripts/experience.py",
-   "file:scripts/orchestrator.py",
-   "imports"
-  ],
-  [
-   "file:scripts/experience.py",
-   "file:scripts/promptc.py",
-   "depends_on"
-  ],
-  [
-   "file:scripts/experience.py",
-   "file:scripts/promptc.py",
+   "file:scripts/core.py",
    "imports"
   ],
   [
@@ -3277,11 +3488,6 @@
   [
    "file:scripts/experience.py",
    "function:experience.draft_lesson",
-   "related_to"
-  ],
-  [
-   "file:scripts/experience.py",
-   "function:experience.dump_json",
    "related_to"
   ],
   [
@@ -3301,17 +3507,7 @@
   ],
   [
    "file:scripts/experience.py",
-   "function:experience.load_json",
-   "related_to"
-  ],
-  [
-   "file:scripts/experience.py",
    "function:experience.main",
-   "related_to"
-  ],
-  [
-   "file:scripts/experience.py",
-   "function:experience.nwords",
    "related_to"
   ],
   [
@@ -3341,11 +3537,6 @@
   ],
   [
    "file:scripts/experience.py",
-   "function:experience.sim",
-   "related_to"
-  ],
-  [
-   "file:scripts/experience.py",
    "function:experience.update_workflows",
    "related_to"
   ],
@@ -3367,11 +3558,6 @@
   [
    "file:scripts/experience.py",
    "library:difflib",
-   "imports"
-  ],
-  [
-   "file:scripts/experience.py",
-   "library:json",
    "imports"
   ],
   [
@@ -3411,12 +3597,12 @@
   ],
   [
    "file:scripts/graph.py",
-   "file:scripts/orchestrator.py",
+   "file:scripts/core.py",
    "depends_on"
   ],
   [
    "file:scripts/graph.py",
-   "file:scripts/orchestrator.py",
+   "file:scripts/core.py",
    "imports"
   ],
   [
@@ -3636,17 +3822,47 @@
   ],
   [
    "file:scripts/orchestrator.py",
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/core.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/plugins.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/plugins.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
    "function:orchestrator.allowed_states",
    "related_to"
   ],
   [
    "file:scripts/orchestrator.py",
-   "function:orchestrator.classify",
+   "function:orchestrator.budget_for",
    "related_to"
   ],
   [
    "file:scripts/orchestrator.py",
    "function:orchestrator.close",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.freshness",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.gate",
    "related_to"
   ],
   [
@@ -3696,7 +3912,7 @@
   ],
   [
    "file:scripts/orchestrator.py",
-   "function:orchestrator.words_of",
+   "function:orchestrator.vault_hits",
    "related_to"
   ],
   [
@@ -3711,11 +3927,6 @@
   ],
   [
    "file:scripts/orchestrator.py",
-   "library:difflib",
-   "imports"
-  ],
-  [
-   "file:scripts/orchestrator.py",
    "library:json",
    "imports"
   ],
@@ -3726,7 +3937,7 @@
   ],
   [
    "file:scripts/orchestrator.py",
-   "library:re",
+   "library:sys",
    "imports"
   ],
   [
@@ -3751,12 +3962,12 @@
   ],
   [
    "file:scripts/planner.py",
-   "file:scripts/context.py",
+   "file:scripts/core.py",
    "depends_on"
   ],
   [
    "file:scripts/planner.py",
-   "file:scripts/context.py",
+   "file:scripts/core.py",
    "imports"
   ],
   [
@@ -3881,12 +4092,12 @@
   ],
   [
    "file:scripts/plugins.py",
-   "file:scripts/orchestrator.py",
+   "file:scripts/core.py",
    "depends_on"
   ],
   [
    "file:scripts/plugins.py",
-   "file:scripts/orchestrator.py",
+   "file:scripts/core.py",
    "imports"
   ],
   [
@@ -4020,6 +4231,81 @@
    "related_to"
   ],
   [
+   "file:scripts/profiler.py",
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "file:scripts/core.py",
+   "imports"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "function:profiler.latest_prompt",
+   "related_to"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "function:profiler.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "function:profiler.parse_sections",
+   "related_to"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "function:profiler.plugin_savings",
+   "related_to"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "function:profiler.report",
+   "related_to"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "function:profiler.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "function:profiler.suggest",
+   "related_to"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/profiler.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
    "file:scripts/promptc.py",
    "file:PROMPTC.md",
    "implements"
@@ -4036,6 +4322,16 @@
   ],
   [
    "file:scripts/promptc.py",
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "file:scripts/core.py",
+   "imports"
+  ],
+  [
+   "file:scripts/promptc.py",
    "file:scripts/orchestrator.py",
    "depends_on"
   ],
@@ -4053,11 +4349,6 @@
    "file:scripts/promptc.py",
    "file:scripts/plugins.py",
    "imports"
-  ],
-  [
-   "file:scripts/promptc.py",
-   "function:promptc._index_notes",
-   "related_to"
   ],
   [
    "file:scripts/promptc.py",
@@ -4092,11 +4383,6 @@
   [
    "file:scripts/promptc.py",
    "function:promptc.selftest",
-   "related_to"
-  ],
-  [
-   "file:scripts/promptc.py",
-   "function:promptc.stem",
    "related_to"
   ],
   [
@@ -4151,8 +4437,13 @@
   ],
   [
    "file:scripts/query.py",
-   "function:query.load",
-   "related_to"
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/query.py",
+   "file:scripts/core.py",
+   "imports"
   ],
   [
    "file:scripts/query.py",
@@ -4176,12 +4467,12 @@
   ],
   [
    "file:scripts/query.py",
-   "library:json",
+   "library:pathlib",
    "imports"
   ],
   [
    "file:scripts/query.py",
-   "library:pathlib",
+   "library:sys",
    "imports"
   ],
   [
@@ -4201,8 +4492,13 @@
   ],
   [
    "file:scripts/review.py",
-   "function:review.load",
-   "related_to"
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/review.py",
+   "file:scripts/core.py",
+   "imports"
   ],
   [
    "file:scripts/review.py",
@@ -4241,12 +4537,12 @@
   ],
   [
    "file:scripts/review.py",
-   "library:json",
+   "library:pathlib",
    "imports"
   ],
   [
    "file:scripts/review.py",
-   "library:pathlib",
+   "library:sys",
    "imports"
   ],
   [
@@ -4266,12 +4562,12 @@
   ],
   [
    "file:scripts/skills.py",
-   "file:scripts/context.py",
+   "file:scripts/core.py",
    "depends_on"
   ],
   [
    "file:scripts/skills.py",
-   "file:scripts/context.py",
+   "file:scripts/core.py",
    "imports"
   ],
   [
@@ -4292,16 +4588,6 @@
   [
    "file:scripts/skills.py",
    "file:scripts/plugins.py",
-   "imports"
-  ],
-  [
-   "file:scripts/skills.py",
-   "file:scripts/promptc.py",
-   "depends_on"
-  ],
-  [
-   "file:scripts/skills.py",
-   "file:scripts/promptc.py",
    "imports"
   ],
   [
@@ -4312,11 +4598,6 @@
   [
    "file:scripts/skills.py",
    "function:skills.main",
-   "related_to"
-  ],
-  [
-   "file:scripts/skills.py",
-   "function:skills.norm",
    "related_to"
   ],
   [
@@ -4491,22 +4772,17 @@
   ],
   [
    "function:agents.compose",
-   "function:orchestrator.classify",
-   "calls"
-  ],
-  [
-   "function:agents.compose",
    "function:planner.decompose",
    "calls"
   ],
   [
    "function:agents.execute",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
    "function:agents.implementer_agent",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -4546,7 +4822,7 @@
   ],
   [
    "function:agents.researcher_agent",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -4671,11 +4947,6 @@
   ],
   [
    "function:context.build",
-   "function:context.est_tokens",
-   "calls"
-  ],
-  [
-   "function:context.build",
    "function:context.read_body",
    "calls"
   ],
@@ -4686,42 +4957,42 @@
   ],
   [
    "function:context.build",
-   "function:orchestrator.classify",
+   "function:core.est_tokens",
    "calls"
   ],
   [
    "function:context.build",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
    "function:context.compress",
-   "function:context.est_tokens",
+   "function:core.est_tokens",
    "calls"
   ],
   [
    "function:context.compress",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
    "function:context.compress_history",
-   "function:context.est_tokens",
+   "function:core.est_tokens",
    "calls"
   ],
   [
    "function:context.compress_history",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
    "function:context.dedup",
-   "function:context.jaccard",
+   "function:core.jaccard",
    "calls"
   ],
   [
    "function:context.dedup",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -4741,17 +5012,17 @@
   ],
   [
    "function:context.score",
-   "function:context.jaccard",
-   "calls"
-  ],
-  [
-   "function:context.score",
    "function:context.recency",
    "calls"
   ],
   [
    "function:context.score",
-   "function:orchestrator.words_of",
+   "function:core.jaccard",
+   "calls"
+  ],
+  [
+   "function:context.score",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -4760,6 +5031,96 @@
    "calls"
   ],
   [
+   "function:core.classify",
+   "function:core.words_of",
+   "calls"
+  ],
+  [
+   "function:core.nwords",
+   "function:core.stem",
+   "calls"
+  ],
+  [
+   "function:core.nwords",
+   "function:core.words_of",
+   "calls"
+  ],
+  [
+   "function:core.retrieve",
+   "function:core.sim",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.classify",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.dump_json",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.est_tokens",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.jaccard",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.load_index",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.load_json",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.nwords",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.retrieve",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.sim",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.stale",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.stem",
+   "calls"
+  ],
+  [
+   "function:core.selftest",
+   "function:core.words_of",
+   "calls"
+  ],
+  [
+   "function:core.sim",
+   "function:core.jaccard",
+   "calls"
+  ],
+  [
+   "function:core.sim",
+   "function:core.nwords",
+   "calls"
+  ],
+  [
    "function:dashboard.bar_rows",
    "function:dashboard.esc",
    "calls"
@@ -4776,7 +5137,7 @@
   ],
   [
    "function:dashboard.gather",
-   "function:dashboard.load",
+   "function:core.load_json",
    "calls"
   ],
   [
@@ -4802,6 +5163,16 @@
   [
    "function:dashboard.selftest",
    "function:dashboard.build",
+   "calls"
+  ],
+  [
+   "function:experience.draft_lesson",
+   "function:core.sim",
+   "calls"
+  ],
+  [
+   "function:experience.draft_lesson",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -4810,13 +5181,13 @@
    "calls"
   ],
   [
-   "function:experience.draft_lesson",
-   "function:experience.sim",
+   "function:experience.harvest",
+   "function:core.dump_json",
    "calls"
   ],
   [
-   "function:experience.draft_lesson",
-   "function:orchestrator.words_of",
+   "function:experience.harvest",
+   "function:core.load_json",
    "calls"
   ],
   [
@@ -4831,17 +5202,7 @@
   ],
   [
    "function:experience.harvest",
-   "function:experience.dump_json",
-   "calls"
-  ],
-  [
-   "function:experience.harvest",
    "function:experience.lesson_pairs",
-   "calls"
-  ],
-  [
-   "function:experience.harvest",
-   "function:experience.load_json",
    "calls"
   ],
   [
@@ -4875,28 +5236,23 @@
    "calls"
   ],
   [
-   "function:experience.nwords",
-   "function:orchestrator.words_of",
-   "calls"
-  ],
-  [
-   "function:experience.nwords",
-   "function:promptc.stem",
+   "function:experience.recall",
+   "function:core.load_json",
    "calls"
   ],
   [
    "function:experience.recall",
-   "function:experience.load_json",
-   "calls"
-  ],
-  [
-   "function:experience.recall",
-   "function:experience.sim",
+   "function:core.sim",
    "calls"
   ],
   [
    "function:experience.selftest",
-   "function:experience.dump_json",
+   "function:core.dump_json",
+   "calls"
+  ],
+  [
+   "function:experience.selftest",
+   "function:core.load_json",
    "calls"
   ],
   [
@@ -4906,22 +5262,7 @@
   ],
   [
    "function:experience.selftest",
-   "function:experience.load_json",
-   "calls"
-  ],
-  [
-   "function:experience.selftest",
    "function:experience.recall",
-   "calls"
-  ],
-  [
-   "function:experience.sim",
-   "function:context.jaccard",
-   "calls"
-  ],
-  [
-   "function:experience.sim",
-   "function:experience.nwords",
    "calls"
   ],
   [
@@ -4931,7 +5272,7 @@
   ],
   [
    "function:graph.Graph.search",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -5060,11 +5401,6 @@
    "calls"
   ],
   [
-   "function:orchestrator.classify",
-   "function:orchestrator.words_of",
-   "calls"
-  ],
-  [
    "function:orchestrator.close",
    "function:orchestrator.load_trace",
    "calls"
@@ -5077,6 +5413,21 @@
   [
    "function:orchestrator.close",
    "function:orchestrator.save_trace",
+   "calls"
+  ],
+  [
+   "function:orchestrator.freshness",
+   "function:core.stale",
+   "calls"
+  ],
+  [
+   "function:orchestrator.gate",
+   "function:orchestrator.vault_hits",
+   "calls"
+  ],
+  [
+   "function:orchestrator.gate",
+   "function:plugins.route",
    "calls"
   ],
   [
@@ -5126,7 +5477,27 @@
   ],
   [
    "function:orchestrator.plan",
-   "function:orchestrator.classify",
+   "function:core.classify",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
+   "function:core.words_of",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
+   "function:orchestrator.budget_for",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
+   "function:orchestrator.freshness",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
+   "function:orchestrator.gate",
    "calls"
   ],
   [
@@ -5145,18 +5516,23 @@
    "calls"
   ],
   [
-   "function:orchestrator.plan",
-   "function:orchestrator.words_of",
+   "function:orchestrator.selftest",
+   "function:core.classify",
    "calls"
   ],
   [
    "function:orchestrator.selftest",
-   "function:orchestrator.classify",
+   "function:orchestrator.budget_for",
    "calls"
   ],
   [
    "function:orchestrator.selftest",
    "function:orchestrator.close",
+   "calls"
+  ],
+  [
+   "function:orchestrator.selftest",
+   "function:orchestrator.gate",
    "calls"
   ],
   [
@@ -5176,7 +5552,12 @@
   ],
   [
    "function:orchestrator.similarity",
-   "function:orchestrator.words_of",
+   "function:orchestrator.vault_hits",
+   "calls"
+  ],
+  [
+   "function:orchestrator.vault_hits",
+   "function:core.retrieve",
    "calls"
   ],
   [
@@ -5196,12 +5577,7 @@
   ],
   [
    "function:planner.build",
-   "function:orchestrator.classify",
-   "calls"
-  ],
-  [
-   "function:planner.build",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -5231,7 +5607,7 @@
   ],
   [
    "function:planner.decompose",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -5256,7 +5632,7 @@
   ],
   [
    "function:planner.mine_risks",
-   "function:orchestrator.words_of",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -5321,7 +5697,7 @@
   ],
   [
    "function:plugins.route",
-   "function:orchestrator.classify",
+   "function:core.classify",
    "calls"
   ],
   [
@@ -5440,28 +5816,93 @@
    "calls"
   ],
   [
+   "function:profiler.main",
+   "function:profiler.report",
+   "calls"
+  ],
+  [
+   "function:profiler.main",
+   "function:profiler.selftest",
+   "calls"
+  ],
+  [
+   "function:profiler.parse_sections",
+   "function:core.est_tokens",
+   "calls"
+  ],
+  [
+   "function:profiler.plugin_savings",
+   "function:core.load_json",
+   "calls"
+  ],
+  [
+   "function:profiler.report",
+   "function:core.dump_json",
+   "calls"
+  ],
+  [
+   "function:profiler.report",
+   "function:core.est_tokens",
+   "calls"
+  ],
+  [
+   "function:profiler.report",
+   "function:profiler.latest_prompt",
+   "calls"
+  ],
+  [
+   "function:profiler.report",
+   "function:profiler.parse_sections",
+   "calls"
+  ],
+  [
+   "function:profiler.report",
+   "function:profiler.plugin_savings",
+   "calls"
+  ],
+  [
+   "function:profiler.report",
+   "function:profiler.suggest",
+   "calls"
+  ],
+  [
+   "function:profiler.selftest",
+   "function:core.dump_json",
+   "calls"
+  ],
+  [
+   "function:profiler.selftest",
+   "function:profiler.parse_sections",
+   "calls"
+  ],
+  [
+   "function:profiler.selftest",
+   "function:profiler.report",
+   "calls"
+  ],
+  [
+   "function:profiler.selftest",
+   "function:profiler.suggest",
+   "calls"
+  ],
+  [
    "function:promptc.compile_prompt",
    "function:context.build",
    "calls"
   ],
   [
    "function:promptc.compile_prompt",
-   "function:context.est_tokens",
+   "function:core.est_tokens",
    "calls"
   ],
   [
    "function:promptc.compile_prompt",
-   "function:orchestrator.classify",
+   "function:core.load_index",
    "calls"
   ],
   [
    "function:promptc.compile_prompt",
-   "function:orchestrator.words_of",
-   "calls"
-  ],
-  [
-   "function:promptc.compile_prompt",
-   "function:promptc._index_notes",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -5491,22 +5932,17 @@
   ],
   [
    "function:promptc.dedup_lines",
-   "function:context.jaccard",
+   "function:core.jaccard",
    "calls"
   ],
   [
    "function:promptc.dedup_lines",
-   "function:orchestrator.words_of",
+   "function:core.stem",
    "calls"
   ],
   [
    "function:promptc.dedup_lines",
-   "function:promptc.stem",
-   "calls"
-  ],
-  [
-   "function:promptc.few_shot",
-   "function:context.jaccard",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -5516,7 +5952,12 @@
   ],
   [
    "function:promptc.few_shot",
-   "function:orchestrator.words_of",
+   "function:core.jaccard",
+   "calls"
+  ],
+  [
+   "function:promptc.few_shot",
+   "function:core.words_of",
    "calls"
   ],
   [
@@ -5556,12 +5997,12 @@
   ],
   [
    "function:promptc.validate",
-   "function:context.est_tokens",
+   "function:core.est_tokens",
    "calls"
   ],
   [
    "function:query.main",
-   "function:query.load",
+   "function:core.load_index",
    "calls"
   ],
   [
@@ -5581,7 +6022,7 @@
   ],
   [
    "function:review.main",
-   "function:review.load",
+   "function:core.load_index",
    "calls"
   ],
   [
@@ -5621,12 +6062,7 @@
   ],
   [
    "function:skills.discover",
-   "function:orchestrator.classify",
-   "calls"
-  ],
-  [
-   "function:skills.discover",
-   "function:skills.norm",
+   "function:core.nwords",
    "calls"
   ],
   [
@@ -5650,23 +6086,13 @@
    "calls"
   ],
   [
-   "function:skills.norm",
-   "function:orchestrator.words_of",
-   "calls"
-  ],
-  [
-   "function:skills.norm",
-   "function:promptc.stem",
+   "function:skills.score_skill",
+   "function:core.nwords",
    "calls"
   ],
   [
    "function:skills.score_skill",
    "function:plugins.caps_from_text",
-   "calls"
-  ],
-  [
-   "function:skills.score_skill",
-   "function:skills.norm",
    "calls"
   ],
   [
@@ -5761,6 +6187,11 @@
   ],
   [
    "library:argparse",
+   "file:scripts/profiler.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
    "file:scripts/promptc.py",
    "used_by"
   ],
@@ -5861,6 +6292,11 @@
   ],
   [
    "library:datetime",
+   "file:scripts/profiler.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
    "file:scripts/promptc.py",
    "used_by"
   ],
@@ -5881,17 +6317,17 @@
   ],
   [
    "library:difflib",
+   "file:scripts/core.py",
+   "used_by"
+  ],
+  [
+   "library:difflib",
    "file:scripts/experience.py",
    "used_by"
   ],
   [
    "library:difflib",
    "file:scripts/graph.py",
-   "used_by"
-  ],
-  [
-   "library:difflib",
-   "file:scripts/orchestrator.py",
    "used_by"
   ],
   [
@@ -5936,12 +6372,12 @@
   ],
   [
    "library:json",
-   "file:scripts/dashboard.py",
+   "file:scripts/core.py",
    "used_by"
   ],
   [
    "library:json",
-   "file:scripts/experience.py",
+   "file:scripts/dashboard.py",
    "used_by"
   ],
   [
@@ -5976,22 +6412,17 @@
   ],
   [
    "library:json",
-   "file:scripts/query.py",
-   "used_by"
-  ],
-  [
-   "library:json",
-   "file:scripts/review.py",
-   "used_by"
-  ],
-  [
-   "library:json",
    "file:scripts/skills.py",
    "used_by"
   ],
   [
    "library:json",
    "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:os",
+   "file:scripts/core.py",
    "used_by"
   ],
   [
@@ -6007,6 +6438,11 @@
   [
    "library:pathlib",
    "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/core.py",
    "used_by"
   ],
   [
@@ -6042,6 +6478,11 @@
   [
    "library:pathlib",
    "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/profiler.py",
    "used_by"
   ],
   [
@@ -6091,6 +6532,11 @@
   ],
   [
    "library:re",
+   "file:scripts/core.py",
+   "used_by"
+  ],
+  [
+   "library:re",
    "file:scripts/dashboard.py",
    "used_by"
   ],
@@ -6111,11 +6557,6 @@
   ],
   [
    "library:re",
-   "file:scripts/orchestrator.py",
-   "used_by"
-  ],
-  [
-   "library:re",
    "file:scripts/planner.py",
    "used_by"
   ],
@@ -6177,6 +6618,16 @@
   [
    "library:sys",
    "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/core.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/dashboard.py",
    "used_by"
   ],
   [
@@ -6191,6 +6642,11 @@
   ],
   [
    "library:sys",
+   "file:scripts/orchestrator.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
    "file:scripts/planner.py",
    "used_by"
   ],
@@ -6201,7 +6657,22 @@
   ],
   [
    "library:sys",
+   "file:scripts/profiler.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
    "file:scripts/promptc.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/query.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/review.py",
    "used_by"
   ],
   [
@@ -6227,6 +6698,11 @@
   [
    "library:tempfile",
    "file:scripts/context.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/core.py",
    "used_by"
   ],
   [
@@ -6257,6 +6733,11 @@
   [
    "library:tempfile",
    "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/profiler.py",
    "used_by"
   ],
   [
@@ -6332,6 +6813,11 @@
   [
    "project:ABSOLUTEZERO",
    "library:json",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:os",
    "depends_on"
   ],
   [

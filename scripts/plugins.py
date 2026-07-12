@@ -31,7 +31,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from orchestrator import classify
+from core import classify
 
 VAULT = Path(__file__).resolve().parent.parent
 REGISTRY = VAULT / "90_META" / "PLUGINS.json"

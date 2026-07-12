@@ -61,6 +61,22 @@
    "invoke": "python scripts/context.py"
   },
   {
+   "name": "core",
+   "kind": "script",
+   "path": "scripts/core.py",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/core.py"
+  },
+  {
    "name": "dashboard",
    "kind": "script",
    "path": "scripts/dashboard.py",
@@ -210,6 +226,28 @@
     "network"
    ],
    "invoke": "python scripts/plugins.py"
+  },
+  {
+   "name": "profiler",
+   "kind": "script",
+   "path": "scripts/profiler.py",
+   "capabilities": [
+    "context"
+   ],
+   "actions": [
+    "report"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [
+    "plugin_stats"
+   ],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/profiler.py"
   },
   {
    "name": "promptc",

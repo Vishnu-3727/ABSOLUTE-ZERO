@@ -232,6 +232,24 @@
       "links": []
     },
     {
+      "path": "TOKEN.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "token",
+        "budget",
+        "runtime",
+        "v3"
+      ],
+      "title": "ABSOLUTE ZERO V3 — Token Intelligence",
+      "summary": "V3 Token Intelligence — budgets, no-LLM gate, adaptive pipeline, one retrieval layer, profiler.",
+      "status": "active",
+      "confidence": "high",
+      "date": "2026-07-12",
+      "links": []
+    },
+    {
       "path": "VERIFIER.md",
       "type": "doc",
       "project": "ABSOLUTE_ZERO",

@@ -24,7 +24,11 @@ Every user request that produces a work product routes through this; bare
 questions/greetings are exempt. Contract: ORCHESTRATOR.md.
 1. Run: python scripts/orchestrator.py plan "<request>" — creates a trace
    in 90_META/traces/ with intent, complexity, strategy, engines, pipeline,
-   verify checklist. AMBIGUOUS output -> ask the user first.
+   verify checklist, token budget, and llm gate (TOKEN.md). AMBIGUOUS
+   output -> ask the user first. llm none -> follow the tool-direct
+   pipeline: no model call, run the printed route chain. cache-first ->
+   read the cited note before spending tokens. STALE lines -> run the
+   printed rebuild command first.
 1b. Load skills: python scripts/skills.py discover "<request>" — invoke
    the manifest list in order (SKILLS.md). Below threshold: proceed bare.
 2. Execute the pipeline in order, logging each state:
@@ -50,7 +54,8 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
    SUMMARIZE over a failing verifier.
 6. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.
    Then harvest what the task taught:
-   python scripts/experience.py harvest --trace <file> (EXPERIENCE.md).
+   python scripts/experience.py harvest --trace <file> (EXPERIENCE.md),
+   and profile the spend: python scripts/profiler.py report (TOKEN.md).
 7. Dispatching work to a fresh agent/session? Compile its briefing:
    python scripts/promptc.py compile "<request>" --project X (PROMPTC.md).
 

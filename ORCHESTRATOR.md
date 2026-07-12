@@ -70,6 +70,11 @@ Pipelines by strategy:
 | trivial  | direct                | RECALL → EXECUTE → VERIFY → SUMMARIZE |
 | standard | recall-execute-verify | RECALL → PLAN → EXECUTE → VERIFY → SUMMARIZE |
 | complex  | deep                  | RECALL → SIMILARITY → PLAN → EXECUTE → VERIFY → REVIEW → SUMMARIZE |
+| (gate: llm none) | tool-direct   | ROUTE → EXECUTE → VERIFY → SUMMARIZE |
+
+V3 (TOKEN.md): plan also stamps the trace with `budget` (600/3000/12000,
+research 20000), `llm` (none / cache-first / required from the capability
+gate), and prints STALE rebuild commands for outdated cached artifacts.
 
 RECALL depth follows complexity: trivial = FAULT_LEDGER scan only;
 standard = ledger + query.py on `recall_tags`; complex adds the similarity
