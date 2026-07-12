@@ -24,10 +24,9 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from orchestrator import classify, words_of
+from core import nwords
+from orchestrator import classify
 from plugins import caps_from_text, INTENT_CAPS
-from context import STOP
-from promptc import stem
 
 VAULT = Path(__file__).resolve().parent.parent
 MANIFEST = VAULT / "90_META" / "skills" / "last_discovery.json"
@@ -40,10 +39,6 @@ DEFAULT_PHASE = 2
 CONFLICTS = [("wake", "sleep")]
 # Superset skills: if the left is selected, the right adds nothing.
 SUBSUMES = {"task": ["recall"]}
-
-
-def norm(text):
-    return {stem(w) for w in words_of(text)} - STOP
 
 
 def scan_skills(vault, home=None):
@@ -73,15 +68,15 @@ def scan_skills(vault, home=None):
 
 
 def score_skill(skill, request, intent, hist_words):
-    qw = norm(request)
-    sw = norm(skill["text"])
+    qw = nwords(request)
+    sw = nwords(skill["text"])
     kw = len(qw & sw) / len(qw) if qw else 0            # keyword match
     need = set(INTENT_CAPS.get(intent, [])) | set(caps_from_text(request))
     have = set(caps_from_text(skill["text"]))
     sem = len(need & have) / len(need) if need else 0    # capability space
     sem = max(sem, SequenceMatcher(None, request.lower(),
                                    skill["text"][:200].lower()).ratio())
-    hist = 0.15 if hist_words & (norm(skill["name"]) | sw) else 0
+    hist = 0.15 if hist_words & (nwords(skill["name"]) | sw) else 0
     local = 0.05 if skill["origin"] == "vault" else 0
     return round(min(1.0, 0.35 * kw + 0.45 * sem + hist + local), 2)
 
@@ -93,7 +88,7 @@ def discover(request, history=None, vault=VAULT, home=None, quiet=False,
     if history:
         lines = Path(history).read_text(encoding="utf-8",
                                         errors="ignore").splitlines()
-        hist_words = norm(" ".join(lines[-30:]))
+        hist_words = nwords(" ".join(lines[-30:]))
     skills = scan_skills(vault, home)
     scored = [(score_skill(s, request, intent, hist_words), s)
               for s in skills]

@@ -24,7 +24,8 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from orchestrator import classify, words_of
+from core import STOP, est_tokens, jaccard, words_of
+from orchestrator import classify
 
 VAULT = Path(__file__).resolve().parent.parent
 BUDGET, HARD_CAP = 5000, 8000
@@ -44,19 +45,6 @@ INTENT_SKILLS = {"research": ["research", "recall"],
                  "security": ["recall", "review"],
                  "deployment": ["recall", "predict"]}
 FM_RE = re.compile(r"^---\s*\n.*?\n---\s*\n", re.DOTALL)
-# Stopwords never carry relevance; without this, "the" pins fault lines.
-STOP = {"the", "a", "an", "to", "of", "in", "on", "for", "and", "or", "is",
-        "are", "it", "this", "that", "with", "as", "at", "by", "be", "do",
-        "does", "why", "how", "what", "when", "not", "no", "my", "our",
-        "every", "all", "some", "into", "from", "after", "before", "during"}
-
-
-def est_tokens(text):
-    return max(1, len(text) // 4)
-
-
-def jaccard(a, b):
-    return len(a & b) / len(a | b) if a | b else 0.0
 
 
 def recency(d, today):

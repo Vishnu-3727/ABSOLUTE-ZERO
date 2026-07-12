@@ -15,10 +15,13 @@ transitions, log, close. Full contract in ORCHESTRATOR.md.
 """
 import argparse
 import json
-import re
+import sys
 from datetime import datetime
 from difflib import SequenceMatcher
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from core import words_of
 
 VAULT = Path(__file__).resolve().parent.parent
 TRACES = VAULT / "90_META" / "traces"
@@ -92,10 +95,6 @@ VERIFY = {
     "deployment": ["dry-run or staged first", "rollback path stated",
                    "post-deploy check passes"],
 }
-
-
-def words_of(text):
-    return re.findall(r"[a-z0-9][a-z0-9_-]*", text.lower())
 
 
 def classify(request):

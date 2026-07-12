@@ -22,9 +22,9 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from orchestrator import classify, words_of, VERIFY as CHECKLISTS
-from context import build as build_context, est_tokens, jaccard, STOP, \
-    read_body
+from core import STOP, est_tokens, jaccard, load_index, stem, words_of
+from orchestrator import classify, VERIFY as CHECKLISTS
+from context import build as build_context, read_body
 
 VAULT = Path(__file__).resolve().parent.parent
 PROMPTS = VAULT / "90_META" / "prompts"
@@ -73,13 +73,6 @@ DROP_ORDER = ["EXAMPLES", "TOOLS", "CONTEXT", "VERIFY", "INSTRUCTIONS"]
 OUTPUT_CONTRACT = ["Cite vault paths for every memory-based claim.",
                    "Log orchestrator states as you pass them; close the "
                    "trace before finishing."]
-
-
-def stem(w):
-    for suf in ("ing", "ed", "es", "s"):
-        if w.endswith(suf) and len(w) - len(suf) >= 3:
-            return w[:-len(suf)]
-    return w
 
 
 def dedup_lines(lines):
@@ -192,7 +185,7 @@ def compile_prompt(request, project="", budget=BUDGET, history=None,
         "TOOLS": "\n".join(f"- {l}" for l in tool_lines(request)),
         "CONTEXT": render_context(pkg),
         "EXAMPLES": "\n\n".join(few_shot(request, notes if notes is not None
-                                         else _index_notes(vault), vault)),
+                                         else load_index(vault), vault)),
         "VERIFY": "\n".join(verify_lines),
         "OUTPUT": "\n".join(f"- {l}" for l in OUTPUT_CONTRACT),
     }
@@ -219,13 +212,6 @@ def compile_prompt(request, project="", budget=BUDGET, history=None,
                       "merged_duplicates": dropped_dups,
                       "context_omitted": len(pkg["omitted"])},
             "validation": [list(x) for x in checks]}
-
-
-def _index_notes(vault):
-    idx = vault / "90_META" / "INDEX.json"
-    if not idx.exists():
-        raise SystemExit("no INDEX.json - run scripts/indexer.py first")
-    return json.loads(idx.read_text(encoding="utf-8"))["notes"]
 
 
 def save(res, vault=VAULT):

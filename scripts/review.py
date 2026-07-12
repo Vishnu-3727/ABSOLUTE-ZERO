@@ -10,21 +10,17 @@ tedious link-graph + date math so nothing rots unnoticed.
   python scripts/review.py --days 90
 """
 import argparse
+import sys
 from datetime import date
 from pathlib import Path
-import json
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from core import load_index
 
 VAULT = Path(__file__).resolve().parent.parent
-INDEX = VAULT / "90_META" / "INDEX.json"
 
 # Entry points / logs are not expected to have inbound links.
 NEVER_ORPHAN = {"doc", "core", "meta", "overview", "recent", "session"}
-
-
-def load():
-    if not INDEX.exists():
-        raise SystemExit("no INDEX.json — run scripts/indexer.py first")
-    return json.loads(INDEX.read_text(encoding="utf-8"))["notes"]
 
 
 def stem(path):
@@ -82,7 +78,7 @@ def main():
     if args.selftest:
         selftest()
         return
-    notes = load()
+    notes = load_index(VAULT)
 
     orph = orphans(notes)
     print(f"ORPHANS (no inbound links): {len(orph)}")

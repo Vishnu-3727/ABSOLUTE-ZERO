@@ -9,17 +9,13 @@ title + summary + path per hit. Nothing else (retrieval is pull, not push).
   python scripts/query.py --project ASUNAMA --since 2026-01-01
 """
 import argparse
-import json
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from core import load_index
+
 VAULT = Path(__file__).resolve().parent.parent
-INDEX = VAULT / "90_META" / "INDEX.json"
-
-
-def load():
-    if not INDEX.exists():
-        raise SystemExit("no INDEX.json — run scripts/indexer.py first")
-    return json.loads(INDEX.read_text(encoding="utf-8"))["notes"]
 
 
 def matches(note, tags, ntype, project, since):
@@ -62,7 +58,7 @@ def main():
         return
 
     tags = [t.strip() for t in args.tags.split(",") if t.strip()]
-    hits = [n for n in load()
+    hits = [n for n in load_index(VAULT)
             if matches(n, tags, args.ntype, args.project, args.since)]
     hits.sort(key=lambda n: n["date"], reverse=True)
 

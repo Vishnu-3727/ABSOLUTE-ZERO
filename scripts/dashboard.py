@@ -16,8 +16,12 @@ import argparse
 import html
 import json
 import re
+import sys
 from datetime import date
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from core import load_json
 
 VAULT = Path(__file__).resolve().parent.parent
 OUT = VAULT / "90_META" / "dashboard.html"
@@ -80,10 +84,6 @@ footer { color: var(--muted); font-size: 12px; margin-top: 20px; }
 """
 
 
-def load(p, default):
-    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
-
-
 def esc(s):
     return html.escape(str(s), quote=True)
 
@@ -104,14 +104,14 @@ def bar_rows(pairs):
 
 def gather(vault):
     meta = vault / "90_META"
-    notes = load(meta / "INDEX.json", {"notes": []})["notes"]
+    notes = load_json(meta / "INDEX.json", {"notes": []})["notes"]
     ledger = [l.lstrip("- ").strip() for l in
               (meta / "FAULT_LEDGER.md").read_text(encoding="utf-8")
               .splitlines() if l.startswith("- ")] \
         if (meta / "FAULT_LEDGER.md").exists() else []
-    wf = load(meta / "experience" / "workflows.json", {})
-    plugins = load(meta / "PLUGINS.json", {"plugins": []})["plugins"]
-    graph = load(meta / "GRAPH.json", {"nodes": {}, "edges": []})
+    wf = load_json(meta / "experience" / "workflows.json", {})
+    plugins = load_json(meta / "PLUGINS.json", {"plugins": []})["plugins"]
+    graph = load_json(meta / "GRAPH.json", {"nodes": {}, "edges": []})
     by_proj, by_type = {}, {}
     for n in notes:
         by_proj[n["project"]] = by_proj.get(n["project"], 0) + 1

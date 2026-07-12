@@ -23,7 +23,6 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from orchestrator import words_of
 from planner import mine_risks
 
 VAULT = Path(__file__).resolve().parent.parent

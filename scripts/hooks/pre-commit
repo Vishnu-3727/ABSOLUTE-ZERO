@@ -1,0 +1,11 @@
+#!/bin/sh
+# ABSOLUTE ZERO commit gate (audit H3): no commit lands while the verifier
+# fails. Deterministic - the model cannot skip it. Install with:
+#   cp scripts/hooks/pre-commit .git/hooks/pre-commit
+cd "$(git rev-parse --show-toplevel)" || exit 1
+python scripts/verifier.py check || {
+  echo ""
+  echo "verifier FAIL - commit blocked (report in 90_META/verify/)"
+  echo "fix the gate findings, or read VERIFIER.md before overriding."
+  exit 1
+}

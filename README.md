@@ -53,6 +53,7 @@ All engines: stdlib only, cross-platform (`pathlib`), self-tested
 ```bash
 git clone https://github.com/Vishnu-3727/ABSOLUTE-ZERO.git
 cd ABSOLUTE-ZERO
+cp scripts/hooks/pre-commit .git/hooks/   # commit gate: verifier must pass
 
 python scripts/indexer.py                 # build the index
 python scripts/orchestrator.py plan "fix the date crash in review.py"

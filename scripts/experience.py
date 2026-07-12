@@ -20,7 +20,6 @@ idempotent: traces are marked harvested. Contract in EXPERIENCE.md.
 """
 import argparse
 import ast
-import json
 import re
 import sys
 from datetime import datetime, date
@@ -28,9 +27,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from orchestrator import words_of
-from context import STOP, jaccard
-from promptc import stem
+from core import dump_json, load_json, sim, words_of
 
 VAULT = Path(__file__).resolve().parent.parent
 EXP = VAULT / "90_META" / "experience"
@@ -53,24 +50,6 @@ MOTIFS = [
     ("shared-kernel", r"^from (orchestrator|context|plugins|promptc) import",
      "engines import each other's primitives instead of duplicating"),
 ]
-
-
-def nwords(text):
-    return {stem(w) for w in words_of(text)} - STOP
-
-
-def sim(a, b):
-    return max(jaccard(nwords(a), nwords(b)),
-               SequenceMatcher(None, a.lower()[:200], b.lower()[:200]).ratio())
-
-
-def load_json(p, default):
-    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
-
-
-def dump_json(p, obj):
-    p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(obj, indent=1) + "\n", encoding="utf-8")
 
 
 def secs(a, b):
