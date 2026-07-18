@@ -106,10 +106,10 @@
   ]
  },
  "bug_fix": {
-  "runs": 8,
-  "pass": 8,
+  "runs": 10,
+  "pass": 10,
   "retries": 0,
-  "seconds": 39693,
+  "seconds": 39707,
   "pipeline": [
    "RECALL",
    "PLAN",
@@ -120,9 +120,9 @@
   "examples": [
    "sweep-probe",
    "sweep-probe",
-   "sweep-probe",
-   "sweep-probe",
-   "2026-07-18-fix-the-drift-in-drone"
+   "2026-07-18-fix-the-drift-in-drone",
+   "2026-07-18-fix-the-pose-drift-in",
+   "sweep-probe"
   ]
  }
 }

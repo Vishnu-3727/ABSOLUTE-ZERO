@@ -1,0 +1,141 @@
+{
+ "id": "2026-07-18-fix-the-pose-drift-in",
+ "request": "fix the pose drift in localization",
+ "project": "ASUNAMA",
+ "intent": "bug_fix",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "experience",
+  "knowledge",
+  "audit"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "root cause named, not symptom",
+  "fix exercised (test or run)",
+  "FAULTS.md entry with topic wikilink"
+ ],
+ "recall_tags": [
+  "drift",
+  "localization"
+ ],
+ "ambiguous": false,
+ "budget": 3000,
+ "llm": "required",
+ "gate_reason": "",
+ "transitions": [
+  {
+   "t": "2026-07-18T18:31:06",
+   "state": "CLASSIFY",
+   "note": "bug_fix/standard"
+  },
+  {
+   "t": "2026-07-18T18:31:06",
+   "state": "RECALL",
+   "note": "engines run in-process"
+  },
+  {
+   "t": "2026-07-18T18:31:06",
+   "state": "PLAN",
+   "note": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\plans\\2026-07-18-fix-the-pose-drift-in.json"
+  },
+  {
+   "t": "2026-07-18T18:31:17",
+   "state": "EXECUTE",
+   "note": "from UI"
+  },
+  {
+   "t": "2026-07-18T18:31:18",
+   "state": "VERIFY",
+   "note": "from UI"
+  },
+  {
+   "t": "2026-07-18T18:31:19",
+   "state": "SUMMARIZE",
+   "note": "from UI"
+  },
+  {
+   "t": "2026-07-18T18:31:20",
+   "state": "DONE",
+   "note": "driven entirely from the vault terminal"
+  }
+ ],
+ "retries": 0,
+ "result": "pass",
+ "engine_results": {
+  "context": {
+   "ok": true,
+   "notes": [
+    "30_LESSONS/odometry-drift-absolute-fix.md",
+    "10_PROJECTS/ASUNAMA/EXPERIENCE.md",
+    "20_KNOWLEDGE/gps-denied-localization.md",
+    "30_LESSONS/coordinate-frame-origin.md",
+    "40_RESEARCH/ardupilot-nongps-vision-params.md",
+    "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-27.md",
+    "10_PROJECTS/ASUNAMA/FAULTS.md",
+    "30_LESSONS/read-stderr-not-app-log.md",
+    "30_LESSONS/bounded-loop-over-unbounded-wait.md",
+    "30_LESSONS/fail-loud-not-silent-fallback.md",
+    "30_LESSONS/coverage-footprint-not-cell.md",
+    "10_PROJECTS/ASUNAMA/DECISIONS.md",
+    "10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md",
+    "30_LESSONS/retry-prefix-matching-in.md",
+    "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-26.md",
+    "10_PROJECTS/ASUNAMA/BOOTSTRAP.md"
+   ],
+   "tokens": 2995
+  },
+  "skills": {
+   "ok": true,
+   "load": [
+    "skill:caveman-review",
+    "skill:code-review",
+    "/review",
+    "skill:codex-result-handling",
+    "skill:gpt-5-4-prompting",
+    "skill:ponytail-audit"
+   ]
+  },
+  "planner": {
+   "ok": true,
+   "path": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\plans\\2026-07-18-fix-the-pose-drift-in.json",
+   "steps": 6,
+   "issues": []
+  }
+ },
+ "learning_results": {
+  "experience": {
+   "ok": true,
+   "lessons": [],
+   "failures": [],
+   "workflows": 1
+  },
+  "index": {
+   "ok": true,
+   "notes": 45,
+   "faults": 6
+  },
+  "cases": {
+   "ok": true,
+   "project": "ASUNAMA",
+   "decisions": 4,
+   "faults": 5
+  },
+  "graph": {
+   "ok": true,
+   "nodes": 345,
+   "edges": 1130
+  },
+  "dashboard": {
+   "ok": true,
+   "path": "dashboard.html"
+  }
+ }
+}

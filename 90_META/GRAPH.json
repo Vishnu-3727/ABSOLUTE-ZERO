@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-18T18:17:36",
+ "generated": "2026-07-18T18:33:58",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -1905,6 +1905,21 @@
    "name": "urllib",
    "meta": {
     "stdlib": true
+   }
+  },
+  "function:server._clean": {
+   "type": "function",
+   "name": "server._clean",
+   "meta": {
+    "file": "scripts/server.py"
+   }
+  },
+  "function:server._check_path": {
+   "type": "function",
+   "name": "server._check_path",
+   "meta": {
+    "file": "scripts/server.py",
+    "doc": "A path from the network must not escape the directory it belongs to."
    }
   },
   "function:server.run_cmd": {
@@ -5241,6 +5256,16 @@
   ],
   [
    "file:scripts/server.py",
+   "function:server._check_path",
+   "related_to"
+  ],
+  [
+   "file:scripts/server.py",
+   "function:server._clean",
+   "related_to"
+  ],
+  [
+   "file:scripts/server.py",
    "function:server.main",
    "related_to"
   ],
@@ -7137,6 +7162,21 @@
   [
    "function:server.make_handler",
    "function:server.run_cmd",
+   "calls"
+  ],
+  [
+   "function:server.run_cmd",
+   "function:server._check_path",
+   "calls"
+  ],
+  [
+   "function:server.run_cmd",
+   "function:server._clean",
+   "calls"
+  ],
+  [
+   "function:server.selftest",
+   "function:server._check_path",
    "calls"
   ],
   [

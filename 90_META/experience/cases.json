@@ -221,8 +221,8 @@
   ],
   "workflows": {
    "bug_fix": {
-    "runs": 2,
-    "pass": 2
+    "runs": 3,
+    "pass": 3
    }
   },
   "lessons": [
