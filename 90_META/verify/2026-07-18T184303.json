@@ -1,0 +1,600 @@
+{
+ "t": "2026-07-18T18:43:03",
+ "files": [
+  "AGENTS.md",
+  "AUDIT.md",
+  "BOOTSTRAP.md",
+  "CASES.md",
+  "CLAUDE.md",
+  "CONTEXT.md",
+  "DASHBOARD.md",
+  "EXPERIENCE.md",
+  "FLOW.md",
+  "GRAPH.md",
+  "GUIDE.md",
+  "ORCHESTRATOR.md",
+  "PLANNER.md",
+  "PLUGINS.md",
+  "PROJECT.md",
+  "PROMPTC.md",
+  "README.md",
+  "SKILLS.md",
+  "TOKEN.md",
+  "VERIFIER.md",
+  "scripts/agents.py",
+  "scripts/bootstrap.py",
+  "scripts/cases.py",
+  "scripts/context.py",
+  "scripts/core.py",
+  "scripts/dashboard.py",
+  "scripts/experience.py",
+  "scripts/graph.py",
+  "scripts/indexer.py",
+  "scripts/orchestrator.py",
+  "scripts/planner.py",
+  "scripts/plugins.py",
+  "scripts/profiler.py",
+  "scripts/project.py",
+  "scripts/promptc.py",
+  "scripts/query.py",
+  "scripts/review.py",
+  "scripts/server.py",
+  "scripts/skills.py",
+  "scripts/verifier.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 70,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [
+   {
+    "level": "warn",
+    "file": "scripts/server.py",
+    "msg": "function 'do_GET' not snake_case"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/server.py",
+    "msg": "function 'do_POST' not snake_case"
+   }
+  ],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "620 lines (> 500)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "compose(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "execute(): nesting depth 6 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "selftest(): 77 statements (> 60)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "577 lines (> 500)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "scan_files(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "conventions(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/context.py",
+    "msg": "build(): 74 statements (> 60)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/dashboard.py",
+    "msg": "641 lines (> 500)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "577 lines (> 500)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "extract_scripts(): 77 statements (> 60)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "extract_scripts(): nesting depth 6 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "main(): 62 statements (> 60)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "main(): nesting depth 6 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/orchestrator.py",
+    "msg": "556 lines (> 500)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/orchestrator.py",
+    "msg": "main(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "main(): nesting depth 6 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "check_md(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "report(): nesting depth 5 (> 4)"
+   }
+  ],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "L278: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L145: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L181: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L208: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L246: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L306: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L463: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/bootstrap.py",
+    "msg": "L105: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/cases.py",
+    "msg": "L109: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/dashboard.py",
+    "msg": "L418: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/dashboard.py",
+    "msg": "L431: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L137: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L138: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L168: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L169: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L79: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L81: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L216: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "L217: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L193: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L317: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L315: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L361: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L363: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L317: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L315: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "L363: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L95: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L129: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/planner.py",
+    "msg": "L158: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L86: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L87: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L95: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L111: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L112: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L139: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L141: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L142: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L164: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L288: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L141: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "L142: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/project.py",
+    "msg": "L91: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L46: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L47: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L58: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "L63: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L272: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L274: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L303: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L301: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "AUDIT.md",
+    "msg": "1 line(s) > 100 chars (first: L325)"
+   },
+   {
+    "level": "warn",
+    "file": "CASES.md",
+    "msg": "2 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "CLAUDE.md",
+    "msg": "1 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "CLAUDE.md",
+    "msg": "no final newline"
+   },
+   {
+    "level": "warn",
+    "file": "CONTEXT.md",
+    "msg": "1 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "EXPERIENCE.md",
+    "msg": "6 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "GUIDE.md",
+    "msg": "no final newline"
+   },
+   {
+    "level": "warn",
+    "file": "ORCHESTRATOR.md",
+    "msg": "4 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "PLANNER.md",
+    "msg": "9 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "PLUGINS.md",
+    "msg": "4 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "PROMPTC.md",
+    "msg": "2 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "README.md",
+    "msg": "11 line(s) > 100 chars (first: L33)"
+   },
+   {
+    "level": "warn",
+    "file": "SKILLS.md",
+    "msg": "8 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "TOKEN.md",
+    "msg": "1 line(s) > 100 chars (first: L7)"
+   },
+   {
+    "level": "warn",
+    "file": "VERIFIER.md",
+    "msg": "8 line(s) > 100 chars (first: L7)"
+   }
+  ],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/agents.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/bootstrap.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/cases.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/context.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/core.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/dashboard.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/experience.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/graph.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/orchestrator.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/planner.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/plugins.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/profiler.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/project.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/promptc.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/query.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/review.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/server.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/skills.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/verifier.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

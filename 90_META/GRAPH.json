@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-18T18:42:23",
+ "generated": "2026-07-18T18:54:22",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -2393,6 +2393,16 @@
     "tags": "lesson debugging diagnostics"
    }
   },
+  "experience:removed-the-broken-file": {
+   "type": "experience",
+   "name": "removed the broken file",
+   "meta": {
+    "path": "30_LESSONS/removed-the-broken-file.md",
+    "note_type": "lesson",
+    "summary": "verify failed -> removed the broken file",
+    "tags": "bug-fix"
+   }
+  },
   "experience:retry-prefix-matching-in": {
    "type": "experience",
    "name": "retry: prefix matching in classify()",
@@ -2915,6 +2925,11 @@
   [
    "experience:read-stderr-not-app-log",
    "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "experience:removed-the-broken-file",
+   "project:ABSOLUTE_ZERO",
    "related_to"
   ],
   [

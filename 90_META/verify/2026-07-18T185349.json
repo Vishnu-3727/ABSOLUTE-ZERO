@@ -1,0 +1,44 @@
+{
+ "t": "2026-07-18T18:53:49",
+ "files": [
+  "30_LESSONS/removed-the-broken-file.md",
+  "90_META/GRAPH.json",
+  "90_META/INDEX.json",
+  "90_META/INDEX_SUMMARY.md",
+  "90_META/dashboard.html",
+  "90_META/experience/workflows.json",
+  "90_META/plans/2026-07-18-add-retry-to-the-indexer.json",
+  "90_META/plans/2026-07-18-check-dashboard-reflects-live-state.json",
+  "90_META/profile/2026-07-18-fix-the-drift-bug-3.json",
+  "90_META/prompts/2026-07-18-fix-the-drift-bug-4.md",
+  "90_META/skills/last_discovery.json",
+  "90_META/traces/2026-07-18-check-dashboard-reflects-live-state.json",
+  "90_META/traces/2026-07-18-fix-the-broken-import-in.json",
+  "90_META/traces/2026-07-18-fix-the-drift-in-drone.json",
+  "90_META/traces/2026-07-18-fix-the-pose-drift-in.json",
+  "90_META/verify/2026-07-18T184253.json",
+  "90_META/verify/2026-07-18T184303.json",
+  "90_META/verify/2026-07-18T185142.json"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 97,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [],
+  "regression": [],
+  "security": [],
+  "performance": [],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "30_LESSONS/removed-the-broken-file.md",
+    "msg": "1 line(s) > 100 chars (first: L14)"
+   }
+  ],
+  "documentation": [],
+  "tests": []
+ }
+}

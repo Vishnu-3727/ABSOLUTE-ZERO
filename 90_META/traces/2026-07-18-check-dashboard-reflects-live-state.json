@@ -1,0 +1,151 @@
+{
+ "id": "2026-07-18-check-dashboard-reflects-live-state",
+ "request": "check dashboard reflects live state",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "feature",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "knowledge",
+  "experience",
+  "skills"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "works end to end",
+  "one runnable check left behind",
+  "docs/notes updated if behavior changed"
+ ],
+ "recall_tags": [
+  "dashboard"
+ ],
+ "ambiguous": true,
+ "budget": 3000,
+ "llm": "required",
+ "gate_reason": "",
+ "transitions": [
+  {
+   "t": "2026-07-18T18:53:33",
+   "state": "CLASSIFY",
+   "note": "feature/standard"
+  },
+  {
+   "t": "2026-07-18T18:53:33",
+   "state": "RECALL",
+   "note": "engines run in-process"
+  },
+  {
+   "t": "2026-07-18T18:53:33",
+   "state": "PLAN",
+   "note": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\plans\\2026-07-18-check-dashboard-reflects-live-state.json"
+  },
+  {
+   "t": "2026-07-18T18:53:48",
+   "state": "EXECUTE",
+   "note": ""
+  },
+  {
+   "t": "2026-07-18T18:53:49",
+   "state": "VERIFY",
+   "note": ""
+  },
+  {
+   "t": "2026-07-18T18:53:50",
+   "state": "SUMMARIZE",
+   "note": ""
+  },
+  {
+   "t": "2026-07-18T18:53:51",
+   "state": "DONE",
+   "note": "dashboard live-state proof"
+  }
+ ],
+ "retries": 0,
+ "result": "pass",
+ "engine_results": {
+  "context": {
+   "ok": true,
+   "notes": [
+    "10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md",
+    "DASHBOARD.md",
+    "10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md",
+    "30_LESSONS/removed-the-broken-file.md",
+    "30_LESSONS/retry-prefix-matching-in.md",
+    "10_PROJECTS/ASUNAMA/FAULTS.md",
+    "00_CORE/IDENTITY.md",
+    "30_LESSONS/coordinate-frame-origin.md",
+    "00_CORE/PRINCIPLES.md",
+    "30_LESSONS/fail-loud-not-silent-fallback.md",
+    "30_LESSONS/coverage-footprint-not-cell.md",
+    "30_LESSONS/odometry-drift-absolute-fix.md",
+    "30_LESSONS/bounded-loop-over-unbounded-wait.md",
+    "20_KNOWLEDGE/debugging-silent-failures.md",
+    "PROJECT.md",
+    "20_KNOWLEDGE/gps-denied-localization.md",
+    "30_LESSONS/read-stderr-not-app-log.md",
+    "ORCHESTRATOR.md",
+    "10_PROJECTS/ASUNAMA/DECISIONS.md",
+    "CONTEXT.md",
+    "PLANNER.md"
+   ],
+   "tokens": 2993
+  },
+  "skills": {
+   "ok": true,
+   "load": [
+    "/task",
+    "skill:gpt-5-4-prompting",
+    "/ui",
+    "/new",
+    "skill:caveman-review",
+    "/sleep"
+   ]
+  },
+  "planner": {
+   "ok": true,
+   "path": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\plans\\2026-07-18-check-dashboard-reflects-live-state.json",
+   "steps": 6,
+   "issues": []
+  }
+ },
+ "verification": {
+  "verdict": "PASS-WITH-WARNINGS",
+  "score": 97,
+  "failed_files": []
+ },
+ "learning_results": {
+  "experience": {
+   "ok": true,
+   "lessons": [],
+   "failures": [],
+   "workflows": 1
+  },
+  "index": {
+   "ok": true,
+   "notes": 46,
+   "faults": 6
+  },
+  "cases": {
+   "ok": true,
+   "project": "ABSOLUTE_ZERO",
+   "decisions": 0,
+   "faults": 1
+  },
+  "graph": {
+   "ok": true,
+   "nodes": 347,
+   "edges": 1140
+  },
+  "dashboard": {
+   "ok": true,
+   "path": "dashboard.html"
+  }
+ },
+ "harvested": true
+}

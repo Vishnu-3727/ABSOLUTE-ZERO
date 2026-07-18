@@ -1,9 +1,9 @@
 {
  "feature": {
-  "runs": 7,
-  "pass": 7,
+  "runs": 9,
+  "pass": 9,
   "retries": 0,
-  "seconds": 1430,
+  "seconds": 1466,
   "pipeline": [
    "RECALL",
    "PLAN",
@@ -12,11 +12,11 @@
    "SUMMARIZE"
   ],
   "examples": [
-   "2026-07-11-design-and-implement-a-plugin",
-   "2026-07-11-design-and-implement-a-verification",
    "2026-07-11-implement-an-experience-learning-engine",
    "2026-07-11-implement-a-knowledge-graph-with",
-   "2026-07-11-implement-autonomous-project-bootstrapping-engine"
+   "2026-07-11-implement-autonomous-project-bootstrapping-engine",
+   "2026-07-18-check-dashboard-reflects-live-state",
+   "2026-07-18-check-dashboard-reflects-live-state"
   ]
  },
  "performance": {
@@ -106,10 +106,10 @@
   ]
  },
  "bug_fix": {
-  "runs": 12,
-  "pass": 12,
-  "retries": 1,
-  "seconds": 39736,
+  "runs": 16,
+  "pass": 16,
+  "retries": 2,
+  "seconds": 39794,
   "pipeline": [
    "RECALL",
    "PLAN",
@@ -118,10 +118,10 @@
    "SUMMARIZE"
   ],
   "examples": [
-   "2026-07-18-fix-the-drift-in-drone",
-   "2026-07-18-fix-the-pose-drift-in",
    "sweep-probe",
    "2026-07-18-fix-the-broken-import-in",
+   "2026-07-18-fix-the-drift-in-drone",
+   "2026-07-18-fix-the-pose-drift-in",
    "sweep-probe"
   ]
  }

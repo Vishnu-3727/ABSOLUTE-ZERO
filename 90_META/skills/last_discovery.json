@@ -1,51 +1,49 @@
 {
- "request": "fix typo",
- "intent": "quick_fix",
+ "request": "check dashboard reflects live state",
+ "intent": "feature",
  "skills": [
   {
    "invoke": "/task",
    "name": "task",
-   "confidence": 0.68,
+   "confidence": 0.49,
+   "reason": "matched",
+   "origin": "vault"
+  },
+  {
+   "invoke": "skill:gpt-5-4-prompting",
+   "name": "gpt-5-4-prompting",
+   "confidence": 0.52,
+   "reason": "matched",
+   "origin": "external"
+  },
+  {
+   "invoke": "/ui",
+   "name": "ui",
+   "confidence": 0.41,
+   "reason": "matched",
+   "origin": "vault"
+  },
+  {
+   "invoke": "/new",
+   "name": "new",
+   "confidence": 0.35,
    "reason": "matched",
    "origin": "vault"
   },
   {
    "invoke": "skill:caveman-review",
    "name": "caveman-review",
-   "confidence": 0.62,
+   "confidence": 0.3,
    "reason": "matched",
    "origin": "external"
-  },
-  {
-   "invoke": "skill:code-review",
-   "name": "code-review",
-   "confidence": 0.62,
-   "reason": "matched",
-   "origin": "external"
-  },
-  {
-   "invoke": "/new",
-   "name": "new",
-   "confidence": 0.5,
-   "reason": "matched",
-   "origin": "vault"
-  },
-  {
-   "invoke": "/research",
-   "name": "research",
-   "confidence": 0.5,
-   "reason": "matched",
-   "origin": "vault"
   },
   {
    "invoke": "/sleep",
    "name": "sleep",
-   "confidence": 0.54,
-   "reason": "dependency of /task",
+   "confidence": 0.34,
+   "reason": "matched",
    "origin": "vault"
   }
  ],
- "conflicts": [
-  "/recall subsumed by /task"
- ]
+ "conflicts": []
 }

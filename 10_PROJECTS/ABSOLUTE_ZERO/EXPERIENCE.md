@@ -1,5 +1,5 @@
 ---
-tags: [absolute-zero, budget, case, cases, compiler, context, core, dashboard, discovery, experience, faults, goals, identity, meta, orchestrator, planning, plugins, principles, project, prompts, quick-fix, reasoning, runtime, scaffold, skills, token, tooling, v3, verification]
+tags: [absolute-zero, budget, bug-fix, case, cases, compiler, context, core, dashboard, discovery, experience, faults, goals, identity, meta, orchestrator, planning, plugins, principles, project, prompts, quick-fix, reasoning, runtime, scaffold, skills, token, tooling, v3, verification]
 project: ABSOLUTE_ZERO
 status: active
 confidence: medium
@@ -22,10 +22,11 @@ summary: Project experience case for ABSOLUTE_ZERO - reusable decisions, faults 
 - bounded-loop-over-unbounded-wait: Replicator orchestrator wait-for-frame deadlocked forever; a bounded update loop cannot hang.
 - fail-loud-not-silent-fallback: A sampler that silently placed features at the last spot on exhaustion caused overlaps; return None and skip.
 - read-stderr-not-app-log: The Isaac "white box" was a Python TypeError on stderr, not a GPU bug; the app log never showed it.
+- removed-the-broken-file: verify failed -> removed the broken file
 - retry-prefix-matching-in: FAIL: selftest still red -> retry: prefix matching in classify()
 
 ## Workflows that ran
-- feature: 7/7 pass
+- feature: 8/8 pass
 - performance: 2/2 pass
 - architecture: 3/3 pass
 - quick_fix: 1/1 pass

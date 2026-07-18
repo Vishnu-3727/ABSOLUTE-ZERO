@@ -1,0 +1,145 @@
+{
+ "id": "2026-07-18-add-retry-to-the-indexer",
+ "request": "add retry to the indexer",
+ "project": "",
+ "subtasks": [
+  "add retry to the indexer"
+ ],
+ "complexity": {
+  "points": 3,
+  "label": "standard",
+  "per_subtask": [
+   "standard"
+  ]
+ },
+ "risks_known": [
+  "[ABSOLUTE_ZERO][project,faults,absolute-zero] prompt-compiler changeset committed while `verifier.py check` -> verifier now exempts `ARTIFACT_DIRS` (mirrors indexer ([[debugging-silent-failures]])"
+ ],
+ "approaches": [
+  "extend an existing script (preferred - ladder rung 2)",
+  "markdown flow only, no code",
+  "new stdlib script"
+ ],
+ "rollback": {
+  "baseline": "a994706",
+  "strategy": "git reset --hard <baseline> abandons all; per-step rollbacks are surgical"
+ },
+ "steps": [
+  {
+   "id": "t1.s1",
+   "subtask": "add retry to the indexer",
+   "intent": "feature",
+   "action": "recall",
+   "plugin": "query",
+   "alternatives": [
+    "experience",
+    "graph"
+   ],
+   "depends_on": [],
+   "risk": "rebuilding what exists",
+   "test": "pack cited",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s2",
+   "subtask": "add retry to the indexer",
+   "intent": "feature",
+   "action": "design",
+   "plugin": null,
+   "alternatives": [],
+   "depends_on": [
+    "t1.s1"
+   ],
+   "risk": "over-engineering",
+   "test": "approach chosen from alternatives, one line why",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s3",
+   "subtask": "add retry to the indexer",
+   "intent": "feature",
+   "action": "implement",
+   "plugin": "/onboard",
+   "alternatives": [
+    "code-review",
+    "code-simplifier"
+   ],
+   "depends_on": [
+    "t1.s2"
+   ],
+   "risk": "scope creep",
+   "test": "works end to end",
+   "rollback": "git checkout -- <files>"
+  },
+  {
+   "id": "t1.s4",
+   "subtask": "add retry to the indexer",
+   "intent": "feature",
+   "action": "test",
+   "plugin": "review",
+   "alternatives": [
+    "/review",
+    "claude-md-management"
+   ],
+   "depends_on": [
+    "t1.s3"
+   ],
+   "risk": "untested branch",
+   "test": "selftest + e2e pass",
+   "rollback": "git checkout -- <files>"
+  },
+  {
+   "id": "t1.s5",
+   "subtask": "add retry to the indexer",
+   "intent": "feature",
+   "action": "document",
+   "plugin": "indexer",
+   "alternatives": [
+    "/new",
+    "/onboard"
+   ],
+   "depends_on": [
+    "t1.s4"
+   ],
+   "risk": "docs drift",
+   "test": "docs updated + reindexed",
+   "rollback": "git revert <commit>"
+  },
+  {
+   "id": "commit",
+   "subtask": "add retry to the indexer",
+   "intent": "-",
+   "action": "commit + reindex",
+   "plugin": "indexer",
+   "alternatives": [],
+   "risk": "unindexed notes",
+   "depends_on": [
+    "t1.s5"
+   ],
+   "test": "git log shows commit; INDEX_SUMMARY fresh",
+   "rollback": "git revert HEAD"
+  }
+ ],
+ "execution_order": [
+  "t1.s1",
+  "t1.s2",
+  "t1.s3",
+  "t1.s4",
+  "t1.s5",
+  "commit"
+ ],
+ "validation": [
+  [
+   "ok",
+   "dependency graph is acyclic"
+  ],
+  [
+   "ok",
+   "every step has a test and a rollback"
+  ],
+  [
+   "ok",
+   "plan is executable"
+  ]
+ ]
+}
