@@ -312,6 +312,32 @@ def run_learning(trace, trace_path):
     return out
 
 
+def run_verification():
+    """VERIFY's deterministic half, executed.
+
+    FLOW.md has always said 'never SUMMARIZE over a failing verifier', but
+    nothing enforced it - the state machine let a trace walk from VERIFY to
+    SUMMARIZE without anything having been verified. The judgement half
+    (the trace's checklist) stays with whoever did the work; this is the
+    part a machine can settle."""
+    out = {}
+
+    def _verify():
+        import verifier
+        files = verifier.changed_files(VAULT)
+        if not files:
+            return {"verdict": "EMPTY", "detail": "nothing changed"}
+        rep = verifier.Verifier().run(files)
+        verifier.save(rep)
+        failed = sorted({f["file"] for c in rep["findings"].values()
+                         for f in c if f["level"] == "fail"}) \
+            if isinstance(rep.get("findings"), dict) else []
+        return {"verdict": rep["verdict"], "score": rep.get("confidence", 0),
+                "failed_files": failed}
+    _call(out, "verifier", _verify)
+    return out
+
+
 def _report(out):
     """One line per engine. A failed stage says so instead of vanishing."""
     for name, r in out.items():
@@ -335,7 +361,7 @@ def allowed_states(trace):
     return out
 
 
-def log(path, state, note=""):
+def log(path, state, note="", engines=True):
     trace = load_trace(path)
     if trace["result"] is not None:
         raise SystemExit(f"trace already closed ({trace['result']})")
@@ -343,6 +369,15 @@ def log(path, state, note=""):
     if state not in ok:
         raise SystemExit(f"illegal transition to {state}; "
                          f"allowed: {', '.join(sorted(ok)) or 'none (close it)'}")
+    # Vault law, now enforced instead of merely written down: SUMMARIZE is
+    # a claim that the work is done, and it may not be made over a verifier
+    # that failed. Fix the findings and log VERIFY again, or close --fail.
+    if state == "SUMMARIZE" and trace.get("verification", {}) \
+            .get("verdict") == "FAIL":
+        raise SystemExit(
+            "cannot SUMMARIZE over a failing verifier "
+            f"({', '.join(trace['verification'].get('failed_files', [])) or 'see report'})"
+            " - fix and log VERIFY again, or close --result fail")
     visited = [t["state"] for t in trace["transitions"]]
     if state == "EXECUTE" and "VERIFY" in visited:
         trace["retries"] += 1
@@ -351,6 +386,26 @@ def log(path, state, note=""):
     print(f"{trace['id']}: -> {state}"
           + (f" (retry {trace['retries']}/{MAX_RETRIES})"
              if state == "EXECUTE" and trace["retries"] else ""))
+    if state != "VERIFY" or not engines:
+        return
+    # entering VERIFY runs the verifier, rather than trusting that someone
+    # remembered to. Its verdict is recorded on the trace and gates what
+    # may happen next.
+    results = run_verification()
+    v = results.get("verifier", {})
+    trace["verification"] = ({"verdict": "ERROR", "error": v.get("error")}
+                             if not v.get("ok")
+                             else {k: v[k] for k in v if k != "ok"})
+    save_trace(path, trace)
+    _report(results)
+    for item in trace["verify"]:
+        print(f"checklist   - {item}")
+    if trace["verification"].get("verdict") == "FAIL":
+        print("VERDICT     FAIL - fix findings, log VERIFY again, "
+              "or close --result fail")
+    else:
+        print("VERDICT     gates clear - the checklist above is yours to "
+              "confirm before SUMMARIZE")
 
 
 def close(path, result, summary="", engines=True):
@@ -360,6 +415,10 @@ def close(path, result, summary="", engines=True):
     visited = [t["state"] for t in trace["transitions"]]
     if result == "pass" and "SUMMARIZE" not in visited:
         raise SystemExit("close pass requires SUMMARIZE logged first")
+    if result == "pass" and trace.get("verification", {}) \
+            .get("verdict") == "FAIL":
+        raise SystemExit("cannot close pass over a failing verifier - "
+                         "fix and log VERIFY again, or close --result fail")
     final = "DONE" if result == "pass" else "ESCALATED"
     trace["result"] = result
     trace["transitions"].append({"t": now(), "state": final, "note": summary})
@@ -432,9 +491,22 @@ def selftest():
             except SystemExit:
                 pass
         for st in ("RECALL", "PLAN", "EXECUTE", "VERIFY"):
-            log(p, st)
-        log(p, "EXECUTE", "retry after verify fail")
-        log(p, "VERIFY")
+            log(p, st, engines=False)
+        log(p, "EXECUTE", "retry after verify fail", engines=False)
+        log(p, "VERIFY", engines=False)
+        # a failing verifier blocks the claim that the work is done
+        t = load_trace(p)
+        t["verification"] = {"verdict": "FAIL", "failed_files": ["x.py"]}
+        save_trace(p, t)
+        for bad in (lambda: log(p, "SUMMARIZE", engines=False),
+                    lambda: close(p, "pass", engines=False)):
+            try:
+                bad()
+                raise AssertionError("stepped over a failing verifier")
+            except SystemExit:
+                pass
+        t["verification"] = {"verdict": "PASS"}
+        save_trace(p, t)
         try:
             close(p, "pass", engines=False)
             raise AssertionError("closed pass before SUMMARIZE")

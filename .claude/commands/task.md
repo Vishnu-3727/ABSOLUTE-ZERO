@@ -14,8 +14,12 @@ Execute the `/task` flow from `FLOW.md` (contract in `ORCHESTRATOR.md`) for: $AR
    working. RECALL/PLAN are logged by the runtime already; you start at
    EXECUTE, logging each state as you enter it:
    `python scripts/orchestrator.py log --trace <file> --state <STATE> --note "..."`
-4. VERIFY = check every item on the trace's checklist. Fail -> log a retry
-   EXECUTE (max 2) or `close --result fail` and escalate to the user.
+4. VERIFY runs the verifier for you when you log the state. Read its
+   verdict, then check every item on the printed checklist yourself — that
+   half is judgement the runtime cannot settle. A verifier FAIL blocks
+   SUMMARIZE and `close --result pass` outright: fix the findings, log
+   EXECUTE (retry, max 2) then VERIFY again, or `close --result fail` and
+   escalate to the user. Never report done over a failing gate.
 5. All pass -> log SUMMARIZE, then `close --result pass --summary "..."`.
    `close` then runs the learning loop (harvest, reindex, case, graph) and
    prints one line per engine — read it, a FAILED line is a real failure.

@@ -32,7 +32,9 @@ user request
      |    planner.build ──► 90_META/plans/<id>.json   (standard/complex)
      |    plugins.route ──► deterministic chain       (when llm == none)
      v
- Claude executes the thinking stages, logging each:
+ Claude executes the thinking stages, logging each
+ (logging VERIFY runs verifier.py and records its verdict on the trace;
+  a FAIL blocks SUMMARIZE and close --result pass until it passes again):
      RECALL ──► [SIMILARITY] ──► [PLAN] ──► EXECUTE ──► VERIFY ──► [REVIEW] ──► SUMMARIZE
        |                                        ^           |
        |                                        +── retry ──+  (max 2, then ESCALATE)

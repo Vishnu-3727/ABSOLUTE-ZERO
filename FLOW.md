@@ -47,10 +47,13 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
    parallel dependency-scheduled execution over a shared blackboard,
    record in 90_META/runs/. Its WORK ORDER lines are the EXECUTE
    checklist; verifier stays the gate.
-5. VERIFY = python scripts/verifier.py check (11 gated checks, VERIFIER.md)
-   first, then the trace's checklist. Verifier FAIL or checklist fail ->
-   retry EXECUTE (max 2) or close --result fail and escalate. Never
-   SUMMARIZE over a failing verifier.
+5. VERIFY runs itself. Logging the state executes the 11 gated checks
+   (VERIFIER.md), records the verdict on the trace and prints the
+   checklist. A FAIL is now enforced, not advice: SUMMARIZE and
+   `close --result pass` are both refused until VERIFY passes again — fix
+   the findings, log EXECUTE (retry, max 2) then VERIFY, or
+   `close --result fail` and escalate. The checklist is the half a machine
+   cannot settle; confirm each item yourself before SUMMARIZE.
 6. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.
    `close` runs the learning loop itself — experience harvest, reindex,
    project case refresh, graph rebuild — printing one line per engine.
