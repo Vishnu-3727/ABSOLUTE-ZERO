@@ -37,10 +37,10 @@
   ]
  },
  "architecture": {
-  "runs": 3,
-  "pass": 3,
+  "runs": 5,
+  "pass": 5,
   "retries": 0,
-  "seconds": 55,
+  "seconds": 85,
   "pipeline": [
    "RECALL",
    "SIMILARITY",
@@ -52,6 +52,8 @@
   ],
   "examples": [
    "2026-07-11-design-and-implement-a-workflow",
+   "2026-07-18-document-the-orchestrator-engine-dispatch",
+   "2026-07-18-verify-engine-dispatch-after-import",
    "2026-07-18-document-the-orchestrator-engine-dispatch",
    "2026-07-18-verify-engine-dispatch-after-import"
   ]
@@ -104,10 +106,10 @@
   ]
  },
  "bug_fix": {
-  "runs": 1,
-  "pass": 1,
+  "runs": 3,
+  "pass": 3,
   "retries": 0,
-  "seconds": 19839,
+  "seconds": 39678,
   "pipeline": [
    "RECALL",
    "PLAN",
@@ -116,7 +118,9 @@
    "SUMMARIZE"
   ],
   "examples": [
-   "2026-07-18-fix-the-drift-bug-in"
+   "2026-07-18-fix-the-drift-bug-in",
+   "2026-07-18-fix-the-drift-bug-in",
+   "sweep-probe"
   ]
  }
 }

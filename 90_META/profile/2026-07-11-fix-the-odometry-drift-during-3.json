@@ -1,0 +1,30 @@
+{
+ "t": "2026-07-18T12:05:00",
+ "prompt_file": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\prompts\\2026-07-11-fix-the-odometry-drift-during-3.md",
+ "prompt_tokens": 1130,
+ "completion_tokens": 0,
+ "total_tokens": 1130,
+ "sections": {
+  "LAW": 84,
+  "TASK": 23,
+  "INSTRUCTIONS": 54,
+  "TOOLS": 34,
+  "CONTEXT": 21,
+  "Goal": 54,
+  "Stack": 135,
+  "Current state": 36,
+  "Links": 178,
+  "What happened": 52,
+  "Lesson": 48,
+  "Transfer": 310,
+  "EXAMPLES": 44,
+  "VERIFY": 26,
+  "OUTPUT": 31
+ },
+ "plugin_tokens_saved_estimate": 800,
+ "plugin_ok_runs": 2,
+ "cost_usd_estimate": 0.0034,
+ "suggestions": [
+  "no oversized section - budget is working"
+ ]
+}

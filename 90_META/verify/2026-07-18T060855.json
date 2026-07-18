@@ -1,0 +1,111 @@
+{
+ "t": "2026-07-18T06:08:55",
+ "files": [
+  ".claude/commands/new.md",
+  "90_META/INDEX.json",
+  "90_META/INDEX_SUMMARY.md",
+  "90_META/verify/2026-07-12T102826.json",
+  "90_META/verify/2026-07-12T104843.json",
+  "90_META/verify/2026-07-18T060653.json",
+  "90_META/verify/2026-07-18T060816.json",
+  "90_META/verify/2026-07-18T060827.json",
+  "90_META/verify/2026-07-18T101136.json",
+  "90_META/verify/2026-07-18T102202.json",
+  "90_META/verify/2026-07-18T102744.json",
+  "PROJECT.md",
+  "scripts/cases.py",
+  "scripts/indexer.py",
+  "scripts/project.py",
+  "scripts/server.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 58,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [
+   {
+    "level": "warn",
+    "file": "scripts/server.py",
+    "msg": "function 'do_GET' not snake_case"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/server.py",
+    "msg": "function 'do_POST' not snake_case"
+   }
+  ],
+  "complexity": [],
+  "regression": [],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/cases.py",
+    "msg": "L109: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L94: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L128: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/project.py",
+    "msg": "L91: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "PROJECT.md",
+    "msg": "1 line(s) > 100 chars (first: L7)"
+   }
+  ],
+  "documentation": [
+   {
+    "level": "fail",
+    "file": ".claude/commands/new.md",
+    "msg": "frontmatter missing mandatory summary"
+   },
+   {
+    "level": "warn",
+    "file": ".claude/commands/new.md",
+    "msg": "frontmatter missing tags"
+   },
+   {
+    "level": "warn",
+    "file": ".claude/commands/new.md",
+    "msg": "frontmatter missing date"
+   }
+  ],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/cases.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/project.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/server.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

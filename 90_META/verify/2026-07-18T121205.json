@@ -1,0 +1,280 @@
+{
+ "t": "2026-07-18T12:12:05",
+ "files": [
+  "90_META/GRAPH.json",
+  "90_META/PLUGINS.json",
+  "90_META/dashboard.html",
+  "90_META/experience/workflows.json",
+  "90_META/profile/2026-07-11-fix-the-odometry-drift-during-3.json",
+  "90_META/profile/2026-07-18-fix-the-drift-bug.json",
+  "90_META/prompts/2026-07-18-fix-the-drift-bug-2.md",
+  "90_META/prompts/2026-07-18-fix-the-drift-bug.md",
+  "90_META/skills/last_discovery.json",
+  "90_META/traces/2026-07-18-document-the-orchestrator-engine-dispatch.json",
+  "90_META/traces/2026-07-18-fix-the-drift-bug-in.json",
+  "90_META/traces/2026-07-18-verify-engine-dispatch-after-import.json",
+  "90_META/verify/2026-07-12T102826.json",
+  "90_META/verify/2026-07-12T104843.json",
+  "90_META/verify/2026-07-18T060653.json",
+  "90_META/verify/2026-07-18T060816.json",
+  "90_META/verify/2026-07-18T060827.json",
+  "90_META/verify/2026-07-18T060855.json",
+  "90_META/verify/2026-07-18T060951.json",
+  "90_META/verify/2026-07-18T101136.json",
+  "90_META/verify/2026-07-18T102202.json",
+  "90_META/verify/2026-07-18T102744.json",
+  "90_META/verify/2026-07-18T115510.json",
+  "90_META/verify/2026-07-18T115609.json",
+  "90_META/verify/2026-07-18T115619.json",
+  "90_META/verify/2026-07-18T115732.json",
+  "90_META/verify/2026-07-18T115848.json",
+  "90_META/verify/2026-07-18T120529.json",
+  "90_META/verify/2026-07-18T120726.json",
+  "90_META/verify/2026-07-18T120830.json",
+  "90_META/verify/2026-07-18T121147.json",
+  "scripts/core.py",
+  "scripts/indexer.py",
+  "scripts/server.py",
+  "scripts/verifier.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 70,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [
+   {
+    "level": "warn",
+    "file": "scripts/server.py",
+    "msg": "function 'do_GET' not snake_case"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/server.py",
+    "msg": "function 'do_POST' not snake_case"
+   }
+  ],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "check_md(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "report(): nesting depth 5 (> 4)"
+   }
+  ],
+  "regression": [
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/cases.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/context.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/dashboard.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/experience.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/graph.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/orchestrator.py",
+    "msg": "imports changed module(s) core, indexer - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/planner.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/plugins.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/profiler.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/project.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/promptc.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/query.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/review.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "imports changed module(s) core - selftest included below"
+   }
+  ],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L95: rglob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/indexer.py",
+    "msg": "L129: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L272: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L274: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L303: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L301: read_text() inside a loop"
+   }
+  ],
+  "formatting": [],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/agents.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/cases.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/context.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/core.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/dashboard.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/experience.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/graph.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/indexer.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/orchestrator.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/planner.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/plugins.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/profiler.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/project.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/promptc.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/query.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/review.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/server.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/skills.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/verifier.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

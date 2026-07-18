@@ -1,0 +1,187 @@
+{
+ "t": "2026-07-18T11:56:19",
+ "files": [
+  ".claude/commands/task.md",
+  "10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md",
+  "10_PROJECTS/ASUNAMA/EXPERIENCE.md",
+  "90_META/GRAPH.json",
+  "90_META/experience/cases.json",
+  "90_META/experience/patterns.json",
+  "90_META/experience/workflows.json",
+  "90_META/plans/2026-07-18-document-the-orchestrator-engine-dispatch.json",
+  "90_META/plans/2026-07-18-fix-the-drift-bug-in.json",
+  "90_META/skills/last_discovery.json",
+  "90_META/traces/2026-07-18-document-the-orchestrator-engine-dispatch.json",
+  "90_META/traces/2026-07-18-fix-a-drift-bug-in.json",
+  "90_META/traces/2026-07-18-fix-the-drift-bug-in.json",
+  "90_META/verify/2026-07-12T102826.json",
+  "90_META/verify/2026-07-12T104843.json",
+  "90_META/verify/2026-07-18T060653.json",
+  "90_META/verify/2026-07-18T060816.json",
+  "90_META/verify/2026-07-18T060827.json",
+  "90_META/verify/2026-07-18T060855.json",
+  "90_META/verify/2026-07-18T060951.json",
+  "90_META/verify/2026-07-18T101136.json",
+  "90_META/verify/2026-07-18T102202.json",
+  "90_META/verify/2026-07-18T102744.json",
+  "90_META/verify/2026-07-18T115510.json",
+  "90_META/verify/2026-07-18T115609.json",
+  "FLOW.md",
+  "ORCHESTRATOR.md",
+  "scripts/orchestrator.py",
+  "scripts/server.py",
+  "scripts/verifier.py"
+ ],
+ "verdict": "FAIL",
+ "confidence": 55,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [
+   {
+    "level": "fail",
+    "file": "scripts/",
+    "msg": "circular import: orchestrator -> context -> orchestrator"
+   }
+  ],
+  "naming": [
+   {
+    "level": "warn",
+    "file": "scripts/server.py",
+    "msg": "function 'do_GET' not snake_case"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/server.py",
+    "msg": "function 'do_POST' not snake_case"
+   }
+  ],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/orchestrator.py",
+    "msg": "main(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "check_md(): nesting depth 5 (> 4)"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "report(): nesting depth 5 (> 4)"
+   }
+  ],
+  "regression": [
+   {
+    "level": "warn",
+    "file": "scripts/agents.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/context.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/planner.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/promptc.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/skills.py",
+    "msg": "imports changed module(s) orchestrator - selftest included below"
+   }
+  ],
+  "security": [],
+  "performance": [
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L272: glob() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L274: read_text() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L303: run() inside a loop"
+   },
+   {
+    "level": "warn",
+    "file": "scripts/verifier.py",
+    "msg": "L301: read_text() inside a loop"
+   }
+  ],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md",
+    "msg": "5 line(s) > 100 chars (first: L2)"
+   },
+   {
+    "level": "warn",
+    "file": "10_PROJECTS/ASUNAMA/EXPERIENCE.md",
+    "msg": "15 line(s) > 100 chars (first: L2)"
+   },
+   {
+    "level": "warn",
+    "file": "ORCHESTRATOR.md",
+    "msg": "4 line(s) > 100 chars (first: L7)"
+   }
+  ],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/agents.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/context.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/orchestrator.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/planner.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/promptc.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/server.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/skills.py",
+    "msg": "selftest OK"
+   },
+   {
+    "level": "ok",
+    "file": "scripts/verifier.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}

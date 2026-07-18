@@ -41,6 +41,26 @@
    "invoke": "python scripts/bootstrap.py"
   },
   {
+   "name": "cases",
+   "kind": "script",
+   "path": "scripts/cases.py",
+   "capabilities": [],
+   "actions": [
+    "close",
+    "list",
+    "similar"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/cases.py"
+  },
+  {
    "name": "context",
    "kind": "script",
    "path": "scripts/context.py",
@@ -250,6 +270,24 @@
    "invoke": "python scripts/profiler.py"
   },
   {
+   "name": "project",
+   "kind": "script",
+   "path": "scripts/project.py",
+   "capabilities": [],
+   "actions": [
+    "new"
+   ],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "fs-write"
+   ],
+   "invoke": "python scripts/project.py"
+  },
+  {
    "name": "promptc",
    "kind": "script",
    "path": "scripts/promptc.py",
@@ -304,6 +342,24 @@
    "invoke": "python scripts/review.py"
   },
   {
+   "name": "server",
+   "kind": "script",
+   "path": "scripts/server.py",
+   "capabilities": [],
+   "actions": [],
+   "deterministic": true,
+   "local": true,
+   "token_cost": 0,
+   "latency_ms": null,
+   "dependencies": [],
+   "permissions": [
+    "exec",
+    "fs-write",
+    "network"
+   ],
+   "invoke": "python scripts/server.py"
+  },
+  {
    "name": "skills",
    "kind": "script",
    "path": "scripts/skills.py",
@@ -342,6 +398,30 @@
     "network"
    ],
    "invoke": "python scripts/verifier.py"
+  },
+  {
+   "name": "/new",
+   "kind": "skill",
+   "path": ".claude/commands/new.md",
+   "capabilities": [
+    "indexing",
+    "orchestration",
+    "retrieval"
+   ],
+   "actions": [
+    "new"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/new"
   },
   {
    "name": "/predict",
@@ -467,6 +547,8 @@
    "kind": "skill",
    "path": ".claude/commands/task.md",
    "capabilities": [
+    "context",
+    "indexing",
     "orchestration",
     "persistence",
     "retrieval",

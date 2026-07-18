@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-18T11:58:27",
+ "generated": "2026-07-18T12:10:58",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -4251,6 +4251,11 @@
   ],
   [
    "file:scripts/indexer.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/indexer.py",
    "project:ABSOLUTEZERO",
    "related_to"
   ],
@@ -7737,6 +7742,11 @@
   [
    "library:sys",
    "file:scripts/graph.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/indexer.py",
    "used_by"
   ],
   [

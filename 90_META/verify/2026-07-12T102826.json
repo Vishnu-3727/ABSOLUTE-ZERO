@@ -1,0 +1,35 @@
+{
+ "t": "2026-07-12T10:28:26",
+ "files": [
+  "90_META/dashboard.html",
+  "90_META/verify/2026-07-12T093156.json",
+  "scripts/dashboard.py"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 97,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [
+   {
+    "level": "warn",
+    "file": "scripts/dashboard.py",
+    "msg": "521 lines (> 500)"
+   }
+  ],
+  "regression": [],
+  "security": [],
+  "performance": [],
+  "formatting": [],
+  "documentation": [],
+  "tests": [
+   {
+    "level": "ok",
+    "file": "scripts/dashboard.py",
+    "msg": "selftest OK"
+   }
+  ]
+ }
+}
