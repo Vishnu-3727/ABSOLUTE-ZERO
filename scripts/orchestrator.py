@@ -302,6 +302,13 @@ def run_learning(trace, trace_path):
         g.save(graph.GRAPH)
         return {"nodes": len(g.nodes), "edges": len(g.edges)}
     _call(out, "graph", _graph)
+
+    def _dashboard():
+        # last: it renders whatever the four stages above just wrote, so
+        # regenerating any earlier would publish the previous run's state
+        from dashboard import build as dashboard_build
+        return {"path": Path(dashboard_build(VAULT)).name}
+    _call(out, "dashboard", _dashboard)
     return out
 
 
