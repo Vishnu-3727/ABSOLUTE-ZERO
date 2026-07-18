@@ -131,16 +131,23 @@ td.k { color: var(--ink); }
 ::-webkit-scrollbar-thumb { background: var(--line); }
 """
 
-# Command deck: label -> shell command it copies to the clipboard.
+# Command deck: (label, server command name, needs an argument). The name
+# is a key into server.ALLOWED - the page never builds a command line, it
+# asks the server to run one it already trusts. `needs_arg` drives the
+# input box, so a command that requires text cannot be fired empty.
 DECK = [
-    ("wake", "python scripts/orchestrator.py similarity \"today\""),
-    ("task", "python scripts/orchestrator.py plan \"<request>\""),
-    ("recall", "python scripts/context.py pack \"<request>\""),
-    ("index", "python scripts/indexer.py"),
-    ("graph", "python scripts/graph.py build"),
-    ("verify", "python scripts/verifier.py check"),
-    ("profile", "python scripts/profiler.py report"),
-    ("sleep", "python scripts/experience.py harvest"),
+    ("task", "task", True),
+    ("recall", "recall", True),
+    ("cases", "cases", True),
+    ("skills", "skills", True),
+    ("brief", "brief", True),
+    ("agents", "agents", True),
+    ("index", "index", False),
+    ("graph", "graph", False),
+    ("review", "review", False),
+    ("verify", "verify", False),
+    ("profile", "profile", False),
+    ("harvest", "harvest", False),
 ]
 
 JS = """
@@ -158,12 +165,59 @@ function log(msg, cls) {
   el.textContent = msg;
   out.prepend(el);
 }
+/* The deck executes through the server that is showing this page. Opened
+   as a bare file:// there is no server, so it says so instead of looking
+   broken - the page is still a valid static snapshot. */
+const LIVE = location.protocol !== 'file:';
+const argBox = document.getElementById('arg');
+let busy = false;
+async function run(cmd, arg, flags) {
+  if (!LIVE) {
+    log('> ' + cmd + (arg ? ' ' + arg : ''), 'p');
+    log('static snapshot - run "python scripts/server.py" for a live deck');
+    return;
+  }
+  if (busy) { log('a command is already running', 'warn'); return; }
+  busy = true;
+  log('> ' + cmd + (arg ? ' ' + arg : ''), 'p');
+  try {
+    const r = await fetch('/run', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({cmd: cmd, arg: arg || '', flags: flags || {}})
+    });
+    const res = await r.json();
+    log(res.output, res.ok ? '' : 'fail');
+    if (res.ok && REFRESHERS.has(cmd)) {
+      log('state changed - reloading board...');
+      setTimeout(() => location.reload(), 900);
+    }
+  } catch (e) {
+    log('server unreachable: ' + e, 'fail');
+  } finally { busy = false; }
+}
+/* commands that change what the board displays; reload after them */
+const REFRESHERS = new Set(['task', 'close', 'index', 'graph', 'harvest',
+                            'new', 'agents']);
 document.querySelectorAll('.deck button').forEach(b => {
   b.onclick = () => {
-    navigator.clipboard && navigator.clipboard.writeText(b.dataset.cmd);
-    log('> ' + b.dataset.cmd, 'p');
-    log('copied - paste in a terminal at the vault root');
+    const needsArg = b.dataset.arg === '1';
+    const arg = (argBox && argBox.value || '').trim();
+    if (needsArg && !arg) {
+      log(b.dataset.cmd + ' needs text in the box above', 'warn');
+      argBox && argBox.focus();
+      return;
+    }
+    run(b.dataset.cmd, needsArg ? arg : '');
   };
+});
+/* close an open trace straight from the board: the UI can finish the work
+   it starts, which is the whole point of a control surface */
+document.querySelectorAll('.tclose').forEach(b => {
+  b.onclick = () => run('close', '', {
+    trace: '90_META/traces/' + b.dataset.file,
+    result: b.dataset.result,
+    summary: 'closed from the vault terminal'
+  });
 });
 /* ---- force graph (ponytail: naive O(n^2) repulsion; quadtree if the
    vault ever grows past ~1500 nodes) ---- */
@@ -356,15 +410,42 @@ def gather(vault):
         by_type[n["type"]] = by_type.get(n["type"], 0) + 1
     recent = sorted((n for n in notes if n.get("date")),
                     key=lambda n: n["date"], reverse=True)[:MAX_ROWS]
+    # Live runtime state. The board used to read five static artifacts and
+    # show nothing of what the OS was actually doing: open work, project
+    # cases and agent runs were invisible in the one place meant to show
+    # the system.
+    traces = []
+    for p in sorted((meta / "traces").glob("*.json"), reverse=True):
+        t = load_json(p, None)
+        if not t:
+            continue
+        states = [x["state"] for x in t.get("transitions", [])]
+        traces.append({"id": t.get("id", p.stem), "file": p.name,
+                       "intent": t.get("intent", "?"),
+                       "project": t.get("project", ""),
+                       "result": t.get("result"),
+                       "state": states[-1] if states else "?"})
+    cases = sorted(load_json(meta / "experience" / "cases.json", {}).values(),
+                   key=lambda c: c.get("date", ""), reverse=True)
+    runs = []
+    for p in sorted((meta / "runs").glob("*.json"), reverse=True)[:MAX_ROWS]:
+        r = load_json(p, None)
+        if r:
+            runs.append({"id": r.get("id", p.stem),
+                         "verdict": r.get("verdict", "?"),
+                         "nodes": len(r.get("workflow", [])),
+                         "parallel": r.get("max_parallel", 0)})
     return {"notes": notes, "ledger": ledger, "wf": wf, "plugins": plugins,
-            "graph": graph, "by_type": by_type, "recent": recent}
+            "graph": graph, "by_type": by_type, "recent": recent,
+            "traces": traces, "cases": cases, "runs": runs}
 
 
 def render(d):
     scripts = sum(1 for p in d["plugins"] if p.get("kind") == "script")
     vitals = [(len(d["notes"]), "notes"), (len(d["ledger"]), "faults"),
               (d["by_type"].get("lesson", 0), "lessons"),
-              (scripts or 17, "engines")]
+              (scripts or 17, "engines"),
+              (len(d["traces"]), "traces"), (len(d["cases"]), "cases")]
     vit = "\n".join(f'<div class="vt"><div class="n">{n}</div>'
                     f'<div class="l">{esc(l)}</div></div>'
                     for n, l in vitals)
@@ -390,8 +471,35 @@ def render(d):
         f'<i style="background:{TYPE_COLORS[t]}"></i>{esc(t)} {c}</span>'
         for t, c in sorted(counts.items(), key=lambda x: -x[1]))
     deck = "\n".join(
-        f'<button data-cmd="{esc(cmd)}">{esc(label)}</button>'
-        for label, cmd in DECK)
+        f'<button data-cmd="{esc(cmd)}" data-arg="{1 if need else 0}"'
+        f'{" class=\"needs\"" if need else ""}>{esc(label)}</button>'
+        for label, cmd, need in DECK)
+
+    open_t = [t for t in d["traces"] if t["result"] is None]
+    trace_rows = "\n".join(
+        f'<tr><td class="k">{esc(t["id"][:34])}</td>'
+        f'<td>{esc(t["state"])}</td>'
+        f'<td><button class="tclose" data-file="{esc(t["file"])}"'
+        f' data-result="pass">pass</button>'
+        f'<button class="tclose" data-file="{esc(t["file"])}"'
+        f' data-result="fail">fail</button></td></tr>'
+        for t in open_t[:MAX_ROWS]) or \
+        '<tr><td colspan="3">no open work</td></tr>'
+    case_rows = "\n".join(
+        f'<tr><td class="k">{esc(c.get("project", "?"))}</td>'
+        f'<td>{len(c.get("decisions", []))}</td>'
+        f'<td>{len(c.get("faults", []))}</td>'
+        f'<td>{len(c.get("lessons", []))}</td></tr>'
+        for c in d["cases"][:MAX_ROWS]) or \
+        '<tr><td colspan="4">no projects closed into cases yet</td></tr>'
+    run_rows = "\n".join(
+        f'<tr><td class="k">{esc(r["id"][:30])}</td>'
+        f'<td><span class="{"ok" if r["verdict"] == "pass" else "fail"}">'
+        f'{esc(r["verdict"])}</span></td>'
+        f'<td>{r["nodes"]}</td><td>x{r["parallel"]}</td></tr>'
+        for r in d["runs"][:5]) or \
+        '<tr><td colspan="4">no agent runs</td></tr>'
+    closed = sum(1 for t in d["traces"] if t["result"] == "pass")
     recent = "\n".join(f'[{n["type"]}] {n["title"]} ({n.get("date", "")})'
                        for n in d["recent"]) or "vault is empty"
 
@@ -417,6 +525,13 @@ def render(d):
 <div class="box"><h2>workflow stats</h2>
 <table><tr><th>intent</th><th>pass</th><th>retry</th><th>avg</th></tr>
 {wf_html}</table></div>
+<div class="box"><h2>project cases
+<span class="r">{len(d["cases"])}</span></h2>
+<table><tr><th>project</th><th>dec</th><th>faults</th><th>lessons</th></tr>
+{case_rows}</table></div>
+<div class="box"><h2>agent runs</h2>
+<table><tr><th>run</th><th>verdict</th><th>nodes</th><th>par</th></tr>
+{run_rows}</table></div>
 </div>
 
 <div id="stage">
@@ -429,12 +544,17 @@ def render(d):
 </div>
 
 <div class="rail" id="right">
+<div class="box"><h2>open work
+<span class="r">{len(open_t)}</span></h2>
+<table><tr><th>trace</th><th>state</th><th>close</th></tr>
+{trace_rows}</table></div>
 <div class="box"><h2>command deck</h2>
+<input id="arg" placeholder="request / query for the marked commands">
 <div class="deck">{deck}</div></div>
 <div class="box" style="flex:1;display:flex;flex-direction:column">
 <h2>run output</h2>
 <div id="out">READY
-click a node for details; a command to copy it
+click a node for details; a command to run it
 
 RECENT NOTES
 {esc(recent)}</div></div>

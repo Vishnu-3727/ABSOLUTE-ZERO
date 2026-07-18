@@ -27,30 +27,80 @@ PORT = 8377
 TIMEOUT = 300
 MAX_ARG = 500
 
-# name -> (script under scripts/, fixed argv prefix, takes an argument)
+# name -> (script under scripts/, fixed argv prefix, takes a positional
+# argument, allowed --flag names). Flags are a fixed whitelist per command:
+# the client picks values, never flag names, so no argv it sends can become
+# an option the script did not opt into.
 ALLOWED = {
-    "wake":    ("orchestrator.py", ["similarity"], True),
-    "task":    ("orchestrator.py", ["plan"], True),
-    "recall":  ("context.py", ["pack"], True),
-    "index":   ("indexer.py", [], False),
-    "graph":   ("graph.py", ["build"], False),
-    "verify":  ("verifier.py", ["check"], False),
-    "profile": ("profiler.py", ["report"], False),
-    "sleep":   ("experience.py", ["harvest"], False),
+    "wake":    ("orchestrator.py", ["similarity"], True, ()),
+    "task":    ("orchestrator.py", ["plan"], True, ("project",)),
+    # log/close close the loop a UI-started task opens - without them the
+    # dashboard could begin work it had no way to finish, leaving traces
+    # dangling and the learning loop never firing.
+    "log":     ("orchestrator.py", ["log"], False, ("trace", "state", "note")),
+    "close":   ("orchestrator.py", ["close"], False,
+                ("trace", "result", "summary")),
+    "recall":  ("context.py", ["pack"], True, ("project",)),
+    "plan":    ("planner.py", ["plan"], True, ("project",)),
+    "cases":   ("cases.py", ["similar"], True, ()),
+    "new":     ("project.py", ["new"], True, ("topic", "tags")),
+    "brief":   ("promptc.py", ["compile"], True, ("project",)),
+    "query":   ("query.py", [], False, ("tags", "type", "project")),
+    "review":  ("review.py", [], False, ()),
+    "skills":  ("skills.py", ["discover"], True, ()),
+    "agents":  ("agents.py", ["run"], True, ()),
+    "index":   ("indexer.py", [], False, ()),
+    "graph":   ("graph.py", ["build"], False, ()),
+    "verify":  ("verifier.py", ["check"], False, ()),
+    "profile": ("profiler.py", ["report"], False, ()),
+    "harvest": ("experience.py", ["harvest"], False, ()),
 }
+# Params naming a path must stay inside the vault directory that owns them.
+PATH_PARAMS = {"trace": "90_META/traces"}
 
 
-def run_cmd(name, arg, vault=VAULT, allowed=ALLOWED):
+def _clean(value):
+    return str(value or "").strip()[:MAX_ARG]
+
+
+def _check_path(param, value, vault):
+    """A path from the network must not escape the directory it belongs to.
+    Loopback-only is not an argument for skipping this: the browser is not
+    the only thing that can POST to a local port."""
+    home = (vault / PATH_PARAMS[param]).resolve()
+    try:
+        target = (vault / value).resolve() if not Path(value).is_absolute() \
+            else Path(value).resolve()
+    except (OSError, ValueError):
+        return None
+    if target != home and home not in target.parents:
+        return None
+    return str(target)
+
+
+def run_cmd(name, arg, vault=VAULT, allowed=ALLOWED, flags=None):
     """Execute one whitelisted deck command; returns a JSON-able dict."""
     if name not in allowed:
         return {"ok": False, "output": f"unknown command: {name}"}
-    script, prefix, takes_arg = allowed[name]
+    script, prefix, takes_arg, ok_flags = allowed[name]
     argv = [sys.executable, str(vault / "scripts" / script)] + list(prefix)
     if takes_arg:
-        arg = (arg or "").strip()[:MAX_ARG]
+        arg = _clean(arg)
         if not arg:
             return {"ok": False, "output": f"{name} needs an argument"}
         argv.append(arg)
+    for key, raw in (flags or {}).items():
+        if key not in ok_flags:
+            return {"ok": False, "output": f"{name}: unknown option {key}"}
+        value = _clean(raw)
+        if not value:
+            continue
+        if key in PATH_PARAMS:
+            value = _check_path(key, value, vault)
+            if value is None:
+                return {"ok": False,
+                        "output": f"{key} must be inside {PATH_PARAMS[key]}"}
+        argv += [f"--{key}", value]
     try:
         r = subprocess.run(argv, cwd=vault, capture_output=True,
                            text=True, timeout=TIMEOUT)
@@ -88,10 +138,13 @@ def make_handler(vault, allowed=ALLOWED):
                 n = int(self.headers.get("Content-Length", 0))
                 req = json.loads(self.rfile.read(n))
                 name, arg = str(req.get("cmd", "")), str(req.get("arg", ""))
+                flags = req.get("flags") or {}
+                if not isinstance(flags, dict):
+                    raise ValueError("flags must be an object")
             except (ValueError, json.JSONDecodeError):
                 return self._send(400,
                                   '{"ok": false, "output": "bad request"}')
-            res = run_cmd(name, arg, vault, allowed)
+            res = run_cmd(name, arg, vault, allowed, flags)
             self._send(200 if res["ok"] else 422, json.dumps(res))
 
         def log_message(self, fmt, *args):
@@ -116,13 +169,25 @@ def selftest():
     import urllib.error
     assert run_cmd("nope", "")["ok"] is False
     assert "needs an argument" in run_cmd("task", "  ")["output"]
+    # a flag the command did not opt into is refused, so the client can
+    # never bolt an arbitrary option onto a whitelisted script
+    r = run_cmd("index", "", flags={"output": "/etc/passwd"})
+    assert not r["ok"] and "unknown option" in r["output"], r
+    # path params stay inside their directory - traversal is refused
+    for escape in ("../../scripts/core.py", "..\\..\\CLAUDE.md",
+                   str(Path(VAULT / "CLAUDE.md"))):
+        r = run_cmd("close", "", flags={"trace": escape})
+        assert not r["ok"] and "must be inside" in r["output"], (escape, r)
+    # a legitimate trace path is accepted (argparse then owns validation)
+    ok_path = "90_META/traces/does-not-exist.json"
+    assert _check_path("trace", ok_path, VAULT) is not None
     with tempfile.TemporaryDirectory() as td:
         v = Path(td)
         (v / "90_META").mkdir(parents=True)
         (v / "scripts").mkdir()
         (v / "scripts" / "ping.py").write_text(
             "import sys; print('pong', sys.argv[1])", encoding="utf-8")
-        allowed = {"ping": ("ping.py", [], True)}
+        allowed = {"ping": ("ping.py", [], True, ("note",))}
         srv = ThreadingHTTPServer(("127.0.0.1", 0),
                                   make_handler(v, allowed))
         threading.Thread(target=srv.serve_forever, daemon=True).start()
@@ -134,6 +199,13 @@ def selftest():
             {"Content-Type": "application/json"})
         res = json.loads(urllib.request.urlopen(req).read())
         assert res["ok"] and "pong x" in res["output"]
+        # flags travel over the wire and reach argv
+        req2 = urllib.request.Request(
+            base + "/run",
+            json.dumps({"cmd": "ping", "arg": "x",
+                        "flags": {"note": "hi"}}).encode(),
+            {"Content-Type": "application/json"})
+        assert json.loads(urllib.request.urlopen(req2).read())["ok"]
         bad = urllib.request.Request(
             base + "/run", json.dumps({"cmd": "rm -rf /"}).encode(),
             {"Content-Type": "application/json"})
