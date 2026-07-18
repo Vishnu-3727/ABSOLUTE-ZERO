@@ -1,0 +1,144 @@
+{
+ "id": "2026-07-18-redesign-the-retrieval-architecture-end",
+ "request": "redesign the retrieval architecture end to end",
+ "project": "",
+ "subtasks": [
+  "redesign the retrieval architecture end to end"
+ ],
+ "complexity": {
+  "points": 8,
+  "label": "complex",
+  "per_subtask": [
+   "complex"
+  ]
+ },
+ "risks_known": [],
+ "approaches": [
+  "do nothing (YAGNI check)",
+  "incremental refactor behind existing interfaces",
+  "new module + deprecate old"
+ ],
+ "rollback": {
+  "baseline": "90e0f81",
+  "strategy": "git reset --hard <baseline> abandons all; per-step rollbacks are surgical"
+ },
+ "steps": [
+  {
+   "id": "t1.s1",
+   "subtask": "redesign the retrieval architecture end to end",
+   "intent": "architecture",
+   "action": "recall",
+   "plugin": "query",
+   "alternatives": [
+    "experience",
+    "graph"
+   ],
+   "depends_on": [],
+   "risk": "ignoring prior decisions",
+   "test": "pack + similarity cited",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s2",
+   "subtask": "redesign the retrieval architecture end to end",
+   "intent": "architecture",
+   "action": "design",
+   "plugin": null,
+   "alternatives": [],
+   "depends_on": [
+    "t1.s1"
+   ],
+   "risk": "big-bang rewrite",
+   "test": "written plan approved before edits",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s3",
+   "subtask": "redesign the retrieval architecture end to end",
+   "intent": "architecture",
+   "action": "validate",
+   "plugin": null,
+   "alternatives": [],
+   "depends_on": [
+    "t1.s2"
+   ],
+   "risk": "invariant broken",
+   "test": "architecture checks all ok",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s4",
+   "subtask": "redesign the retrieval architecture end to end",
+   "intent": "architecture",
+   "action": "implement",
+   "plugin": "code-review",
+   "alternatives": [
+    "code-simplifier",
+    "coderabbit"
+   ],
+   "depends_on": [
+    "t1.s3"
+   ],
+   "risk": "cross-module breakage",
+   "test": "all selftests pass",
+   "rollback": "git reset --hard <baseline>"
+  },
+  {
+   "id": "t1.s5",
+   "subtask": "redesign the retrieval architecture end to end",
+   "intent": "architecture",
+   "action": "review",
+   "plugin": "review",
+   "alternatives": [
+    "/review",
+    "claude-md-management"
+   ],
+   "depends_on": [
+    "t1.s4"
+   ],
+   "risk": "orphan modules",
+   "test": "review.py clean",
+   "rollback": "git revert <commit>"
+  },
+  {
+   "id": "commit",
+   "subtask": "redesign the retrieval architecture end to end",
+   "intent": "-",
+   "action": "commit + reindex",
+   "plugin": "indexer",
+   "alternatives": [],
+   "risk": "unindexed notes",
+   "depends_on": [
+    "t1.s5"
+   ],
+   "test": "git log shows commit; INDEX_SUMMARY fresh",
+   "rollback": "git revert HEAD"
+  }
+ ],
+ "execution_order": [
+  "t1.s1",
+  "t1.s2",
+  "t1.s3",
+  "t1.s4",
+  "t1.s5",
+  "commit"
+ ],
+ "validation": [
+  [
+   "ok",
+   "dependency graph is acyclic"
+  ],
+  [
+   "ok",
+   "every step has a test and a rollback"
+  ],
+  [
+   "warn",
+   "complex plan: 8k escalation rule - state cost, get approval before EXECUTE"
+  ],
+  [
+   "ok",
+   "plan is executable"
+  ]
+ ]
+}

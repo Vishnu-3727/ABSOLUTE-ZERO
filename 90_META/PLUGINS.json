@@ -400,6 +400,29 @@
    "invoke": "python scripts/verifier.py"
   },
   {
+   "name": "/brief",
+   "kind": "skill",
+   "path": ".claude/commands/brief.md",
+   "capabilities": [
+    "context",
+    "persistence"
+   ],
+   "actions": [
+    "brief"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/brief"
+  },
+  {
    "name": "/new",
    "kind": "skill",
    "path": ".claude/commands/new.md",
@@ -422,6 +445,29 @@
     "llm"
    ],
    "invoke": "/new"
+  },
+  {
+   "name": "/onboard",
+   "kind": "skill",
+   "path": ".claude/commands/onboard.md",
+   "capabilities": [
+    "codegen",
+    "indexing"
+   ],
+   "actions": [
+    "onboard"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/onboard"
   },
   {
    "name": "/predict",
@@ -525,6 +571,7 @@
    "path": ".claude/commands/sleep.md",
    "capabilities": [
     "indexing",
+    "orchestration",
     "persistence"
    ],
    "actions": [
@@ -570,6 +617,30 @@
     "llm"
    ],
    "invoke": "/task"
+  },
+  {
+   "name": "/ui",
+   "kind": "skill",
+   "path": ".claude/commands/ui.md",
+   "capabilities": [
+    "orchestration",
+    "persistence",
+    "web"
+   ],
+   "actions": [
+    "ui"
+   ],
+   "deterministic": false,
+   "local": true,
+   "token_cost": 1,
+   "latency_ms": null,
+   "dependencies": [
+    "claude"
+   ],
+   "permissions": [
+    "llm"
+   ],
+   "invoke": "/ui"
   },
   {
    "name": "/wake",

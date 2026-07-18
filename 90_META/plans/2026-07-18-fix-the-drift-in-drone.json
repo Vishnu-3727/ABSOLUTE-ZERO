@@ -1,0 +1,145 @@
+{
+ "id": "2026-07-18-fix-the-drift-in-drone",
+ "request": "fix the drift in drone pose estimation",
+ "project": "ASUNAMA",
+ "subtasks": [
+  "fix the drift in drone pose estimation"
+ ],
+ "complexity": {
+  "points": 3,
+  "label": "standard",
+  "per_subtask": [
+   "standard"
+  ]
+ },
+ "risks_known": [
+  "[ASUNAMA][project,faults,drone] empty white Kit viewport, \"not responding\", every colored spawn. -> bind materials USD-natively (`_bind_material` via `UsdShade`); drop ([[debugging-silent-failures]])",
+  "[ASUNAMA][project,faults,drone] `data_generator` stuck forever; kit log stops after \"Replicator Step\". -> drop the orchestrator; tick `simulation_app.update()` a bounded ([[debugging-silent-failures]])",
+  "[ASUNAMA][project,faults,drone] drone explores but Return-To-Home never registers arrival. -> measure distance to base_station in the absolute frame. ([[gps-denied-localization]])",
+  "[ASUNAMA][project,faults,drone] rocks stacked on streaks/soil; markers buried in renders. -> return `None` on exhaustion; every caller skips; largest-footprint-first. ([[coverage-planning]])",
+  "[ASUNAMA][project,faults,drone] exploration plateaus under acceptance threshold. -> `mark_explored_footprint(x,y,radius)` gated on pose confidence. ([[coverage-planning]])"
+ ],
+ "approaches": [
+  "fix in the shared function (root cause)",
+  "guard at the caller (symptom - only with a ponytail note)"
+ ],
+ "rollback": {
+  "baseline": "8da9e04",
+  "strategy": "git reset --hard <baseline> abandons all; per-step rollbacks are surgical"
+ },
+ "steps": [
+  {
+   "id": "t1.s1",
+   "subtask": "fix the drift in drone pose estimation",
+   "intent": "bug_fix",
+   "action": "recall",
+   "plugin": "query",
+   "alternatives": [
+    "experience",
+    "graph"
+   ],
+   "depends_on": [],
+   "risk": "fixing symptom seen before",
+   "test": "ledger + pack cited",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s2",
+   "subtask": "fix the drift in drone pose estimation",
+   "intent": "bug_fix",
+   "action": "reproduce",
+   "plugin": null,
+   "alternatives": [],
+   "depends_on": [
+    "t1.s1"
+   ],
+   "risk": "unreproducible = wrong diagnosis",
+   "test": "failing case demonstrated",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s3",
+   "subtask": "fix the drift in drone pose estimation",
+   "intent": "bug_fix",
+   "action": "root-cause",
+   "plugin": null,
+   "alternatives": [],
+   "depends_on": [
+    "t1.s2"
+   ],
+   "risk": "patching a caller instead of the shared cause",
+   "test": "cause named in one sentence",
+   "rollback": "-"
+  },
+  {
+   "id": "t1.s4",
+   "subtask": "fix the drift in drone pose estimation",
+   "intent": "bug_fix",
+   "action": "fix",
+   "plugin": "/onboard",
+   "alternatives": [
+    "code-review",
+    "code-simplifier"
+   ],
+   "depends_on": [
+    "t1.s3"
+   ],
+   "risk": "regression elsewhere",
+   "test": "repro now passes",
+   "rollback": "git checkout -- <files>"
+  },
+  {
+   "id": "t1.s5",
+   "subtask": "fix the drift in drone pose estimation",
+   "intent": "bug_fix",
+   "action": "record",
+   "plugin": "orchestrator",
+   "alternatives": [
+    "/brief",
+    "/predict"
+   ],
+   "depends_on": [
+    "t1.s4"
+   ],
+   "risk": "lesson lost",
+   "test": "FAULTS.md entry links a topic note",
+   "rollback": "git revert <commit>"
+  },
+  {
+   "id": "commit",
+   "subtask": "fix the drift in drone pose estimation",
+   "intent": "-",
+   "action": "commit + reindex",
+   "plugin": "indexer",
+   "alternatives": [],
+   "risk": "unindexed notes",
+   "depends_on": [
+    "t1.s5"
+   ],
+   "test": "git log shows commit; INDEX_SUMMARY fresh",
+   "rollback": "git revert HEAD"
+  }
+ ],
+ "execution_order": [
+  "t1.s1",
+  "t1.s2",
+  "t1.s3",
+  "t1.s4",
+  "t1.s5",
+  "commit"
+ ],
+ "validation": [
+  [
+   "ok",
+   "dependency graph is acyclic"
+  ],
+  [
+   "ok",
+   "every step has a test and a rollback"
+  ],
+  [
+   "ok",
+   "plan is executable"
+  ]
+ ]
+}

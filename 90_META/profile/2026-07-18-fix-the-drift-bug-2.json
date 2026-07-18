@@ -1,0 +1,39 @@
+{
+ "t": "2026-07-18T18:13:45",
+ "prompt_file": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\prompts\\2026-07-18-fix-the-drift-bug-2.md",
+ "prompt_tokens": 2375,
+ "completion_tokens": 0,
+ "total_tokens": 2375,
+ "sections": {
+  "LAW": 84,
+  "TASK": 16,
+  "INSTRUCTIONS": 54,
+  "TOOLS": 35,
+  "CONTEXT": 21,
+  "Goal": 54,
+  "Stack": 135,
+  "Current state": 36,
+  "Links": 178,
+  "What happened": 55,
+  "Lesson": 37,
+  "Transfer": 60,
+  "Key decisions": 122,
+  "Lessons": 485,
+  "2026-07-11 \u2014 committed over a failing verifier gate": 216,
+  "2026-06-27 \u2014 Localization anchor = ground-image mosaic, injected to EKF": 76,
+  "2026-06-27 \u2014 All processing on base-station laptop, Pi Zero = pure relay": 45,
+  "2026-06-24 \u2014 Isaac Sim over Gazebo": 38,
+  "2026-06-25 \u2014 USD-native material binding, not PreviewSurfaceCfg": 95,
+  "Core params (EKF source set 1)": 127,
+  "Quality gating": 261,
+  "EXAMPLES": 88,
+  "VERIFY": 26,
+  "OUTPUT": 31
+ },
+ "plugin_tokens_saved_estimate": 800,
+ "plugin_ok_runs": 2,
+ "cost_usd_estimate": 0.0071,
+ "suggestions": [
+  "no oversized section - budget is working"
+ ]
+}

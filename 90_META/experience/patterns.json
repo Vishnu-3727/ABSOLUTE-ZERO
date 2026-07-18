@@ -138,14 +138,5 @@
    "verifier.py"
   ],
   "count": 14
- },
- "shared-kernel": {
-  "description": "engines import each other's primitives instead of duplicating",
-  "scripts": [
-   "agents.py",
-   "promptc.py",
-   "skills.py"
-  ],
-  "count": 3
  }
 }

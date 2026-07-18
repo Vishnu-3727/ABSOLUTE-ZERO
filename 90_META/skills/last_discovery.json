@@ -1,49 +1,51 @@
 {
- "request": "fix typo",
- "intent": "quick_fix",
+ "request": "redesign the entire retrieval architecture",
+ "intent": "architecture",
  "skills": [
   {
-   "invoke": "/recall",
-   "name": "recall",
+   "invoke": "/task",
+   "name": "task",
    "confidence": 0.5,
    "reason": "matched",
    "origin": "vault"
-  },
-  {
-   "invoke": "skill:caveman-review",
-   "name": "caveman-review",
-   "confidence": 0.62,
-   "reason": "matched",
-   "origin": "external"
-  },
-  {
-   "invoke": "skill:code-review",
-   "name": "code-review",
-   "confidence": 0.62,
-   "reason": "matched",
-   "origin": "external"
   },
   {
    "invoke": "/new",
    "name": "new",
-   "confidence": 0.5,
+   "confidence": 0.59,
    "reason": "matched",
    "origin": "vault"
+  },
+  {
+   "invoke": "skill:gpt-5-4-prompting",
+   "name": "gpt-5-4-prompting",
+   "confidence": 0.45,
+   "reason": "matched",
+   "origin": "external"
+  },
+  {
+   "invoke": "skill:firecrawl-crawl",
+   "name": "firecrawl-crawl",
+   "confidence": 0.31,
+   "reason": "matched",
+   "origin": "external"
   },
   {
    "invoke": "/research",
    "name": "research",
-   "confidence": 0.5,
+   "confidence": 0.28,
    "reason": "matched",
    "origin": "vault"
   },
   {
-   "invoke": "/review",
-   "name": "review",
-   "confidence": 0.5,
-   "reason": "matched",
+   "invoke": "/sleep",
+   "name": "sleep",
+   "confidence": 0.4,
+   "reason": "dependency of /task",
    "origin": "vault"
   }
  ],
- "conflicts": []
+ "conflicts": [
+  "/recall subsumed by /task"
+ ]
 }

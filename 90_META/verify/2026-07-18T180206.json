@@ -1,0 +1,40 @@
+{
+ "t": "2026-07-18T18:02:06",
+ "files": [
+  ".claude/commands/brief.md",
+  "90_META/GRAPH.json",
+  "90_META/experience/workflows.json",
+  "90_META/plans/2026-07-18-redesign-the-entire-retrieval-architecture.json",
+  "90_META/plans/2026-07-18-redesign-the-retrieval-architecture-end.json",
+  "90_META/runs/2026-07-18-redesign-the-entire-retrieval-architecture-2.json",
+  "90_META/runs/2026-07-18-redesign-the-entire-retrieval-architecture-3.json",
+  "90_META/runs/2026-07-18-redesign-the-entire-retrieval-architecture.json",
+  "90_META/runs/2026-07-18-redesign-the-retrieval-architecture-end.json",
+  "90_META/skills/last_discovery.json",
+  "90_META/verify/2026-07-18T174745.json",
+  "90_META/verify/2026-07-18T174825.json",
+  "90_META/verify/2026-07-18T175817.json",
+  "90_META/verify/2026-07-18T175923.json",
+  "90_META/verify/2026-07-18T175934.json",
+  "90_META/verify/2026-07-18T175944.json",
+  "90_META/verify/2026-07-18T180033.json",
+  "90_META/verify/2026-07-18T180045.json",
+  "90_META/verify/2026-07-18T180105.json",
+  "90_META/verify/2026-07-18T180130.json"
+ ],
+ "verdict": "PASS",
+ "confidence": 100,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [],
+  "regression": [],
+  "security": [],
+  "performance": [],
+  "formatting": [],
+  "documentation": [],
+  "tests": []
+ }
+}

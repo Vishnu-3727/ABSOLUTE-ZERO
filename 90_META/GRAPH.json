@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-18T12:10:58",
+ "generated": "2026-07-18T18:17:36",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -105,13 +105,6 @@
    "name": "scripts/core.py",
    "meta": {
     "doc": "ABSOLUTE ZERO shared kernel. Stdlib only."
-   }
-  },
-  "file:scripts/orchestrator.py": {
-   "type": "file",
-   "name": "scripts/orchestrator.py",
-   "meta": {
-    "doc": "ABSOLUTE ZERO workflow orchestrator. Stdlib only."
    }
   },
   "file:scripts/planner.py": {
@@ -1253,6 +1246,13 @@
    "name": "indexer.main",
    "meta": {
     "file": "scripts/indexer.py"
+   }
+  },
+  "file:scripts/orchestrator.py": {
+   "type": "file",
+   "name": "scripts/orchestrator.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO workflow orchestrator. Stdlib only."
    }
   },
   "file:ORCHESTRATOR.md": {
@@ -2490,9 +2490,19 @@
     "tags": "session drone navigation localization"
    }
   },
+  "skill:brief": {
+   "type": "skill",
+   "name": "brief",
+   "meta": {}
+  },
   "skill:new": {
    "type": "skill",
    "name": "new",
+   "meta": {}
+  },
+  "skill:onboard": {
+   "type": "skill",
+   "name": "onboard",
    "meta": {}
   },
   "skill:predict": {
@@ -2523,6 +2533,11 @@
   "skill:task": {
    "type": "skill",
    "name": "task",
+   "meta": {}
+  },
+  "skill:ui": {
+   "type": "skill",
+   "name": "ui",
    "meta": {}
   },
   "skill:wake": {
@@ -3141,16 +3156,6 @@
   ],
   [
    "file:scripts/agents.py",
-   "file:scripts/orchestrator.py",
-   "depends_on"
-  ],
-  [
-   "file:scripts/agents.py",
-   "file:scripts/orchestrator.py",
-   "imports"
-  ],
-  [
-   "file:scripts/agents.py",
    "file:scripts/planner.py",
    "depends_on"
   ],
@@ -3470,6 +3475,11 @@
    "related_to"
   ],
   [
+   "file:scripts/bootstrap.py",
+   "skill:onboard",
+   "used_by"
+  ],
+  [
    "file:scripts/cases.py",
    "file:CASES.md",
    "implements"
@@ -3598,6 +3608,16 @@
    "file:scripts/cases.py",
    "project:ABSOLUTEZERO",
    "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "skill:onboard",
+   "used_by"
+  ],
+  [
+   "file:scripts/cases.py",
+   "skill:sleep",
+   "used_by"
   ],
   [
    "file:scripts/cases.py",
@@ -3908,6 +3928,11 @@
    "file:scripts/dashboard.py",
    "project:ABSOLUTEZERO",
    "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "skill:ui",
+   "used_by"
   ],
   [
    "file:scripts/experience.py",
@@ -4266,6 +4291,11 @@
   ],
   [
    "file:scripts/indexer.py",
+   "skill:onboard",
+   "used_by"
+  ],
+  [
+   "file:scripts/indexer.py",
    "skill:sleep",
    "used_by"
   ],
@@ -4276,6 +4306,16 @@
   ],
   [
    "file:scripts/orchestrator.py",
+   "file:scripts/agents.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/agents.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
    "file:scripts/cases.py",
    "depends_on"
   ],
@@ -4302,6 +4342,16 @@
   [
    "file:scripts/orchestrator.py",
    "file:scripts/core.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/dashboard.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/dashboard.py",
    "imports"
   ],
   [
@@ -4840,6 +4890,11 @@
    "related_to"
   ],
   [
+   "file:scripts/profiler.py",
+   "skill:brief",
+   "used_by"
+  ],
+  [
    "file:scripts/project.py",
    "file:PROJECT.md",
    "implements"
@@ -4956,16 +5011,6 @@
   ],
   [
    "file:scripts/promptc.py",
-   "file:scripts/orchestrator.py",
-   "depends_on"
-  ],
-  [
-   "file:scripts/promptc.py",
-   "file:scripts/orchestrator.py",
-   "imports"
-  ],
-  [
-   "file:scripts/promptc.py",
    "file:scripts/plugins.py",
    "depends_on"
   ],
@@ -5058,6 +5103,11 @@
    "file:scripts/promptc.py",
    "project:ABSOLUTEZERO",
    "related_to"
+  ],
+  [
+   "file:scripts/promptc.py",
+   "skill:brief",
+   "used_by"
   ],
   [
    "file:scripts/query.py",
@@ -5263,6 +5313,11 @@
    "file:scripts/server.py",
    "project:ABSOLUTEZERO",
    "related_to"
+  ],
+  [
+   "file:scripts/server.py",
+   "skill:ui",
+   "used_by"
   ],
   [
    "file:scripts/skills.py",
@@ -6391,6 +6446,11 @@
   ],
   [
    "function:orchestrator.run_learning",
+   "function:dashboard.build",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_learning",
    "function:experience.harvest",
    "calls"
   ],
@@ -6412,6 +6472,16 @@
   [
    "function:orchestrator.run_learning",
    "function:orchestrator._call",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_recall",
+   "function:agents.compose",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_recall",
+   "function:agents.execute",
    "calls"
   ],
   [
@@ -8035,6 +8105,16 @@
    "used_by"
   ],
   [
+   "skill:brief",
+   "file:scripts/profiler.py",
+   "depends_on"
+  ],
+  [
+   "skill:brief",
+   "file:scripts/promptc.py",
+   "depends_on"
+  ],
+  [
    "skill:new",
    "file:scripts/indexer.py",
    "depends_on"
@@ -8042,6 +8122,21 @@
   [
    "skill:new",
    "file:scripts/project.py",
+   "depends_on"
+  ],
+  [
+   "skill:onboard",
+   "file:scripts/bootstrap.py",
+   "depends_on"
+  ],
+  [
+   "skill:onboard",
+   "file:scripts/cases.py",
+   "depends_on"
+  ],
+  [
+   "skill:onboard",
+   "file:scripts/indexer.py",
    "depends_on"
   ],
   [
@@ -8056,12 +8151,27 @@
   ],
   [
    "skill:sleep",
+   "file:scripts/cases.py",
+   "depends_on"
+  ],
+  [
+   "skill:sleep",
    "file:scripts/indexer.py",
    "depends_on"
   ],
   [
    "skill:task",
    "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "skill:ui",
+   "file:scripts/dashboard.py",
+   "depends_on"
+  ],
+  [
+   "skill:ui",
+   "file:scripts/server.py",
    "depends_on"
   ],
   [
