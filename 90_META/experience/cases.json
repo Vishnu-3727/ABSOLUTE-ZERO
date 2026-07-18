@@ -25,6 +25,7 @@
    "quick-fix",
    "reasoning",
    "runtime",
+   "scaffold",
    "skills",
    "token",
    "tooling",
@@ -57,8 +58,8 @@
     "pass": 2
    },
    "architecture": {
-    "runs": 1,
-    "pass": 1
+    "runs": 3,
+    "pass": 3
    },
    "quick_fix": {
     "runs": 1,
@@ -118,6 +119,7 @@
    "read",
    "reason",
    "runtime",
+   "scaffold",
    "silent",
    "skill",
    "stderr",
@@ -129,7 +131,7 @@
    "wait",
    "zero"
   ],
-  "blob": "ABSOLUTE_ZERO  Project Experience Engine spec \u2014 turns each completed project into a reusable case and surfaces the closest past case when a similar project starts. Context Budget Manager spec \u2014 builds the optimal context package per request within a token ceiling. Obsidian Dataview dashboard \u2014 active goals, recent sessions, open faults, newest lessons. Workflow Orchestrator spec \u2014 central runtime routing every request through classify, recall, execute, verify, summarize. Planning Engine spec \u2014 decomposes requests into validated, executable, dependency-ordered implementation plans. Plugin Intelligence Engine spec \u2014 discovers tools, builds a capability database, routes requests to optimal plugin chains. Prompt Compiler spec \u2014 dynamically constructs optimized, validated prompts from intent, context, experience, tools and budget. Skill Discovery Engine spec \u2014 determines which skills load for a request, ordered, deduplicated, conflict-resolved. V3 Token Intelligence \u2014 budgets, no-LLM gate, adaptive pipeline, one retrieval layer, profiler. Verification Engine spec \u2014 eleven checks over every modification, confidence score, gated verdict before completion. Build-phase checklist for the vault itself; the live to-do the /wake command reads. Vishnu's hardware, toolchain, and active projects \u2014 the fixed facts every session loads first. Hard-won engineering rules; grows one entry at a time via the /review command. FAIL: selftest still red -> retry: prefix matching in classify() Fault log for the vault/OS itself. prompt-compiler changeset committed while `verifier.py check`",
+  "blob": "ABSOLUTE_ZERO  Project Experience Engine spec \u2014 turns each completed project into a reusable case and surfaces the closest past case when a similar project starts. Context Budget Manager spec \u2014 builds the optimal context package per request within a token ceiling. Obsidian Dataview dashboard \u2014 active goals, recent sessions, open faults, newest lessons. Workflow Orchestrator spec \u2014 central runtime routing every request through classify, recall, execute, verify, summarize. Planning Engine spec \u2014 decomposes requests into validated, executable, dependency-ordered implementation plans. Plugin Intelligence Engine spec \u2014 discovers tools, builds a capability database, routes requests to optimal plugin chains. Project scaffolder spec \u2014 creating a project auto-injects the closest past case. Prompt Compiler spec \u2014 dynamically constructs optimized, validated prompts from intent, context, experience, tools and budget. Skill Discovery Engine spec \u2014 determines which skills load for a request, ordered, deduplicated, conflict-resolved. V3 Token Intelligence \u2014 budgets, no-LLM gate, adaptive pipeline, one retrieval layer, profiler. Verification Engine spec \u2014 eleven checks over every modification, confidence score, gated verdict before completion. Build-phase checklist for the vault itself; the live to-do the /wake command reads. Vishnu's hardware, toolchain, and active projects \u2014 the fixed facts every session loads first. Hard-won engineering rules; grows one entry at a time via the /review command. FAIL: selftest still red -> retry: prefix matching in classify() Fault log for the vault/OS itself. prompt-compiler changeset committed while `verifier.py check`",
   "note": "10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md"
  },
  "ASUNAMA": {
@@ -217,7 +219,12 @@
     "fix": "`mark_explored_footprint(x,y,radius)` gated on pose confidence."
    }
   ],
-  "workflows": {},
+  "workflows": {
+   "bug_fix": {
+    "runs": 1,
+    "pass": 1
+   }
+  },
   "lessons": [
    "bounded-loop-over-unbounded-wait: Replicator orchestrator wait-for-frame deadlocked forever; a bounded update loop cannot hang.",
    "coordinate-frame-origin: RTH checked distance to (0,0) but home was the base station; mission never completed.",

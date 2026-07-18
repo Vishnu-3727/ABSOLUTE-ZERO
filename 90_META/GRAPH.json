@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-18T10:22:01",
+ "generated": "2026-07-18T11:58:27",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -1331,6 +1331,38 @@
     "file": "scripts/orchestrator.py"
    }
   },
+  "function:orchestrator._call": {
+   "type": "function",
+   "name": "orchestrator._call",
+   "meta": {
+    "file": "scripts/orchestrator.py",
+    "doc": "Run one engine stage. Engines fail loud with SystemExit by design"
+   }
+  },
+  "function:orchestrator.run_recall": {
+   "type": "function",
+   "name": "orchestrator.run_recall",
+   "meta": {
+    "file": "scripts/orchestrator.py",
+    "doc": "RECALL (+PLAN): context pack, skill discovery, plan file \u2014 executed."
+   }
+  },
+  "function:orchestrator.run_learning": {
+   "type": "function",
+   "name": "orchestrator.run_learning",
+   "meta": {
+    "file": "scripts/orchestrator.py",
+    "doc": "Close the loop: a finished trace becomes lessons, index, case, graph."
+   }
+  },
+  "function:orchestrator._report": {
+   "type": "function",
+   "name": "orchestrator._report",
+   "meta": {
+    "file": "scripts/orchestrator.py",
+    "doc": "One line per engine. A failed stage says so instead of vanishing."
+   }
+  },
   "function:orchestrator.allowed_states": {
    "type": "function",
    "name": "orchestrator.allowed_states",
@@ -1637,6 +1669,61 @@
    "name": "profiler.main",
    "meta": {
     "file": "scripts/profiler.py"
+   }
+  },
+  "file:scripts/project.py": {
+   "type": "file",
+   "name": "scripts/project.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO project scaffolder - autonomous experience injection. Stdlib only."
+   }
+  },
+  "file:PROJECT.md": {
+   "type": "file",
+   "name": "PROJECT.md",
+   "meta": {
+    "path": "PROJECT.md",
+    "note_type": "doc",
+    "summary": "Project scaffolder spec \u2014 creating a project auto-injects the closest past case.",
+    "tags": "core project scaffold experience runtime"
+   }
+  },
+  "function:project.fill": {
+   "type": "function",
+   "name": "project.fill",
+   "meta": {
+    "file": "scripts/project.py",
+    "doc": "Instantiate a template: name/date/summary, and strip the example"
+   }
+  },
+  "function:project.prior_experience_note": {
+   "type": "function",
+   "name": "project.prior_experience_note",
+   "meta": {
+    "file": "scripts/project.py",
+    "doc": "The auto-injected note: what past runs teach this new project."
+   }
+  },
+  "function:project.new_project": {
+   "type": "function",
+   "name": "project.new_project",
+   "meta": {
+    "file": "scripts/project.py",
+    "doc": "Scaffold + autonomously inject prior experience. Returns (dir, hits)."
+   }
+  },
+  "function:project.main": {
+   "type": "function",
+   "name": "project.main",
+   "meta": {
+    "file": "scripts/project.py"
+   }
+  },
+  "function:project.selftest": {
+   "type": "function",
+   "name": "project.selftest",
+   "meta": {
+    "file": "scripts/project.py"
    }
   },
   "file:scripts/promptc.py": {
@@ -2310,7 +2397,7 @@
     "path": "10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md",
     "note_type": "project",
     "summary": "Project experience case for ABSOLUTE_ZERO - reusable decisions, faults and stack.",
-    "tags": "absolute-zero budget case cases compiler context core dashboard discovery experience faults goals identity meta orchestrator planning plugins principles project prompts quick-fix reasoning runtime skills token tooling v3 verification"
+    "tags": "absolute-zero budget case cases compiler context core dashboard discovery experience faults goals identity meta orchestrator planning plugins principles project prompts quick-fix reasoning runtime scaffold skills token tooling v3 verification"
    }
   },
   "experience:FAULTS": {
@@ -2402,6 +2489,11 @@
     "summary": "Added absolute visual fix + base-station rearchitecture; full-mission validation hit the 95% bar.",
     "tags": "session drone navigation localization"
    }
+  },
+  "skill:new": {
+   "type": "skill",
+   "name": "new",
+   "meta": {}
   },
   "skill:predict": {
    "type": "skill",
@@ -2998,6 +3090,11 @@
    "related_to"
   ],
   [
+   "file:PROJECT.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
    "file:PROMPTC.md",
    "project:ABSOLUTE_ZERO",
    "related_to"
@@ -3520,16 +3617,6 @@
   [
    "file:scripts/context.py",
    "file:scripts/core.py",
-   "imports"
-  ],
-  [
-   "file:scripts/context.py",
-   "file:scripts/orchestrator.py",
-   "depends_on"
-  ],
-  [
-   "file:scripts/context.py",
-   "file:scripts/orchestrator.py",
    "imports"
   ],
   [
@@ -4169,6 +4256,11 @@
   ],
   [
    "file:scripts/indexer.py",
+   "skill:new",
+   "used_by"
+  ],
+  [
+   "file:scripts/indexer.py",
    "skill:sleep",
    "used_by"
   ],
@@ -4179,12 +4271,72 @@
   ],
   [
    "file:scripts/orchestrator.py",
+   "file:scripts/cases.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/cases.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/context.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/context.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
    "file:scripts/core.py",
    "depends_on"
   ],
   [
    "file:scripts/orchestrator.py",
    "file:scripts/core.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/experience.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/experience.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/graph.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/graph.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/indexer.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/indexer.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/planner.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/planner.py",
    "imports"
   ],
   [
@@ -4196,6 +4348,26 @@
    "file:scripts/orchestrator.py",
    "file:scripts/plugins.py",
    "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/skills.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/skills.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator._call",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator._report",
+   "related_to"
   ],
   [
    "file:scripts/orchestrator.py",
@@ -4250,6 +4422,16 @@
   [
    "file:scripts/orchestrator.py",
    "function:orchestrator.plan",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.run_learning",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.run_recall",
    "related_to"
   ],
   [
@@ -4325,16 +4507,6 @@
   [
    "file:scripts/planner.py",
    "file:scripts/core.py",
-   "imports"
-  ],
-  [
-   "file:scripts/planner.py",
-   "file:scripts/orchestrator.py",
-   "depends_on"
-  ],
-  [
-   "file:scripts/planner.py",
-   "file:scripts/orchestrator.py",
    "imports"
   ],
   [
@@ -4661,6 +4833,96 @@
    "file:scripts/profiler.py",
    "project:ABSOLUTEZERO",
    "related_to"
+  ],
+  [
+   "file:scripts/project.py",
+   "file:PROJECT.md",
+   "implements"
+  ],
+  [
+   "file:scripts/project.py",
+   "file:scripts/cases.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/project.py",
+   "file:scripts/cases.py",
+   "imports"
+  ],
+  [
+   "file:scripts/project.py",
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/project.py",
+   "file:scripts/core.py",
+   "imports"
+  ],
+  [
+   "file:scripts/project.py",
+   "function:project.fill",
+   "related_to"
+  ],
+  [
+   "file:scripts/project.py",
+   "function:project.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/project.py",
+   "function:project.new_project",
+   "related_to"
+  ],
+  [
+   "file:scripts/project.py",
+   "function:project.prior_experience_note",
+   "related_to"
+  ],
+  [
+   "file:scripts/project.py",
+   "function:project.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/project.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/project.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/project.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/project.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/project.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/project.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/project.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/project.py",
+   "skill:new",
+   "used_by"
   ],
   [
    "file:scripts/promptc.py",
@@ -5014,16 +5276,6 @@
   ],
   [
    "file:scripts/skills.py",
-   "file:scripts/orchestrator.py",
-   "depends_on"
-  ],
-  [
-   "file:scripts/skills.py",
-   "file:scripts/orchestrator.py",
-   "imports"
-  ],
-  [
-   "file:scripts/skills.py",
    "file:scripts/plugins.py",
    "depends_on"
   ],
@@ -5210,6 +5462,11 @@
   [
    "function:agents.Bus.send",
    "function:agents.now",
+   "calls"
+  ],
+  [
+   "function:agents.compose",
+   "function:core.classify",
    "calls"
   ],
   [
@@ -5530,6 +5787,11 @@
   [
    "function:context.build",
    "function:context.score",
+   "calls"
+  ],
+  [
+   "function:context.build",
+   "function:core.classify",
    "calls"
   ],
   [
@@ -5974,12 +6236,22 @@
   ],
   [
    "function:orchestrator.close",
+   "function:orchestrator._report",
+   "calls"
+  ],
+  [
+   "function:orchestrator.close",
    "function:orchestrator.load_trace",
    "calls"
   ],
   [
    "function:orchestrator.close",
    "function:orchestrator.now",
+   "calls"
+  ],
+  [
+   "function:orchestrator.close",
+   "function:orchestrator.run_learning",
    "calls"
   ],
   [
@@ -6059,6 +6331,11 @@
   ],
   [
    "function:orchestrator.plan",
+   "function:orchestrator._report",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
    "function:orchestrator.budget_for",
    "calls"
   ],
@@ -6084,12 +6361,87 @@
   ],
   [
    "function:orchestrator.plan",
+   "function:orchestrator.run_recall",
+   "calls"
+  ],
+  [
+   "function:orchestrator.plan",
    "function:orchestrator.save_trace",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_learning",
+   "function:cases.close_project",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_learning",
+   "function:core.load_index",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_learning",
+   "function:core.load_json",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_learning",
+   "function:experience.harvest",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_learning",
+   "function:graph.build",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_learning",
+   "function:indexer.build",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_learning",
+   "function:indexer.write_outputs",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_learning",
+   "function:orchestrator._call",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_recall",
+   "function:context.build",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_recall",
+   "function:orchestrator._call",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_recall",
+   "function:planner.build",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_recall",
+   "function:plugins.route",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_recall",
+   "function:skills.discover",
    "calls"
   ],
   [
    "function:orchestrator.selftest",
    "function:core.classify",
+   "calls"
+  ],
+  [
+   "function:orchestrator.selftest",
+   "function:orchestrator._call",
    "calls"
   ],
   [
@@ -6145,6 +6497,11 @@
   [
    "function:planner.bind_plugins",
    "function:plugins.score",
+   "calls"
+  ],
+  [
+   "function:planner.build",
+   "function:core.classify",
    "calls"
   ],
   [
@@ -6458,8 +6815,58 @@
    "calls"
   ],
   [
+   "function:project.main",
+   "function:project.new_project",
+   "calls"
+  ],
+  [
+   "function:project.main",
+   "function:project.selftest",
+   "calls"
+  ],
+  [
+   "function:project.new_project",
+   "function:cases.similar",
+   "calls"
+  ],
+  [
+   "function:project.new_project",
+   "function:core.load_json",
+   "calls"
+  ],
+  [
+   "function:project.new_project",
+   "function:project.fill",
+   "calls"
+  ],
+  [
+   "function:project.new_project",
+   "function:project.prior_experience_note",
+   "calls"
+  ],
+  [
+   "function:project.selftest",
+   "function:cases.close_project",
+   "calls"
+  ],
+  [
+   "function:project.selftest",
+   "function:core.dump_json",
+   "calls"
+  ],
+  [
+   "function:project.selftest",
+   "function:project.new_project",
+   "calls"
+  ],
+  [
    "function:promptc.compile_prompt",
    "function:context.build",
+   "calls"
+  ],
+  [
+   "function:promptc.compile_prompt",
+   "function:core.classify",
    "calls"
   ],
   [
@@ -6674,6 +7081,11 @@
   ],
   [
    "function:skills.discover",
+   "function:core.classify",
+   "calls"
+  ],
+  [
+   "function:skills.discover",
    "function:core.nwords",
    "calls"
   ],
@@ -6809,6 +7221,11 @@
   ],
   [
    "library:argparse",
+   "file:scripts/project.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
    "file:scripts/promptc.py",
    "used_by"
   ],
@@ -6920,6 +7337,11 @@
   [
    "library:datetime",
    "file:scripts/profiler.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/project.py",
    "used_by"
   ],
   [
@@ -7134,6 +7556,11 @@
   ],
   [
    "library:pathlib",
+   "file:scripts/project.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
    "file:scripts/promptc.py",
    "used_by"
   ],
@@ -7224,6 +7651,11 @@
   ],
   [
    "library:re",
+   "file:scripts/project.py",
+   "used_by"
+  ],
+  [
+   "library:re",
    "file:scripts/promptc.py",
    "used_by"
   ],
@@ -7325,6 +7757,11 @@
   [
    "library:sys",
    "file:scripts/profiler.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/project.py",
    "used_by"
   ],
   [
@@ -7415,6 +7852,11 @@
   [
    "library:tempfile",
    "file:scripts/profiler.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/project.py",
    "used_by"
   ],
   [
@@ -7581,6 +8023,16 @@
    "project:ASUNAMA",
    "user:owner",
    "used_by"
+  ],
+  [
+   "skill:new",
+   "file:scripts/indexer.py",
+   "depends_on"
+  ],
+  [
+   "skill:new",
+   "file:scripts/project.py",
+   "depends_on"
   ],
   [
    "skill:recall",

@@ -43,4 +43,4 @@ summary: Project experience case for ASUNAMA - reusable decisions, faults and st
 - read-stderr-not-app-log: The Isaac "white box" was a Python TypeError on stderr, not a GPU bug; the app log never showed it.
 
 ## Workflows that ran
-- (none traced)
+- bug_fix: 1/1 pass

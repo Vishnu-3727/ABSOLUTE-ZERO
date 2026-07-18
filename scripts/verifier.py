@@ -214,10 +214,22 @@ class Verifier:
         lines = src.splitlines()
         m = re.match(r"^---\s*\n(.*?)\n---", src, re.DOTALL)
         root_doc = "/" not in rel
-        if not m and not root_doc:
+        # Slash-command files are not vault notes: their frontmatter schema is
+        # Claude Code's (description/argument-hint), not summary/tags/date.
+        # Judging them by note law failed every command file forever, which
+        # trained everyone to ignore a whole gate.
+        is_command = rel.replace("\\", "/").startswith(".claude/commands/")
+        if is_command:
+            if not m:
+                self.add("documentation", "fail", rel,
+                         "command file has no frontmatter")
+            elif not re.search(r"^description:", m.group(1), re.MULTILINE):
+                self.add("documentation", "fail", rel,
+                         "command file missing mandatory description")
+        elif not m and not root_doc:
             self.add("documentation", "fail", rel,
                      "no frontmatter (vault law: every note has it)")
-        elif m:
+        elif m and not is_command:
             fm = m.group(1)
             sm = re.search(r"^summary:\s*(.+)$", fm, re.MULTILINE)
             if not sm:

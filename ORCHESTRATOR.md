@@ -25,8 +25,14 @@ user request
  orchestrator.py plan  ──────────────► 90_META/traces/<id>.json
      |  intent + complexity + strategy
      |  + engine set + pipeline + verify checklist
+     |
+     |  RUNS RECALL (+PLAN) in-process, logs those states itself:
+     |    context.build ──► packed notes within budget
+     |    skills.discover ──► skills to load
+     |    planner.build ──► 90_META/plans/<id>.json   (standard/complex)
+     |    plugins.route ──► deterministic chain       (when llm == none)
      v
- Claude executes pipeline, logging each state:
+ Claude executes the thinking stages, logging each:
      RECALL ──► [SIMILARITY] ──► [PLAN] ──► EXECUTE ──► VERIFY ──► [REVIEW] ──► SUMMARIZE
        |                                        ^           |
        |                                        +── retry ──+  (max 2, then ESCALATE)
@@ -47,8 +53,23 @@ user request
      experience  = scripts/experience.py harvest/recall (EXPERIENCE.md; post-close)
      |
      v
- orchestrator.py close ──► trace final state DONE / ESCALATED ──► /sleep
+ orchestrator.py close ──► trace final state DONE / ESCALATED
+     |
+     |  RUNS THE LEARNING LOOP in-process (this is how the OS learns):
+     |    experience.harvest(only=trace) ──► lesson notes + workflow stats
+     |    indexer.build/write_outputs   ──► INDEX, SUMMARY, FAULT_LEDGER
+     |    cases.close_project           ──► case refreshed  (when --project)
+     |    graph.build                   ──► GRAPH.json
+     |  Order is a dependency chain: harvest writes notes, the index must
+     |  see them, cases read the fresh index, the graph feeds on it.
+     v
+   /sleep
 ```
+
+Engines are called as functions, not printed as commands for a human to
+copy. A stage that raises is caught, recorded in the trace under
+`engine_results` / `learning_results`, and reported as `FAILED <error>` —
+one broken engine degrades its own stage instead of killing the run.
 
 ## 2. State machine
 

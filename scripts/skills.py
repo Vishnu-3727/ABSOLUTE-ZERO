@@ -24,8 +24,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from core import nwords
-from orchestrator import classify
+from core import classify, nwords
 from plugins import caps_from_text, INTENT_CAPS
 
 VAULT = Path(__file__).resolve().parent.parent

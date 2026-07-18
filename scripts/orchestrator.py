@@ -3,9 +3,12 @@
 
 Central runtime of the OS: every user request is classified (intent,
 complexity), mapped to a strategy + engine set, and tracked as a
-state-machine trace in 90_META/traces/. Claude executes the pipeline;
-this script is the deterministic plumbing: classify, plan, enforce legal
-transitions, log, close. Full contract in ORCHESTRATOR.md.
+state-machine trace in 90_META/traces/. This script RUNS the engines it
+schedules - `plan` executes recall (context pack, skills, planner) and
+`close` executes the learning loop (experience harvest, reindex, case
+refresh, graph rebuild). Claude does the thinking stages (EXECUTE,
+VERIFY); the deterministic ones happen here. Full contract in
+ORCHESTRATOR.md.
 
   python scripts/orchestrator.py plan "fix the stale-date crash in review.py"
   python scripts/orchestrator.py log --trace <file> --state EXECUTE --note "patched"
@@ -20,8 +23,7 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-# classify re-exported: five engines still import it from here.
-from core import words_of, retrieve, stale, classify  # noqa: F401
+from core import words_of, retrieve, stale, classify
 
 VAULT = Path(__file__).resolve().parent.parent
 TRACES = VAULT / "90_META" / "traces"
@@ -148,7 +150,7 @@ def save_trace(path, trace):
     Path(path).write_text(json.dumps(trace, indent=1) + "\n", encoding="utf-8")
 
 
-def plan(request, project="", traces_dir=TRACES):
+def plan(request, project="", traces_dir=TRACES, engines=True):
     c = classify(request)
     g = gate(request, c)
     budget = budget_for(c["intent"], c["complexity"])
@@ -188,21 +190,137 @@ def plan(request, project="", traces_dir=TRACES):
         print(f"verify      - {v}")
     for w in freshness():
         print(f"STALE       {w}")
-    if g["llm"] == "none":
-        print(f'route       python scripts/plugins.py route "{request}"')
-    else:
-        q = f'python scripts/context.py pack "{request}" --budget {budget}'
-        if project:
-            q += f" --project {project}"
-        print(f"recall      {q}")
-        print(f'skills      python scripts/skills.py discover "{request}"')
-        if c["complexity"] != "trivial":
-            print(f'plan        python scripts/planner.py plan "{request}"')
-        if c["complexity"] == "complex":
-            print(f'agents      python scripts/agents.py run "{request}"')
-        print(f'profile     python scripts/profiler.py report  (after close)')
+    if not engines:            # selftest: never touch the live vault
+        print(f"trace       {path}")
+        return path
+    # run the pipeline's opening stages instead of printing their commands
+    results = run_recall(trace)
+    trace["engine_results"] = results
+    entered = "ROUTE" if trace["llm"] == "none" else "RECALL"
+    trace["transitions"].append({"t": now(), "state": entered,
+                                 "note": "engines run in-process"})
+    if results.get("planner", {}).get("ok"):
+        trace["transitions"].append({"t": now(), "state": "PLAN",
+                                     "note": results["planner"]["path"]})
+    save_trace(path, trace)
+    print("-" * 60)
+    _report(results)
+    if c["complexity"] == "complex":
+        print(f'agents      python scripts/agents.py run "{request}"')
     print(f"trace       {path.relative_to(VAULT) if path.is_relative_to(VAULT) else path}")
+    print(f"next        log --state EXECUTE, then VERIFY / SUMMARIZE, then close")
     return path
+
+
+# --- engine dispatch -----------------------------------------------------
+# The runtime RUNS the engines in-process. It used to print command strings
+# for a human to copy, which meant the OS only worked when someone typed
+# every stage by hand - separate tools wearing an OS costume. Engines are
+# invoked as functions here; a broken one degrades its own stage, is
+# recorded in the trace, and never takes the pipeline down with it.
+
+def _call(out, name, fn):
+    """Run one engine stage. Engines fail loud with SystemExit by design
+    (missing INDEX.json etc.), which is not a reason to lose the run."""
+    try:
+        out[name] = {"ok": True, **(fn() or {})}
+    except (Exception, SystemExit) as e:
+        out[name] = {"ok": False, "error": f"{type(e).__name__}: {e}"}
+    return out[name]
+
+
+def run_recall(trace):
+    """RECALL (+PLAN): context pack, skill discovery, plan file — executed."""
+    out = {}
+    request = trace["request"]
+    project = trace["project"]
+    budget = trace["budget"]
+
+    if trace["llm"] == "none":                 # deterministic chain, no model
+        def _route():
+            from plugins import route
+            p = route(request, quiet=True)
+            return {"chain": [l["name"] for l in p["chain"]]}
+        _call(out, "route", _route)
+        return out
+
+    def _pack():
+        from context import build as context_build
+        pkg = context_build(request, project, budget)
+        return {"notes": [i["path"] for i in pkg["items"]],
+                "tokens": pkg["used"]}
+    _call(out, "context", _pack)
+
+    def _skills():
+        from skills import discover
+        return {"load": [s["invoke"] for s in discover(request, quiet=True)["skills"]]}
+    _call(out, "skills", _skills)
+
+    if trace["complexity"] != "trivial":
+        def _plan():
+            from planner import build as planner_build
+            p = planner_build(request, project)
+            # validation is [status, message] pairs - report only what failed,
+            # counting all of them reads as "3 problems" when all 3 passed.
+            return {"path": p["path"], "steps": len(p["steps"]),
+                    "issues": [m for st, m in p["validation"] if st != "ok"]}
+        _call(out, "planner", _plan)
+    return out
+
+
+def run_learning(trace, trace_path):
+    """Close the loop: a finished trace becomes lessons, index, case, graph.
+
+    Order is a dependency chain, not a preference: harvest writes lesson
+    notes, the indexer must then see them, cases read the fresh index, and
+    the graph feeds on INDEX.json."""
+    out = {}
+
+    def _harvest():
+        from experience import harvest
+        r = harvest(VAULT, only=Path(trace_path))
+        return {"lessons": r["lessons"], "failures": r["failures"],
+                "workflows": r["workflows"]}
+    _call(out, "experience", _harvest)
+
+    def _index():
+        import indexer
+        notes, faults, per_project = indexer.build()
+        indexer.write_outputs(notes, faults, per_project)
+        return {"notes": len(notes), "faults": len(faults)}
+    _call(out, "index", _index)
+
+    if trace.get("project"):
+        def _case():
+            import cases
+            from core import load_index, load_json
+            cpath = VAULT / "90_META" / "experience" / "cases.json"
+            store = load_json(cpath, {})
+            case, _note = cases.close_project(VAULT, trace["project"],
+                                              load_index(VAULT), store)
+            return {"project": case["project"],
+                    "decisions": len(case["decisions"]),
+                    "faults": len(case["faults"])}
+        _call(out, "cases", _case)
+
+    def _graph():
+        import graph
+        g = graph.build(VAULT)
+        g.save(graph.GRAPH)
+        return {"nodes": len(g.nodes), "edges": len(g.edges)}
+    _call(out, "graph", _graph)
+    return out
+
+
+def _report(out):
+    """One line per engine. A failed stage says so instead of vanishing."""
+    for name, r in out.items():
+        if not r["ok"]:
+            print(f"{name:<11} FAILED  {r['error']}")
+            continue
+        bits = [f"{k}={len(v) if isinstance(v, list) else v}"
+                for k, v in r.items() if k != "ok"]
+        print(f"{name:<11} {'  '.join(bits)}")
 
 
 def allowed_states(trace):
@@ -235,7 +353,7 @@ def log(path, state, note=""):
              if state == "EXECUTE" and trace["retries"] else ""))
 
 
-def close(path, result, summary=""):
+def close(path, result, summary="", engines=True):
     trace = load_trace(path)
     if trace["result"] is not None:
         raise SystemExit(f"trace already closed ({trace['result']})")
@@ -247,6 +365,15 @@ def close(path, result, summary=""):
     trace["transitions"].append({"t": now(), "state": final, "note": summary})
     save_trace(path, trace)
     print(f"{trace['id']}: {final}")
+    if not engines:            # selftest: never touch the live vault
+        return
+    # closing is where the OS learns - harvest runs on fail too, a failed
+    # run is exactly the kind the next request must not repeat.
+    results = run_learning(trace, path)
+    trace["learning_results"] = results
+    save_trace(path, trace)
+    print("-" * 60)
+    _report(results)
 
 
 def similarity(query, limit=5):
@@ -286,8 +413,15 @@ def selftest():
     g = gate("redesign the entire retrieval architecture",
              {"intent": "architecture", "complexity": "complex"})
     assert g["llm"] in {"required", "cache-first"}  # complex never gates out
+    # engine dispatch: a broken engine is recorded, never fatal
+    out = {}
+    _call(out, "boom", lambda: (_ for _ in ()).throw(SystemExit("no INDEX")))
+    assert out["boom"] == {"ok": False, "error": "SystemExit: no INDEX"}, out
+    _call(out, "fine", lambda: {"notes": ["a", "b"]})
+    assert out["fine"] == {"ok": True, "notes": ["a", "b"]}
     with tempfile.TemporaryDirectory() as td:
-        p = plan("fix the stale-date crash in review.py", traces_dir=Path(td))
+        p = plan("fix the stale-date crash in review.py", traces_dir=Path(td),
+                 engines=False)
         tr = load_trace(p)
         assert tr["budget"] == 3000 and tr["llm"] in {"required",
                                                       "cache-first", "none"}
@@ -302,12 +436,12 @@ def selftest():
         log(p, "EXECUTE", "retry after verify fail")
         log(p, "VERIFY")
         try:
-            close(p, "pass")
+            close(p, "pass", engines=False)
             raise AssertionError("closed pass before SUMMARIZE")
         except SystemExit:
             pass
         log(p, "SUMMARIZE")
-        close(p, "pass", "selftest lifecycle")
+        close(p, "pass", "selftest lifecycle", engines=False)
         assert load_trace(p)["retries"] == 1
     print("selftest OK")
 

@@ -34,12 +34,11 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
 2. Execute the pipeline in order, logging each state:
    python scripts/orchestrator.py log --trace <file> --state <STATE>
    Illegal jumps are rejected loudly — that is the point.
-3. RECALL = python scripts/context.py pack "<request>" (budget-aware
-   package, contract in CONTEXT.md). Trivial tasks: ledger scan only.
-3b. PLAN (standard/complex) = python scripts/planner.py plan "<request>" —
-   executable plan: subtasks, dependency-ordered steps, risks from the
-   ledger, tests, rollbacks, validation gates (PLANNER.md). Fix any "fail"
-   gate before EXECUTE; then walk execution_order.
+3. RECALL + PLAN run themselves. `orchestrator.py plan` executes the
+   context pack (CONTEXT.md), skill discovery (SKILLS.md) and — for
+   standard/complex — the planner (PLANNER.md), logs those states, and
+   prints one line per engine. Read the plan file it names: fix any "fail"
+   validation gate before EXECUTE, then walk execution_order.
 4. EXECUTE starts with python scripts/plugins.py route "<request>" — follow
    the chain (deterministic local tools before model calls, PLUGINS.md);
    report non-script outcomes via plugins.py report.
@@ -53,9 +52,10 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
    retry EXECUTE (max 2) or close --result fail and escalate. Never
    SUMMARIZE over a failing verifier.
 6. Pass -> log SUMMARIZE, close --result pass. Traces are committed history.
-   Then harvest what the task taught:
-   python scripts/experience.py harvest --trace <file> (EXPERIENCE.md),
-   and profile the spend: python scripts/profiler.py report (TOKEN.md).
+   `close` runs the learning loop itself — experience harvest, reindex,
+   project case refresh, graph rebuild — printing one line per engine.
+   Nothing to run by hand. Profile the spend separately if you care:
+   python scripts/profiler.py report (TOKEN.md).
 7. Dispatching work to a fresh agent/session? Compile its briefing:
    python scripts/promptc.py compile "<request>" --project X (PROMPTC.md).
 
@@ -74,10 +74,10 @@ questions/greetings are exempt. Contract: ORCHESTRATOR.md.
 3. Append new faults to FAULTS.md (with root cause, fix, topic wikilinks).
 4. If a fault/insight is transferable: create note in 30_LESSONS/.
 5. Update ACTIVE_GOALS.md if goals changed.
-6. Run scripts/experience.py harvest (extract lessons/workflows/patterns
-   from the session's closed traces), then scripts/indexer.py
-   (rebuilds INDEX.json, INDEX_SUMMARY.md, FAULT_LEDGER.md), then
-   scripts/graph.py build (knowledge graph feeds on INDEX.json).
+6. Harvest, reindex, case refresh and graph rebuild already ran when the
+   trace closed. Run them by hand only if you worked without a trace:
+   scripts/experience.py harvest, then scripts/indexer.py, then
+   scripts/graph.py build (that order — each feeds the next).
 7. git add -A && git commit -m "sleep: <proj> <date>"
 
 ## /research <topic>

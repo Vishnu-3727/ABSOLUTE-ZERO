@@ -1,5 +1,5 @@
 ---
-tags: [absolute-zero, budget, case, cases, compiler, context, core, dashboard, discovery, experience, faults, goals, identity, meta, orchestrator, planning, plugins, principles, project, prompts, quick-fix, reasoning, runtime, skills, token, tooling, v3, verification]
+tags: [absolute-zero, budget, case, cases, compiler, context, core, dashboard, discovery, experience, faults, goals, identity, meta, orchestrator, planning, plugins, principles, project, prompts, quick-fix, reasoning, runtime, scaffold, skills, token, tooling, v3, verification]
 project: ABSOLUTE_ZERO
 status: active
 confidence: medium
@@ -27,7 +27,7 @@ summary: Project experience case for ABSOLUTE_ZERO - reusable decisions, faults 
 ## Workflows that ran
 - feature: 7/7 pass
 - performance: 2/2 pass
-- architecture: 1/1 pass
+- architecture: 3/3 pass
 - quick_fix: 1/1 pass
 - security: 1/1 pass
 - research: 1/1 pass

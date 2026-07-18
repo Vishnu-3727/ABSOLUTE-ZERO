@@ -1,0 +1,166 @@
+{
+ "id": "2026-07-18-document-the-orchestrator-engine-dispatch",
+ "request": "document the orchestrator engine dispatch",
+ "project": "ABSOLUTE_ZERO",
+ "intent": "architecture",
+ "complexity": "complex",
+ "strategy": "deep",
+ "engines": [
+  "knowledge",
+  "experience",
+  "similarity"
+ ],
+ "pipeline": [
+  "RECALL",
+  "SIMILARITY",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "REVIEW",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "written plan agreed before edits",
+  "boundaries documented",
+  "review.py clean (no new orphans)"
+ ],
+ "recall_tags": [
+  "orchestrator"
+ ],
+ "ambiguous": false,
+ "budget": 12000,
+ "llm": "required",
+ "gate_reason": "",
+ "transitions": [
+  {
+   "t": "2026-07-18T11:54:13",
+   "state": "CLASSIFY",
+   "note": "architecture/complex"
+  },
+  {
+   "t": "2026-07-18T11:54:13",
+   "state": "RECALL",
+   "note": "engines run in-process"
+  },
+  {
+   "t": "2026-07-18T11:54:13",
+   "state": "PLAN",
+   "note": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\plans\\2026-07-18-document-the-orchestrator-engine-dispatch.json"
+  },
+  {
+   "t": "2026-07-18T11:54:14",
+   "state": "EXECUTE",
+   "note": "docs updated"
+  },
+  {
+   "t": "2026-07-18T11:54:15",
+   "state": "VERIFY",
+   "note": "20 selftests green"
+  },
+  {
+   "t": "2026-07-18T11:54:27",
+   "state": "REVIEW",
+   "note": "docs match code"
+  },
+  {
+   "t": "2026-07-18T11:54:28",
+   "state": "SUMMARIZE",
+   "note": ""
+  },
+  {
+   "t": "2026-07-18T11:54:30",
+   "state": "DONE",
+   "note": "engine dispatch documented"
+  }
+ ],
+ "retries": 0,
+ "result": "pass",
+ "engine_results": {
+  "context": {
+   "ok": true,
+   "notes": [
+    "10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md",
+    "ORCHESTRATOR.md",
+    "10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md",
+    "30_LESSONS/retry-prefix-matching-in.md",
+    "10_PROJECTS/ASUNAMA/FAULTS.md",
+    "00_CORE/PRINCIPLES.md",
+    "30_LESSONS/bounded-loop-over-unbounded-wait.md",
+    "30_LESSONS/coverage-footprint-not-cell.md",
+    "30_LESSONS/read-stderr-not-app-log.md",
+    "30_LESSONS/coordinate-frame-origin.md",
+    "00_CORE/IDENTITY.md",
+    "30_LESSONS/fail-loud-not-silent-fallback.md",
+    "DASHBOARD.md",
+    "20_KNOWLEDGE/debugging-silent-failures.md",
+    "SKILLS.md",
+    "TOKEN.md",
+    "VERIFIER.md",
+    "PLANNER.md",
+    "30_LESSONS/odometry-drift-absolute-fix.md",
+    "PROJECT.md",
+    "10_PROJECTS/ASUNAMA/DECISIONS.md",
+    "EXPERIENCE.md",
+    "PLUGINS.md",
+    "PROMPTC.md",
+    "CONTEXT.md",
+    "20_KNOWLEDGE/coverage-planning.md",
+    "20_KNOWLEDGE/gps-denied-localization.md",
+    "40_RESEARCH/ardupilot-nongps-vision-params.md",
+    "CASES.md",
+    "10_PROJECTS/ASUNAMA/RECENT.md",
+    "10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+    "10_PROJECTS/ASUNAMA/OVERVIEW.md",
+    "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-27.md",
+    "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-26.md",
+    "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-25.md",
+    "AGENTS.md",
+    "GRAPH.md"
+   ],
+   "tokens": 5932
+  },
+  "skills": {
+   "ok": true,
+   "load": [
+    "/task",
+    "/new",
+    "skill:gpt-5-4-prompting",
+    "skill:codex-cli-runtime",
+    "/research",
+    "/sleep"
+   ]
+  },
+  "planner": {
+   "ok": true,
+   "path": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\plans\\2026-07-18-document-the-orchestrator-engine-dispatch.json",
+   "steps": 6,
+   "issues": [
+    "complex plan: 8k escalation rule - state cost, get approval before EXECUTE"
+   ]
+  }
+ },
+ "learning_results": {
+  "experience": {
+   "ok": true,
+   "lessons": [],
+   "failures": [],
+   "workflows": 1
+  },
+  "index": {
+   "ok": true,
+   "notes": 45,
+   "faults": 6
+  },
+  "cases": {
+   "ok": true,
+   "project": "ABSOLUTE_ZERO",
+   "decisions": 0,
+   "faults": 1
+  },
+  "graph": {
+   "ok": true,
+   "nodes": 340,
+   "edges": 1105
+  }
+ }
+}

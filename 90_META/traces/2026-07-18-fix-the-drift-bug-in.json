@@ -1,0 +1,154 @@
+{
+ "id": "2026-07-18-fix-the-drift-bug-in",
+ "request": "fix the drift bug in drone localization",
+ "project": "ASUNAMA",
+ "intent": "bug_fix",
+ "complexity": "standard",
+ "strategy": "recall-execute-verify",
+ "engines": [
+  "experience",
+  "knowledge",
+  "audit"
+ ],
+ "pipeline": [
+  "RECALL",
+  "PLAN",
+  "EXECUTE",
+  "VERIFY",
+  "SUMMARIZE"
+ ],
+ "verify": [
+  "root cause named, not symptom",
+  "fix exercised (test or run)",
+  "FAULTS.md entry with topic wikilink"
+ ],
+ "recall_tags": [
+  "drift",
+  "drone",
+  "localization"
+ ],
+ "ambiguous": false,
+ "budget": 3000,
+ "llm": "required",
+ "gate_reason": "",
+ "transitions": [
+  {
+   "t": "2026-07-18T06:20:05",
+   "state": "CLASSIFY",
+   "note": "bug_fix/standard"
+  },
+  {
+   "t": "2026-07-18T06:20:06",
+   "state": "RECALL",
+   "note": "engines run in-process"
+  },
+  {
+   "t": "2026-07-18T06:20:06",
+   "state": "PLAN",
+   "note": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\plans\\2026-07-18-fix-the-drift-bug-in.json"
+  },
+  {
+   "t": "2026-07-18T11:50:41",
+   "state": "EXECUTE",
+   "note": "wired orchestrator to call engines in-process"
+  },
+  {
+   "t": "2026-07-18T11:50:42",
+   "state": "VERIFY",
+   "note": "live run + selftest"
+  },
+  {
+   "t": "2026-07-18T11:50:43",
+   "state": "SUMMARIZE",
+   "note": "engines now dispatched, not printed"
+  },
+  {
+   "t": "2026-07-18T11:50:44",
+   "state": "DONE",
+   "note": "orchestrator executes engines end to end"
+  }
+ ],
+ "retries": 0,
+ "result": "pass",
+ "engine_results": {
+  "context": {
+   "ok": true,
+   "notes": [
+    "10_PROJECTS/ASUNAMA/EXPERIENCE.md",
+    "30_LESSONS/odometry-drift-absolute-fix.md",
+    "40_RESEARCH/ardupilot-nongps-vision-params.md",
+    "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-27.md",
+    "20_KNOWLEDGE/gps-denied-localization.md",
+    "10_PROJECTS/ASUNAMA/FAULTS.md",
+    "30_LESSONS/coordinate-frame-origin.md",
+    "10_PROJECTS/ASUNAMA/DECISIONS.md",
+    "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-26.md",
+    "10_PROJECTS/ASUNAMA/SESSIONS/2026-06-25.md",
+    "30_LESSONS/coverage-footprint-not-cell.md",
+    "30_LESSONS/bounded-loop-over-unbounded-wait.md",
+    "30_LESSONS/fail-loud-not-silent-fallback.md",
+    "30_LESSONS/read-stderr-not-app-log.md",
+    "10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md",
+    "10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
+    "30_LESSONS/retry-prefix-matching-in.md",
+    "20_KNOWLEDGE/debugging-silent-failures.md",
+    "20_KNOWLEDGE/coverage-planning.md"
+   ],
+   "tokens": 2995
+  },
+  "skills": {
+   "ok": true,
+   "load": [
+    "skill:code-review",
+    "skill:caveman-review",
+    "/review",
+    "skill:codex-result-handling",
+    "skill:gpt-5-4-prompting",
+    "skill:ponytail-audit"
+   ]
+  },
+  "planner": {
+   "ok": true,
+   "path": "C:\\Users\\Vishnu\\college\\Notes\\Coding\\AbsoluteZero\\90_META\\plans\\2026-07-18-fix-the-drift-bug-in.json",
+   "steps": 6,
+   "invalid": [
+    [
+     "ok",
+     "dependency graph is acyclic"
+    ],
+    [
+     "ok",
+     "every step has a test and a rollback"
+    ],
+    [
+     "ok",
+     "plan is executable"
+    ]
+   ]
+  }
+ },
+ "learning_results": {
+  "experience": {
+   "ok": true,
+   "lessons": [],
+   "failures": [],
+   "workflows": 1
+  },
+  "index": {
+   "ok": true,
+   "notes": 45,
+   "faults": 6
+  },
+  "cases": {
+   "ok": true,
+   "project": "ASUNAMA",
+   "decisions": 4,
+   "faults": 5
+  },
+  "graph": {
+   "ok": true,
+   "nodes": 340,
+   "edges": 1105
+  }
+ }
+}

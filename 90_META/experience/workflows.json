@@ -37,10 +37,10 @@
   ]
  },
  "architecture": {
-  "runs": 1,
-  "pass": 1,
+  "runs": 3,
+  "pass": 3,
   "retries": 0,
-  "seconds": 25,
+  "seconds": 55,
   "pipeline": [
    "RECALL",
    "SIMILARITY",
@@ -51,7 +51,9 @@
    "SUMMARIZE"
   ],
   "examples": [
-   "2026-07-11-design-and-implement-a-workflow"
+   "2026-07-11-design-and-implement-a-workflow",
+   "2026-07-18-document-the-orchestrator-engine-dispatch",
+   "2026-07-18-verify-engine-dispatch-after-import"
   ]
  },
  "quick_fix": {
@@ -99,6 +101,22 @@
   ],
   "examples": [
    "2026-07-11-implement-a-skill-discovery-engine"
+  ]
+ },
+ "bug_fix": {
+  "runs": 1,
+  "pass": 1,
+  "retries": 0,
+  "seconds": 19839,
+  "pipeline": [
+   "RECALL",
+   "PLAN",
+   "EXECUTE",
+   "VERIFY",
+   "SUMMARIZE"
+  ],
+  "examples": [
+   "2026-07-18-fix-the-drift-bug-in"
   ]
  }
 }

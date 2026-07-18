@@ -24,8 +24,7 @@ from difflib import SequenceMatcher
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from core import STOP, est_tokens, jaccard, words_of
-from orchestrator import classify
+from core import STOP, classify, est_tokens, jaccard, words_of
 
 VAULT = Path(__file__).resolve().parent.parent
 BUDGET, HARD_CAP = 5000, 8000

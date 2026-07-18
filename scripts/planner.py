@@ -22,8 +22,7 @@ from graphlib import TopologicalSorter, CycleError
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from core import STOP, words_of
-from orchestrator import classify
+from core import STOP, classify, words_of
 
 VAULT = Path(__file__).resolve().parent.parent
 PLANS = VAULT / "90_META" / "plans"
