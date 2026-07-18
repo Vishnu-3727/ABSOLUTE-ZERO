@@ -23,7 +23,7 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from core import words_of, retrieve, stale, classify
+from core import VERIFY, words_of, retrieve, stale, classify
 
 VAULT = Path(__file__).resolve().parent.parent
 TRACES = VAULT / "90_META" / "traces"
@@ -58,27 +58,6 @@ ENGINES = {
     "performance": ["experience", "knowledge"],
     "security": ["experience", "knowledge", "audit"],
     "deployment": ["experience", "audit"],
-}
-VERIFY = {
-    "quick_fix": ["change applied", "nothing else touched"],
-    "bug_fix": ["root cause named, not symptom",
-                "fix exercised (test or run)",
-                "FAULTS.md entry with topic wikilink"],
-    "feature": ["works end to end", "one runnable check left behind",
-                "docs/notes updated if behavior changed"],
-    "architecture": ["written plan agreed before edits",
-                     "boundaries documented",
-                     "review.py clean (no new orphans)"],
-    "research": ["sources cited with URLs",
-                 "note in 40_RESEARCH with frontmatter",
-                 "5-line digest reported"],
-    "documentation": ["accurate against current code",
-                      "frontmatter + reindexed"],
-    "performance": ["baseline measured before", "improvement measured after",
-                    "no correctness regression"],
-    "security": ["threat named", "fix verified", "no secrets committed"],
-    "deployment": ["dry-run or staged first", "rollback path stated",
-                   "post-deploy check passes"],
 }
 
 
@@ -205,8 +184,6 @@ def plan(request, project="", traces_dir=TRACES, engines=True):
     save_trace(path, trace)
     print("-" * 60)
     _report(results)
-    if c["complexity"] == "complex":
-        print(f'agents      python scripts/agents.py run "{request}"')
     print(f"trace       {path.relative_to(VAULT) if path.is_relative_to(VAULT) else path}")
     print(f"next        log --state EXECUTE, then VERIFY / SUMMARIZE, then close")
     return path
@@ -255,6 +232,22 @@ def run_recall(trace):
         from skills import discover
         return {"load": [s["invoke"] for s in discover(request, quiet=True)["skills"]]}
     _call(out, "skills", _skills)
+
+    if trace["complexity"] == "complex":
+        # Complex work is what the multi-agent runtime exists for. It used
+        # to be printed as a suggestion, which meant it ran only if someone
+        # noticed the line. ~2s, deterministic; its WORK ORDER lines are
+        # the EXECUTE checklist.
+        def _agents():
+            from agents import compose, execute
+            rec = execute(compose(request))
+            # work orders live in the coordinator's shared-memory summary,
+            # not on the record itself (agents.show reads them the same way)
+            summary = rec["memory"].get("summary", {}).get("value", {})
+            return {"verdict": rec["verdict"],
+                    "work_orders": [o["subtask"]
+                                    for o in summary.get("work_orders", [])]}
+        _call(out, "agents", _agents)
 
     if trace["complexity"] != "trivial":
         def _plan():

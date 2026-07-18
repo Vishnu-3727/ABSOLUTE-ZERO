@@ -28,8 +28,7 @@ from graphlib import TopologicalSorter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from core import classify, words_of
-from orchestrator import VERIFY
+from core import VERIFY, classify, words_of
 from planner import ALTERNATIVES, LAWS, decompose, mine_risks
 
 VAULT = Path(__file__).resolve().parent.parent

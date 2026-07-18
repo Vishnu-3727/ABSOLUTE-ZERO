@@ -24,7 +24,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from core import (STOP, classify, est_tokens, jaccard, load_index, stem,
                   words_of)
-from orchestrator import VERIFY as CHECKLISTS
+from core import VERIFY as CHECKLISTS
 from context import build as build_context, read_body
 
 VAULT = Path(__file__).resolve().parent.parent

@@ -34,6 +34,32 @@ STOP = {"the", "a", "an", "to", "of", "in", "on", "for", "and", "or", "is",
         "every", "all", "some", "into", "from", "after", "before", "during"}
 
 
+# Per-intent completion checklists. Policy data, not orchestration:
+# agents and promptc need it as much as the orchestrator, and homing
+# it there forced them to import the runtime just to read a dict.
+VERIFY = {
+    "quick_fix": ["change applied", "nothing else touched"],
+    "bug_fix": ["root cause named, not symptom",
+                "fix exercised (test or run)",
+                "FAULTS.md entry with topic wikilink"],
+    "feature": ["works end to end", "one runnable check left behind",
+                "docs/notes updated if behavior changed"],
+    "architecture": ["written plan agreed before edits",
+                     "boundaries documented",
+                     "review.py clean (no new orphans)"],
+    "research": ["sources cited with URLs",
+                 "note in 40_RESEARCH with frontmatter",
+                 "5-line digest reported"],
+    "documentation": ["accurate against current code",
+                      "frontmatter + reindexed"],
+    "performance": ["baseline measured before", "improvement measured after",
+                    "no correctness regression"],
+    "security": ["threat named", "fix verified", "no secrets committed"],
+    "deployment": ["dry-run or staged first", "rollback path stated",
+                   "post-deploy check passes"],
+}
+
+
 def words_of(text):
     return WORD_RE.findall(text.lower())
 
