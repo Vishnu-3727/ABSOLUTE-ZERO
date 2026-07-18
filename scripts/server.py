@@ -58,6 +58,40 @@ ALLOWED = {
 # Params naming a path must stay inside the vault directory that owns them.
 PATH_PARAMS = {"trace": "90_META/traces"}
 
+MAX_FILE = 1_000_000  # skip pathological files; notes are tiny
+
+
+def gather_vault_files(vault):
+    """All files the UI's client-side parser eats: markdown notes plus
+    Obsidian plugin manifests. Paths are vault-relative, posix-style,
+    because the client filters on them with the same regexes it uses
+    for webkitRelativePath."""
+    files = []
+
+    def add(p):
+        rel = p.relative_to(vault).as_posix()
+        if p.stat().st_size > MAX_FILE:
+            return
+        try:
+            files.append({"path": rel,
+                          "text": p.read_text("utf-8", errors="replace")})
+        except OSError:
+            pass
+
+    for p in vault.rglob("*.md"):
+        rel = p.relative_to(vault).as_posix()
+        if rel.startswith((".git/", ".obsidian/")) or "/.git/" in rel:
+            continue
+        add(p)
+    obs = vault / ".obsidian"
+    if obs.is_dir():
+        comm = obs / "community-plugins.json"
+        if comm.is_file():
+            add(comm)
+        for m in obs.glob("plugins/*/manifest.json"):
+            add(m)
+    return {"files": files}
+
 
 def _clean(value):
     return str(value or "").strip()[:MAX_ARG]
@@ -121,9 +155,15 @@ def make_handler(vault, allowed=ALLOWED):
             self.wfile.write(data)
 
         def do_GET(self):
-            if self.path in ("/", "/dashboard.html"):
+            ui = vault / "scripts" / "ui.html"
+            if self.path == "/" and ui.is_file():
+                self._send(200, ui.read_text("utf-8", errors="replace"),
+                           "text/html")
+            elif self.path in ("/", "/dashboard.html"):
                 page = dashboard.render(dashboard.gather(vault))
                 self._send(200, page, "text/html")
+            elif self.path == "/api/vault":
+                self._send(200, json.dumps(gather_vault_files(vault)))
             elif self.path == "/favicon.ico":
                 self.send_response(204)
                 self.end_headers()
@@ -194,6 +234,16 @@ def selftest():
         base = f"http://127.0.0.1:{srv.server_address[1]}"
         page = urllib.request.urlopen(base + "/").read().decode()
         assert "ABSOLUTE ZERO" in page, "dashboard not served"
+        # ui.html, once present, takes over "/" and /api/vault feeds it
+        (v / "scripts" / "ui.html").write_text("UI-SENTINEL",
+                                               encoding="utf-8")
+        (v / "note one.md").write_text("[[note two]]", encoding="utf-8")
+        assert "UI-SENTINEL" in urllib.request.urlopen(
+            base + "/").read().decode()
+        api = json.loads(urllib.request.urlopen(
+            base + "/api/vault").read())
+        assert any(f["path"] == "note one.md" and "[[note two]]" in f["text"]
+                   for f in api["files"]), api
         req = urllib.request.Request(
             base + "/run", json.dumps({"cmd": "ping", "arg": "x"}).encode(),
             {"Content-Type": "application/json"})
