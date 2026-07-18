@@ -11,6 +11,7 @@ Run from anywhere: python scripts/indexer.py  (vault root = parent of scripts/).
 import argparse
 import json
 import re
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -196,6 +197,9 @@ def _selftest():
 
 
 def main():
+    # vault content is UTF-8; a cp1252 pipe would crash on note titles
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(description="Rebuild vault index.")
     ap.add_argument("--selftest", action="store_true")
     args = ap.parse_args()

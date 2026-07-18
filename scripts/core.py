@@ -12,9 +12,19 @@ fix lands once and drift stops.
 import json
 import os
 import re
+import sys
 import tempfile
 from difflib import SequenceMatcher
 from pathlib import Path
+
+# Vault content is UTF-8 (arrows, box glyphs, accented note titles) but a
+# Windows console/pipe defaults to cp1252, so ANY engine printing a note
+# title died with UnicodeEncodeError the moment its output was piped.
+# Eight engines had each patched their own main; the twelve that had not
+# were one non-ASCII note away from the same crash. Fixed once, here,
+# because every engine already imports this kernel.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 WORD_RE = re.compile(r"[a-z0-9][a-z0-9_-]*")
 # Stopwords never carry relevance; without this, "the" pins fault lines.

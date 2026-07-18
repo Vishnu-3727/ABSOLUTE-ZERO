@@ -147,6 +147,9 @@ def selftest():
 
 
 def main():
+    # vault content is UTF-8; a cp1252 pipe would crash on note titles
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(description="Vault terminal server.")
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--port", type=int, default=PORT)
