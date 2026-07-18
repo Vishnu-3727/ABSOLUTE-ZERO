@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-12T09:31:25",
+ "generated": "2026-07-18T10:22:01",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -472,6 +472,146 @@
     "file": "scripts/bootstrap.py"
    }
   },
+  "file:scripts/cases.py": {
+   "type": "file",
+   "name": "scripts/cases.py",
+   "meta": {
+    "doc": "ABSOLUTE ARCHIVE - project experience engine (case-based reasoning). Stdlib only."
+   }
+  },
+  "file:EXPERIENCE.md": {
+   "type": "file",
+   "name": "EXPERIENCE.md",
+   "meta": {
+    "path": "EXPERIENCE.md",
+    "note_type": "doc",
+    "summary": "Experience Learning Engine spec \u2014 extracts lessons, failures, workflows, reusable code and patterns after every completed task.",
+    "tags": "core experience learning runtime"
+   }
+  },
+  "file:CASES.md": {
+   "type": "file",
+   "name": "CASES.md",
+   "meta": {
+    "path": "CASES.md",
+    "note_type": "doc",
+    "summary": "Project Experience Engine spec \u2014 turns each completed project into a reusable case and surfaces the closest past case when a similar project starts.",
+    "tags": "core experience cases reasoning runtime"
+   }
+  },
+  "library:math": {
+   "type": "library",
+   "name": "math",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "function:cases.read": {
+   "type": "function",
+   "name": "cases.read",
+   "meta": {
+    "file": "scripts/cases.py"
+   }
+  },
+  "function:cases.to_words": {
+   "type": "function",
+   "name": "cases.to_words",
+   "meta": {
+    "file": "scripts/cases.py",
+    "doc": "Stemmed word set with slug/path separators split - so `gps` in a"
+   }
+  },
+  "function:cases.parse_decisions": {
+   "type": "function",
+   "name": "cases.parse_decisions",
+   "meta": {
+    "file": "scripts/cases.py",
+    "doc": "`## Heading` + its first bullet (the rationale) = a reusable decision."
+   }
+  },
+  "function:cases.parse_faults": {
+   "type": "function",
+   "name": "cases.parse_faults",
+   "meta": {
+    "file": "scripts/cases.py",
+    "doc": "Split on `## ` blocks; pull Symptom/Fix (or Outcome) bullets."
+   }
+  },
+  "function:cases.stack_from_bootstrap": {
+   "type": "function",
+   "name": "cases.stack_from_bootstrap",
+   "meta": {
+    "file": "scripts/cases.py",
+    "doc": "Language/framework/dependency strings = a project's components."
+   }
+  },
+  "function:cases.project_workflows": {
+   "type": "function",
+   "name": "cases.project_workflows",
+   "meta": {
+    "file": "scripts/cases.py",
+    "doc": "Which intents this project ran, from its closed traces."
+   }
+  },
+  "function:cases.build_case": {
+   "type": "function",
+   "name": "cases.build_case",
+   "meta": {
+    "file": "scripts/cases.py",
+    "doc": "Roll one project's whole run into a reusable case object."
+   }
+  },
+  "function:cases.write_case_note": {
+   "type": "function",
+   "name": "cases.write_case_note",
+   "meta": {
+    "file": "scripts/cases.py",
+    "doc": "Human-readable, frontmatter'd EXPERIENCE.md so it is indexed too."
+   }
+  },
+  "function:cases.close_project": {
+   "type": "function",
+   "name": "cases.close_project",
+   "meta": {
+    "file": "scripts/cases.py"
+   }
+  },
+  "function:cases.query_profile": {
+   "type": "function",
+   "name": "cases.query_profile",
+   "meta": {
+    "file": "scripts/cases.py",
+    "doc": "Turn a free-text query OR a project into (signature set, text) so it"
+   }
+  },
+  "function:cases.similar": {
+   "type": "function",
+   "name": "cases.similar",
+   "meta": {
+    "file": "scripts/cases.py"
+   }
+  },
+  "function:cases._print_case": {
+   "type": "function",
+   "name": "cases._print_case",
+   "meta": {
+    "file": "scripts/cases.py"
+   }
+  },
+  "function:cases.main": {
+   "type": "function",
+   "name": "cases.main",
+   "meta": {
+    "file": "scripts/cases.py"
+   }
+  },
+  "function:cases.selftest": {
+   "type": "function",
+   "name": "cases.selftest",
+   "meta": {
+    "file": "scripts/cases.py"
+   }
+  },
   "file:scripts/context.py": {
    "type": "file",
    "name": "scripts/context.py",
@@ -695,12 +835,12 @@
     "file": "scripts/dashboard.py"
    }
   },
-  "function:dashboard.bar_rows": {
+  "function:dashboard.graph_payload": {
    "type": "function",
-   "name": "dashboard.bar_rows",
+   "name": "dashboard.graph_payload",
    "meta": {
     "file": "scripts/dashboard.py",
-    "doc": "Single-hue bars: name, bar scaled to max, value."
+    "doc": "GRAPH.json -> compact embed: nodes [{n,t,m,x..}], edges [i,j]."
    }
   },
   "function:dashboard.gather": {
@@ -743,16 +883,6 @@
    "name": "scripts/experience.py",
    "meta": {
     "doc": "ABSOLUTE ZERO experience learning engine. Stdlib only."
-   }
-  },
-  "file:EXPERIENCE.md": {
-   "type": "file",
-   "name": "EXPERIENCE.md",
-   "meta": {
-    "path": "EXPERIENCE.md",
-    "note_type": "doc",
-    "summary": "Experience Learning Engine spec \u2014 extracts lessons, failures, workflows, reusable code and patterns after every completed task.",
-    "tags": "core experience learning runtime"
    }
   },
   "function:experience.secs": {
@@ -1669,6 +1799,63 @@
     "file": "scripts/review.py"
    }
   },
+  "file:scripts/server.py": {
+   "type": "file",
+   "name": "scripts/server.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO vault terminal server. Stdlib only."
+   }
+  },
+  "library:http": {
+   "type": "library",
+   "name": "http",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "library:urllib": {
+   "type": "library",
+   "name": "urllib",
+   "meta": {
+    "stdlib": true
+   }
+  },
+  "function:server.run_cmd": {
+   "type": "function",
+   "name": "server.run_cmd",
+   "meta": {
+    "file": "scripts/server.py",
+    "doc": "Execute one whitelisted deck command; returns a JSON-able dict."
+   }
+  },
+  "function:server.make_handler": {
+   "type": "function",
+   "name": "server.make_handler",
+   "meta": {
+    "file": "scripts/server.py"
+   }
+  },
+  "function:server.serve": {
+   "type": "function",
+   "name": "server.serve",
+   "meta": {
+    "file": "scripts/server.py"
+   }
+  },
+  "function:server.selftest": {
+   "type": "function",
+   "name": "server.selftest",
+   "meta": {
+    "file": "scripts/server.py"
+   }
+  },
+  "function:server.main": {
+   "type": "function",
+   "name": "server.main",
+   "meta": {
+    "file": "scripts/server.py"
+   }
+  },
   "file:SKILLS.md": {
    "type": "file",
    "name": "SKILLS.md",
@@ -1922,6 +2109,11 @@
     "note_type": "doc"
    }
   },
+  "project:ABSOLUTE_ZERO": {
+   "type": "project",
+   "name": "ABSOLUTE_ZERO",
+   "meta": {}
+  },
   "file:CLAUDE.md": {
    "type": "file",
    "name": "ABSOLUTE ZERO \u2014 Master Instructions",
@@ -1929,11 +2121,6 @@
     "path": "CLAUDE.md",
     "note_type": "doc"
    }
-  },
-  "project:ABSOLUTE_ZERO": {
-   "type": "project",
-   "name": "ABSOLUTE_ZERO",
-   "meta": {}
   },
   "file:DASHBOARD.md": {
    "type": "file",
@@ -2116,6 +2303,16 @@
     "tags": "research drone navigation localization ardupilot"
    }
   },
+  "file:10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md": {
+   "type": "file",
+   "name": "ABSOLUTE_ZERO \u2014 Project Experience",
+   "meta": {
+    "path": "10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md",
+    "note_type": "project",
+    "summary": "Project experience case for ABSOLUTE_ZERO - reusable decisions, faults and stack.",
+    "tags": "absolute-zero budget case cases compiler context core dashboard discovery experience faults goals identity meta orchestrator planning plugins principles project prompts quick-fix reasoning runtime skills token tooling v3 verification"
+   }
+  },
   "experience:FAULTS": {
    "type": "experience",
    "name": "ABSOLUTE ZERO \u2014 Faults",
@@ -2144,6 +2341,16 @@
     "note_type": "decision",
     "summary": "Key locked decisions \u2014 Isaac over Gazebo, absolute visual fix, base-station processing, USD-native materials.",
     "tags": "project decisions drone navigation"
+   }
+  },
+  "file:10_PROJECTS/ASUNAMA/EXPERIENCE.md": {
+   "type": "file",
+   "name": "ASUNAMA \u2014 Project Experience",
+   "meta": {
+    "path": "10_PROJECTS/ASUNAMA/EXPERIENCE.md",
+    "note_type": "project",
+    "summary": "Project experience case for ASUNAMA - reusable decisions, faults and stack.",
+    "tags": "ardupilot bootstrap case coordinate-frames coverage debugging decisions diagnostics drift drone experience faults isaac-sim lesson localization mapping navigation overview project python recent reliability research robotics session software state-estimation"
    }
   },
   "file:10_PROJECTS/ASUNAMA/OVERVIEW.md": {
@@ -2621,6 +2828,11 @@
    "related_to"
   ],
   [
+   "file:10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md",
+   "project:ABSOLUTE_ZERO",
+   "related_to"
+  ],
+  [
    "file:10_PROJECTS/ASUNAMA/BOOTSTRAP.md",
    "file:20_KNOWLEDGE/coverage-planning.md",
    "related_to"
@@ -2657,6 +2869,11 @@
   ],
   [
    "file:10_PROJECTS/ASUNAMA/DECISIONS.md",
+   "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "file:10_PROJECTS/ASUNAMA/EXPERIENCE.md",
    "project:ASUNAMA",
    "related_to"
   ],
@@ -2743,6 +2960,11 @@
   [
    "file:40_RESEARCH/ardupilot-nongps-vision-params.md",
    "project:ASUNAMA",
+   "related_to"
+  ],
+  [
+   "file:CASES.md",
+   "project:ABSOLUTE_ZERO",
    "related_to"
   ],
   [
@@ -3151,6 +3373,141 @@
    "related_to"
   ],
   [
+   "file:scripts/cases.py",
+   "file:CASES.md",
+   "implements"
+  ],
+  [
+   "file:scripts/cases.py",
+   "file:EXPERIENCE.md",
+   "implements"
+  ],
+  [
+   "file:scripts/cases.py",
+   "file:scripts/core.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/cases.py",
+   "file:scripts/core.py",
+   "imports"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases._print_case",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.build_case",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.close_project",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.parse_decisions",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.parse_faults",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.project_workflows",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.query_profile",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.read",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.similar",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.stack_from_bootstrap",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.to_words",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "function:cases.write_case_note",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/cases.py",
+   "library:datetime",
+   "imports"
+  ],
+  [
+   "file:scripts/cases.py",
+   "library:math",
+   "imports"
+  ],
+  [
+   "file:scripts/cases.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/cases.py",
+   "library:re",
+   "imports"
+  ],
+  [
+   "file:scripts/cases.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/cases.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/cases.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
+   "file:scripts/cases.py",
+   "skill:wake",
+   "used_by"
+  ],
+  [
    "file:scripts/context.py",
    "file:CONTEXT.md",
    "implements"
@@ -3387,11 +3744,6 @@
   ],
   [
    "file:scripts/dashboard.py",
-   "function:dashboard.bar_rows",
-   "related_to"
-  ],
-  [
-   "file:scripts/dashboard.py",
    "function:dashboard.build",
    "related_to"
   ],
@@ -3403,6 +3755,11 @@
   [
    "file:scripts/dashboard.py",
    "function:dashboard.gather",
+   "related_to"
+  ],
+  [
+   "file:scripts/dashboard.py",
+   "function:dashboard.graph_payload",
    "related_to"
   ],
   [
@@ -4556,6 +4913,91 @@
    "used_by"
   ],
   [
+   "file:scripts/server.py",
+   "file:scripts/dashboard.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/server.py",
+   "file:scripts/dashboard.py",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "function:server.main",
+   "related_to"
+  ],
+  [
+   "file:scripts/server.py",
+   "function:server.make_handler",
+   "related_to"
+  ],
+  [
+   "file:scripts/server.py",
+   "function:server.run_cmd",
+   "related_to"
+  ],
+  [
+   "file:scripts/server.py",
+   "function:server.selftest",
+   "related_to"
+  ],
+  [
+   "file:scripts/server.py",
+   "function:server.serve",
+   "related_to"
+  ],
+  [
+   "file:scripts/server.py",
+   "library:argparse",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "library:http",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "library:json",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "library:pathlib",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "library:subprocess",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "library:sys",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "library:tempfile",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "library:threading",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "library:urllib",
+   "imports"
+  ],
+  [
+   "file:scripts/server.py",
+   "project:ABSOLUTEZERO",
+   "related_to"
+  ],
+  [
    "file:scripts/skills.py",
    "file:SKILLS.md",
    "implements"
@@ -4931,6 +5373,141 @@
    "calls"
   ],
   [
+   "function:cases.build_case",
+   "function:cases.parse_decisions",
+   "calls"
+  ],
+  [
+   "function:cases.build_case",
+   "function:cases.parse_faults",
+   "calls"
+  ],
+  [
+   "function:cases.build_case",
+   "function:cases.project_workflows",
+   "calls"
+  ],
+  [
+   "function:cases.build_case",
+   "function:cases.read",
+   "calls"
+  ],
+  [
+   "function:cases.build_case",
+   "function:cases.stack_from_bootstrap",
+   "calls"
+  ],
+  [
+   "function:cases.build_case",
+   "function:cases.to_words",
+   "calls"
+  ],
+  [
+   "function:cases.build_case",
+   "function:core.load_json",
+   "calls"
+  ],
+  [
+   "function:cases.close_project",
+   "function:cases.build_case",
+   "calls"
+  ],
+  [
+   "function:cases.close_project",
+   "function:cases.write_case_note",
+   "calls"
+  ],
+  [
+   "function:cases.close_project",
+   "function:core.dump_json",
+   "calls"
+  ],
+  [
+   "function:cases.main",
+   "function:cases._print_case",
+   "calls"
+  ],
+  [
+   "function:cases.main",
+   "function:cases.close_project",
+   "calls"
+  ],
+  [
+   "function:cases.main",
+   "function:cases.selftest",
+   "calls"
+  ],
+  [
+   "function:cases.main",
+   "function:cases.similar",
+   "calls"
+  ],
+  [
+   "function:cases.main",
+   "function:core.load_index",
+   "calls"
+  ],
+  [
+   "function:cases.main",
+   "function:core.load_json",
+   "calls"
+  ],
+  [
+   "function:cases.project_workflows",
+   "function:core.load_json",
+   "calls"
+  ],
+  [
+   "function:cases.query_profile",
+   "function:cases.build_case",
+   "calls"
+  ],
+  [
+   "function:cases.query_profile",
+   "function:cases.to_words",
+   "calls"
+  ],
+  [
+   "function:cases.selftest",
+   "function:cases.close_project",
+   "calls"
+  ],
+  [
+   "function:cases.selftest",
+   "function:cases.parse_decisions",
+   "calls"
+  ],
+  [
+   "function:cases.selftest",
+   "function:cases.parse_faults",
+   "calls"
+  ],
+  [
+   "function:cases.selftest",
+   "function:cases.similar",
+   "calls"
+  ],
+  [
+   "function:cases.selftest",
+   "function:core.dump_json",
+   "calls"
+  ],
+  [
+   "function:cases.similar",
+   "function:cases.query_profile",
+   "calls"
+  ],
+  [
+   "function:cases.similar",
+   "function:core.nwords",
+   "calls"
+  ],
+  [
+   "function:cases.to_words",
+   "function:core.nwords",
+   "calls"
+  ],
+  [
    "function:context.build",
    "function:context.compress",
    "calls"
@@ -5121,11 +5698,6 @@
    "calls"
   ],
   [
-   "function:dashboard.bar_rows",
-   "function:dashboard.esc",
-   "calls"
-  ],
-  [
    "function:dashboard.build",
    "function:dashboard.gather",
    "calls"
@@ -5152,12 +5724,12 @@
   ],
   [
    "function:dashboard.render",
-   "function:dashboard.bar_rows",
+   "function:dashboard.esc",
    "calls"
   ],
   [
    "function:dashboard.render",
-   "function:dashboard.esc",
+   "function:dashboard.graph_payload",
    "calls"
   ],
   [
@@ -6061,6 +6633,46 @@
    "calls"
   ],
   [
+   "function:server.main",
+   "function:server.selftest",
+   "calls"
+  ],
+  [
+   "function:server.main",
+   "function:server.serve",
+   "calls"
+  ],
+  [
+   "function:server.make_handler",
+   "function:dashboard.gather",
+   "calls"
+  ],
+  [
+   "function:server.make_handler",
+   "function:dashboard.render",
+   "calls"
+  ],
+  [
+   "function:server.make_handler",
+   "function:server.run_cmd",
+   "calls"
+  ],
+  [
+   "function:server.selftest",
+   "function:server.make_handler",
+   "calls"
+  ],
+  [
+   "function:server.selftest",
+   "function:server.run_cmd",
+   "calls"
+  ],
+  [
+   "function:server.serve",
+   "function:server.make_handler",
+   "calls"
+  ],
+  [
    "function:skills.discover",
    "function:core.nwords",
    "calls"
@@ -6147,6 +6759,11 @@
   ],
   [
    "library:argparse",
+   "file:scripts/cases.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
    "file:scripts/context.py",
    "used_by"
   ],
@@ -6207,6 +6824,11 @@
   ],
   [
    "library:argparse",
+   "file:scripts/server.py",
+   "used_by"
+  ],
+  [
+   "library:argparse",
    "file:scripts/skills.py",
    "used_by"
   ],
@@ -6253,6 +6875,11 @@
   [
    "library:datetime",
    "file:scripts/bootstrap.py",
+   "used_by"
+  ],
+  [
+   "library:datetime",
+   "file:scripts/cases.py",
    "used_by"
   ],
   [
@@ -6356,6 +6983,11 @@
    "used_by"
   ],
   [
+   "library:http",
+   "file:scripts/server.py",
+   "used_by"
+  ],
+  [
    "library:json",
    "file:scripts/agents.py",
    "used_by"
@@ -6412,12 +7044,22 @@
   ],
   [
    "library:json",
+   "file:scripts/server.py",
+   "used_by"
+  ],
+  [
+   "library:json",
    "file:scripts/skills.py",
    "used_by"
   ],
   [
    "library:json",
    "file:scripts/verifier.py",
+   "used_by"
+  ],
+  [
+   "library:math",
+   "file:scripts/cases.py",
    "used_by"
   ],
   [
@@ -6433,6 +7075,11 @@
   [
    "library:pathlib",
    "file:scripts/bootstrap.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/cases.py",
    "used_by"
   ],
   [
@@ -6498,6 +7145,11 @@
   [
    "library:pathlib",
    "file:scripts/review.py",
+   "used_by"
+  ],
+  [
+   "library:pathlib",
+   "file:scripts/server.py",
    "used_by"
   ],
   [
@@ -6527,6 +7179,11 @@
   ],
   [
    "library:re",
+   "file:scripts/cases.py",
+   "used_by"
+  ],
+  [
+   "library:re",
    "file:scripts/context.py",
    "used_by"
   ],
@@ -6602,6 +7259,11 @@
   ],
   [
    "library:subprocess",
+   "file:scripts/server.py",
+   "used_by"
+  ],
+  [
+   "library:subprocess",
    "file:scripts/verifier.py",
    "used_by"
   ],
@@ -6613,6 +7275,11 @@
   [
    "library:sys",
    "file:scripts/bootstrap.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
+   "file:scripts/cases.py",
    "used_by"
   ],
   [
@@ -6677,6 +7344,11 @@
   ],
   [
    "library:sys",
+   "file:scripts/server.py",
+   "used_by"
+  ],
+  [
+   "library:sys",
    "file:scripts/skills.py",
    "used_by"
   ],
@@ -6693,6 +7365,11 @@
   [
    "library:tempfile",
    "file:scripts/bootstrap.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
+   "file:scripts/cases.py",
    "used_by"
   ],
   [
@@ -6747,6 +7424,11 @@
   ],
   [
    "library:tempfile",
+   "file:scripts/server.py",
+   "used_by"
+  ],
+  [
+   "library:tempfile",
    "file:scripts/skills.py",
    "used_by"
   ],
@@ -6761,6 +7443,11 @@
    "used_by"
   ],
   [
+   "library:threading",
+   "file:scripts/server.py",
+   "used_by"
+  ],
+  [
    "library:time",
    "file:scripts/agents.py",
    "used_by"
@@ -6768,6 +7455,11 @@
   [
    "library:time",
    "file:scripts/plugins.py",
+   "used_by"
+  ],
+  [
+   "library:urllib",
+   "file:scripts/server.py",
    "used_by"
   ],
   [
@@ -6812,7 +7504,17 @@
   ],
   [
    "project:ABSOLUTEZERO",
+   "library:http",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
    "library:json",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:math",
    "depends_on"
   ],
   [
@@ -6858,6 +7560,11 @@
   [
    "project:ABSOLUTEZERO",
    "library:time",
+   "depends_on"
+  ],
+  [
+   "project:ABSOLUTEZERO",
+   "library:urllib",
    "depends_on"
   ],
   [
@@ -6893,6 +7600,11 @@
   [
    "skill:task",
    "file:scripts/orchestrator.py",
+   "depends_on"
+  ],
+  [
+   "skill:wake",
+   "file:scripts/cases.py",
    "depends_on"
   ]
  ]

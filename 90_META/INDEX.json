@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-12",
+  "generated": "2026-07-18",
   "notes": [
     {
       "path": "AGENTS.md",
@@ -35,6 +35,24 @@
       "status": "",
       "confidence": "",
       "date": "",
+      "links": []
+    },
+    {
+      "path": "CASES.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "experience",
+        "cases",
+        "reasoning",
+        "runtime"
+      ],
+      "title": "ABSOLUTE ZERO — Project Experience Engine (case-based reasoning)",
+      "summary": "Project Experience Engine spec — turns each completed project into a reusable case and surfaces the closest past case when a similar project starts.",
+      "status": "active",
+      "confidence": "medium",
+      "date": "2026-07-18",
       "links": []
     },
     {
@@ -532,6 +550,47 @@
       ]
     },
     {
+      "path": "10_PROJECTS/ABSOLUTE_ZERO/EXPERIENCE.md",
+      "type": "project",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "absolute-zero",
+        "budget",
+        "case",
+        "cases",
+        "compiler",
+        "context",
+        "core",
+        "dashboard",
+        "discovery",
+        "experience",
+        "faults",
+        "goals",
+        "identity",
+        "meta",
+        "orchestrator",
+        "planning",
+        "plugins",
+        "principles",
+        "project",
+        "prompts",
+        "quick-fix",
+        "reasoning",
+        "runtime",
+        "skills",
+        "token",
+        "tooling",
+        "v3",
+        "verification"
+      ],
+      "title": "ABSOLUTE_ZERO — Project Experience",
+      "summary": "Project experience case for ABSOLUTE_ZERO - reusable decisions, faults and stack.",
+      "status": "active",
+      "confidence": "medium",
+      "date": "2026-07-18",
+      "links": []
+    },
+    {
       "path": "10_PROJECTS/ABSOLUTE_ZERO/FAULTS.md",
       "type": "fault",
       "project": "ABSOLUTE_ZERO",
@@ -590,6 +649,46 @@
         "FAULTS",
         "read-stderr-not-app-log"
       ]
+    },
+    {
+      "path": "10_PROJECTS/ASUNAMA/EXPERIENCE.md",
+      "type": "project",
+      "project": "ASUNAMA",
+      "tags": [
+        "ardupilot",
+        "bootstrap",
+        "case",
+        "coordinate-frames",
+        "coverage",
+        "debugging",
+        "decisions",
+        "diagnostics",
+        "drift",
+        "drone",
+        "experience",
+        "faults",
+        "isaac-sim",
+        "lesson",
+        "localization",
+        "mapping",
+        "navigation",
+        "overview",
+        "project",
+        "python",
+        "recent",
+        "reliability",
+        "research",
+        "robotics",
+        "session",
+        "software",
+        "state-estimation"
+      ],
+      "title": "ASUNAMA — Project Experience",
+      "summary": "Project experience case for ASUNAMA - reusable decisions, faults and stack.",
+      "status": "active",
+      "confidence": "medium",
+      "date": "2026-07-18",
+      "links": []
     },
     {
       "path": "10_PROJECTS/ASUNAMA/FAULTS.md",
