@@ -224,6 +224,13 @@ def similar(vault, store, query=None, project=None, notes=None, limit=5,
             df[w] = df.get(w, 0) + 1
 
     def idf(w):
+        # With a single case IDF is degenerate: df == N for every word, so
+        # every weight is log(2/2) == 0 and the store can never return a hit.
+        # One case offers no way to tell generic from specific, so fall back
+        # to plain coverage (the floor still gates); the real weighting
+        # resumes the moment a second case exists.
+        if N == 1:
+            return 1.0
         return math.log((N + 1) / (df.get(w, 0) + 1))
     qweight = sum(idf(w) for w in qsig) or 1.0
     ranked = []
@@ -390,6 +397,13 @@ def selftest():
         # a bare fully-shared word carries zero information -> no match
         assert not similar(v, store, query="python"), \
             "bare generic word false-positived"
+        # single-case store still retrieves: df == N makes every IDF weight
+        # zero, which silently returned nothing for every query.
+        one = {"DRONE": store["DRONE"]}
+        assert similar(v, one, query="gps denied drone navigation"), \
+            "single-case store returned nothing (degenerate IDF)"
+        assert not similar(v, one, query="quarterly tax accounting"), \
+            "single-case store matched a noise query"
         # off-topic query -> nothing
         assert not similar(v, store,
                            query="quarterly tax accounting spreadsheet"), \

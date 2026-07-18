@@ -204,6 +204,24 @@
       "links": []
     },
     {
+      "path": "PROJECT.md",
+      "type": "doc",
+      "project": "ABSOLUTE_ZERO",
+      "tags": [
+        "core",
+        "project",
+        "scaffold",
+        "experience",
+        "runtime"
+      ],
+      "title": "ABSOLUTE ZERO — Project Scaffolder (autonomous experience injection)",
+      "summary": "Project scaffolder spec — creating a project auto-injects the closest past case.",
+      "status": "active",
+      "confidence": "medium",
+      "date": "2026-07-18",
+      "links": []
+    },
+    {
       "path": "PROMPTC.md",
       "type": "doc",
       "project": "ABSOLUTE_ZERO",

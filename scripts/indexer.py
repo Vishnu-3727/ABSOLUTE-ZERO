@@ -26,7 +26,7 @@ ROOT_DOCS = {"CLAUDE.md", "FLOW.md", "GUIDE.md", "DASHBOARD.md",
              "ORCHESTRATOR.md", "CONTEXT.md", "PLUGINS.md", "PLANNER.md",
              "VERIFIER.md", "PROMPTC.md", "SKILLS.md", "EXPERIENCE.md",
              "AGENTS.md", "GRAPH.md", "BOOTSTRAP.md", "README.md",
-             "AUDIT.md", "TOKEN.md", "CASES.md"}
+             "AUDIT.md", "TOKEN.md", "CASES.md", "PROJECT.md"}
 
 FM_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 LINK_RE = re.compile(r"\[\[([^\]]+)\]\]")
