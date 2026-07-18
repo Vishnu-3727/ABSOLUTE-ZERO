@@ -1,0 +1,38 @@
+{
+ "t": "2026-07-18T18:34:37",
+ "files": [
+  "10_PROJECTS/ASUNAMA/EXPERIENCE.md",
+  "90_META/GRAPH.json",
+  "90_META/dashboard.html",
+  "90_META/experience/cases.json",
+  "90_META/experience/workflows.json",
+  "90_META/plans/2026-07-18-fix-the-pose-drift-in.json",
+  "90_META/skills/last_discovery.json",
+  "90_META/traces/2026-07-18-fix-the-pose-drift-in.json",
+  "90_META/verify/2026-07-18T181815.json",
+  "90_META/verify/2026-07-18T181846.json",
+  "90_META/verify/2026-07-18T183401.json",
+  "90_META/verify/2026-07-18T183422.json"
+ ],
+ "verdict": "PASS-WITH-WARNINGS",
+ "confidence": 97,
+ "findings": {
+  "architecture": [],
+  "imports": [],
+  "dependencies": [],
+  "naming": [],
+  "complexity": [],
+  "regression": [],
+  "security": [],
+  "performance": [],
+  "formatting": [
+   {
+    "level": "warn",
+    "file": "10_PROJECTS/ASUNAMA/EXPERIENCE.md",
+    "msg": "15 line(s) > 100 chars (first: L2)"
+   }
+  ],
+  "documentation": [],
+  "tests": []
+ }
+}

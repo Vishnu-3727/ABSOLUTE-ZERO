@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-18T18:33:58",
+ "generated": "2026-07-18T18:42:23",
  "nodes": {
   "project:ABSOLUTEZERO": {
    "type": "project",
@@ -1265,6 +1265,13 @@
     "tags": "core orchestrator runtime"
    }
   },
+  "file:scripts/verifier.py": {
+   "type": "file",
+   "name": "scripts/verifier.py",
+   "meta": {
+    "doc": "ABSOLUTE ZERO verification engine. Stdlib only."
+   }
+  },
   "function:orchestrator.budget_for": {
    "type": "function",
    "name": "orchestrator.budget_for",
@@ -1353,6 +1360,14 @@
    "meta": {
     "file": "scripts/orchestrator.py",
     "doc": "Close the loop: a finished trace becomes lessons, index, case, graph."
+   }
+  },
+  "function:orchestrator.run_verification": {
+   "type": "function",
+   "name": "orchestrator.run_verification",
+   "meta": {
+    "file": "scripts/orchestrator.py",
+    "doc": "VERIFY's deterministic half, executed."
    }
   },
   "function:orchestrator._report": {
@@ -2002,13 +2017,6 @@
    "name": "skills.main",
    "meta": {
     "file": "scripts/skills.py"
-   }
-  },
-  "file:scripts/verifier.py": {
-   "type": "file",
-   "name": "scripts/verifier.py",
-   "meta": {
-    "doc": "ABSOLUTE ZERO verification engine. Stdlib only."
    }
   },
   "file:VERIFIER.md": {
@@ -4431,6 +4439,16 @@
   ],
   [
    "file:scripts/orchestrator.py",
+   "file:scripts/verifier.py",
+   "depends_on"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "file:scripts/verifier.py",
+   "imports"
+  ],
+  [
+   "file:scripts/orchestrator.py",
    "function:orchestrator._call",
    "related_to"
   ],
@@ -4502,6 +4520,11 @@
   [
    "file:scripts/orchestrator.py",
    "function:orchestrator.run_recall",
+   "related_to"
+  ],
+  [
+   "file:scripts/orchestrator.py",
+   "function:orchestrator.run_verification",
    "related_to"
   ],
   [
@@ -6361,6 +6384,11 @@
   ],
   [
    "function:orchestrator.log",
+   "function:orchestrator._report",
+   "calls"
+  ],
+  [
+   "function:orchestrator.log",
    "function:orchestrator.allowed_states",
    "calls"
   ],
@@ -6372,6 +6400,11 @@
   [
    "function:orchestrator.log",
    "function:orchestrator.now",
+   "calls"
+  ],
+  [
+   "function:orchestrator.log",
+   "function:orchestrator.run_verification",
    "calls"
   ],
   [
@@ -6535,6 +6568,21 @@
    "calls"
   ],
   [
+   "function:orchestrator.run_verification",
+   "function:orchestrator._call",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_verification",
+   "function:verifier.changed_files",
+   "calls"
+  ],
+  [
+   "function:orchestrator.run_verification",
+   "function:verifier.save",
+   "calls"
+  ],
+  [
    "function:orchestrator.selftest",
    "function:core.classify",
    "calls"
@@ -6572,6 +6620,11 @@
   [
    "function:orchestrator.selftest",
    "function:orchestrator.plan",
+   "calls"
+  ],
+  [
+   "function:orchestrator.selftest",
+   "function:orchestrator.save_trace",
    "calls"
   ],
   [

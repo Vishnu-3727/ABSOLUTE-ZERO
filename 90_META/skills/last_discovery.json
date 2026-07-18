@@ -3,9 +3,9 @@
  "intent": "quick_fix",
  "skills": [
   {
-   "invoke": "/recall",
-   "name": "recall",
-   "confidence": 0.5,
+   "invoke": "/task",
+   "name": "task",
+   "confidence": 0.68,
    "reason": "matched",
    "origin": "vault"
   },
@@ -38,12 +38,14 @@
    "origin": "vault"
   },
   {
-   "invoke": "/review",
-   "name": "review",
-   "confidence": 0.5,
-   "reason": "matched",
+   "invoke": "/sleep",
+   "name": "sleep",
+   "confidence": 0.54,
+   "reason": "dependency of /task",
    "origin": "vault"
   }
  ],
- "conflicts": []
+ "conflicts": [
+  "/recall subsumed by /task"
+ ]
 }
